@@ -18,3 +18,82 @@ export function validHttpUrl(value: string | null | undefined): boolean {
   if (!value) return false;
   try { const url = new URL(value); return url.protocol === "https:" || url.protocol === "http:"; } catch { return false; }
 }
+
+/* ===== إضافات التحسين: فئات عربية، إحصاءات حقيقية، بحث ===== */
+
+export const categoryLabels: Record<string, string> = {
+  education: "تعليم وتدريب",
+  tools: "أدوات وتطبيقات",
+  business: "أعمال ومالية",
+  communication: "تواصل ومراسلة",
+  media: "وسائط وإبداع",
+};
+
+export const statusLabels: Record<AppEntry["status"], string> = {
+  released: "متاح",
+  "in-development": "قيد التطوير",
+  archived: "مؤرشف",
+};
+
+export function categoryLabel(category: string): string {
+  return categoryLabels[category] || category;
+}
+
+/** فئات فعلية موجودة في الكتالوج مع عدد مشاريعها (بدون اختلاق بيانات) */
+export function categoriesWithCounts() {
+  const map = new Map<string, number>();
+  for (const app of apps) map.set(app.category, (map.get(app.category) || 0) + 1);
+  return Array.from(map.entries()).map(([id, count]) => ({ id, label: categoryLabel(id), count }));
+}
+
+export const catalogStats = {
+  total: apps.length,
+  categories: new Set(apps.map(a => a.category)).size,
+  released: apps.filter(a => a.status === "released").length,
+  inDevelopment: apps.filter(a => a.status === "in-development").length,
+  platforms: Array.from(new Set(apps.flatMap(a => a.platforms))),
+};
+
+/** تطبيقات ذات صلة: نفس الفئة أولاً ثم الأحدث، بحد أقصى 3 */
+export function relatedApps(current: AppEntry, limit = 3): AppEntry[] {
+  const sameCategory = apps.filter(a => a.slug !== current.slug && a.category === current.category);
+  const others = apps.filter(a => a.slug !== current.slug && a.category !== current.category);
+  return [...sameCategory, ...others].slice(0, limit);
+}
+
+/** تطبيع بسيط للبحث العربي/اللاتيني: إزالة التشكيل وتوحيد الألف والتاء المربوطة */
+export function normalizeSearch(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/[\u064B-\u0652\u0670]/g, "")
+    .replace(/[أإآ]/g, "ا")
+    .replace(/ة/g, "ه")
+    .replace(/ى/g, "ي")
+    .trim();
+}
+
+export function searchApps(list: AppEntry[], query: string): AppEntry[] {
+  const q = normalizeSearch(query);
+  if (!q) return list;
+  const terms = q.split(/\s+/).filter(Boolean);
+  return list.filter(app => {
+    const haystack = normalizeSearch([
+      app.name.ar, app.name.en,
+      app.summary.ar, app.summary.en,
+      app.description.ar, app.description.en,
+      categoryLabel(app.category),
+      app.platforms.join(" "),
+    ].join(" "));
+    return terms.every(term => haystack.includes(term));
+  });
+}
+
+export function filterByCategory(list: AppEntry[], category: string | null): AppEntry[] {
+  if (!category || category === "all") return list;
+  return list.filter(a => a.category === category);
+}
+
+export function filterByStatus(list: AppEntry[], status: string | null): AppEntry[] {
+  if (!status || status === "all") return list;
+  return list.filter(a => a.status === status);
+}
