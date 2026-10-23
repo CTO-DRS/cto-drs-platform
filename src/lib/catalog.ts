@@ -1,16 +1,24 @@
 import rawApps from "../content/apps.json";
+import rawSiteConfig from "../content/site-config.json";
 
 export type Localized = { ar: string; en: string };
 export type DownloadLink = { label: Localized; url: string; kind: "apk" | "store" | "release" | "website" };
 export type AppEntry = {
   slug: string; name: Localized; category: string; status: "released" | "in-development" | "archived";
   summary: Localized; description: Localized; platforms: string[]; version: string | null;
-  releaseDate: string | null; icon: string; features: Localized[]; requirements: string[];
+  releaseDate: string | null; icon: string; tint?: string; pricing?: "free" | "paid"; features: Localized[]; requirements: string[];
   downloads: DownloadLink[]; repository: string | null; website: string | null;
   privacyPolicy: string | null; changelog: { version: string; date: string; notes: Localized[] }[];
   verified: boolean;
 };
+export type SiteConfig = {
+  brand: { name: string; tagline: string };
+  stats: { icon: string; value: string; label: string }[];
+  cto: { name: string; role: string; bio: string; email: string };
+  social: { id: string; url: string }[];
+};
 export const apps = rawApps as AppEntry[];
+export const site = rawSiteConfig as SiteConfig;
 export function appName(app: AppEntry, lang: "ar" | "en" = "ar") { return app.name[lang] || app.name.en; }
 export function appSummary(app: AppEntry, lang: "ar" | "en" = "ar") { return app.summary[lang] || app.summary.en; }
 export function appDescription(app: AppEntry, lang: "ar" | "en" = "ar") { return app.description[lang] || app.description.en; }
@@ -22,11 +30,13 @@ export function validHttpUrl(value: string | null | undefined): boolean {
 /* ===== إضافات التحسين: فئات عربية، إحصاءات حقيقية، بحث ===== */
 
 export const categoryLabels: Record<string, string> = {
-  education: "تعليم وتدريب",
-  tools: "أدوات وتطبيقات",
-  business: "أعمال ومالية",
-  communication: "تواصل ومراسلة",
-  media: "وسائط وإبداع",
+  education: "التعليم",
+  tools: "الأدوات",
+  business: "الأعمال",
+  communication: "التواصل",
+  media: "الوسائط",
+  games: "الترفيه",
+  web: "الويب",
 };
 
 export const statusLabels: Record<AppEntry["status"], string> = {
@@ -96,4 +106,14 @@ export function filterByCategory(list: AppEntry[], category: string | null): App
 export function filterByStatus(list: AppEntry[], status: string | null): AppEntry[] {
   if (!status || status === "all") return list;
   return list.filter(a => a.status === status);
+}
+
+export function platformLabel(platform: string): string {
+  const map: Record<string, string> = { Android: "أندرويد", Web: "ويب", iOS: "iOS", Windows: "ويندوز" };
+  return map[platform] || platform;
+}
+
+/** أول رابط تنزيل صالح للتطبيق، إن وجد */
+export function firstDownload(app: AppEntry): DownloadLink | null {
+  return app.downloads.find(d => validHttpUrl(d.url)) || null;
 }

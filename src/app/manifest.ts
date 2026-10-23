@@ -2,9 +2,9 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "CTO-DRS | التطبيقات والمشاريع",
-    short_name: "CTO-DRS",
-    description: "البوابة الرسمية لتطبيقات ومشاريع CTO-DRS.",
+    name: "DRS | منصة التطبيقات",
+    short_name: "DRS",
+    description: "منصة DRS الرسمية للتطبيقات والمشاريع — جميع التطبيقات في مكان واحد.",
     start_url: "/",
     display: "standalone",
     background_color: "#050a14",
