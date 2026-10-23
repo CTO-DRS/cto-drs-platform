@@ -52,3 +52,9 @@ prompt
 server.log
 # Skills directory
 /skills/
+# session artifacts & local data
+.env
+db/
+tool-results/
+worklog.md
+download/
