@@ -1,1 +1,0 @@
-This file intentionally documents that catalog data lives in content/apps.json.
