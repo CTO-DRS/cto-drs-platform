@@ -1,9 +1,10 @@
 import Link from "next/link";
 import {
   Sparkles, ShieldCheck, Download, Headphones, RefreshCw, ArrowLeft,
-  Crown, Mail, Star, Users, Shield, LayoutGrid, Globe,
+  Crown, Mail, Star, Users, Shield, LayoutGrid, Github,
 } from "lucide-react";
 import { apps, site } from "@/lib/catalog";
+import { openSourceCount } from "@/lib/github";
 import { HeroPhones } from "@/components/hero-phones";
 import { HomeAppsSection } from "@/components/home-apps-section";
 
@@ -23,6 +24,7 @@ const HERO_FEATURES = [
 
 export default function HomePage() {
   const { cto } = site;
+  const ossCount = openSourceCount(apps);
 
   return (
     <main>
@@ -111,9 +113,10 @@ export default function HomePage() {
             </Link>
           </div>
           <aside className="gh-card">
-            <span className="gh-globe"><Globe size={22} aria-hidden /></span>
+            <span className="gh-globe"><Github size={22} aria-hidden /></span>
             <b>تابعنا على GitHub</b>
             <p>الإصدارات والمستودعات مفتوحة للجميع.</p>
+            {ossCount > 0 && <span className="gh-count"><b>{ossCount}</b> من تطبيقات الكتالوج مفتوحة المصدر</span>}
             <a className="gh-btn" href="https://github.com/CTO-DRS" target="_blank" rel="noreferrer">
               زيارة الحساب <span aria-hidden>↗</span>
             </a>

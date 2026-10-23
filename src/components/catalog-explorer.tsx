@@ -2,9 +2,9 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { Search, X, SlidersHorizontal, FolderOpen } from "lucide-react";
+import { Search, X, SlidersHorizontal, FolderOpen, Github } from "lucide-react";
 import type { AppEntry } from "@/lib/catalog";
-import { categoryLabel, filterByCategory, filterByStatus, searchApps, statusLabels } from "@/lib/catalog";
+import { categoryLabel, filterByCategory, filterByStatus, searchApps, statusLabels, validHttpUrl } from "@/lib/catalog";
 
 type Props = {
   apps: AppEntry[];
@@ -120,6 +120,11 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
                 <p>{app.summary.ar}</p>
                 <div className="app-card-bottom">
                   <span className="cat-tag"><FolderOpen size={13} aria-hidden /> {categoryLabel(app.category)}</span>
+                  {validHttpUrl(app.repository) && (
+                    <a className="mini-gh" href={app.repository!} target="_blank" rel="noreferrer" title="الكود المصدري على GitHub">
+                      <Github size={13} aria-hidden /> GitHub
+                    </a>
+                  )}
                   <Link href={`/apps/${app.slug}`}>عرض التفاصيل ←</Link>
                 </div>
               </div>

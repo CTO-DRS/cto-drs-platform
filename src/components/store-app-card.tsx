@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Download, Link2, BookOpen, Wallet, MessagesSquare, Clapperboard, Keyboard, Calculator, Gamepad2, Languages, Layers, Globe } from "lucide-react";
+import { Download, Link2, BookOpen, Wallet, MessagesSquare, Clapperboard, Keyboard, Calculator, Gamepad2, Languages, Layers, Globe, Github } from "lucide-react";
 import type { AppEntry } from "@/lib/catalog";
-import { appSummary, categoryLabel, firstDownload, platformLabel } from "@/lib/catalog";
+import { appSummary, categoryLabel, firstDownload, platformLabel, validHttpUrl } from "@/lib/catalog";
 
 const ICONS: Record<string, React.ComponentType<{ size?: number }>> = {
   "book-open": BookOpen,
@@ -38,6 +38,11 @@ export function AppStoreCard({ app }: { app: AppEntry }) {
           <span className="tag outline" key={p}>{platformLabel(p)}</span>
         ))}
         <span className="tag fill">{app.pricing === "paid" ? "مدفوع" : "مجاني"}</span>
+        {validHttpUrl(app.repository) && (
+          <a className="tag gh" href={app.repository!} target="_blank" rel="noreferrer" title="الكود المصدري على GitHub">
+            <Github size={12} aria-hidden /> مفتوح المصدر
+          </a>
+        )}
       </div>
       {link ? (
         <a className="store-download" href={link.url} target="_blank" rel="noreferrer">
