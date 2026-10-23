@@ -1,0 +1,21 @@
+{
+  "brand": { "name": "DRS", "tagline": "APPS & MORE" },
+  "stats": [
+    { "icon": "shield", "value": "جميع التطبيقات", "label": "إضافات وتحديثات في المتجرات" },
+    { "icon": "users", "value": "+100%", "label": "التزام بالتواصل والدعم" },
+    { "icon": "star", "value": "+20", "label": "تطبيق منشور" },
+    { "icon": "download", "value": "+50K", "label": "إجمالي التحميلات" }
+  ],
+  "cto": {
+    "name": "م. ربيع الاسلم",
+    "role": "مسؤول التقنية",
+    "bio": "أطور تطبيقات أندرويد بجودة عالية وواجهات عملية تلبي احتياجات المستخدمين حول العالم.",
+    "email": "cto.drs@gmail.com"
+  },
+  "social": [
+    { "id": "github", "url": "https://github.com/CTO-DRS" },
+    { "id": "youtube", "url": "" },
+    { "id": "x", "url": "" },
+    { "id": "telegram", "url": "" }
+  ]
+}
