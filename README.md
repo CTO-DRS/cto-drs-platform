@@ -1,0 +1,98 @@
+# DRS Apps & More — بوابة CTO-DRS
+
+منصة كتالوق تطبيقات ومشاريع **CTO-DRS** — موقع عربي (RTL) يعرض التطبيقات قيد التطوير والمنشورة، مع بحث فوري، فلاتر فئة/حالة، بطاقات مستودعات GitHub حية، وواجهة برمجية عامة للكتالوج.
+
+**الفلسفة:** ملف الكتالوج `src/content/apps.json` هو مصدر الحقيقة الوحيد — لا أرقام تنزيل مختلقة، ولا روابط غير HTTPS، ولا معلومات غير مؤكدة.
+
+## المزايا
+
+- **رئيسية تعريفية**: هيرو تفاعلي، شريط إحصاءات، شبكة تطبيقات بتبويبات فئات، بطاقة GitHub.
+- **كتالوج ذكي** (`/apps`): بحث عربي مطبّع (يتجاهل التشكيل ويوحّد الألف/الهاء/الياء)، شرائح فئات وحالات، مزامنة الفلاتر مع الرابط (`?q=&cat=&status=`) لروابط عميقة قابلة للمشاركة.
+- **صفحة تفاصيل لكل تطبيق**: وصف، مميزات، متطلبات، روابط تنزيل مؤكدة فقط، وبطاقة مستودع GitHub بإحصاءات حية (نجوم، نسخ، لغة، آخر تطوير) تُجلب من GitHub API وتُخزّن ساعة كاملة.
+- **واجهة برمجية عامة**:
+  - `GET /api/apps` — الكتالوج كاملاً (JSON + CORS مفتوح)
+  - `GET /api/apps/{slug}` — بيانات تطبيق محدد
+- **SEO كامل**: Metadata لكل صفحة، JSON-LD من نوع SoftwareApplication، `sitemap.xml`، `robots.txt`، Web Manifest، أيقونة SVG.
+
+## التقنيات
+
+| الطبقة | التقنية |
+|---|---|
+| الإطار | Next.js 16 (App Router) + React 19 |
+| اللغة | TypeScript |
+| الأيقونات | lucide-react |
+| الخط | Cairo (عربي + لاتيني) |
+| البيانات | JSON ثابت — بلا قاعدة بيانات |
+
+## البنية
+
+```
+src/
+├── app/                  # الصفحات (App Router)
+│   ├── page.tsx          # الرئيسية
+│   ├── apps/             # الكتالوج + صفحات التفاصيل
+│   ├── projects/ docs/ support/ blog/ account/
+│   ├── api/apps/         # واجهة الكتالوج العامة
+│   ├── sitemap.ts robots.ts manifest.ts
+│   └── globals.css       # التصميم الموحد
+├── components/           # مكونات الواجهة (هيدر، فوتر، بطاقات المتجر ...)
+├── content/
+│   ├── apps.json         # ← مصدر الحقيقة الوحيد للكتالوج
+│   └── site-config.json  # ← الإحصاءات وبيانات CTO والتواصل
+└── lib/
+    ├── catalog.ts        # أنواع الكتالوج + البحث والفلاتر
+    └── github.ts         # تحليل روابط GitHub وجلب الإحصاءات
+```
+
+## التعديل على الكتالوج
+
+لإضافة تطبيق أو تحديث بياناته، عدّل `src/content/apps.json` فقط — كل الصفحات والإحصاءات وAPI تتحدث تلقائياً:
+
+```json
+{
+  "slug": "my-app",
+  "name": { "ar": "تطبيقي", "en": "My App" },
+  "category": "tools",
+  "status": "in-development",
+  "summary": { "ar": "وصف مختصر", "en": "Short summary" },
+  "description": { "ar": "وصف كامل", "en": "Full description" },
+  "platforms": ["Android"],
+  "repository": "https://github.com/CTO-DRS/my-app",
+  "downloads": [],
+  "verified": false
+}
+```
+
+قواعد البيانات الموثوقة:
+- حقل `repository`: رابط GitHub عبر HTTPS فقط — يُفعّل شارة «مفتوح المصدر» وبطاقة الإحصاءات الحية.
+- حقل `downloads`: يُضاف بعد نشر إصدار رسمي موثّق الملكية.
+- حقول `version` و`releaseDate`: لا تُملأ إلا بقيم مؤكدة (اتركها `null`).
+- لتعديل أرقام الرئيسية وبيانات المسؤول: `src/content/site-config.json`.
+
+## التشغيل
+
+```bash
+bun install        # أو npm install
+bun run dev        # بيئة التطوير على المنفذ 3000
+bun run build      # بناء الإنتاج
+bun run start      # تشغيل نسخة الإنتاج
+```
+
+متغيرات البيئة (اختيارية — انسخ `.env.example` إلى `.env`):
+
+```
+NEXT_PUBLIC_SITE_URL      # رابط الموقع الرسمي
+NEXT_PUBLIC_GITHUB_OWNER  # حساب GitHub الظاهر في الروابط
+NEXT_PUBLIC_SUPPORT_EMAIL # بريد الدعم
+```
+
+## المساهمة
+
+1. افتح Issue لمناقشة التعديل المقترح.
+2. اعمل Fork للفرع وأنشئ فرعاً جديداً.
+3. التزم بقواعد البيانات الموثوقة أعلاه في أي تعديل على الكتالوج.
+4. أرسل Pull Request للمراجعة.
+
+---
+
+© 2026 CTO-DRS — جميع الحقوق محفوظة · [github.com/CTO-DRS](https://github.com/CTO-DRS)
