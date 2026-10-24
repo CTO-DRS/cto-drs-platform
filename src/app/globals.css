@@ -1253,3 +1253,118 @@ html.theme-anim,html.theme-anim *,html.theme-anim *::before,html.theme-anim *::a
   .nav-end .theme-wrap .theme-btn:nth-of-type(2){display:none}
   .nav-end .theme-btn{width:33px;height:33px}
 }
+
+/* ============================================================
+   صفحة «ما الجديد» (/updates): تغذية الإصدارات الحية + النبض
+   ============================================================ */
+.updates-layout{display:grid;grid-template-columns:1.55fr .95fr;gap:18px;align-items:start}
+.updates-feed{min-width:0}
+.updates-side{position:sticky;top:92px;display:grid;gap:0;min-width:0}
+
+.feed-list{list-style:none;margin:0;padding:0;position:relative}
+.feed-list::before{content:"";position:absolute;inset-inline-start:11px;top:14px;bottom:14px;width:2px;
+  background:linear-gradient(180deg,rgb(var(--a1-rgb)/.6),rgb(var(--a2-rgb)/.35),transparent)}
+.feed-item{position:relative;padding-inline-start:38px;padding-block:0;margin-bottom:16px}
+.feed-dot{position:absolute;inset-inline-start:4px;top:22px;width:16px;height:16px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,rgb(var(--a2-rgb)),rgb(var(--a1-rgb)));
+  box-shadow:0 0 0 4px rgb(var(--a1-rgb)/.16),0 0 16px rgb(var(--a1-rgb)/.55)}
+.feed-card{border:1px solid var(--card-line);border-radius:16px;background:var(--card-bg);box-shadow:var(--card-shadow);
+  padding:16px 18px;transition:border-color .18s,transform .18s}
+.feed-card:hover{border-color:rgb(var(--a1-rgb)/.5);transform:translateY(-2px)}
+.feed-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.feed-app{display:inline-flex;align-items:center;gap:8px;color:var(--text);font-size:13.5px}
+.feed-app:hover b{color:rgb(var(--a1-rgb))}
+.app-icon.mini{flex:0 0 30px;width:30px;height:30px;border-radius:9px;font-size:13px;box-shadow:inset 0 1px #ffffff30}
+.feed-tag{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:8px;font-size:11px;font-weight:800;
+  background:rgb(var(--a1-rgb)/.13);color:rgb(var(--a1-rgb));border:1px solid rgb(var(--a1-rgb)/.3)}
+.tag.pre{display:inline-flex;padding:3px 8px;border-radius:7px;font-size:10px;font-weight:700;
+  background:#3b2c19;color:#f7ce80;border:1px solid #6b4c1e}
+.feed-title{margin:9px 0 0;font-size:13px;font-weight:700;color:var(--text)}
+.feed-date{display:inline-flex;align-items:center;gap:5px;color:var(--muted);font-size:11px;margin-top:7px}
+.feed-notes{margin:9px 0 0;color:#b2c1d7;font-size:12px;line-height:1.85;white-space:pre-line;
+  border-inline-start:2px solid rgb(var(--a1-rgb)/.25);padding-inline-start:11px}
+.feed-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:13px}
+.button.sm{padding:8px 13px;font-size:12px;border-radius:10px}
+
+/* نبض الإصدارات */
+.updates-pulse h2{display:flex;align-items:center;gap:8px}
+.pulse-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pulse-cell{padding:13px;border-radius:13px;background:var(--s3);border:1px solid var(--card-line);text-align:center}
+.pulse-cell b{display:flex;align-items:center;justify-content:center;gap:5px;font-size:21px;color:rgb(var(--a1-rgb))}
+.pulse-cell span{display:block;color:var(--muted);font-size:10.5px;margin-top:4px}
+.pulse-cell.wide{grid-column:1/-1}
+.pulse-cell.wide b{font-size:14px}
+.updates-side .text-link{margin-top:11px;font-size:12.5px}
+
+/* ============================================================
+   فاحص التحديثات
+   ============================================================ */
+.update-checker h2{display:flex;align-items:center;gap:8px}
+.uc-desc{color:var(--muted);font-size:12px;margin:0 0 13px}
+.uc-form{display:grid;gap:11px}
+.uc-field{display:grid;gap:5px}
+.uc-field span{font-size:11.5px;font-weight:700;color:var(--muted)}
+.uc-field select,.uc-field input{width:100%;padding:10px 12px;border-radius:11px;border:1px solid var(--card-line);
+  background:var(--s2);color:var(--text);font-size:13px;font-family:inherit;outline:none;transition:border-color .15s}
+.uc-field select:focus,.uc-field input:focus{border-color:rgb(var(--a1-rgb)/.65)}
+.uc-result{display:flex;gap:12px;align-items:flex-start;margin-top:14px;padding:14px;border-radius:14px;
+  border:1px solid var(--card-line);background:var(--s3);animation:fadeUp .25s ease both}
+.uc-result .uc-ico{flex:0 0 26px;display:grid;place-items:center;color:#7fd8ff}
+.uc-result .uc-ico.ok{color:#43e0b0}
+.uc-result .uc-ico.info{color:#f7ce80}
+.uc-result.update{border-color:rgb(var(--a1-rgb)/.45);box-shadow:0 0 22px rgb(var(--a1-rgb)/.14)}
+.uc-result b{font-size:13.5px}
+.uc-result p{margin:5px 0 10px;font-size:12px;color:#b2c1d7;line-height:1.8}
+.uc-body{min-width:0}
+
+/* ============================================================
+   الأسئلة الشائعة (/support)
+   ============================================================ */
+.faq-section{margin-top:30px;padding:26px;border:1px solid var(--line);border-radius:19px;background:var(--panel)}
+.faq-section h2{display:flex;align-items:center;gap:9px;font-size:19px;margin:0 0 8px}
+.faq-intro{color:var(--muted);font-size:13px;margin:0 0 18px}
+.faq-list{display:grid;gap:10px}
+.faq-item{border:1px solid var(--card-line);border-radius:14px;background:var(--s2);overflow:hidden;transition:border-color .18s}
+.faq-item:hover,.faq-item[open]{border-color:rgb(var(--a1-rgb)/.45)}
+.faq-item summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 17px;font-size:13.5px;font-weight:800;color:var(--text)}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";font-size:19px;font-weight:400;color:rgb(var(--a1-rgb));transition:transform .2s;flex:0 0 auto}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item p{margin:0;padding:0 17px 15px;color:#b2c1d7;font-size:12.5px;line-height:1.9}
+.faq-foot{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:17px;color:var(--muted);font-size:12.5px}
+
+/* زر الاكتشاف العشوائي في أدوات الكتالوق */
+.lucky-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:10px;font-size:12px;font-weight:700;
+  border:1px dashed rgb(var(--a1-rgb)/.5);background:rgb(var(--a1-rgb)/.08);color:rgb(var(--a1-rgb));cursor:pointer;white-space:nowrap}
+.lucky-btn:hover{background:rgb(var(--a1-rgb)/.16);transform:translateY(-1px)}
+.lucky-btn:active{transform:scale(.96)}
+
+/* الجوال */
+@media(max-width:860px){
+  .updates-layout{grid-template-columns:1fr}
+  .updates-side{position:static}
+}
+@media(max-width:640px){
+  .feed-item{padding-inline-start:30px}
+  .feed-list::before{inset-inline-start:7px}
+  .feed-dot{inset-inline-start:0;width:14px;height:14px}
+  .feed-card{padding:14px}
+  .feed-actions .button.sm{flex:1}
+  .faq-item summary{padding:12px 13px;font-size:12.5px}
+  .faq-item p{padding:0 13px 13px}
+}
+
+/* ============ الثيم الفاتح: الصفحات والمكوّنات الجديدة ============ */
+[data-theme="light"] .feed-notes{color:#3b4c6b}
+[data-theme="light"] .feed-date{color:#5a6b8c}
+[data-theme="light"] .tag.pre{background:#fdeed3;color:#92580a;border-color:#e5c896}
+[data-theme="light"] .uc-result{background:#f2f6ff}
+[data-theme="light"] .uc-result p{color:#3b4c6b}
+[data-theme="light"] .uc-result .uc-ico{color:#0e74a4}
+[data-theme="light"] .uc-result .uc-ico.ok{color:#0b7a5c}
+[data-theme="light"] .uc-result .uc-ico.info{color:#92580a}
+[data-theme="light"] .pulse-cell{background:#f4f7ff}
+[data-theme="light"] .faq-item p{color:#3b4c6b}
+[data-theme="light"] .faq-section{background:#ffffff}
+[data-theme="light"] .feed-card{background:linear-gradient(165deg,rgba(255,255,255,.96),rgba(244,247,255,.9))}

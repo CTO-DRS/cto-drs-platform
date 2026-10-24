@@ -264,6 +264,72 @@ export async function fetchLatestReleases(
     .slice(0, limit);
 }
 
+/** تغذية إصدارات مجمعة: آخر N إصدارات لكل مستودع من مستودعات الكتالوج تُدمج وتُرتب زمنيًا.
+ *  كل عنصر يحمل مرجع المستودع لربطه بتطبيق الكتالوق. الفشل الفرعي يُتخطى بصمت. */
+export async function fetchRecentReleasesFeed(
+  refs: { owner: string; repo: string; url: string }[],
+  perRepo = 3,
+  limit = 12
+): Promise<ReleaseInfo[]> {
+  const headers: Record<string, string> = {
+    Accept: "application/vnd.github+json",
+    "User-Agent": "cto-drs-platform",
+  };
+  const token = process.env.GITHUB_TOKEN;
+  if (token) headers.Authorization = `Bearer ${token}`;
+
+  const results = await Promise.allSettled(
+    refs.map(async ref => {
+      const res = await fetch(
+        `https://api.github.com/repos/${ref.owner}/${ref.repo}/releases?per_page=${perRepo}`,
+        { headers, next: { revalidate: 3600 } }
+      );
+      if (!res.ok) return [];
+      const data = (await res.json()) as Record<string, unknown>[];
+      if (!Array.isArray(data)) return [];
+      return data
+        .filter(rel => typeof rel.tag_name === "string" && rel.draft !== true)
+        .map(rel => ({
+          repo: ref.repo,
+          url: typeof rel.html_url === "string" ? rel.html_url : `${ref.url}/releases`,
+          tag: rel.tag_name as string,
+          name: typeof rel.name === "string" && rel.name ? rel.name : null,
+          publishedAt: typeof rel.published_at === "string" ? rel.published_at : null,
+          notes: sanitizeReleaseNotes(typeof rel.body === "string" ? rel.body : null),
+          prerelease: rel.prerelease === true,
+        } satisfies ReleaseInfo));
+    })
+  );
+
+  return results
+    .flatMap(r => (r.status === "fulfilled" ? r.value : []))
+    .sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""))
+    .slice(0, limit);
+}
+
+/** مقارنة إصدارات دلالية مبسطة: تتجاهل البادئة v وتقارن المقاطع الرقمية.
+ *  تعيد 1 إذا a أحدث، -1 إذا b أحدث، 0 إذا متكافئان، وnull إذا تعذر التحليل. */
+export function compareVersions(a: string, b: string): number | null {
+  const clean = (v: string) =>
+    v.trim().replace(/^v/i, "").split(/[-+]/)[0]; // تجاهل v واللاحقات مثل -beta
+  const parse = (v: string): number[] | null => {
+    const parts = clean(v).split(".").map(p => Number.parseInt(p, 10));
+    if (!parts.length || parts.some(p => !Number.isFinite(p))) return null;
+    return parts;
+  };
+  const pa = parse(a);
+  const pb = parse(b);
+  if (!pa || !pb) return null;
+  const len = Math.max(pa.length, pb.length);
+  for (let i = 0; i < len; i++) {
+    const x = pa[i] ?? 0;
+    const y = pb[i] ?? 0;
+    if (x > y) return 1;
+    if (x < y) return -1;
+  }
+  return 0;
+}
+
 /* ===== مستودعات الحساب (على مستوى المالك) ===== */
 
 export type OrgRepo = {
