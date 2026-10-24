@@ -7,6 +7,7 @@ import { CommandPalette } from "@/components/command-palette";
 import { GlobalChrome } from "@/components/global-chrome";
 import { PwaLayer } from "@/components/pwa-layer";
 import { AnnouncementBar } from "@/components/announcement-bar";
+import { MobileTabBar } from "@/components/mobile-tabbar";
 import { activeAnnouncements } from "@/lib/catalog";
 
 const plexArabic = IBM_Plex_Sans_Arabic({
@@ -53,6 +54,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <div id="main-content">{children}</div>
         <SiteFooter />
         <CommandPalette />
+        <MobileTabBar />
         <GlobalChrome />
         <PwaLayer />
       </body>

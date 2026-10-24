@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Clock, Tag } from "lucide-react";
 import { posts, getPost, formatDate } from "@/lib/blog";
+import { BackButton } from "@/components/back-button";
 
 export function generateStaticParams() {
   return posts.map(post => ({ slug: post.slug }));
@@ -44,7 +45,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   return (
     <main className="container page narrow">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className="breadcrumbs"><Link href="/">الرئيسية</Link> / <Link href="/blog">المدونة</Link> / <span aria-current="page">{post.title.ar}</span></div>
+      <div className="breadcrumbs-row">
+        <div className="breadcrumbs"><Link href="/">الرئيسية</Link> / <Link href="/blog">المدونة</Link> / <span aria-current="page">{post.title.ar}</span></div>
+        <BackButton fallback="/blog" label="عودة للمدونة" />
+      </div>
 
       <article className="panel article-body">
         <header className="article-head">

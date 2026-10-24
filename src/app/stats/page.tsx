@@ -10,6 +10,7 @@ import {
   compactNumber, formatDateAr, openSourceCount,
 } from "@/lib/github";
 import { AnimatedCounter } from "@/components/animated-counter";
+import { BackButton } from "@/components/back-button";
 
 export const revalidate = 3600; // بيانات حية مُخزنة لمدة ساعة مثل بقية البوابة
 
@@ -51,6 +52,7 @@ export default async function StatsPage() {
 
   return (
     <main className="container page">
+      <BackButton fallback="/" label="رجوع" />
       <div className="page-intro">
         <div className="eyebrow">شفافية كاملة</div>
         <h1>لوحة المؤشرات</h1>

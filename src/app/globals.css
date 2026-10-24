@@ -885,3 +885,65 @@ html{scrollbar-width:thin;scrollbar-color:#1c2b4b #05080f}
   .btn-grad::before{display:none!important}
   .store-card::before,.repo-card::before,.home-post::before,.recent-card::before{display:none!important}
 }
+
+/* ============================================================
+   المهمة 10: أزرار التنقل بين الصفحات والشاشات
+   شريط سفلي للجوال + زر رجوع + قائمة «المزيد» + انتقالات عرض
+   ============================================================ */
+
+/* --- زر الرجوع الذكي --- */
+.back-chip{display:inline-flex;align-items:center;gap:7px;background:rgba(12,20,40,.7);border:1px solid rgba(84,104,158,.35);color:#cdd9ee;border-radius:999px;padding:8px 15px;font:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:border-color .18s,color .18s,transform .18s,box-shadow .18s;backdrop-filter:blur(6px)}
+.back-chip:hover{border-color:rgba(124,92,255,.6);color:#fff;transform:translateX(3px);box-shadow:0 8px 22px -10px rgba(124,92,255,.55)}
+.breadcrumbs-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.breadcrumbs-row .breadcrumbs{margin-bottom:0}
+main.page > .back-chip{margin-bottom:16px}
+
+/* --- قائمة «المزيد» في الهيدر --- */
+.menu-backdrop{position:fixed;inset:0;z-index:45;background:transparent}
+.nav-more-wrap{position:relative}
+.nav-more .more-caret{transition:transform .2s}
+.nav-more .more-caret.up{transform:rotate(180deg)}
+.nav-more-menu{position:absolute;top:calc(100% + 10px);inset-inline-start:0;min-width:250px;background:rgba(10,17,34,.97);border:1px solid rgba(104,128,178,.3);border-radius:16px;padding:7px;box-shadow:0 22px 54px -12px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.07);z-index:60;animation:fadeUp .18s ease both;backdrop-filter:blur(18px)}
+.more-opt{display:flex;align-items:center;gap:11px;padding:10px 11px;border-radius:11px;transition:background .15s}
+.more-opt:hover{background:rgba(124,92,255,.12)}
+.more-opt.active{background:rgba(124,92,255,.14)}
+.more-ico{flex-shrink:0;display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:#101c36;border:1px solid #223357;color:#7dd3fc}
+.more-txt{display:flex;flex-direction:column;gap:1px;min-width:0}
+.more-txt b{font-size:12.5px;color:#e8f0ff;font-weight:700}
+.more-txt small{font-size:10.5px;color:#7f92b3}
+.more-sep{height:1px;background:#1c304b;margin:6px 8px}
+.mobile-menu-sep{height:1px;background:#1c304b;margin:7px 4px}
+
+/* --- شريط التنقل السفلي للجوال --- */
+.mobile-tabbar{position:fixed;bottom:0;inset-inline:0;z-index:55;display:flex;align-items:stretch;justify-content:space-around;background:rgba(5,9,20,.88);backdrop-filter:blur(22px) saturate(1.6);border-top:1px solid rgba(96,120,180,.18);padding:7px 6px calc(7px + env(safe-area-inset-bottom,0px));box-shadow:0 -14px 34px -18px rgba(0,0,0,.9)}
+.mobile-tabbar::before{content:"";position:absolute;top:-1px;inset-inline:0;height:1px;background:linear-gradient(90deg,transparent 12%,rgba(124,92,255,.5),rgba(34,211,238,.35),transparent 88%)}
+.tabbar-item{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;flex:1;min-width:0;background:none;border:0;color:#7f92b3;font:inherit;font-size:10px;font-weight:700;padding:5px 2px;border-radius:12px;cursor:pointer;transition:color .18s}
+.tabbar-item:hover{color:#cdd9ee}
+.tabbar-item.active{color:#a78bfa}
+.tabbar-item.active .tabbar-icon{background:linear-gradient(135deg,rgba(124,92,255,.28),rgba(34,211,238,.16));border-color:rgba(124,92,255,.5);box-shadow:0 0 18px rgba(124,92,255,.35);color:#fff}
+.tabbar-icon{display:grid;place-items:center;width:38px;height:27px;border-radius:10px;border:1px solid transparent;transition:all .18s}
+.tabbar-search .tabbar-icon{border-color:rgba(84,104,158,.4);background:#0c1730;color:#7dd3fc}
+.tabbar-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+@media(min-width:1024px){.mobile-tabbar{display:none}}
+html.en-doc .mobile-tabbar{display:none!important}
+
+/* تعويض المساحة تحت الشريط السفلي + رفع العناصر العائمة فوقه */
+@media(max-width:1023.9px){
+  body:has(.mobile-tabbar){padding-bottom:78px}
+  body:has(.mobile-tabbar) .toast-host{bottom:92px}
+  body:has(.mobile-tabbar) .install-chip{bottom:92px}
+  body:has(.mobile-tabbar) .back-top{bottom:92px}
+}
+body:has(.mobile-tabbar):has(.install-chip) .toast-host{bottom:170px}
+
+/* --- منع تزاحم الهيدر مع قائمة «المزيد» في الشاشات المتوسطة --- */
+@media(max-width:1240px) and (min-width:1024px){
+  .nav-link{padding:10px 11px;font-size:13px}
+  .nav-search.as-button{width:min(210px,17vw)}
+  .nav-search-placeholder{display:none}
+  .main-nav{gap:2px}
+}
+
+/* --- انتقالات العرض بين الصفحات (تدرّج رشيق في المتصفحات الداعمة) --- */
+@view-transition{navigation:auto}
+@media(prefers-reduced-motion:reduce){@view-transition{navigation:none}}

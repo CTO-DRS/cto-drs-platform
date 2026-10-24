@@ -6,6 +6,7 @@ import { parseGithubRepo, fetchRepoStats, compactNumber, formatDateAr } from "@/
 import { ViewTracker } from "@/components/view-tracker";
 import { ShareButton } from "@/components/share-button";
 import { FavoriteButton } from "@/components/favorite-button";
+import { BackButton } from "@/components/back-button";
 import type { Metadata } from "next";
 
 export function generateStaticParams() { return apps.map(app => ({ slug: app.slug })); }
@@ -44,10 +45,25 @@ export default async function AppDetailPage({ params }: { params: Promise<{ slug
     author: { "@type": "Organization", name: "CTO-DRS" },
   };
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://cto-drs.com";
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "الرئيسية", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "التطبيقات", item: `${siteUrl}/apps` },
+      { "@type": "ListItem", position: 3, name: appName(app), item: `${siteUrl}/apps/${app.slug}` },
+    ],
+  };
+
   return <main className="container page">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
     <ViewTracker slug={app.slug} />
-    <div className="breadcrumbs"><Link href="/">الرئيسية</Link> / <Link href="/apps">التطبيقات</Link> / <span aria-current="page">{appName(app)}</span></div>
+    <div className="breadcrumbs-row">
+      <div className="breadcrumbs"><Link href="/">الرئيسية</Link> / <Link href="/apps">التطبيقات</Link> / <span aria-current="page">{appName(app)}</span></div>
+      <BackButton fallback="/apps" label="عودة للتطبيقات" />
+    </div>
     <section className="detail-hero">
       <div className="app-icon large">{app.name.en.slice(0,1)}</div>
       <div className="detail-title">

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FolderOpen, Github, Star, GitFork, CircleDot, ExternalLink, Code2, Rocket, Tag } from "lucide-react";
 import { apps, appName, appSummary, categoryLabel, catalogStats, statusLabels } from "@/lib/catalog";
 import { compactNumber, fetchOrgRepos, fetchLatestReleases, formatDateAr, parseGithubRepo } from "@/lib/github";
+import { BackButton } from "@/components/back-button";
 
 export const metadata = { title: "المشاريع", description: "تابع مشاريع CTO-DRS وحالتها وفئاتها التقنية." };
 
@@ -16,6 +17,7 @@ export default async function ProjectsPage() {
 
   return (
     <main className="container page">
+      <BackButton fallback="/" label="رجوع" />
       <div className="page-intro">
         <div className="eyebrow">مساحة التطوير</div>
         <h1>المشاريع</h1>

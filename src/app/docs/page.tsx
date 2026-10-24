@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ShieldCheck, GitPullRequest, FileCheck, Search, Code2, Github, HelpCircle, ChevronDown } from "lucide-react";
+import { BackButton } from "@/components/back-button";
 
 export const metadata: Metadata = {
   title: "التوثيق",
@@ -33,6 +34,7 @@ const FAQ = [
 export default function DocsPage() {
   return (
     <main className="container page narrow">
+      <BackButton fallback="/" label="رجوع" />
       <div className="page-intro">
         <div className="eyebrow">المعرفة والمساعدة</div>
         <h1>التوثيق</h1>
