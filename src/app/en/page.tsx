@@ -143,7 +143,7 @@ export default async function EnglishPage() {
 
       {/* ===== Footer note ===== */}
       <div className="en-footer-note">
-        <span>© {new Date().getFullYear()} DRS — Dir&apos; Al-Islam (Rashid Al-Haddad). All rights reserved.</span>
+        <span>© {new Date().getFullYear()} DRS — CTO.DRS. All rights reserved.</span>
         <span>
           Full experience in Arabic: <Link href="/">النسخة العربية</Link>
         </span>
