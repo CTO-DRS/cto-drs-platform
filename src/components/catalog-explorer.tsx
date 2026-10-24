@@ -10,6 +10,7 @@ import type { CatalogStatsMap } from "@/lib/github";
 import { compactNumber, isFreshRelease } from "@/lib/github";
 import { useFavorites } from "@/lib/favorites";
 import { FavoriteButton } from "@/components/favorite-button";
+import { AppGlyph } from "@/components/app-glyph";
 
 type Props = {
   apps: AppEntry[];
@@ -200,7 +201,7 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
           {results.map(app => (
             <article className="app-card" key={app.slug}>
               <FavoriteButton slug={app.slug} name={app.name.ar} />
-              <div className="app-icon">{app.name.en.slice(0, 1)}</div>
+              <div className="app-icon"><AppGlyph appIcon={app.appIcon} letter={app.name.en.slice(0, 1)} /></div>
               <div className="app-card-body">
                 <div className="app-title-row">
                   <h3>

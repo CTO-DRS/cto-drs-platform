@@ -29,6 +29,12 @@ export default function manifest(): MetadataRoute.Manifest {
         description: "تصفح جميع التطبيقات مع البحث والتصفية",
       },
       {
+        name: "ما الجديد وفاحص التحديثات",
+        short_name: "ما الجديد",
+        url: "/updates",
+        description: "أحدث الإصدارات الحية من GitHub وفاحص التحديثات",
+      },
+      {
         name: "تطبيقاتي المفضلة",
         short_name: "المفضلة",
         url: "/apps?fav=1",

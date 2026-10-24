@@ -1,38 +1,21 @@
 import Link from "next/link";
-import { Download, Link2, BookOpen, Wallet, MessagesSquare, Clapperboard, Keyboard, Calculator, Gamepad2, Languages, Layers, Globe, Github, Star, FolderOpen, MonitorSmartphone, Sparkles, BadgeCheck } from "lucide-react";
+import { Download, Github, Star, Sparkles, BadgeCheck } from "lucide-react";
 import type { AppEntry } from "@/lib/catalog";
 import { appSummary, categoryLabel, firstDownload, platformLabel, validHttpUrl } from "@/lib/catalog";
 import type { CardLive } from "@/lib/github";
 import { compactNumber, formatDateAr, isFreshRelease } from "@/lib/github";
 import { FavoriteButton } from "@/components/favorite-button";
-
-const ICONS: Record<string, React.ComponentType<{ size?: number }>> = {
-  "book-open": BookOpen,
-  wallet: Wallet,
-  "messages-square": MessagesSquare,
-  clapperboard: Clapperboard,
-  keyboard: Keyboard,
-  calculator: Calculator,
-  "gamepad-2": Gamepad2,
-  languages: Languages,
-  layers: Layers,
-  globe: Globe,
-  "folder-open": FolderOpen,
-  "monitor-smartphone": MonitorSmartphone,
-  sparkles: Sparkles,
-};
+import { AppGlyph } from "@/components/app-glyph";
 
 export function AppStoreCard({ app, live }: { app: AppEntry; live?: CardLive }) {
   const link = firstDownload(app);
-  const IconComp = ICONS[app.icon];
-  const isLetter = app.icon.startsWith("letter-");
 
   return (
     <article className="store-card">
       <FavoriteButton slug={app.slug} name={app.name.ar} />
       <div className="store-card-head">
         <span className={`store-icon tint-${app.tint || "nexus"}`}>
-          {isLetter ? <b>{app.icon.replace("letter-", "")}</b> : IconComp ? <IconComp size={24} /> : <Layers size={24} />}
+          <AppGlyph appIcon={app.appIcon} letter={app.icon.startsWith("letter-") ? app.icon.replace("letter-", "") : app.name.en.slice(0, 1)} />
         </span>
         <div className="store-card-title">
           <h3>
@@ -95,5 +78,5 @@ export function AppStoreCard({ app, live }: { app: AppEntry; live?: CardLive }) 
 }
 
 export function DownloadIconHint() {
-  return <Link2 size={14} aria-hidden />;
+  return <Download size={14} aria-hidden />;
 }

@@ -7,6 +7,8 @@ export type AppEntry = {
   slug: string; name: Localized; category: string; status: "released" | "in-development" | "archived";
   summary: Localized; description: Localized; platforms: string[]; version: string | null;
   releaseDate: string | null; icon: string; tint?: string; pricing?: "free" | "paid"; features: Localized[]; requirements: string[];
+  /** مسار أيقونة التطبيق الحقيقية (مستخرجة من APK أو المستودع) — يُعرض الحرف المتدرج حين تغيب */
+  appIcon?: string | null;
   downloads: DownloadLink[]; repository: string | null; website: string | null;
   privacyPolicy: string | null; changelog: { version: string; date: string; notes: Localized[] }[];
   verified: boolean;

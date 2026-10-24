@@ -3,6 +3,7 @@ import { FolderOpen, Github, Star, GitFork, CircleDot, ExternalLink, Code2, Rock
 import { apps, appName, appSummary, categoryLabel, catalogStats, statusLabels } from "@/lib/catalog";
 import { compactNumber, fetchOrgRepos, fetchLatestReleases, formatDateAr, parseGithubRepo } from "@/lib/github";
 import { BackButton } from "@/components/back-button";
+import { AppGlyph } from "@/components/app-glyph";
 
 export const metadata = { title: "المشاريع", description: "تابع مشاريع CTO-DRS وحالتها وفئاتها التقنية." };
 
@@ -31,7 +32,7 @@ export default async function ProjectsPage() {
       <div className="app-grid">
         {apps.map(app => (
           <article className="app-card" key={app.slug}>
-            <div className="app-icon">{app.name.en.slice(0, 1)}</div>
+            <div className="app-icon"><AppGlyph appIcon={app.appIcon} letter={app.name.en.slice(0, 1)} /></div>
             <div className="app-card-body">
               <div className="app-title-row">
                 <h3>{appName(app)}</h3>

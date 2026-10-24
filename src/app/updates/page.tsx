@@ -5,6 +5,7 @@ import { apps, appName, firstDownload } from "@/lib/catalog";
 import { parseGithubRepo, fetchCatalogRepoStats, fetchRecentReleasesFeed, formatDateAr, isFreshRelease } from "@/lib/github";
 import { UpdateChecker, type CheckerApp } from "@/components/update-checker";
 import { BackButton } from "@/components/back-button";
+import { AppGlyph } from "@/components/app-glyph";
 
 export const metadata: Metadata = {
   title: "ما الجديد — أحدث الإصدارات الحية",
@@ -89,7 +90,7 @@ export default async function UpdatesPage() {
                       <header className="feed-head">
                         {app && (
                           <Link className="feed-app" href={`/apps/${app.slug}`}>
-                            <span className="app-icon mini" aria-hidden>{app.name.en.slice(0, 1)}</span>
+                            <span className="app-icon mini"><AppGlyph appIcon={app.appIcon} letter={app.name.en.slice(0, 1)} /></span>
                             <b>{appName(app)}</b>
                           </Link>
                         )}

@@ -8,6 +8,7 @@ import { ShareButton } from "@/components/share-button";
 import { FavoriteButton } from "@/components/favorite-button";
 import { BackButton } from "@/components/back-button";
 import { DownloadModal } from "@/components/download-modal";
+import { AppGlyph } from "@/components/app-glyph";
 import type { Metadata } from "next";
 
 export function generateStaticParams() { return apps.map(app => ({ slug: app.slug })); }
@@ -38,6 +39,8 @@ export default async function AppDetailPage({ params }: { params: Promise<{ slug
   const liveReleases = repoRef ? await fetchLatestReleases([repoRef], 4) : [];
   const freshRelease = isFreshRelease(releaseSummary?.releasedAt) || isFreshRelease(app.releaseDate);
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://cto-drs.com";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -48,10 +51,10 @@ export default async function AppDetailPage({ params }: { params: Promise<{ slug
     operatingSystem: app.platforms.join(", "),
     ...(app.version ? { softwareVersion: app.version } : {}),
     ...(app.releaseDate ? { datePublished: app.releaseDate } : {}),
+    ...(app.appIcon ? { image: `${siteUrl}${app.appIcon}` } : {}),
     author: { "@type": "Organization", name: "CTO-DRS" },
   };
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://cto-drs.com";
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -71,7 +74,7 @@ export default async function AppDetailPage({ params }: { params: Promise<{ slug
       <BackButton fallback="/apps" label="عودة للتطبيقات" />
     </div>
       <section className="detail-hero">
-      <div className="app-icon large">{app.name.en.slice(0,1)}{freshRelease && <span className="fresh-dot" aria-hidden />}</div>
+      <div className="app-icon large"><AppGlyph appIcon={app.appIcon} letter={app.name.en.slice(0,1)} />{freshRelease && <span className="fresh-dot" aria-hidden />}</div>
       <div className="detail-title">
         <span className={`status ${app.status}`}>{statusLabels[app.status]}</span>
         {freshRelease && <span className="tag new-badge"><BadgeCheck size={12} aria-hidden /> إصدار جديد</span>}

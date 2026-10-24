@@ -3,6 +3,7 @@ import { Github, Star, ExternalLink, ArrowRight, Languages, ShieldCheck, Headpho
 import { apps, appSummary, catalogStats, categoryLabelEn } from "@/lib/catalog";
 import { compactNumber, fetchOrgRepos, openSourceCount } from "@/lib/github";
 import { EnDocument } from "@/components/en-document";
+import { AppGlyph } from "@/components/app-glyph";
 
 export const metadata = {
   title: "DRS Apps & More — Android apps, tools and open-source projects",
@@ -105,7 +106,7 @@ export default async function EnglishPage() {
       <div className="en-app-list">
         {apps.map(app => (
           <article className="en-app-row" key={app.slug}>
-            <span className="app-icon" aria-hidden>{app.name.en.slice(0, 1)}</span>
+            <span className="app-icon" aria-hidden><AppGlyph appIcon={app.appIcon} letter={app.name.en.slice(0, 1)} /></span>
             <div>
               <h3>{app.name.en}</h3>
               <p>{appSummary(app, "en")}</p>
