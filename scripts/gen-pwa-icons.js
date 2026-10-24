@@ -21,12 +21,20 @@ async function main() {
   /* أيقونة maskable: الهوية داخل منطقة آمنة (80%) فوق خلفية متدرجة كاملة */
   const safeInner = 410; // 512 × 0.8
   const maskable = `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#8858ff"/><stop offset="1" stop-color="#36d8ff"/>
-    </linearGradient></defs>
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#7c5cff"/><stop offset=".55" stop-color="#5f8cff"/><stop offset="1" stop-color="#36d8ff"/>
+      </linearGradient>
+      <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ffffff" stop-opacity=".30"/><stop offset=".45" stop-color="#ffffff" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
     <rect width="512" height="512" fill="url(#g)"/>
+    <rect width="512" height="512" fill="url(#sheen)"/>
     <g transform="translate(${(512 - safeInner) / 2}, ${(512 - safeInner) / 2}) scale(${safeInner / 128})">
-      <text x="64" y="88" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="900" fill="#ffffff" text-anchor="middle">D</text>
+      <text x="60" y="87" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="-3">D</text>
+      <circle cx="97" cy="35" r="6.5" fill="#ffffff"/>
+      <circle cx="97" cy="35" r="11" fill="#ffffff" opacity=".22"/>
     </g>
   </svg>`;
   await sharp(Buffer.from(maskable)).png().toFile(path.join(outDir, "maskable-512.png"));

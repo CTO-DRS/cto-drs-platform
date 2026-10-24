@@ -79,7 +79,8 @@
         ]
       }
     ],
-    "verified": true
+    "verified": true,
+    "appIcon": "/apps-icons/masar-al-lugha.png"
   },
   {
     "slug": "drs-nexus",
@@ -179,7 +180,8 @@
         ]
       }
     ],
-    "verified": true
+    "verified": true,
+    "appIcon": "/apps-icons/drs-nexus.png"
   },
   {
     "slug": "drs-chat",
@@ -212,7 +214,8 @@
     "website": null,
     "privacyPolicy": null,
     "changelog": [],
-    "verified": true
+    "verified": true,
+    "appIcon": null
   },
   {
     "slug": "lumina-studio",
@@ -310,7 +313,8 @@
         ]
       }
     ],
-    "verified": true
+    "verified": true,
+    "appIcon": null
   },
   {
     "slug": "drs-keyboard",
@@ -402,7 +406,8 @@
         ]
       }
     ],
-    "verified": true
+    "verified": true,
+    "appIcon": null
   },
   {
     "slug": "superbiz",
@@ -496,7 +501,8 @@
         ]
       }
     ],
-    "verified": true
+    "verified": true,
+    "appIcon": "/apps-icons/superbiz.png"
   },
   {
     "slug": "violet-chat",
@@ -596,7 +602,8 @@
         ]
       }
     ],
-    "verified": true
+    "verified": true,
+    "appIcon": "/apps-icons/violet-chat.png"
   },
   {
     "slug": "securenet-vpn",
@@ -680,7 +687,8 @@
         ]
       }
     ],
-    "verified": true
+    "verified": true,
+    "appIcon": null
   },
   {
     "slug": "novafiles",
@@ -774,7 +782,8 @@
         ]
       }
     ],
-    "verified": true
+    "verified": true,
+    "appIcon": null
   },
   {
     "slug": "nexuslink",
@@ -861,7 +870,8 @@
         ]
       }
     ],
-    "verified": true
+    "verified": true,
+    "appIcon": "/apps-icons/nexuslink.png"
   },
   {
     "slug": "drs-ai",
@@ -947,6 +957,7 @@
         ]
       }
     ],
-    "verified": true
+    "verified": true,
+    "appIcon": "/apps-icons/drs-ai.png"
   }
 ]

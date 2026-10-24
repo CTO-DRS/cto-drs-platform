@@ -5,6 +5,7 @@ import { History } from "lucide-react";
 import { apps, appSummary, categoryLabel, statusLabels } from "@/lib/catalog";
 import { useRecentlyViewed, useFavorites } from "@/lib/favorites";
 import { FavoriteButton } from "@/components/favorite-button";
+import { AppGlyph } from "@/components/app-glyph";
 
 /** شريط «شوهد مؤخرًا» في الرئيسية — يظهر فقط بعد زيارة صفحة تطبيق واحد على الأقل */
 export function RecentlyViewed() {
@@ -31,7 +32,7 @@ export function RecentlyViewed() {
           <article className="recent-card" role="listitem" key={app.slug}>
             <FavoriteButton slug={app.slug} name={app.name.ar} />
             <Link href={`/apps/${app.slug}`} className="recent-link" aria-label={`فتح صفحة ${app.name.ar}`}>
-              <span className={`store-icon sm tint-${app.tint || "nexus"}`}><b>{app.name.en.slice(0, 1)}</b></span>
+              <span className={`store-icon sm tint-${app.tint || "nexus"}`}><AppGlyph appIcon={app.appIcon} letter={app.name.en.slice(0, 1)} /></span>
               <b className="recent-name">{app.name.ar}</b>
               <span className="recent-cat">{categoryLabel(app.category)} · {statusLabels[app.status]}</span>
               <p className="recent-desc">{appSummary(app).slice(0, 64)}…</p>

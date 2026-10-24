@@ -5,6 +5,7 @@ import { Heart, FolderOpen, ArrowLeft } from "lucide-react";
 import { apps, appSummary, categoryLabel, statusLabels } from "@/lib/catalog";
 import { useFavorites } from "@/lib/favorites";
 import { FavoriteButton } from "@/components/favorite-button";
+import { AppGlyph } from "@/components/app-glyph";
 
 /** قائمة تطبيقات المفضلة في صفحة الحساب — محفوظة محليًا على جهاز المستخدم */
 export function FavoritesSection() {
@@ -38,7 +39,7 @@ export function FavoritesSection() {
               <article className="fav-item" key={app.slug}>
                 <FavoriteButton slug={app.slug} name={app.name.ar} />
                 <Link href={`/apps/${app.slug}`} className="fav-item-link">
-                  <span className={`store-icon sm tint-${app.tint || "nexus"}`}><b>{app.name.en.slice(0, 1)}</b></span>
+                  <span className={`store-icon sm tint-${app.tint || "nexus"}`}><AppGlyph appIcon={app.appIcon} letter={app.name.en.slice(0, 1)} /></span>
                   <b className="fav-name">{app.name.ar}</b>
                   <span className="fav-meta"><FolderOpen size={12} aria-hidden /> {categoryLabel(app.category)} · {statusLabels[app.status]}</span>
                   <p className="fav-desc">{appSummary(app)}</p>

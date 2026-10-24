@@ -1340,6 +1340,10 @@ html.theme-anim,html.theme-anim *,html.theme-anim *::before,html.theme-anim *::a
 .lucky-btn:hover{background:rgb(var(--a1-rgb)/.16);transform:translateY(-1px)}
 .lucky-btn:active{transform:scale(.96)}
 
+/* الأيقونات الحقيقية للتطبيقات (صورة تملأ الحاوية المتدرجة بالكامل) */
+.app-glyph-img{width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block;user-select:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 4px 14px -6px rgba(0,0,0,.55);background:#0d1b30}
+
 /* الجوال */
 @media(max-width:860px){
   .updates-layout{grid-template-columns:1fr}
