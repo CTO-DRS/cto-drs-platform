@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { apps } from "@/lib/catalog";
+import { posts } from "@/lib/blog";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://cto-drs.com";
 
@@ -19,5 +20,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly",
     priority: 0.8,
   }));
-  return [...staticRoutes, ...appRoutes];
+  const blogRoutes: MetadataRoute.Sitemap = posts.map(post => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: post.date,
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+  return [...staticRoutes, ...appRoutes, ...blogRoutes];
 }

@@ -5,6 +5,7 @@ import {
 } from "lucide-react";
 import { apps, site } from "@/lib/catalog";
 import { openSourceCount } from "@/lib/github";
+import { latestPosts, formatDate } from "@/lib/blog";
 import { HeroPhones } from "@/components/hero-phones";
 import { HomeAppsSection } from "@/components/home-apps-section";
 
@@ -97,6 +98,25 @@ export default function HomePage() {
       <section className="container" id="apps">
         <HomeAppsSection apps={apps} />
       </section>
+
+      {/* ===== من المدونة ===== */}
+      {latestPosts(3).length > 0 && (
+        <section className="container" aria-labelledby="home-blog-title">
+          <div className="home-blog-head">
+            <h2 id="home-blog-title">من المدونة</h2>
+            <Link className="text-link" href="/blog">جميع المقالات <ArrowLeft size={15} aria-hidden /></Link>
+          </div>
+          <div className="home-blog">
+            {latestPosts(3).map(post => (
+              <article className="home-post" key={post.slug}>
+                <span>{formatDate(post.date)} · {post.readingMinutes} دقائق</span>
+                <b>{post.title.ar}</b>
+                <Link className="read" href={`/blog/${post.slug}`}>اقرأ المقال ←</Link>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* ===== CTA band ===== */}
       <section className="container">

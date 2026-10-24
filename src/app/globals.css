@@ -356,11 +356,68 @@ html.en-doc .site-footer,
 html.en-doc .skip-link{display:none!important}
 html.en-doc .page{padding-top:26px}
 
+/* --- المدونة والمقالات --- */
+.post-list{display:grid;gap:14px}
+.post-card{border:1px solid #223357;border-radius:17px;background:linear-gradient(165deg,#0c142c,#080d1e);padding:22px;display:flex;flex-direction:column;gap:10px;animation:fadeUp .45s ease both;transition:border-color .18s}
+.post-card:hover{border-color:#3d5285}
+.post-card:nth-child(2){animation-delay:.05s}
+.post-card:nth-child(3){animation-delay:.1s}
+.post-meta{display:flex;align-items:center;gap:14px;color:#8fa3c4;font-size:11.5px}
+.post-meta span{display:inline-flex;align-items:center;gap:6px}
+.post-meta svg{color:#7dd3fc}
+.post-card h2{margin:0;font-size:19px;line-height:1.6}
+.post-card h2 a{color:#fff}
+.post-card h2 a:hover{color:#7dd3fc}
+.post-card p{margin:0;color:#9fb0cd;font-size:13px;line-height:1.95}
+.post-card-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #1c304b;padding-top:13px;margin-top:4px;flex-wrap:wrap}
+.post-tags{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.article-body{padding:30px}
+.article-head{border-bottom:1px solid #1c304b;padding-bottom:18px;margin-bottom:22px;display:flex;flex-direction:column;gap:10px}
+.article-head h1{margin:0;font-size:clamp(26px,4vw,36px);line-height:1.5;color:#fff}
+.article-lead{margin:0;color:#9fb0cd;font-size:14.5px;line-height:2}
+.article-body h2{font-size:20px;color:#fff;margin:28px 0 10px}
+.article-body h2:first-of-type{margin-top:6px}
+.article-body p{color:#b2c1d7;font-size:13.5px;line-height:2.1;margin:0 0 14px}
+.article-foot{border-top:1px solid #1c304b;margin-top:24px;padding-top:16px}
+.post-tag-icon{flex-shrink:0}
+
+/* --- هيكل التحميل --- */
+.sk{border-radius:12px;background:linear-gradient(100deg,#0c142c 40%,#14224a 50%,#0c142c 60%);background-size:200% 100%;animation:skPulse 1.4s ease infinite}
+@keyframes skPulse{0%{background-position:100% 0}100%{background-position:-100% 0}}
+.sk-eyebrow{width:110px;height:14px;margin-bottom:14px}
+.sk-title{width:min(420px,80%);height:44px;margin-bottom:14px}
+.sk-line{width:min(620px,95%);height:16px;margin-bottom:28px}
+.sk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.sk-card{height:150px;border-radius:17px}
+@media(max-width:780px){.sk-grid{grid-template-columns:1fr}.article-body{padding:20px}}
+
+/* --- الأسئلة الشائعة --- */
+.faq-list{display:grid;gap:10px}
+.faq-list details{border:1px solid #223357;border-radius:14px;background:#0a1424;overflow:hidden}
+.faq-list details[open]{border-color:#3d5285}
+.faq-list summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 18px;cursor:pointer;color:#e8f0ff;font-size:13.5px;font-weight:700;list-style:none}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary:hover{color:#7dd3fc}
+.faq-list summary svg{flex-shrink:0;color:#7dd3fc;transition:transform .2s}
+.faq-list details[open] summary svg{transform:rotate(180deg)}
+.faq-list details p{margin:0;padding:0 18px 16px;color:#9fb0cd;font-size:12.5px;line-height:2}
+
+/* --- شريط المدونة في الرئيسية --- */
+.home-blog{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+.home-post{display:flex;flex-direction:column;gap:8px;border:1px solid #223357;border-radius:16px;background:linear-gradient(165deg,#0c142c,#080d1e);padding:18px;transition:border-color .18s,transform .18s}
+.home-post:hover{border-color:#3d5285;transform:translateY(-2px)}
+.home-post b{color:#fff;font-size:13.5px;line-height:1.7}
+.home-post span{color:#8fa3c4;font-size:11px}
+.home-post a.read{color:#7dd3fc;font-size:11.5px;font-weight:700;margin-top:auto}
+.home-blog-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:26px 0 14px;flex-wrap:wrap}
+.home-blog-head h2{margin:0;font-size:22px;color:#fff}
+
 /* --- استجابة --- */
 @media(max-width:1180px){
   .store-grid{grid-template-columns:repeat(3,1fr)}
   .hero-v2-grid{grid-template-columns:1.1fr .9fr;gap:22px}
   .cto-card{grid-column:1/-1;max-width:520px;margin-inline:auto}
+  .home-blog{grid-template-columns:repeat(2,1fr)}
   .cta-band{grid-template-columns:1fr}
   .cta-copy{border-inline:0;border-block:1px solid #182442}
 }
@@ -386,6 +443,7 @@ html.en-doc .page{padding-top:26px}
   .repo-grid{grid-template-columns:1fr}
   .en-app-list{grid-template-columns:1fr}
   .en-hero h1{font-size:31px}
+  .home-blog{grid-template-columns:1fr}
 }
 @media(max-width:520px){
   .store-grid{grid-template-columns:1fr}
