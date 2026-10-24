@@ -1,11 +1,34 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ShieldCheck, GitPullRequest, FileCheck, Search, Code2, Github } from "lucide-react";
+import { ShieldCheck, GitPullRequest, FileCheck, Search, Code2, Github, HelpCircle, ChevronDown } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "التوثيق",
-  description: "مركز توثيق موحد لاستخدام تطبيقات CTO-DRS ومتابعة الإصدارات والتحقق من الملفات.",
+  description: "مركز توثيق موحد لاستخدام تطبيقات CTO-DRS ومتابعة الإصدارات والتحقق من الملفات — مع أسئلة شائعة موثقة.",
 };
+
+const FAQ = [
+  {
+    q: "كيف أحمّل تطبيقًا من البوابة؟",
+    a: "افتح صفحة التطبيق وانتقل إلى لوحة «التنزيل والروابط». إن كان التطبيق متاحًا ستجد رابطه الرسمي هناك، وإن كانت الحالة «قيد التطوير» فلا يوجد إصدار منشور بعد — ولن نضيف رابطًا قبل التحقق من ملكيته وسلامة الملف.",
+  },
+  {
+    q: "لماذا تظهر بعض التطبيقات بحالة «قيد التطوير»؟",
+    a: "لأنها فعليًا قيد البناء. نعرض الحالة الحقيقية لكل مشروع بدل إخفائها، ويُحدَّث تلقائيًا إلى «متاح» فور نشر الإصدار الرسمي في الكتالوج.",
+  },
+  {
+    q: "هل التطبيقات مفتوحة المصدر فعلًا؟",
+    a: "التطبيقات المربوطة بمستودعات GitHub تحمل شارة «مفتوح المصدر» وتعرض إحصاءات حية من المستودع (نجوم، نسخ، لغة، آخر تطوير) تُجلب كل ساعة. يمكنك تصفح الكود والإبلاغ عن المشاكل مباشرة في المستودع.",
+  },
+  {
+    q: "كيف أبلّغ عن مشكلة أو أقترح تحسينًا؟",
+    a: "عبر صفحة الدعم ستجد نموذجًا يؤلف بريدًا جاهزًا إلى الفريق، أو افتح Issue في مستودع التطبيق المعني على GitHub إن كان مفتوح المصدر.",
+  },
+  {
+    q: "هل يمكنني استخدام بيانات الكتالوج في تطبيقي؟",
+    a: "نعم — واجهة /api/apps عامة ومفتوحة CORS وتعيد نفس بيانات ملف الكتالوج بصيغة JSON. راجع قسم الواجهة البرمجية في هذه الصفحة للتفاصيل.",
+  },
+];
 
 export default function DocsPage() {
   return (
@@ -47,6 +70,36 @@ export default function DocsPage() {
         <h2><FileCheck size={18} aria-hidden /> التحقق من الملفات</h2>
         <p>يمكن نشر قيمة SHA-256 لكل ملف إصدار للتحقق من سلامة التنزيل. يجب حسابها من الملف الفعلي وعدم تخمينها.</p>
       </section>
+      {/* ===== الأسئلة الشائعة ===== */}
+      <section className="panel top-margin" aria-labelledby="faq-heading">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: FAQ.map(item => ({
+                "@type": "Question",
+                name: item.q,
+                acceptedAnswer: { "@type": "Answer", text: item.a },
+              })),
+            }),
+          }}
+        />
+        <h2 id="faq-heading"><HelpCircle size={18} aria-hidden /> الأسئلة الشائعة</h2>
+        <div className="faq-list">
+          {FAQ.map((item, i) => (
+            <details key={i} open={i === 0}>
+              <summary>
+                {item.q}
+                <ChevronDown size={16} aria-hidden />
+              </summary>
+              <p>{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
       <div className="notice">
         <b>لم تجد ما تبحث عنه؟</b> جرّب <Link href="/apps">البحث في الكتالوج</Link> أو تواصل عبر <Link href="/support">صفحة الدعم</Link>.
       </div>
