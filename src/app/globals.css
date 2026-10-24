@@ -709,3 +709,179 @@ body:has(.install-chip) .toast-host{bottom:96px}
   .stats-columns{grid-template-columns:1fr}
   .lang-bar-row{grid-template-columns:84px 1fr 26px}
 }
+
+/* ============================================================
+   إعادة تصميم 2026-10: الهوية البصرية الجديدة الشاملة
+   خلفية Aurora + بطاقات زجاجية + توهجات + لمسات دقيقة
+   ============================================================ */
+
+/* --- الرموز الأساسية --- */
+:root{
+  --violet:#8b5cf6;
+  --sky:#22d3ee;
+  --grad:linear-gradient(110deg,#7c3aed,#4f46e5 55%,#2563eb);
+  --glass-hi:inset 0 1px 0 rgba(255,255,255,.07);
+  --card-line:rgba(104,128,178,.24);
+  --card-bg:linear-gradient(165deg,rgba(21,31,60,.6),rgba(8,13,28,.88));
+  --card-shadow:var(--glass-hi),0 18px 44px -20px rgba(0,0,0,.85);
+  --hover-glow:inset 0 1px 0 rgba(255,255,255,.1),0 24px 54px -20px rgba(99,70,255,.4);
+}
+
+/* --- خلفية Aurora + شبكة خفيفة --- */
+body{background:radial-gradient(ellipse at 80% -5%,#1a1245 0,transparent 40%),radial-gradient(ellipse at 15% 12%,#0d1533 0,transparent 45%),#04060d}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+  radial-gradient(640px circle at 86% -8%,rgba(124,92,255,.17),transparent 62%),
+  radial-gradient(760px circle at 4% 18%,rgba(34,211,238,.07),transparent 55%),
+  radial-gradient(900px circle at 50% 118%,rgba(79,70,229,.12),transparent 62%)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.55;
+  background-image:linear-gradient(rgba(148,163,184,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.05) 1px,transparent 1px);
+  background-size:46px 46px;
+  -webkit-mask-image:radial-gradient(ellipse 90% 55% at 50% 0%,black 25%,transparent 78%);
+  mask-image:radial-gradient(ellipse 90% 55% at 50% 0%,black 25%,transparent 78%)}
+[id]{scroll-margin-top:96px}
+
+::selection{background:#7c3aed66;color:#fff}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:#05080f}
+::-webkit-scrollbar-thumb{background:#1c2b4b;border-radius:99px;border:2.5px solid #05080f}
+::-webkit-scrollbar-thumb:hover{background:#2d4069}
+html{scrollbar-width:thin;scrollbar-color:#1c2b4b #05080f}
+
+/* --- الهيدر: زجاج أنقى --- */
+.site-header{background:rgba(4,7,16,.68);backdrop-filter:blur(22px) saturate(1.6);border-bottom:1px solid rgba(96,120,180,.15);box-shadow:0 14px 34px -22px rgba(0,0,0,.9)}
+.brand-logo svg{filter:drop-shadow(0 0 12px rgba(109,92,255,.55))}
+.brand-text b{background:linear-gradient(100deg,#ffffff,#c7d6ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-link{border-radius:11px}
+.nav-link:hover{background:rgba(124,92,255,.1)}
+.nav-link.active{background:rgba(124,92,255,.12)}
+.nav-underline{bottom:-1px;inset-inline:13px;box-shadow:0 0 16px rgba(124,92,255,.8)}
+.nav-search.as-button{background:rgba(12,20,40,.7);border-color:rgba(84,104,158,.35)}
+.nav-search.as-button:hover{border-color:rgba(124,92,255,.55);background:rgba(16,26,52,.8)}
+.nav-fav{background:rgba(12,20,40,.7);border-color:rgba(84,104,158,.35)}
+.lang-pill{background:rgba(12,20,40,.7);border-color:rgba(84,104,158,.35)}
+
+/* --- الهيرو: توهج أعمق + تدرج متحرك --- */
+.hero-v2:before{background:radial-gradient(ellipse 58% 62% at 70% 6%,rgba(124,92,255,.18),transparent 62%),radial-gradient(ellipse 42% 52% at 16% 34%,rgba(34,211,238,.08),transparent 60%)}
+.brand-grad{background:linear-gradient(100deg,#a78bfa 5%,#6d5cff 40%,#22d3ee 78%,#a5f3fc);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 24px rgba(109,92,255,.5));animation:gradShift 7s ease infinite}
+@keyframes gradShift{0%,100%{background-position:0% center}50%{background-position:100% center}}
+.welcome-line{filter:drop-shadow(0 0 18px rgba(167,139,250,.3))}
+.hero-v2-actions{margin-top:30px}
+
+/* --- الأزرار: لمعان انسيابي --- */
+.btn-grad{position:relative;overflow:hidden;isolation:isolate}
+.btn-grad::before{content:"";position:absolute;top:0;inset-inline-start:-90%;width:55%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-22deg);transition:inset-inline-start .55s ease;z-index:-1}
+.btn-grad:hover::before{inset-inline-start:135%}
+.btn-grad:hover{box-shadow:0 16px 42px rgba(99,70,255,.55)}
+.btn-dark{background:rgba(14,24,48,.75);backdrop-filter:blur(6px)}
+.btn-dark:hover{border-color:rgba(124,92,255,.6);box-shadow:0 12px 30px -14px rgba(124,92,255,.5)}
+
+/* --- بطاقات زجاجية موحدة --- */
+.store-card,.app-card,.panel,.category-card,.repo-card,.post-card,.home-post,.fav-item,.recent-card,.gh-repo-card,.offline-card,.faq-list details{
+  background:var(--card-bg);
+  backdrop-filter:blur(12px);
+  border:1px solid var(--card-line);
+  box-shadow:var(--card-shadow)}
+.store-card,.repo-card,.home-post,.recent-card{position:relative;overflow:hidden}
+.store-card::before,.repo-card::before,.home-post::before,.recent-card::before{content:"";position:absolute;top:0;inset-inline:0;height:1px;background:linear-gradient(90deg,transparent 8%,rgba(139,92,246,.75),rgba(34,211,238,.55),transparent 92%);opacity:0;transition:opacity .3s}
+.store-card:hover::before,.repo-card:hover::before,.home-post:hover::before,.recent-card:hover::before{opacity:1}
+.store-card:hover,.repo-card:hover,.recent-card:hover{border-color:rgba(124,92,255,.55);box-shadow:var(--hover-glow)}
+.app-card:hover,.post-card:hover,.home-post:hover,.fav-item:hover,.category-card:hover{border-color:rgba(124,92,255,.5);box-shadow:var(--hover-glow)}
+
+/* --- أيقونات التطبيقات: لمعان زجاجي --- */
+.store-icon,.app-icon{box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -9px 18px rgba(0,0,0,.22),0 12px 26px -10px rgba(0,0,0,.7)}
+.store-card .fav-btn{background:rgba(10,18,36,.75);backdrop-filter:blur(6px)}
+
+/* --- شبكة المتجر: 3 أعمدة متوازنة (6 تطبيقات = صفّان مثاليان) --- */
+.store-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.store-card{padding:19px;border-radius:19px}
+.store-card-desc{min-height:44px}
+.store-download{border-radius:13px}
+.store-download:hover{box-shadow:0 10px 26px -10px rgba(79,70,229,.6)}
+.store-details span{display:inline-block;transition:transform .18s}
+.store-details:hover span{transform:translateX(-4px)}
+.tag.live{border-color:#2e6247;background:#0f2b1d;color:#7ee2a8;box-shadow:0 0 12px rgba(67,224,176,.12)}
+.store-tab.active{box-shadow:0 8px 24px rgba(99,70,255,.45)}
+
+/* --- عنوان الأقسام: شارة متدرجة للأيقونة --- */
+.store-head-icon{width:42px;height:42px;padding:10px;border-radius:13px;background:linear-gradient(135deg,rgba(124,92,255,.28),rgba(34,211,238,.16));border:1px solid rgba(124,92,255,.4);box-shadow:0 0 20px rgba(124,92,255,.25)}
+.store-head-title h2{letter-spacing:-.3px}
+
+/* --- شريط الإحصاءات: زجاج متوهج --- */
+.stats-bar{background:linear-gradient(160deg,rgba(18,28,56,.62),rgba(7,11,24,.92));backdrop-filter:blur(14px);border:1px solid rgba(104,128,178,.24);box-shadow:var(--glass-hi),0 22px 54px -22px rgba(0,0,0,.9);border-radius:22px}
+.stat-cell{border-radius:14px;transition:background .2s}
+.stat-cell:hover{background:rgba(124,92,255,.07)}
+.stat-chip{box-shadow:0 0 26px rgba(124,92,255,.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.stat-text b{letter-spacing:.2px}
+
+/* --- بطاقة CTO: إطار متدرج + توهج --- */
+.cto-card{position:relative;overflow:hidden;background:linear-gradient(165deg,rgba(26,36,70,.72),rgba(10,15,32,.92));border:1px solid rgba(124,92,255,.32);box-shadow:var(--glass-hi),0 26px 64px -22px rgba(2,4,12,.9),0 0 46px -20px rgba(124,92,255,.45)}
+.cto-card::before{content:"";position:absolute;top:0;inset-inline:0;height:1px;background:linear-gradient(90deg,transparent 10%,rgba(139,92,246,.85),rgba(34,211,238,.6),transparent 90%)}
+.cto-crown{width:62px;height:62px;box-shadow:0 0 36px rgba(124,92,255,.6),inset 0 1px 0 rgba(255,255,255,.35)}
+.cto-signature{filter:drop-shadow(0 0 16px rgba(167,139,250,.45))}
+
+/* --- الهواتف: طفو حي + شاشة متوهجة --- */
+.ph-main{animation:phoneFloat 7s ease-in-out infinite}
+@keyframes phoneFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.ph-screen{background:linear-gradient(170deg,#0e1433,#070c1c 68%);box-shadow:inset 0 0 26px rgba(109,92,255,.14)}
+.phone{box-shadow:0 30px 74px rgba(0,0,0,.7),0 0 46px rgba(109,92,255,.18)}
+.ph-btn-line{box-shadow:0 0 16px rgba(124,58,237,.45)}
+
+/* --- شريط CTA السفلي --- */
+.cta-band{background:linear-gradient(160deg,rgba(18,28,56,.6),rgba(7,11,24,.92));backdrop-filter:blur(12px);border-color:rgba(104,128,178,.24);box-shadow:var(--glass-hi),0 22px 54px -22px rgba(0,0,0,.9)}
+.gh-globe{border-color:rgba(124,92,255,.45);box-shadow:0 0 22px rgba(124,92,255,.25)}
+
+/* ===== الفوتر الجديد متعدد الأعمدة ===== */
+.site-footer{position:relative;margin-top:44px;border-top:0;background:linear-gradient(180deg,rgba(6,10,22,.4),rgba(3,5,12,.96))}
+.site-footer::before{content:"";position:absolute;top:0;inset-inline:0;height:1px;background:linear-gradient(90deg,transparent 5%,rgba(124,92,255,.55),rgba(34,211,238,.4),transparent 95%)}
+.footer-grid{display:grid;grid-template-columns:1.45fr 1fr 1fr;gap:34px;padding-block:40px 28px}
+.footer-brand-col{display:flex;flex-direction:column;align-items:flex-start;gap:0}
+.footer-desc{margin:14px 0 18px;color:#8fa3c4;font-size:12.5px;line-height:2.05;max-width:340px}
+.footer-col h3{display:flex;align-items:center;gap:8px;margin:4px 0 14px;font-size:13px;font-weight:800;color:#e8eeff}
+.footer-col h3 svg{color:#7dd3fc;filter:drop-shadow(0 0 8px rgba(34,211,238,.5))}
+.footer-col ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.footer-col a{display:inline-flex;align-items:center;gap:8px;padding:6px 0;color:#8fa3c4;font-size:12.5px;font-weight:600;transition:color .18s,transform .18s}
+.footer-col a::before{content:"";width:5px;height:5px;border-radius:50%;background:#31446f;transition:background .18s,box-shadow .18s}
+.footer-col a:hover{color:#fff;transform:translateX(-4px)}
+.footer-col a:hover::before{background:var(--sky);box-shadow:0 0 10px rgba(34,211,238,.8)}
+.footer-social{display:flex;align-items:center;gap:9px}
+.footer-social .social-btn{background:rgba(12,20,40,.7);border-color:rgba(84,104,158,.35)}
+.footer-social .social-btn:hover{border-color:rgba(124,92,255,.65);box-shadow:0 8px 22px -8px rgba(124,92,255,.5)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1px solid rgba(96,120,180,.12);padding-block:16px;color:#7f92b3;font-size:11.5px;flex-wrap:wrap}
+.footer-bottom p{margin:0}
+.footer-oss{display:inline-flex;align-items:center;gap:6px}
+.footer-oss svg{color:#7dd3fc}
+.footer-tagline svg{color:#f43f5e}
+
+/* --- لوحات التفاصيل والنماذج --- */
+.detail-hero{background:linear-gradient(140deg,rgba(22,32,64,.62),rgba(9,14,30,.92));backdrop-filter:blur(12px);border-color:var(--card-line);box-shadow:var(--card-shadow)}
+.notice{background:linear-gradient(140deg,rgba(20,30,58,.55),rgba(10,16,34,.85));border-color:rgba(104,128,178,.28)}
+.gh-card b{letter-spacing:.2px}
+
+/* --- شارات الحالة --- */
+.status{border:1px solid transparent}
+.status.released{box-shadow:0 0 14px rgba(67,224,176,.14)}
+
+/* --- الاستجابة --- */
+@media(max-width:1024px){
+  .store-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:900px){
+  .store-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:26px}
+  .footer-brand-col{grid-column:1/-1}
+}
+@media(max-width:560px){
+  .store-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{justify-content:center;text-align:center;flex-direction:column;gap:8px}
+  .brand-grad{animation:none}
+  .ph-main{animation:none}
+}
+
+/* --- تقليل الحركة --- */
+@media(prefers-reduced-motion:reduce){
+  .brand-grad{animation:none!important}
+  .ph-main{animation:none!important}
+  .btn-grad::before{display:none!important}
+  .store-card::before,.repo-card::before,.home-post::before,.recent-card::before{display:none!important}
+}
