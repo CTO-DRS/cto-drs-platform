@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SupportForm } from "@/components/support-form";
+import { BackButton } from "@/components/back-button";
 
 export const metadata: Metadata = {
   title: "الدعم",
@@ -20,6 +21,7 @@ export default async function SupportPage({
 
   return (
     <main className="container page">
+      <BackButton fallback="/" label="رجوع" />
       <div className="page-intro">
         <div className="eyebrow">نحن هنا للمساعدة</div>
         <h1>الدعم والتواصل</h1>

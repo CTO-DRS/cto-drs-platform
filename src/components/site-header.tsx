@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
   Home, LayoutGrid, Newspaper, Headphones, UserRound, Search, Globe, ChevronDown, Menu, X, Check, Heart,
+  MoreHorizontal, FolderGit2, BarChart3, FileText,
 } from "lucide-react";
 import { BrandLogo } from "@/components/brand-logo";
 import { openCommandPalette } from "@/components/command-palette";
@@ -18,14 +19,28 @@ const NAV = [
   { href: "/account", label: "حساب", icon: UserRound },
 ];
 
+const MORE_LINKS = [
+  { href: "/projects", label: "المشاريع المفتوحة", icon: FolderGit2, hint: "مستودعات GitHub حية" },
+  { href: "/stats", label: "لوحة المؤشرات", icon: BarChart3, hint: "أرقام المنصة مباشرة" },
+  { href: "/docs", label: "الوثائق", icon: FileText, hint: "دليل الاستخدام والتطوير" },
+];
+
 export function SiteHeader() {
   const pathname = usePathname();
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
   const { favorites } = useFavorites();
 
+  /* إغلاق القوائم المنسدلة عند تغيّر المسار */
+  useEffect(() => {
+    setMoreOpen(false);
+    setLangOpen(false);
+  }, [pathname]);
+
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
+  const isMoreActive = MORE_LINKS.some(l => isActive(l.href));
 
   return (
     <header className="site-header">
@@ -39,6 +54,32 @@ export function SiteHeader() {
               {isActive(item.href) && <span className="nav-underline" aria-hidden />}
             </Link>
           ))}
+          <div className="nav-more-wrap">
+            <button
+              type="button"
+              className={`nav-link nav-more ${isMoreActive ? "active" : ""}`}
+              onClick={() => setMoreOpen(v => !v)}
+              aria-expanded={moreOpen}
+              aria-haspopup="menu"
+            >
+              <MoreHorizontal size={15} aria-hidden /> المزيد <ChevronDown size={13} aria-hidden className={`more-caret ${moreOpen ? "up" : ""}`} />
+            </button>
+            {moreOpen && (
+              <div className="nav-more-menu" role="menu" aria-label="صفحات إضافية">
+                {MORE_LINKS.map(l => (
+                  <Link key={l.href} href={l.href} role="menuitem" className={`more-opt ${isActive(l.href) ? "active" : ""}`}>
+                    <span className="more-ico"><l.icon size={15} aria-hidden /></span>
+                    <span className="more-txt"><b>{l.label}</b><small>{l.hint}</small></span>
+                  </Link>
+                ))}
+                <div className="more-sep" aria-hidden />
+                <Link href="/en" role="menuitem" className="more-opt">
+                  <span className="more-ico"><Globe size={15} aria-hidden /></span>
+                  <span className="more-txt"><b>English Version</b><small>النسخة الإنجليزية</small></span>
+                </Link>
+              </div>
+            )}
+          </div>
         </nav>
 
         <button
@@ -84,6 +125,10 @@ export function SiteHeader() {
         </div>
       </div>
 
+      {(moreOpen || langOpen) && (
+        <div className="menu-backdrop" aria-hidden onClick={() => { setMoreOpen(false); setLangOpen(false); }} />
+      )}
+
       {menuOpen && (
         <div className="mobile-menu">
           <button
@@ -96,6 +141,12 @@ export function SiteHeader() {
           {NAV.map(item => (
             <Link key={item.href} href={item.href} className={`mobile-link ${isActive(item.href) ? "active" : ""}`} onClick={() => setMenuOpen(false)}>
               <item.icon size={16} aria-hidden /> {item.label}
+            </Link>
+          ))}
+          <div className="mobile-menu-sep" aria-hidden />
+          {MORE_LINKS.map(l => (
+            <Link key={l.href} href={l.href} className={`mobile-link ${isActive(l.href) ? "active" : ""}`} onClick={() => setMenuOpen(false)}>
+              <l.icon size={16} aria-hidden /> {l.label}
             </Link>
           ))}
         </div>

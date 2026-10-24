@@ -3,6 +3,7 @@ import Link from "next/link";
 import { UserRound, Github, Mail, ShieldCheck, Sparkles } from "lucide-react";
 import { site } from "@/lib/catalog";
 import { FavoritesSection } from "@/components/favorites-section";
+import { BackButton } from "@/components/back-button";
 
 export const metadata: Metadata = {
   title: "الحساب",
@@ -13,6 +14,7 @@ export default function AccountPage() {
   const { cto } = site;
   return (
     <main className="container page narrow">
+      <BackButton fallback="/" label="رجوع" />
       <div className="page-intro">
         <div className="eyebrow">مساحتك الخاصة</div>
         <h1>حسابي</h1>
