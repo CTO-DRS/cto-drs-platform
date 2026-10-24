@@ -9,13 +9,58 @@ const CORS = {
   "Cache-Control": "public, max-age=300, s-maxage=300",
 };
 
-export function GET() {
+const CSV_HEADER = [
+  "slug", "name_ar", "name_en", "category", "status", "platforms",
+  "version", "release_date", "pricing", "repository", "verified", "detail_url",
+];
+
+/** تهريب خلية CSV: اقتباس عند وجود فاصلة أو اقتباس أو سطر جديد */
+function csvCell(value: unknown): string {
+  const s = String(value ?? "");
+  return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+}
+
+/** الكتالوق كملف CSV (مع BOM لدعم العربية في Excel) */
+function toCsv(): string {
+  const rows = apps.map(app =>
+    [
+      app.slug,
+      app.name.ar,
+      app.name.en,
+      app.category,
+      app.status,
+      app.platforms.join("|"),
+      app.version ?? "",
+      app.releaseDate ?? "",
+      app.pricing ?? "free",
+      app.repository ?? "",
+      String(app.verified),
+      `/apps/${app.slug}`,
+    ].map(csvCell).join(",")
+  );
+  // BOM + سطر العنوان + البيانات
+  return "\uFEFF" + [CSV_HEADER.join(","), ...rows].join("\n");
+}
+
+export function GET(request: Request) {
+  const format = new URL(request.url).searchParams.get("format");
+
+  if (format === "csv") {
+    return new NextResponse(toCsv(), {
+      headers: {
+        ...CORS,
+        "Content-Type": "text/csv; charset=utf-8",
+        "Content-Disposition": 'attachment; filename="drs-apps.csv"',
+      },
+    });
+  }
+
   return NextResponse.json(
     {
       name: "CTO-DRS Apps API",
-      version: "1.0.0",
+      version: "1.1.0",
       description: "كتالوج تطبيقات ومشاريع CTO-DRS — بيانات عامة فقط",
-      endpoints: ["/api/apps", "/api/apps/{slug}"],
+      endpoints: ["/api/apps", "/api/apps?format=csv", "/api/apps/{slug}"],
       count: apps.length,
       apps: apps.map(app => ({
         slug: app.slug,

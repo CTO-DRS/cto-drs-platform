@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Github, Star, GitFork, CircleDot, Code2, History, Scale } from "lucide-react";
+import { ArrowLeft, ArrowRight, Github, Star, GitFork, CircleDot, Code2, History, Scale } from "lucide-react";
 import { apps, appName, appSummary, appDescription, validHttpUrl, categoryLabel, relatedApps, statusLabels } from "@/lib/catalog";
 import { parseGithubRepo, fetchRepoStats, compactNumber, formatDateAr } from "@/lib/github";
 import { ViewTracker } from "@/components/view-tracker";
@@ -24,6 +24,10 @@ export default async function AppDetailPage({ params }: { params: Promise<{ slug
   const { slug } = await params; const app = apps.find(item => item.slug === slug); if (!app) notFound();
   const links = app.downloads.filter(link => validHttpUrl(link.url));
   const related = relatedApps(app, 3);
+  /* التنقل التسلسلي داخل الكتالوق: التطبيق السابق والتالي بنفس ترتيب الملف */
+  const appIndex = apps.findIndex(item => item.slug === app.slug);
+  const prevApp = appIndex > 0 ? apps[appIndex - 1] : null;
+  const nextApp = appIndex >= 0 && appIndex < apps.length - 1 ? apps[appIndex + 1] : null;
   const repoRef = parseGithubRepo(app.repository);
   const repoStats = repoRef ? await fetchRepoStats(repoRef) : null;
 
@@ -92,6 +96,22 @@ export default async function AppDetailPage({ params }: { params: Promise<{ slug
       <Link className="button secondary full report-link" href={`/support?app=${encodeURIComponent(app.name.ar)}`}>بلاغ عن مشكلة في هذا التطبيق</Link>
     </aside></div>
     <section className="panel changelog"><h2>سجل التحديثات</h2>{app.changelog.length ? app.changelog.map((item,i)=><div key={i}><b>{item.version}</b><span className="muted"> · {item.date}</span><ul>{item.notes.map((n,j)=><li key={j}>{n.ar}</li>)}</ul></div>) : <p className="muted">لا يوجد سجل تحديثات منشور بعد.</p>}</section>
+    {(prevApp || nextApp) && (
+      <nav className="pn-nav" aria-label="التنقل بين تطبيقات الكتالوق">
+        {prevApp ? (
+          <Link className="pn-card prev" href={`/apps/${prevApp.slug}`}>
+            <span className="pn-dir"><ArrowRight size={14} aria-hidden /> السابق</span>
+            <b>{appName(prevApp)}</b>
+          </Link>
+        ) : <span className="pn-card ghost" aria-hidden />}
+        {nextApp ? (
+          <Link className="pn-card next" href={`/apps/${nextApp.slug}`}>
+            <span className="pn-dir">التالي <ArrowLeft size={14} aria-hidden /></span>
+            <b>{appName(nextApp)}</b>
+          </Link>
+        ) : <span className="pn-card ghost" aria-hidden />}
+      </nav>
+    )}
     {related.length > 0 && <section className="related-section"><div className="section-heading"><div><div className="eyebrow">من الكتالوج</div><h2>تطبيقات ذات صلة</h2></div><Link className="text-link" href="/apps">عرض الكل <ArrowLeft size={16}/></Link></div><div className="app-grid">{related.map(rel => <article className="app-card compact" key={rel.slug}><div className="app-icon">{rel.name.en.slice(0,1)}</div><div className="app-card-body"><div className="app-title-row"><h3>{appName(rel)}</h3><span className={`status ${rel.status}`}>{statusLabels[rel.status]}</span></div><p>{appSummary(rel)}</p><div className="app-card-bottom"><span className="cat-tag">{categoryLabel(rel.category)}</span><Link href={`/apps/${rel.slug}`}>التفاصيل ←</Link></div></div></article>)}</div></section>}
   </main>;
 }

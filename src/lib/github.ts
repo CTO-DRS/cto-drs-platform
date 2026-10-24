@@ -91,6 +91,35 @@ export function openSourceCount(list: { repository: string | null }[]): number {
   return list.filter(a => parseGithubRepo(a.repository)).length;
 }
 
+/* ===== شارات حية لبطاقات الكتالوق ===== */
+
+export type CardLive = { stars: number; pushedAt: string | null };
+export type CatalogStatsMap = Record<string, CardLive>;
+
+/** إحصاءات مصغرة لكل تطبيق مربوط بمستودع — تجلب بالتوازي مع تخزين ساعة.
+ *  التطبيق الفاشل (تقييد API مثلًا) يُحذف من الخريطة بصمت فتختفي شارته دون كسر الصفحة. */
+export async function fetchCatalogRepoStats(
+  list: { slug: string; repository: string | null }[]
+): Promise<CatalogStatsMap> {
+  const items = list
+    .map(a => ({ slug: a.slug, ref: parseGithubRepo(a.repository) }))
+    .filter((x): x is { slug: string; ref: RepoRef } => x.ref !== null);
+  if (!items.length) return {};
+
+  const settled = await Promise.allSettled(
+    items.map(async ({ slug, ref }) => {
+      const stats = await fetchRepoStats(ref);
+      return stats ? ([slug, { stars: stats.stars, pushedAt: stats.pushedAt }] as const) : null;
+    })
+  );
+
+  const map: CatalogStatsMap = {};
+  for (const result of settled) {
+    if (result.status === "fulfilled" && result.value) map[result.value[0]] = result.value[1];
+  }
+  return map;
+}
+
 /* ===== أحدث الإصدارات المنشورة ===== */
 
 export type ReleaseInfo = {

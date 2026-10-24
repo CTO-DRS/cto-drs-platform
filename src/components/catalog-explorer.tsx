@@ -2,9 +2,11 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { Search, X, SlidersHorizontal, FolderOpen, Github, ArrowUpDown, Heart, LayoutGrid, Rows3 } from "lucide-react";
+import { Search, X, SlidersHorizontal, FolderOpen, Github, ArrowUpDown, Heart, LayoutGrid, Rows3, Star } from "lucide-react";
 import type { AppEntry } from "@/lib/catalog";
 import { categoryLabel, filterByCategory, filterByStatus, searchApps, statusLabels, validHttpUrl } from "@/lib/catalog";
+import type { CatalogStatsMap } from "@/lib/github";
+import { compactNumber } from "@/lib/github";
 import { useFavorites } from "@/lib/favorites";
 import { FavoriteButton } from "@/components/favorite-button";
 
@@ -15,6 +17,7 @@ type Props = {
   initialStatus?: string;
   initialSort?: string;
   initialFavOnly?: boolean;
+  statsMap?: CatalogStatsMap;
 };
 
 const STATUSES: AppEntry["status"][] = ["released", "in-development", "archived"];
@@ -26,7 +29,7 @@ const SORTS = [
   { id: "status", label: "المتاح أولًا" },
 ] as const;
 
-export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "all", initialStatus = "all", initialSort = "default", initialFavOnly = false }: Props) {
+export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "all", initialStatus = "all", initialSort = "default", initialFavOnly = false, statsMap }: Props) {
   const [query, setQuery] = useState(initialQuery);
   const [category, setCategory] = useState(initialCategory);
   const [status, setStatus] = useState(initialStatus);
@@ -190,6 +193,11 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
                 <p>{app.summary.ar}</p>
                 <div className="app-card-bottom">
                   <span className="cat-tag"><FolderOpen size={13} aria-hidden /> {categoryLabel(app.category)}</span>
+                  {statsMap?.[app.slug] && (
+                    <span className="mini-live" title="عدد النجوم الحي من GitHub">
+                      <Star size={12} aria-hidden /> {compactNumber(statsMap[app.slug].stars)}
+                    </span>
+                  )}
                   {validHttpUrl(app.repository) && (
                     <a className="mini-gh" href={app.repository!} target="_blank" rel="noreferrer" title="الكود المصدري على GitHub">
                       <Github size={13} aria-hidden /> GitHub

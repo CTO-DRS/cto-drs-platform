@@ -4,7 +4,7 @@ import {
   Crown, Mail, Star, Users, Shield, LayoutGrid, Github,
 } from "lucide-react";
 import { apps, site } from "@/lib/catalog";
-import { openSourceCount } from "@/lib/github";
+import { openSourceCount, fetchCatalogRepoStats } from "@/lib/github";
 import { latestPosts, formatDate } from "@/lib/blog";
 import { HeroPhones } from "@/components/hero-phones";
 import { HomeAppsSection } from "@/components/home-apps-section";
@@ -25,9 +25,10 @@ const HERO_FEATURES = [
   { icon: RefreshCw, label: "تحديثات مستمرة" },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
   const { cto } = site;
   const ossCount = openSourceCount(apps);
+  const statsMap = await fetchCatalogRepoStats(apps);
 
   /* بيانات منظمة: موقع + إجراء بحث لمربع البحث في نتائج جوجل */
   const siteJsonLd = {
@@ -116,7 +117,7 @@ export default function HomePage() {
 
       {/* ===== Apps ===== */}
       <section className="container" id="apps">
-        <HomeAppsSection apps={apps} />
+        <HomeAppsSection apps={apps} statsMap={statsMap} />
       </section>
 
       {/* ===== شوهد مؤخرًا ===== */}
@@ -160,6 +161,7 @@ export default function HomePage() {
             <b>تابعنا على GitHub</b>
             <p>الإصدارات والمستودعات مفتوحة للجميع.</p>
             {ossCount > 0 && <span className="gh-count"><b>{ossCount}</b> من تطبيقات الكتالوج مفتوحة المصدر</span>}
+            <Link className="text-link" href="/stats">لوحة المؤشرات الحية <span aria-hidden>←</span></Link>
             <a className="gh-btn" href="https://github.com/CTO-DRS" target="_blank" rel="noreferrer">
               زيارة الحساب <span aria-hidden>↗</span>
             </a>
