@@ -1,7 +1,10 @@
 [
   {
     "slug": "masar-al-lugha",
-    "name": { "ar": "مسار اللغة", "en": "Masar Al-Lugha" },
+    "name": {
+      "ar": "مسار اللغة",
+      "en": "Masar Al-Lugha"
+    },
     "category": "education",
     "status": "in-development",
     "summary": {
@@ -12,7 +15,9 @@
       "ar": "منصة تعلم اللغات؛ حدّث الوصف والروابط من ملف content/apps.json بالمعلومات المؤكدة فقط.",
       "en": "A language-learning platform; update details from content/apps.json with verified information only."
     },
-    "platforms": ["Android"],
+    "platforms": [
+      "Android"
+    ],
     "version": null,
     "releaseDate": null,
     "icon": "book-open",
@@ -29,7 +34,10 @@
   },
   {
     "slug": "drs-nexus",
-    "name": { "ar": "DRS Nexus", "en": "DRS Nexus" },
+    "name": {
+      "ar": "DRS Nexus",
+      "en": "DRS Nexus"
+    },
     "category": "tools",
     "status": "in-development",
     "summary": {
@@ -40,7 +48,9 @@
       "ar": "مركز أدوات وتطبيقات؛ حالة النشر وروابط التنزيل تحتاج إلى تأكيد.",
       "en": "An app and tools hub; release status and download links need verification."
     },
-    "platforms": ["Android"],
+    "platforms": [
+      "Android"
+    ],
     "version": null,
     "releaseDate": null,
     "icon": "letter-N",
@@ -56,36 +66,11 @@
     "verified": false
   },
   {
-    "slug": "drs-wallet",
-    "name": { "ar": "DRS Wallet", "en": "DRS Wallet" },
-    "category": "business",
-    "status": "in-development",
-    "summary": {
-      "ar": "تطبيق مصممة خالية لإدارة أموالك ومعاملاتك بسهولة وأمان.",
-      "en": "A clean wallet app to manage your money and transactions easily and securely."
-    },
-    "description": {
-      "ar": "مشروع مالي؛ لا تُضف روابط APK قبل التحقق من سلامة الإصدار وملكيته.",
-      "en": "A finance-related project; add APK links only after verifying the release and ownership."
-    },
-    "platforms": ["Android"],
-    "version": null,
-    "releaseDate": null,
-    "icon": "wallet",
-    "tint": "wallet",
-    "pricing": "free",
-    "features": [],
-    "requirements": [],
-    "downloads": [],
-    "repository": null,
-    "website": null,
-    "privacyPolicy": null,
-    "changelog": [],
-    "verified": false
-  },
-  {
     "slug": "drs-chat",
-    "name": { "ar": "DRS Chat", "en": "DRS Chat" },
+    "name": {
+      "ar": "DRS Chat",
+      "en": "DRS Chat"
+    },
     "category": "communication",
     "status": "in-development",
     "summary": {
@@ -96,7 +81,9 @@
       "ar": "مشروع مراسلة؛ معلومات الإصدار والتوزيع تُضاف بعد التحقق.",
       "en": "A messaging project; release and distribution details will be added after verification."
     },
-    "platforms": ["Android"],
+    "platforms": [
+      "Android"
+    ],
     "version": null,
     "releaseDate": null,
     "icon": "messages-square",
@@ -113,7 +100,10 @@
   },
   {
     "slug": "clearcut",
-    "name": { "ar": "ClearCut", "en": "ClearCut" },
+    "name": {
+      "ar": "ClearCut",
+      "en": "ClearCut"
+    },
     "category": "media",
     "status": "in-development",
     "summary": {
@@ -124,7 +114,9 @@
       "ar": "مشروع تحرير وسائط؛ روابط التنزيل غير مضافة حتى اعتماد الإصدار.",
       "en": "A media-editing project; download links are withheld until a release is verified."
     },
-    "platforms": ["Android"],
+    "platforms": [
+      "Android"
+    ],
     "version": null,
     "releaseDate": null,
     "icon": "clapperboard",
@@ -141,7 +133,10 @@
   },
   {
     "slug": "drs-keyboard",
-    "name": { "ar": "DRS Keyboard", "en": "DRS Keyboard" },
+    "name": {
+      "ar": "DRS Keyboard",
+      "en": "DRS Keyboard"
+    },
     "category": "tools",
     "status": "in-development",
     "summary": {
@@ -152,7 +147,9 @@
       "ar": "بطاقة أولية لمشروع لوحة المفاتيح؛ حدّث المعلومات المؤكدة من الكتالوج.",
       "en": "A starter entry for the keyboard project; update verified info in the catalog."
     },
-    "platforms": ["Android"],
+    "platforms": [
+      "Android"
+    ],
     "version": null,
     "releaseDate": null,
     "icon": "keyboard",
@@ -169,7 +166,10 @@
   },
   {
     "slug": "mohasabi",
-    "name": { "ar": "محاسبي", "en": "Mohasabi" },
+    "name": {
+      "ar": "محاسبي",
+      "en": "Mohasabi"
+    },
     "category": "business",
     "status": "in-development",
     "summary": {
@@ -180,7 +180,9 @@
       "ar": "بطاقة أولية لمشروع المحاسبة؛ تُضاف التفاصيل بعد التحقق.",
       "en": "A starter entry for the accounting project; details will be added after verification."
     },
-    "platforms": ["Android"],
+    "platforms": [
+      "Android"
+    ],
     "version": null,
     "releaseDate": null,
     "icon": "calculator",
@@ -190,90 +192,6 @@
     "requirements": [],
     "downloads": [],
     "repository": "https://github.com/CTO-DRS/SuperBiz",
-    "website": null,
-    "privacyPolicy": null,
-    "changelog": [],
-    "verified": false
-  },
-  {
-    "slug": "to-altaf",
-    "name": { "ar": "To Altaf", "en": "To Altaf" },
-    "category": "games",
-    "status": "in-development",
-    "summary": {
-      "ar": "لعبة ترفيهية خفيفة تعتمد على السرعة والدقة، وتوفر تجربة لعب ممتعة للجميع.",
-      "en": "A light arcade game based on speed and precision, fun for everyone."
-    },
-    "description": {
-      "ar": "بطاقة أولية لمشروع اللعبة؛ تُضاف التفاصيل بعد التحقق.",
-      "en": "A starter entry for the game project; details will be added after verification."
-    },
-    "platforms": ["Android"],
-    "version": null,
-    "releaseDate": null,
-    "icon": "gamepad-2",
-    "tint": "game",
-    "pricing": "free",
-    "features": [],
-    "requirements": [],
-    "downloads": [],
-    "repository": null,
-    "website": null,
-    "privacyPolicy": null,
-    "changelog": [],
-    "verified": false
-  },
-  {
-    "slug": "english-urdu",
-    "name": { "ar": "English + Urdu", "en": "English + Urdu" },
-    "category": "education",
-    "status": "in-development",
-    "summary": {
-      "ar": "تطبيق لتعلم مفردات الإنجليزية والأوردو بطريقة مبسطة مع أمثلة وتدريبات تفاعلية.",
-      "en": "Learn English and Urdu vocabulary simply, with examples and interactive exercises."
-    },
-    "description": {
-      "ar": "بطاقة أولية لمشروع تعلم اللغتين؛ تُضاف التفاصيل بعد التحقق.",
-      "en": "A starter entry for the bilingual learning project; details will be added after verification."
-    },
-    "platforms": ["Android"],
-    "version": null,
-    "releaseDate": null,
-    "icon": "languages",
-    "tint": "lang",
-    "pricing": "free",
-    "features": [],
-    "requirements": [],
-    "downloads": [],
-    "repository": null,
-    "website": null,
-    "privacyPolicy": null,
-    "changelog": [],
-    "verified": false
-  },
-  {
-    "slug": "drs-vip",
-    "name": { "ar": "DRS.VIP", "en": "DRS.VIP" },
-    "category": "web",
-    "status": "in-development",
-    "summary": {
-      "ar": "منصة خدمات الويب الموثوقة؛ تجمع أدوات وخدمات DRS في مكان واحد.",
-      "en": "The trusted web services platform; brings DRS tools and services together in one place."
-    },
-    "description": {
-      "ar": "بطاقة أولية لمنصة الويب؛ تُضاف التفاصيل بعد التحقق.",
-      "en": "A starter entry for the web platform; details will be added after verification."
-    },
-    "platforms": ["Web"],
-    "version": null,
-    "releaseDate": null,
-    "icon": "letter-V",
-    "tint": "web",
-    "pricing": "free",
-    "features": [],
-    "requirements": [],
-    "downloads": [],
-    "repository": null,
     "website": null,
     "privacyPolicy": null,
     "changelog": [],

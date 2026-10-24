@@ -1,10 +1,10 @@
 {
   "brand": { "name": "DRS", "tagline": "APPS & MORE" },
   "stats": [
-    { "icon": "shield", "value": "جميع التطبيقات", "label": "إضافات وتحديثات في المتجرات" },
-    { "icon": "users", "value": "+100%", "label": "التزام بالتواصل والدعم" },
-    { "icon": "star", "value": "+20", "label": "تطبيق منشور" },
-    { "icon": "download", "value": "+50K", "label": "إجمالي التحميلات" }
+    { "icon": "shield", "value": "6", "label": "تطبيقات حقيقية في الكتالوج" },
+    { "icon": "star", "value": "100%", "label": "مفتوحة المصدر على GitHub" },
+    { "icon": "users", "value": "1", "label": "منصة مدعومة حاليًا: أندرويد" },
+    { "icon": "download", "value": "قريبًا", "label": "الإصدارات الأولى قيد التطوير والصقل" }
   ],
   "cto": {
     "name": "م. ربيع الاسلم",
