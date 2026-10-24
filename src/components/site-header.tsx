@@ -5,10 +5,11 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
   Home, LayoutGrid, Newspaper, Headphones, UserRound, Search, Globe, ChevronDown, Menu, X, Check, Heart,
-  MoreHorizontal, FolderGit2, BarChart3, FileText,
+  MoreHorizontal, FolderGit2, BarChart3, FileText, Palette,
 } from "lucide-react";
 import { BrandLogo } from "@/components/brand-logo";
 import { openCommandPalette } from "@/components/command-palette";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import { useFavorites } from "@/lib/favorites";
 
 const NAV = [
@@ -95,6 +96,7 @@ export function SiteHeader() {
         </button>
 
         <div className="nav-end">
+          <ThemeSwitcher />
           <Link
             href="/account#favorites"
             className={`nav-fav ${favorites.length > 0 ? "has-items" : ""}`}
@@ -138,6 +140,11 @@ export function SiteHeader() {
           >
             <Search size={16} aria-hidden /> البحث السريع <kbd className="nav-kbd">Ctrl K</kbd>
           </button>
+          <div className="mobile-menu-sep" aria-hidden />
+          <div className="mobile-theme-row" aria-label="المظهر">
+            <span className="mobile-theme-label"><Palette size={15} aria-hidden /> المظهر ولون التمييز</span>
+            <ThemeSwitcher />
+          </div>
           {NAV.map(item => (
             <Link key={item.href} href={item.href} className={`mobile-link ${isActive(item.href) ? "active" : ""}`} onClick={() => setMenuOpen(false)}>
               <item.icon size={16} aria-hidden /> {item.label}

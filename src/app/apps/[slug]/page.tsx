@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Github, Star, GitFork, CircleDot, Code2, History, Scale, BadgeCheck, Rss, Download } from "lucide-react";
 import { apps, appName, appSummary, appDescription, validHttpUrl, categoryLabel, relatedApps, statusLabels } from "@/lib/catalog";
-import { parseGithubRepo, fetchRepoStats, fetchRepoReleaseSummary, compactNumber, formatDateAr, isFreshRelease } from "@/lib/github";
+import { parseGithubRepo, fetchRepoStats, fetchRepoReleaseSummary, fetchLatestReleases, compactNumber, formatDateAr, isFreshRelease } from "@/lib/github";
 import { ViewTracker } from "@/components/view-tracker";
 import { ShareButton } from "@/components/share-button";
 import { FavoriteButton } from "@/components/favorite-button";
@@ -34,6 +34,8 @@ export default async function AppDetailPage({ params }: { params: Promise<{ slug
   const [repoStats, releaseSummary] = repoRef
     ? await Promise.all([fetchRepoStats(repoRef), fetchRepoReleaseSummary(repoRef)])
     : [null, null];
+  /* أحدث الإصدارات المنشورة مباشرة من GitHub (تُحدّث كل ساعة) */
+  const liveReleases = repoRef ? await fetchLatestReleases([repoRef], 4) : [];
   const freshRelease = isFreshRelease(releaseSummary?.releasedAt) || isFreshRelease(app.releaseDate);
 
   const jsonLd = {
@@ -125,6 +127,24 @@ export default async function AppDetailPage({ params }: { params: Promise<{ slug
       <Link className="button secondary full report-link" href={`/support?app=${encodeURIComponent(app.name.ar)}`}>بلاغ عن مشكلة في هذا التطبيق</Link>
     </aside></div>
     <section className="panel changelog"><h2>سجل التحديثات</h2>{app.changelog.length ? <ol className="cl-timeline">{app.changelog.map((item,i)=><li className="cl-item" key={i}><span className="cl-dot" aria-hidden /><div className="cl-head"><b dir="ltr">{item.version}</b><span className="muted">{item.date}</span>{i === 0 && <span className="tag verified">الأحدث</span>}</div><ul>{item.notes.map((n,j)=><li key={j}>{n.ar}</li>)}</ul></li>)}</ol> : <p className="muted">لا يوجد سجل تحديثات منشور بعد.</p>}</section>
+    {liveReleases.length > 0 && (
+      <section className="panel live-releases" aria-labelledby="live-rel-title">
+        <h2 id="live-rel-title"><Rss size={16} aria-hidden /> الإصدارات الحية من GitHub</h2>
+        <ul className="rel-live-list">
+          {liveReleases.map(rel => (
+            <li key={rel.url} className="rel-live-item">
+              <div className="rel-live-head">
+                <a href={rel.url} target="_blank" rel="noreferrer" dir="ltr"><Github size={13} aria-hidden /> {rel.repo} · {rel.tag}</a>
+                {rel.prerelease && <span className="tag">مبدئي</span>}
+                <span className="muted">{rel.publishedAt ? formatDateAr(rel.publishedAt) : "تاريخ غير محدد"}</span>
+              </div>
+              {rel.notes && <p className="rel-live-notes">{rel.notes}</p>}
+            </li>
+          ))}
+        </ul>
+        <a className="text-link" href={`${repoRef!.url}/releases`} target="_blank" rel="noreferrer">كل الإصدارات على GitHub <ArrowLeft size={14} aria-hidden /></a>
+      </section>
+    )}
     {(prevApp || nextApp) && (
       <nav className="pn-nav" aria-label="التنقل بين تطبيقات الكتالوق">
         {prevApp ? (

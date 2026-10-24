@@ -45,9 +45,12 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  /* يُنفّذ قبل أول رسم: يستعيد المظهر ولون التمييز من التخزين المحلي بلا وميض */
+  const themeBoot = `(function(){try{var t=localStorage.getItem("drs-theme");var a=localStorage.getItem("drs-accent");var d=document.documentElement;if(t==="light")d.dataset.theme="light";if(a&&/^(violet|cyan|emerald|amber)$/.test(a))d.dataset.accent=a;}catch(e){}})();`;
   return (
-    <html lang="ar" dir="rtl">
+    <html lang="ar" dir="rtl" suppressHydrationWarning>
       <body className={`${plexArabic.variable} ${cairo.variable}`}>
+        <script dangerouslySetInnerHTML={{ __html: themeBoot }} />
         <a href="#main-content" className="skip-link">تخطي إلى المحتوى الرئيسي</a>
         <SiteHeader />
         <AnnouncementBar items={activeAnnouncements()} />
