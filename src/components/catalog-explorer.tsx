@@ -25,6 +25,7 @@ const STATUSES: AppEntry["status"][] = ["released", "in-development", "archived"
 const SORTS = [
   { id: "default", label: "الافتراضي" },
   { id: "newest", label: "الأحدث إصدارًا" },
+  { id: "downloads", label: "الأكثر تحميلًا" },
   { id: "name", label: "الاسم (أ – ي)" },
   { id: "status", label: "المتاح أولًا" },
 ] as const;
@@ -52,6 +53,9 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
       case "newest":
         sorted.sort((a, b) => (b.releaseDate ?? "").localeCompare(a.releaseDate ?? ""));
         break;
+      case "downloads":
+        sorted.sort((a, b) => (statsMap?.[b.slug]?.downloads ?? 0) - (statsMap?.[a.slug]?.downloads ?? 0));
+        break;
       case "name":
         sorted.sort((a, b) => a.name.ar.localeCompare(b.name.ar, "ar"));
         break;
@@ -63,7 +67,7 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
         break;
     }
     return sorted;
-  }, [apps, query, category, status, sort, favOnly, favorites]);
+  }, [apps, query, category, status, sort, favOnly, favorites, statsMap]);
 
   const hasFilters = query !== "" || category !== "all" || status !== "all" || sort !== "default" || favOnly;
 

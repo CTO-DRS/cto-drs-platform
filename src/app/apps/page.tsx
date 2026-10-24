@@ -50,7 +50,7 @@ export default async function AppsPage({
         initialQuery={q}
         initialCategory={cat || "all"}
         initialStatus={status || "all"}
-        initialSort={["default", "newest", "name", "status"].includes(sort) ? sort : "default"}
+        initialSort={["default", "newest", "downloads", "name", "status"].includes(sort) ? sort : "default"}
         initialFavOnly={fav}
         statsMap={statsMap}
       />

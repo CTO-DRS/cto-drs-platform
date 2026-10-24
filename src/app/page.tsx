@@ -4,7 +4,7 @@ import {
   Crown, Mail, Star, Users, Shield, LayoutGrid, Github,
 } from "lucide-react";
 import { apps, site } from "@/lib/catalog";
-import { openSourceCount, fetchCatalogRepoStats } from "@/lib/github";
+import { openSourceCount, fetchCatalogRepoStats, compactNumber } from "@/lib/github";
 import { latestPosts, formatDate } from "@/lib/blog";
 import { HeroPhones } from "@/components/hero-phones";
 import { HomeAppsSection } from "@/components/home-apps-section";
@@ -30,6 +30,11 @@ export default async function HomePage() {
   const { cto } = site;
   const ossCount = openSourceCount(apps);
   const statsMap = await fetchCatalogRepoStats(apps);
+  /* خلية إحصاء حية: إجمالي التحميلات الحقيقية من إصدارات GitHub (تفشل بهدوء إلى القيمة الثابتة) */
+  const totalDownloads = Object.values(statsMap).reduce((sum, r) => sum + r.downloads, 0);
+  const statCells = totalDownloads > 0
+    ? [...site.stats.slice(0, 3), { icon: "download", value: compactNumber(totalDownloads), label: "تحميل حقيقي من GitHub" }]
+    : site.stats;
 
   /* بيانات منظمة: موقع + إجراء بحث لمربع البحث في نتائج جوجل */
   const siteJsonLd = {
@@ -102,7 +107,7 @@ export default async function HomePage() {
       <Reveal>
       <section className="container" aria-label="أرقام المنصة">
         <div className="stats-bar">
-          {site.stats.map(s => {
+          {statCells.map(s => {
             const IconComp = STAT_ICONS[s.icon] || Star;
             return (
               <div className="stat-cell" key={s.label}>
