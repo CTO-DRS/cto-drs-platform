@@ -27,3 +27,9 @@ Stage Summary:
 - HEAD الجديد: feat: auto theme mode + recent searches + per-app OG images + apple-touch-icon + RTL overflow fix
 - فيضان 390px = 0 بعد الإصلاح
 - الملفات: theme-switcher.tsx, layout.tsx, catalog-explorer.tsx, globals.css, apps/[slug]/opengraph-image.tsx (جديد)
+
+### متابعة Task 21 — النشر
+- أول محاولة نشر ذهبت لمشروع خاطئ (my-project بسبب رابط .vercel قديم) → حُذف المنشور الشاذ وأُعيدت الاستعادة
+- `npx vercel link --project cto-drs-store` ثم `vercel --prod` → **النشر الصحيح شغّال**: AUTO-THEME + RECENT-SEARCHES + CHIPS-CSS + OVERFLOW-FIX + per-app OG (200) كلها مؤكدة في chunks الإنتاج
+- vercel CLI كتب فوق .gitignore → استُعيد الأصلي وأُضيف .vercel/.env*
+- ⚠️ رفض git push (لا يوجد GITHUB_TOKEN في .env هذه الدورة) → الرفع إلى GitHub مؤجل حتى توفر التوكن؛ الإنتاج محدّث عبر Vercel مباشرة
