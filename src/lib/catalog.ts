@@ -49,6 +49,21 @@ export function categoryLabel(category: string): string {
   return categoryLabels[category] || category;
 }
 
+/** تسميات إنجليزية للفئات (تُستخدم في صفحة /en) */
+export const categoryLabelsEn: Record<string, string> = {
+  education: "Education",
+  tools: "Tools",
+  business: "Business",
+  communication: "Communication",
+  media: "Media",
+  games: "Games",
+  web: "Web",
+};
+
+export function categoryLabelEn(category: string): string {
+  return categoryLabelsEn[category] || category;
+}
+
 /** فئات فعلية موجودة في الكتالوج مع عدد مشاريعها (بدون اختلاق بيانات) */
 export function categoriesWithCounts() {
   const map = new Map<string, number>();
