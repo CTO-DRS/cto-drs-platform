@@ -27,6 +27,7 @@ const SOCIAL_LABELS: Record<string, string> = {
 
 const EXPLORE_LINKS = [
   { href: "/apps", label: "تصفح التطبيقات" },
+  { href: "/updates", label: "ما الجديد (الإصدارات الحية)" },
   { href: "/projects", label: "المشاريع المفتوحة" },
   { href: "/stats", label: "لوحة المؤشرات" },
   { href: "/blog", label: "المدونة" },

@@ -2,7 +2,8 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { Search, X, SlidersHorizontal, FolderOpen, Github, ArrowUpDown, Heart, LayoutGrid, Rows3, Star, Download, Sparkles } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Search, X, SlidersHorizontal, FolderOpen, Github, ArrowUpDown, Heart, LayoutGrid, Rows3, Star, Download, Sparkles, Dices } from "lucide-react";
 import type { AppEntry } from "@/lib/catalog";
 import { categoryLabel, filterByCategory, filterByStatus, searchApps, statusLabels, validHttpUrl } from "@/lib/catalog";
 import type { CatalogStatsMap } from "@/lib/github";
@@ -31,6 +32,7 @@ const SORTS = [
 ] as const;
 
 export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "all", initialStatus = "all", initialSort = "default", initialFavOnly = false, statsMap }: Props) {
+  const router = useRouter();
   const [query, setQuery] = useState(initialQuery);
   const [category, setCategory] = useState(initialCategory);
   const [status, setStatus] = useState(initialStatus);
@@ -78,6 +80,13 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
     setSort("default");
     setFavOnly(false);
     window.history.replaceState(null, "", "/apps");
+  }
+
+  /* اكتشاف عشوائي: قفزة مباشرة إلى صفحة تطبيق عشوائي من الكتالوق */
+  function luckyApp() {
+    if (!apps.length) return;
+    const pick = apps[Math.floor(Math.random() * apps.length)];
+    router.push(`/apps/${pick.slug}`);
   }
 
   function update(next: { query?: string; category?: string; status?: string; sort?: string; favOnly?: boolean }) {
@@ -179,6 +188,9 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
               <Rows3 size={14} aria-hidden />
             </button>
           </div>
+          <button type="button" className="lucky-btn" onClick={luckyApp} title="خذني إلى تطبيق عشوائي من الكتالوق" aria-label="اكتشف تطبيقًا عشوائيًا">
+            <Dices size={14} aria-hidden /> اكتشف
+          </button>
           {hasFilters && <button type="button" className="text-link" onClick={reset}>إعادة الضبط <X size={14} aria-hidden /></button>}
         </div>
       </div>
