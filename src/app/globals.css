@@ -451,3 +451,195 @@ html.en-doc .page{padding-top:26px}
   .footer-row{justify-content:center;text-align:center}
 }
 @media(prefers-reduced-motion:reduce){.float-icon{animation:none!important}}
+
+/* ============================================================
+   المهمة 8: لوحة الأوامر + المفضلة + PWA + التفاعلات الحية
+   ============================================================ */
+
+/* --- زر البحث في الهيدر (يفتح لوحة الأوامر) --- */
+.nav-search.as-button{display:flex;align-items:center;gap:8px;background:#0a1425;border:1px solid #20304a;border-radius:12px;padding:9px 12px;min-width:min(250px,26vw);cursor:pointer;color:#8fa3c4;font-size:12px;transition:border-color .18s,background .18s}
+.nav-search.as-button:hover{border-color:#3d5285;background:#0d1b30}
+.nav-search-placeholder{flex:1;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-kbd{font-family:inherit;font-size:10px;color:#9fb0cd;background:#101c36;border:1px solid #26395c;border-bottom-width:2px;border-radius:6px;padding:2px 6px;line-height:1;white-space:nowrap}
+.nav-fav{position:relative;display:grid;place-items:center;width:36px;height:36px;border-radius:11px;border:1px solid #20304a;background:#0a1425;color:#8fa3c4;transition:border-color .18s,color .18s}
+.nav-fav:hover{border-color:#8858ff;color:#c4a8ff}
+.nav-fav.has-items{color:#ff7ba6;border-color:#4a2b48}
+.nav-fav-badge{position:absolute;top:-6px;inset-inline-end:-6px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:linear-gradient(135deg,#8858ff,#36d8ff);color:#fff;font-size:9.5px;font-weight:800;display:grid;place-items:center;line-height:1}
+.mobile-link.search-entry{cursor:pointer;width:100%;background:none;border:0;font:inherit;color:inherit;justify-content:flex-start;gap:9px}
+.mobile-link.search-entry .nav-kbd{margin-inline-start:auto}
+
+/* --- زر المفضلة (قلب) --- */
+.fav-btn{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;border:1px solid #223357;background:#0a1425cc;color:#7f92b3;cursor:pointer;transition:all .18s;backdrop-filter:blur(4px)}
+.fav-btn:hover{border-color:#8858ff;color:#c4a8ff;transform:scale(1.06)}
+.fav-btn.active{background:linear-gradient(135deg,#8858ff22,#36d8ff18);border-color:#8858ff;color:#ff7ba6}
+.fav-btn.active svg{fill:#ff7ba6}
+.store-card .fav-btn{position:absolute;top:14px;inset-inline-end:14px;z-index:2}
+.store-card{position:relative}
+.recent-card .fav-btn,.fav-item .fav-btn{position:absolute;top:10px;inset-inline-end:10px;z-index:2}
+.recent-card,.fav-item{position:relative}
+.fav-btn.detail{width:38px;height:38px;border-radius:12px}
+
+/* --- أزرار المشاركة وأزرار تفاصيل التطبيق --- */
+.detail-actions{display:flex;align-items:center;gap:9px;margin-top:14px}
+.share-btn{display:inline-flex;align-items:center;gap:7px;border:1px solid #223357;background:#0a1425;color:#cdd9ee;border-radius:12px;padding:9px 14px;font-size:12px;font-weight:700;cursor:pointer;transition:all .18s}
+.share-btn:hover{border-color:#36d8ff;color:#7dd3fc}
+.share-btn.copied{border-color:#43e0b0;color:#43e0b0}
+
+/* --- شريط تقدم القراءة --- */
+.scroll-progress{position:fixed;top:0;inset-inline:0;height:3px;z-index:60;background:transparent;pointer-events:none}
+.scroll-progress span{display:block;height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan));transform-origin:right center;transform:scaleX(0);transition:transform .08s linear;border-radius:0 3px 3px 0}
+
+/* --- زر العودة للأعلى --- */
+.back-top{position:fixed;bottom:22px;inset-inline-start:22px;z-index:55;width:44px;height:44px;border-radius:14px;border:1px solid #2a3f66;background:#0a1425ee;color:#cdd9ee;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(8px);box-shadow:0 8px 28px #00000055;animation:fadeUp .3s ease both;transition:border-color .18s,color .18s,transform .18s}
+.back-top:hover{border-color:#8858ff;color:#fff;transform:translateY(-2px)}
+
+/* --- إشعارات Toast --- */
+.toast-host{position:fixed;bottom:22px;inset-inline-end:22px;z-index:70;display:flex;flex-direction:column;gap:8px;max-width:min(330px,86vw)}
+.toast-item{display:flex;align-items:center;gap:9px;background:#0d1b30f2;border:1px solid #2a3f66;border-radius:13px;padding:11px 13px;color:#e8f0ff;font-size:12px;box-shadow:0 10px 34px #00000066;backdrop-filter:blur(10px);animation:fadeUp .28s ease both}
+.toast-item svg{flex-shrink:0}
+.toast-item.success svg{color:#43e0b0}
+.toast-item.info svg{color:#36d8ff}
+.toast-item.error svg{color:#ff6b81}
+.toast-item span{flex:1;line-height:1.7}
+.toast-item button{background:none;border:0;color:#7f92b3;cursor:pointer;padding:3px;border-radius:6px;display:grid;place-items:center}
+.toast-item button:hover{color:#fff}
+
+/* --- شريحة تثبيت التطبيق PWA --- */
+.install-chip{position:fixed;bottom:22px;inset-inline-end:22px;z-index:65;display:flex;align-items:center;gap:11px;background:linear-gradient(140deg,#101c3c,#0a1425);border:1px solid #2a3f66;border-radius:16px;padding:12px 13px;box-shadow:0 14px 44px #00000077;animation:fadeUp .4s ease both;max-width:min(340px,90vw)}
+.install-chip-icon{width:38px;height:38px;flex-shrink:0;border-radius:12px;background:linear-gradient(135deg,var(--purple),var(--cyan));display:grid;place-items:center;color:#fff}
+.install-chip-text{display:flex;flex-direction:column;gap:2px}
+.install-chip-text b{font-size:12.5px;color:#fff}
+.install-chip-text small{font-size:10.5px;color:#8fa3c4}
+.install-chip-btn{border:0;border-radius:10px;padding:8px 15px;font-size:12px;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--purple),var(--cyan));cursor:pointer;font-family:inherit;transition:transform .18s}
+.install-chip-btn:hover{transform:scale(1.04)}
+.install-chip-x{background:none;border:0;color:#7f92b3;cursor:pointer;padding:4px;display:grid;place-items:center;border-radius:7px}
+.install-chip-x:hover{color:#fff}
+body:has(.install-chip) .toast-host{bottom:96px}
+
+/* --- شريط عدم الاتصال --- */
+.offline-banner{position:fixed;top:0;inset-inline:0;z-index:80;display:flex;align-items:center;justify-content:center;gap:9px;background:#3a1420ee;border-bottom:1px solid #7a2740;color:#ffd3dd;font-size:12px;padding:10px 16px;backdrop-filter:blur(8px)}
+
+/* --- لوحة الأوامر (cmdk) --- */
+.cp-overlay{position:fixed;inset:0;background:#02050ce6;backdrop-filter:blur(6px);z-index:90;animation:cpFade .18s ease both}
+@keyframes cpFade{from{opacity:0}to{opacity:1}}
+.cp-content{position:fixed;top:14%;inset-inline-start:50%;transform:translateX(50%);width:min(620px,92vw);max-height:min(560px,74vh);display:flex;flex-direction:column;background:linear-gradient(170deg,#0c1730,#080d1e);border:1px solid #2a3f66;border-radius:20px;box-shadow:0 30px 90px #000000aa;overflow:hidden;animation:cpIn .22s cubic-bezier(.2,.9,.3,1.1) both;z-index:95}
+@keyframes cpIn{from{opacity:0;transform:translateX(50%) translateY(-12px) scale(.98)}to{opacity:1;transform:translateX(50%) translateY(0) scale(1)}}
+.cp-root{display:flex;flex-direction:column;min-height:0}
+.cp-input-row{display:flex;align-items:center;gap:10px;padding:15px 17px;border-bottom:1px solid #1c304b}
+.cp-input-icon{color:#7dd3fc;flex-shrink:0}
+.cp-input{flex:1;background:none;border:0;outline:0;color:#f2f6ff;font-size:14.5px;font-family:inherit}
+.cp-input::placeholder{color:#62779a}
+.cp-esc{font-size:9.5px;color:#7f92b3;background:#101c36;border:1px solid #26395c;border-radius:6px;padding:3px 7px}
+.cp-list{overflow-y:auto;padding:9px;scrollbar-width:thin;scrollbar-color:#2a3f66 transparent;min-height:120px}
+.cp-list::-webkit-scrollbar{width:8px}
+.cp-list::-webkit-scrollbar-thumb{background:#223357;border-radius:8px}
+.cp-group{margin-bottom:6px}
+.cp-group [cmdk-group-heading]{display:block;padding:11px 12px 6px;color:#7dd3fc;font-size:10.5px;font-weight:800;letter-spacing:.4px}
+.cp-item{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:12px;cursor:pointer;color:#cdd9ee;transition:background .14s}
+.cp-item:hover,.cp-item[aria-selected="true"],.cp-item[data-selected="true"]{background:#14224a}
+.cp-item[aria-selected="true"] b,.cp-item[data-selected="true"] b{color:#fff}
+.cp-item-icon{width:30px;height:30px;flex-shrink:0;display:grid;place-items:center;border-radius:9px;background:#101c36;border:1px solid #223357;color:#7dd3fc}
+.cp-item-text{flex:1;display:flex;flex-direction:column;gap:1px;min-width:0}
+.cp-item-text b{font-size:13px;color:#e8f0ff;font-weight:700}
+.cp-item-text small{font-size:10.5px;color:#7f92b3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cp-item-badge{flex-shrink:0;font-size:9.5px;font-weight:700;color:#8fa3c4;border:1px solid #223357;border-radius:8px;padding:3px 8px}
+.cp-item-badge.post{color:#c4a8ff;border-color:#3d2b66}
+.cp-kbd{font-size:9.5px;color:#62779a;background:#0a1425;border:1px solid #1c304b;border-radius:6px;padding:2px 7px;direction:ltr}
+.cp-empty{display:flex;flex-direction:column;align-items:center;gap:7px;padding:36px 16px;color:#7f92b3;text-align:center}
+.cp-empty svg{color:#3d5285}
+.cp-empty b{color:#cdd9ee;font-size:13.5px}
+.cp-empty span{font-size:11.5px}
+.cp-footer{display:flex;align-items:center;gap:16px;padding:10px 16px;border-top:1px solid #1c304b;color:#62779a;font-size:10.5px}
+.cp-footer span{display:inline-flex;align-items:center;gap:5px}
+
+/* --- فرز وعرض الكتالوج --- */
+.results-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sort-wrap{display:inline-flex;align-items:center;gap:7px;color:#8fa3c4;font-size:11.5px}
+.sort-wrap select{background:#0a1425;border:1px solid #223357;color:#e8f0ff;border-radius:10px;padding:7px 11px;font-family:inherit;font-size:11.5px;cursor:pointer;outline:0}
+.sort-wrap select:hover{border-color:#3d5285}
+.sort-wrap select option{background:#0a1425}
+.view-toggle{display:inline-flex;border:1px solid #223357;border-radius:11px;overflow:hidden}
+.view-toggle button{background:#0a1425;border:0;color:#7f92b3;width:34px;height:32px;display:grid;place-items:center;cursor:pointer;transition:all .15s}
+.view-toggle button + button{border-inline-start:1px solid #223357}
+.view-toggle button.active{background:#14224a;color:#7dd3fc}
+.fav-chip svg.filled{fill:#ff7ba6}
+.fav-chip.active{border-color:#8858ff;color:#ffc4d6;background:#8858ff14}
+
+/* --- عرض قائمة الكتالوج --- */
+.app-grid.as-list{grid-template-columns:1fr}
+.app-grid.as-list .app-card{flex-direction:row;align-items:flex-start;gap:15px}
+.app-grid.as-list .app-card .app-icon{width:52px;height:52px;min-width:52px;font-size:21px;border-radius:14px}
+.app-grid.as-list .app-card .app-card-body{display:flex;flex-direction:column;gap:7px}
+
+/* --- شوهد مؤخرًا --- */
+.recent-ico{display:inline-block;vertical-align:-3px;margin-inline-end:6px;color:#7dd3fc}
+.recent-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.recent-card{position:relative;border:1px solid #223357;border-radius:16px;background:linear-gradient(165deg,#0c142c,#080d1e);padding:15px;transition:border-color .18s,transform .18s;animation:fadeUp .4s ease both}
+.recent-card:hover{border-color:#3d5285;transform:translateY(-2px)}
+.recent-link{display:flex;flex-direction:column;gap:5px}
+.recent-name{color:#fff;font-size:13.5px;margin-top:9px}
+.recent-cat{color:#7dd3fc;font-size:10.5px}
+.recent-desc{margin:2px 0 0;color:#8fa3c4;font-size:11px;line-height:1.8}
+.recent-card .store-icon.sm{width:34px;height:34px;font-size:14px;border-radius:10px}
+
+/* --- المفضلة في الحساب --- */
+.fav-head{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.fav-head h2{margin:0}
+.fav-head .muted{font-size:11.5px;margin:3px 0 0}
+.account-avatar.heart{background:linear-gradient(135deg,#8858ff,#ff6b9d)}
+.fav-empty{display:flex;flex-direction:column;align-items:center;gap:8px;padding:26px 12px;text-align:center;border:1px dashed #223357;border-radius:15px}
+.fav-empty b{color:#e8f0ff;font-size:13.5px}
+.fav-empty p{margin:0;color:#8fa3c4;font-size:12px;max-width:420px;line-height:1.9}
+.fav-empty .btn-grad{margin-top:6px}
+.fav-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;margin-bottom:14px}
+.fav-item{position:relative;border:1px solid #223357;border-radius:15px;background:linear-gradient(165deg,#0c142c,#080d1e);padding:14px;transition:border-color .18s}
+.fav-item:hover{border-color:#3d5285}
+.fav-item-link{display:flex;flex-direction:column;gap:4px}
+.fav-name{color:#fff;font-size:13px;margin-top:8px}
+.fav-meta{display:inline-flex;align-items:center;gap:5px;color:#7dd3fc;font-size:10.5px}
+.fav-desc{margin:3px 0 0;color:#8fa3c4;font-size:11px;line-height:1.8}
+.fav-item .store-icon.sm{width:34px;height:34px;font-size:14px;border-radius:10px}
+
+/* --- إصدارات GitHub --- */
+.releases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.release-card{display:flex;flex-direction:column;gap:6px;border:1px solid #223357;border-radius:16px;background:linear-gradient(165deg,#0c142c,#080d1e);padding:16px;transition:border-color .18s}
+.release-card:hover{border-color:#3d5285}
+.release-head{display:flex;align-items:center;gap:8px}
+.release-tag{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:800;color:#43e0b0;border:1px solid #1f4a3e;background:#43e0b012;border-radius:8px;padding:3px 9px;direction:ltr}
+.release-pre{font-size:9.5px;color:#ffb86b;border:1px solid #57401f;background:#ffb86b12;border-radius:8px;padding:3px 8px}
+.release-open{margin-inline-start:auto;color:#7f92b3;display:grid;place-items:center}
+.release-open:hover{color:#7dd3fc}
+.release-name{color:#fff;font-size:13px;line-height:1.6}
+.release-repo{color:#62779a;font-size:10px;direction:ltr;text-align:start}
+.release-notes{margin:2px 0 0;color:#8fa3c4;font-size:11px;line-height:1.85;white-space:pre-line}
+.release-date{color:#62779a;font-size:10.5px;margin-top:auto;padding-top:6px;border-top:1px solid #1c304b}
+
+/* --- صفحة العمل بلا اتصال --- */
+.offline-page{display:grid;place-items:center;min-height:64vh}
+.offline-card{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;border:1px solid #223357;border-radius:22px;background:linear-gradient(165deg,#0c142c,#080d1e);padding:44px 30px;max-width:560px}
+.offline-icon{width:74px;height:74px;border-radius:22px;display:grid;place-items:center;background:linear-gradient(135deg,#8858ff22,#36d8ff18);border:1px solid #2a3f66;color:#7dd3fc}
+.offline-card h1{margin:0;font-size:24px;color:#fff}
+.offline-card p{margin:0;color:#9fb0cd;font-size:13px;line-height:2.1;max-width:440px}
+.offline-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+.offline-hint{color:#62779a!important;font-size:11px!important}
+
+/* --- استجابة الجوال --- */
+@media(max-width:1024px){
+  .nav-search.as-button{min-width:170px}
+  .recent-row{grid-template-columns:repeat(2,1fr)}
+  .releases-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:820px){
+  .nav-search.as-button{display:none}
+  .nav-fav{display:grid}
+  .recent-row{grid-template-columns:1fr}
+  .releases-grid{grid-template-columns:1fr}
+  .fav-grid{grid-template-columns:1fr}
+  .toast-host{inset-inline:14px;bottom:14px;max-width:none}
+  .install-chip{inset-inline:14px;max-width:none}
+  .back-top{bottom:16px;inset-inline-start:16px}
+  .cp-content{top:8%}
+  .app-grid.as-list .app-card{flex-direction:column}
+  .app-grid.as-list .app-card .app-icon{width:44px;height:44px}
+}
+.cp-sr-title{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

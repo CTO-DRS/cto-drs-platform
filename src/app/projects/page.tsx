@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { FolderOpen, Github, Star, GitFork, CircleDot, ExternalLink, Code2 } from "lucide-react";
+import { FolderOpen, Github, Star, GitFork, CircleDot, ExternalLink, Code2, Rocket, Tag } from "lucide-react";
 import { apps, appName, appSummary, categoryLabel, catalogStats, statusLabels } from "@/lib/catalog";
-import { compactNumber, fetchOrgRepos, formatDateAr } from "@/lib/github";
+import { compactNumber, fetchOrgRepos, fetchLatestReleases, formatDateAr, parseGithubRepo } from "@/lib/github";
 
 export const metadata = { title: "المشاريع", description: "تابع مشاريع CTO-DRS وحالتها وفئاتها التقنية." };
 
@@ -9,6 +9,10 @@ const GITHUB_OWNER = process.env.GITHUB_OWNER || "CTO-DRS";
 
 export default async function ProjectsPage() {
   const repos = await fetchOrgRepos(GITHUB_OWNER, 12);
+  const linkedRepos = apps
+    .map(a => parseGithubRepo(a.repository))
+    .filter((r): r is NonNullable<typeof r> => r !== null);
+  const releases = await fetchLatestReleases(linkedRepos, 6);
 
   return (
     <main className="container page">
@@ -40,6 +44,35 @@ export default async function ProjectsPage() {
           </article>
         ))}
       </div>
+
+      {/* ===== أحدث الإصدارات المنشورة ===== */}
+      {releases.length > 0 && (
+        <section className="repos-section top-margin" aria-labelledby="releases-heading">
+          <div className="section-head">
+            <h2 id="releases-heading">
+              <Rocket size={20} aria-hidden className="head-icon" /> أحدث الإصدارات المنشورة
+            </h2>
+            <p>آخر إصدار رسمي من كل مستودع تطبيق مربوط بالكتالوج — مباشرة من GitHub.</p>
+          </div>
+          <div className="releases-grid">
+            {releases.map(rel => (
+              <article className="release-card" key={rel.repo}>
+                <div className="release-head">
+                  <span className="release-tag"><Tag size={12} aria-hidden /> {rel.tag}</span>
+                  {rel.prerelease && <span className="release-pre">تجريبي</span>}
+                  <a className="release-open" href={rel.url} target="_blank" rel="noreferrer" aria-label={`فتح إصدار ${rel.repo}`}>
+                    <ExternalLink size={13} aria-hidden />
+                  </a>
+                </div>
+                <b className="release-name" dir="auto">{rel.name || rel.repo}</b>
+                <span className="release-repo" dir="ltr">{rel.repo}</span>
+                {rel.notes && <p className="release-notes" dir="auto">{rel.notes}</p>}
+                <span className="release-date">نُشر: {formatDateAr(rel.publishedAt)}</span>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* ===== المستودعات الحية من GitHub ===== */}
       <section className="repos-section top-margin" aria-labelledby="repos-heading">

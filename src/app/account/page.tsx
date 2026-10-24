@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { UserRound, Github, Mail, ShieldCheck, Sparkles } from "lucide-react";
 import { site } from "@/lib/catalog";
+import { FavoritesSection } from "@/components/favorites-section";
 
 export const metadata: Metadata = {
   title: "الحساب",
-  description: "بوابة حسابات منصة DRS — متابعة تطبيقاتك ومزامنتك قيد الإعداد.",
+  description: "بوابة حسابات منصة DRS — مفضلتك وتطبيقاتك ومزامنتك قيد الإعداد.",
 };
 
 export default function AccountPage() {
@@ -17,6 +18,7 @@ export default function AccountPage() {
         <h1>حسابي</h1>
         <p>بوابة موحدة لمتابعة تطبيقاتك ومزامنة إعداداتك عبر أجهزتك.</p>
       </div>
+      <FavoritesSection />
       <section className="panel account-card">
         <span className="account-avatar"><UserRound size={30} aria-hidden /></span>
         <h2>بوابة الحسابات قيد الإعداد</h2>
