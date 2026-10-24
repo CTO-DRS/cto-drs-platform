@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///home/z/my-project/src/app/loading.tsx"],"sourcesContent":["/* هيكل تحميل عام — بلاطات متدرجة الظهور تحاكي بطاقات الكتالوج */\n\nexport default function Loading() {\n  return (\n    <main className=\"container page\">\n      <div className=\"sk sk-eyebrow\" />\n      <div className=\"sk sk-title\" />\n      <div className=\"sk sk-line\" />\n      <div className=\"sk-grid\" aria-hidden>\n        {Array.from({ length: 6 }).map((_, i) => (\n          <div className=\"sk sk-card\" key={i} />\n        ))}\n      </div>\n    </main>\n  );\n}\n"],"names":[],"mappings":"AAAA,+DAA+D;;;;;;AAEhD,SAAS;IACtB,qBACE,8OAAC;QAAK,WAAU;;0BACd,8OAAC;gBAAI,WAAU;;;;;;0BACf,8OAAC;gBAAI,WAAU;;;;;;0BACf,8OAAC;gBAAI,WAAU;;;;;;0BACf,8OAAC;gBAAI,WAAU;gBAAU,aAAW;0BACjC,MAAM,IAAI,CAAC;oBAAE,QAAQ;gBAAE,GAAG,GAAG,CAAC,CAAC,GAAG,kBACjC,8OAAC;wBAAI,WAAU;uBAAkB;;;;;;;;;;;;;;;;AAK3C"}}]
+}

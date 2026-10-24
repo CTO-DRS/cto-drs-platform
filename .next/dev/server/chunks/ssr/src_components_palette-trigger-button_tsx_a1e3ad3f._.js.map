@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///home/z/my-project/src/components/palette-trigger-button.tsx"],"sourcesContent":["\"use client\";\n\nimport { Search } from \"lucide-react\";\nimport { openCommandPalette } from \"@/components/command-palette\";\n\n/** زر فتح لوحة البحث السريع — يُستخدم في صفحة 404 وغيرها */\nexport function PaletteTriggerButton({ label = \"بحث سريع\" }: { label?: string }) {\n  return (\n    <button type=\"button\" className=\"button secondary\" onClick={openCommandPalette}\n      aria-keyshortcuts=\"Control+K\" title=\"فتح البحث السريع\">\n      <Search size={15} aria-hidden /> {label} <kbd className=\"nav-kbd\" aria-hidden>Ctrl K</kbd>\n    </button>\n  );\n}\n"],"names":[],"mappings":";;;;;AAEA;AACA;AAHA;;;;AAMO,SAAS,qBAAqB,EAAE,QAAQ,UAAU,EAAsB;IAC7E,qBACE,8OAAC;QAAO,MAAK;QAAS,WAAU;QAAmB,SAAS,8JAAkB;QAC5E,qBAAkB;QAAY,OAAM;;0BACpC,8OAAC,gNAAM;gBAAC,MAAM;gBAAI,aAAW;;;;;;YAAG;YAAE;YAAM;0BAAC,8OAAC;gBAAI,WAAU;gBAAU,aAAW;0BAAC;;;;;;;;;;;;AAGpF"}}]
+}
