@@ -87,7 +87,7 @@ export function SiteFooter() {
       </div>
 
       <div className="container footer-bottom">
-        <p className="footer-copy">© {year} DRS. جميع الحقوق محفوظة</p>
+        <p className="footer-copy">© {year} DRS — {site.cto.name}. جميع الحقوق محفوظة</p>
         <p className="footer-tagline">
           <Heart size={13} aria-hidden /> نصنع نحو مستقبل رقمي أفضل
         </p>
