@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Download, Link2, BookOpen, Wallet, MessagesSquare, Clapperboard, Keyboard, Calculator, Gamepad2, Languages, Layers, Globe, Github } from "lucide-react";
 import type { AppEntry } from "@/lib/catalog";
 import { appSummary, categoryLabel, firstDownload, platformLabel, validHttpUrl } from "@/lib/catalog";
+import { FavoriteButton } from "@/components/favorite-button";
 
 const ICONS: Record<string, React.ComponentType<{ size?: number }>> = {
   "book-open": BookOpen,
@@ -23,6 +24,7 @@ export function AppStoreCard({ app }: { app: AppEntry }) {
 
   return (
     <article className="store-card">
+      <FavoriteButton slug={app.slug} name={app.name.ar} />
       <div className="store-card-head">
         <span className={`store-icon tint-${app.tint || "nexus"}`}>
           {isLetter ? <b>{app.icon.replace("letter-", "")}</b> : IconComp ? <IconComp size={24} /> : <Layers size={24} />}

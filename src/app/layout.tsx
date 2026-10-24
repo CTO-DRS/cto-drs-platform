@@ -3,6 +3,9 @@ import { IBM_Plex_Sans_Arabic, Cairo } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { CommandPalette } from "@/components/command-palette";
+import { GlobalChrome } from "@/components/global-chrome";
+import { PwaLayer } from "@/components/pwa-layer";
 
 const plexArabic = IBM_Plex_Sans_Arabic({
   variable: "--font-app",
@@ -46,6 +49,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteHeader />
         <div id="main-content">{children}</div>
         <SiteFooter />
+        <CommandPalette />
+        <GlobalChrome />
+        <PwaLayer />
       </body>
     </html>
   );

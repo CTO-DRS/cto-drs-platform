@@ -3,6 +3,9 @@ import Link from "next/link";
 import { ArrowLeft, Github, Star, GitFork, CircleDot, Code2, History, Scale } from "lucide-react";
 import { apps, appName, appSummary, appDescription, validHttpUrl, categoryLabel, relatedApps, statusLabels } from "@/lib/catalog";
 import { parseGithubRepo, fetchRepoStats, compactNumber, formatDateAr } from "@/lib/github";
+import { ViewTracker } from "@/components/view-tracker";
+import { ShareButton } from "@/components/share-button";
+import { FavoriteButton } from "@/components/favorite-button";
 import type { Metadata } from "next";
 
 export function generateStaticParams() { return apps.map(app => ({ slug: app.slug })); }
@@ -39,8 +42,21 @@ export default async function AppDetailPage({ params }: { params: Promise<{ slug
 
   return <main className="container page">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    <ViewTracker slug={app.slug} />
     <div className="breadcrumbs"><Link href="/">الرئيسية</Link> / <Link href="/apps">التطبيقات</Link> / <span aria-current="page">{appName(app)}</span></div>
-    <section className="detail-hero"><div className="app-icon large">{app.name.en.slice(0,1)}</div><div className="detail-title"><span className={`status ${app.status}`}>{statusLabels[app.status]}</span><h1>{appName(app)}</h1><p>{appSummary(app)}</p><div className="meta-row"><span className="cat-tag"><b>الفئة:</b> {categoryLabel(app.category)}</span><span>المنصات: {app.platforms.join("، ")}</span><span>الإصدار: {app.version || "لم يحدد بعد"}</span><span>تاريخ الإصدار: {app.releaseDate || "لم يحدد بعد"}</span></div></div></section>
+    <section className="detail-hero">
+      <div className="app-icon large">{app.name.en.slice(0,1)}</div>
+      <div className="detail-title">
+        <span className={`status ${app.status}`}>{statusLabels[app.status]}</span>
+        <h1>{appName(app)}</h1>
+        <p>{appSummary(app)}</p>
+        <div className="meta-row"><span className="cat-tag"><b>الفئة:</b> {categoryLabel(app.category)}</span><span>المنصات: {app.platforms.join("، ")}</span><span>الإصدار: {app.version || "لم يحدد بعد"}</span><span>تاريخ الإصدار: {app.releaseDate || "لم يحدد بعد"}</span></div>
+        <div className="detail-actions">
+          <ShareButton title={appName(app)} />
+          <FavoriteButton slug={app.slug} name={appName(app)} variant="detail" />
+        </div>
+      </div>
+    </section>
     <div className="detail-columns"><section className="panel"><h2>عن التطبيق</h2><p>{appDescription(app)}</p><h2>المميزات</h2>{app.features.length ? <ul>{app.features.map((f,i)=><li key={i}>{f.ar}</li>)}</ul> : <p className="muted">لم تُضف مميزات مؤكدة بعد.</p>}<h2>متطلبات التشغيل</h2>{app.requirements.length ? <ul>{app.requirements.map((r,i)=><li key={i}>{r}</li>)}</ul> : <p className="muted">لم تُحدد المتطلبات بعد.</p>}</section>
     <aside className="panel download-panel"><h2>التنزيل والروابط</h2>{links.length ? links.map((item,i)=><a className="button primary full" href={item.url} key={i} target="_blank" rel="noreferrer">{item.label.ar} ↗</a>) : <div className="empty-download"><b>لا توجد تنزيلات مؤكدة بعد</b><p>سيظهر رابط التنزيل هنا بعد نشر إصدار رسمي وإضافة رابطه في ملف الكتالوج.</p></div>}
       {repoRef && (

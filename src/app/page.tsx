@@ -8,6 +8,8 @@ import { openSourceCount } from "@/lib/github";
 import { latestPosts, formatDate } from "@/lib/blog";
 import { HeroPhones } from "@/components/hero-phones";
 import { HomeAppsSection } from "@/components/home-apps-section";
+import { AnimatedCounter } from "@/components/animated-counter";
+import { RecentlyViewed } from "@/components/recently-viewed";
 
 const STAT_ICONS: Record<string, React.ComponentType<{ size?: number }>> = {
   shield: Shield,
@@ -27,8 +29,26 @@ export default function HomePage() {
   const { cto } = site;
   const ossCount = openSourceCount(apps);
 
+  /* بيانات منظمة: موقع + إجراء بحث لمربع البحث في نتائج جوجل */
+  const siteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "DRS Apps & More",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://cto-drs.com",
+    inLanguage: "ar",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://cto-drs.com/apps?q={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }} />
       {/* ===== Hero ===== */}
       <section className="hero-v2">
         <div className="container hero-v2-grid">
@@ -85,7 +105,7 @@ export default function HomePage() {
               <div className="stat-cell" key={s.label}>
                 <span className="stat-chip"><IconComp size={17} /></span>
                 <div className="stat-text">
-                  <b>{s.value}</b>
+                  <b><AnimatedCounter value={s.value} /></b>
                   <span>{s.label}</span>
                 </div>
               </div>
@@ -98,6 +118,9 @@ export default function HomePage() {
       <section className="container" id="apps">
         <HomeAppsSection apps={apps} />
       </section>
+
+      {/* ===== شوهد مؤخرًا ===== */}
+      <RecentlyViewed />
 
       {/* ===== من المدونة ===== */}
       {latestPosts(3).length > 0 && (

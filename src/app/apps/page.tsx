@@ -20,6 +20,8 @@ export default async function AppsPage({
   const q = firstParam(params.q).slice(0, 80);
   const cat = firstParam(params.cat);
   const status = firstParam(params.status);
+  const sort = firstParam(params.sort);
+  const fav = firstParam(params.fav) === "1";
 
   return (
     <main className="container page">
@@ -36,6 +38,8 @@ export default async function AppsPage({
         initialQuery={q}
         initialCategory={cat || "all"}
         initialStatus={status || "all"}
+        initialSort={["default", "newest", "name", "status"].includes(sort) ? sort : "default"}
+        initialFavOnly={fav}
       />
     </main>
   );

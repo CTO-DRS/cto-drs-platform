@@ -91,6 +91,78 @@ export function openSourceCount(list: { repository: string | null }[]): number {
   return list.filter(a => parseGithubRepo(a.repository)).length;
 }
 
+/* ===== أحدث الإصدارات المنشورة ===== */
+
+export type ReleaseInfo = {
+  repo: string;
+  url: string;
+  tag: string;
+  name: string | null;
+  publishedAt: string | null;
+  notes: string | null;
+  prerelease: boolean;
+};
+
+/** تنظيف ملاحظات الإصدار من صيغ Markdown والوسوم لإظهار نص عربي/لاتيني نظيف */
+function sanitizeReleaseNotes(body: string | null | undefined): string | null {
+  if (!body) return null;
+  const cleaned = body
+    .replace(/<img[^>]*>/gi, "")              // وسوم الصور
+    .replace(/<[^>]+>/g, "")                  // أي وسوم HTML أخرى
+    .replace(/```[\s\S]*?```/g, "")           // كتل الأكواد
+    .replace(/`([^`]*)`/g, "$1")              // الأكواد السطرية
+    .replace(/^#{1,6}\s*/gm, "")              // عناوين Markdown
+    .replace(/\*\*([^*]+)\*\*/g, "$1")        // الغامق
+    .replace(/\*([^*]+)\*/g, "$1")            // المائل
+    .replace(/^[-*+]\s+/gm, "• ")             // نقاط القوائم
+    .replace(/\r/g, "")
+    .replace(/\n{2,}/g, "\n")
+    .trim()
+    .slice(0, 200);
+  return cleaned || null;
+}
+
+/** جلب آخر إصدار منشور لكل مستودع من مستودعات الكتالوج (بالتوازي، تخزين ساعة).
+ *  المستودعات بلا إصدارات تُتخطى بصمت — لا بيانات مختلقة. */
+export async function fetchLatestReleases(
+  refs: { owner: string; repo: string; url: string }[],
+  limit = 6
+): Promise<ReleaseInfo[]> {
+  const headers: Record<string, string> = {
+    Accept: "application/vnd.github+json",
+    "User-Agent": "cto-drs-platform",
+  };
+  const token = process.env.GITHUB_TOKEN;
+  if (token) headers.Authorization = `Bearer ${token}`;
+
+  const results = await Promise.allSettled(
+    refs.map(async ref => {
+      const res = await fetch(
+        `https://api.github.com/repos/${ref.owner}/${ref.repo}/releases/latest`,
+        { headers, next: { revalidate: 3600 } }
+      );
+      if (!res.ok) return null; // 404 = لا توجد إصدارات منشورة
+      const data = (await res.json()) as Record<string, unknown>;
+      if (typeof data.tag_name !== "string") return null;
+      return {
+        repo: ref.repo,
+        url: `${ref.url}/releases/latest`,
+        tag: data.tag_name,
+        name: typeof data.name === "string" && data.name ? data.name : null,
+        publishedAt: typeof data.published_at === "string" ? data.published_at : null,
+        notes: sanitizeReleaseNotes(typeof data.body === "string" ? data.body : null),
+        prerelease: data.prerelease === true,
+      } satisfies ReleaseInfo;
+    })
+  );
+
+  return results
+    .map(r => (r.status === "fulfilled" ? r.value : null))
+    .filter((r): r is ReleaseInfo => r !== null)
+    .sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""))
+    .slice(0, limit);
+}
+
 /* ===== مستودعات الحساب (على مستوى المالك) ===== */
 
 export type OrgRepo = {
