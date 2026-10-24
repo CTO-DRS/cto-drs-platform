@@ -22,6 +22,15 @@ body>*{flex-shrink:0}
 .search-bar .search-icon{color:var(--cyan);flex-shrink:0}
 .search-bar input{flex:1;min-width:0;background:none;border:0;color:var(--text);font:inherit;font-size:14px;padding:11px 0;outline:none}
 .search-bar input::-webkit-search-cancel-button{display:none}
+/* آخر عمليات البحث — وسوم سريعة قابلة لإعادة التطبيق */
+.recent-searches{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:12px;max-width:640px}
+.recent-searches .rs-label{display:inline-flex;align-items:center;gap:5px;color:var(--muted);font-size:12px}
+.recent-searches .rs-chip{background:var(--s2);border:1px solid #2a4263;color:var(--text);border-radius:999px;padding:5px 13px;font:inherit;font-size:12px;cursor:pointer;transition:border-color .15s,background .15s,transform .15s}
+.recent-searches .rs-chip:hover{border-color:var(--cyan);background:#132038;transform:translateY(-1px)}
+.recent-searches .rs-clear{background:none;border:1px dashed #2a4263;color:var(--muted);width:26px;height:26px;border-radius:999px;display:grid;place-items:center;cursor:pointer;transition:color .15s,border-color .15s}
+.recent-searches .rs-clear:hover{color:#ff8f8f;border-color:#ff8f8f}
+/* شريط سفلي لبطاقة التطبيق: السماح بالالتفاف على الشاشات الضيقة لمنع الفيضان في RTL */
+@media(max-width:560px){.app-card-bottom{flex-wrap:wrap;row-gap:7px}.app-card-bottom .pn-link,.app-card-bottom a:last-child{margin-inline-end:auto}}
 .clear-btn{background:#1a2b45;border:0;color:#a7b5cc;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;cursor:pointer}
 .clear-btn:hover{color:#fff;background:#24406a}
 .filters-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:16px;align-items:center}
@@ -1191,6 +1200,10 @@ html.theme-anim,html.theme-anim *,html.theme-anim *::before,html.theme-anim *::a
 [data-theme="light"] .chips-label{color:#5a6b8c}
 [data-theme="light"] .search-bar input{background:#ffffff;border-color:#ccd8ee;color:#101a30}
 [data-theme="light"] .search-bar{background:#ffffff;border-color:#ccd8ee}
+[data-theme="light"] .recent-searches .rs-chip{background:#eef3fb;border-color:#ccd8ee;color:#101a30}
+[data-theme="light"] .recent-searches .rs-chip:hover{border-color:var(--cyan);background:#e2edfa}
+[data-theme="light"] .recent-searches .rs-clear{border-color:#b9c8e4;color:#5a6b8c}
+[data-theme="light"] .clear-btn{background:#eef3fb;color:#5a6b8c}
 [data-theme="light"] .results-meta{color:#5a6b8c}
 [data-theme="light"] .home-blog-head h2,[data-theme="light"] .section-heading h2{color:#101a30}
 [data-theme="light"] .recent-card b,[data-theme="light"] .recent-card span{color:#22314f}

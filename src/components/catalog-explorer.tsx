@@ -1,9 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Search, X, SlidersHorizontal, FolderOpen, Github, ArrowUpDown, Heart, LayoutGrid, Rows3, Star, Download, Sparkles, Dices } from "lucide-react";
+import { Search, X, SlidersHorizontal, FolderOpen, Github, ArrowUpDown, Heart, LayoutGrid, Rows3, Star, Download, Sparkles, Dices, History } from "lucide-react";
 import type { AppEntry } from "@/lib/catalog";
 import { categoryLabel, filterByCategory, filterByStatus, searchApps, statusLabels, validHttpUrl } from "@/lib/catalog";
 import type { CatalogStatsMap } from "@/lib/github";
@@ -24,6 +24,20 @@ type Props = {
 
 const STATUSES: AppEntry["status"][] = ["released", "in-development", "archived"];
 
+const RECENT_KEY = "drs:recent-searches";
+
+/* آخر عمليات البحث (محليًا): تُحفظ عند الضغط على Enter وتظهر كوسوم سريعة */
+function readRecent(): string[] {
+  try {
+    const raw = JSON.parse(localStorage.getItem(RECENT_KEY) || "[]");
+    return Array.isArray(raw) ? raw.filter((item): item is string => typeof item === "string").slice(0, 5) : [];
+  } catch { return []; }
+}
+
+function writeRecent(list: string[]) {
+  try { localStorage.setItem(RECENT_KEY, JSON.stringify(list.slice(0, 5))); } catch {}
+}
+
 const SORTS = [
   { id: "default", label: "الافتراضي" },
   { id: "newest", label: "الأحدث إصدارًا" },
@@ -41,6 +55,25 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
   const [favOnly, setFavOnly] = useState(initialFavOnly);
   const [view, setView] = useState<"grid" | "list">("grid");
   const { favorites, ready } = useFavorites();
+  const [recent, setRecent] = useState<string[]>([]);
+
+  /* قراءة سجل البحث بعد التركيب (تفادي اختلاف الترطيب بين الخادم والمتصفح) */
+  useEffect(() => { setRecent(readRecent()); }, []);
+
+  function saveRecent(value: string) {
+    const v = value.trim();
+    if (v.length < 2) return;
+    setRecent(prev => {
+      const next = [v, ...prev.filter(item => item !== v)].slice(0, 5);
+      writeRecent(next);
+      return next;
+    });
+  }
+
+  function clearRecent() {
+    setRecent([]);
+    try { localStorage.removeItem(RECENT_KEY); } catch {}
+  }
 
   const categories = useMemo(() => {
     const map = new Map<string, number>();
@@ -114,6 +147,7 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
           type="search"
           value={query}
           onChange={e => { setQuery(e.target.value); update({ query: e.target.value }); }}
+          onKeyDown={e => { if (e.key === "Enter") saveRecent(query); }}
           placeholder="ابحث بالاسم أو الوصف أو الفئة…"
           aria-label="البحث في التطبيقات"
         />
@@ -124,6 +158,25 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
         )}
         <span className="search-hint" aria-hidden>اضغط <kbd className="nav-kbd">Ctrl K</kbd> للبحث الشامل</span>
       </div>
+
+      {query === "" && recent.length > 0 && (
+        <div className="recent-searches" role="group" aria-label="آخر عمليات البحث">
+          <span className="rs-label"><History size={13} aria-hidden /> آخر عمليات البحث:</span>
+          {recent.map(item => (
+            <button
+              type="button"
+              key={item}
+              className="rs-chip"
+              onClick={() => { setQuery(item); update({ query: item }); }}
+            >
+              {item}
+            </button>
+          ))}
+          <button type="button" className="rs-clear" onClick={clearRecent} aria-label="مسح سجل البحث" title="مسح سجل البحث">
+            <X size={12} aria-hidden />
+          </button>
+        </div>
+      )}
 
       <div className="filters-row">
         <div className="chips" role="group" aria-label="تصفية حسب الفئة">
