@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Download, Link2, BookOpen, Wallet, MessagesSquare, Clapperboard, Keyboard, Calculator, Gamepad2, Languages, Layers, Globe, Github, Star } from "lucide-react";
+import { Download, Link2, BookOpen, Wallet, MessagesSquare, Clapperboard, Keyboard, Calculator, Gamepad2, Languages, Layers, Globe, Github, Star, FolderOpen, MonitorSmartphone, Sparkles, BadgeCheck } from "lucide-react";
 import type { AppEntry } from "@/lib/catalog";
 import { appSummary, categoryLabel, firstDownload, platformLabel, validHttpUrl } from "@/lib/catalog";
 import type { CardLive } from "@/lib/github";
@@ -17,6 +17,9 @@ const ICONS: Record<string, React.ComponentType<{ size?: number }>> = {
   languages: Languages,
   layers: Layers,
   globe: Globe,
+  "folder-open": FolderOpen,
+  "monitor-smartphone": MonitorSmartphone,
+  sparkles: Sparkles,
 };
 
 export function AppStoreCard({ app, live }: { app: AppEntry; live?: CardLive }) {
@@ -42,6 +45,11 @@ export function AppStoreCard({ app, live }: { app: AppEntry; live?: CardLive }) 
           <span className="tag outline" key={p}>{platformLabel(p)}</span>
         ))}
         <span className="tag fill">{app.pricing === "paid" ? "مدفوع" : "مجاني"}</span>
+        {app.verified && (
+          <span className="tag verified" title="بيانات هذا التطبيق موثقة من مستودع GitHub الرسمي">
+            <BadgeCheck size={12} aria-hidden /> موثّق
+          </span>
+        )}
         {validHttpUrl(app.repository) && (
           <a className="tag gh" href={app.repository!} target="_blank" rel="noreferrer" title="الكود المصدري على GitHub">
             <Github size={12} aria-hidden /> مفتوح المصدر

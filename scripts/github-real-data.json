@@ -1,0 +1,2100 @@
+{
+ "VioletChat": {
+  "description": "Violet Chat — تطبيق مراسلة Android بهوية بنفسجية مع Firebase Authentication وCloud Firestore",
+  "language": "Dart",
+  "topics": [],
+  "homepage": null,
+  "html_url": "https://github.com/CTO-DRS/VioletChat",
+  "pushed_at": "2026-10-24T05:32:04Z",
+  "stars": 0,
+  "forks": 0,
+  "license": null,
+  "releases": [
+   {
+    "tag": "v0.1.12",
+    "name": "Violet Chat v0.1.12",
+    "published_at": "2026-10-24T04:38:30Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "# Violet Chat v0.1.12 — «الموقع وجهات الاتصال»\n\n**فايلويت شات** — مراسلة مشفرة طرف-لطرف بهوية بنفسجية داكنة فاخرة،\nمع Firebase Authentication وCloud Firestore.\n\n## أولاً — ما الجديد في هذه الإصدارة؟\n\nثلاث ميزات جديدة تحت مظلة «الوسائط الذكية» — بنفس معيار الخصوصية\nالصارم: **الخادم لا يرى المحتوى أبداً**.\n\n### 1) مشاركة الموقع المشفرة\n- **كيف**: قائمة المرفقات ← «الموقع» ← إما «الموقع الحالي» (GPS بدقة\n  عالية مع عرض هامش الدقة بالمتر) أو «على الخريطة» (خريطة حية بدبوس\n  ثابت في الوسط — حرّكها تحت الدبوس، كبّر/صغّر، اكتب وسماً اختيارياً\n  مثل «المنزل» ثم شارك).\n- **الخصوصية**: الإحداثيات والوسم يسيران **داخل التشفير طرف-لطرف\n  حصراً** (`kind='location'`) — الخادم يرى كلمة «موقع» فقط ولا يعرف\n  أين أنت. بلاطات المعاينة تُجلب مجهولة من OpenStreetMap (بلا مفاتيح\n  API ولا حسابات).\n- **العرض**: فقاعة بمعاينة خريطة ساكنة مركزها نقطتك + الوسم +\n  الإحداثيات. لمسة واحدة تفتح الموقع في تطبيق الخر",
+    "assets": [
+     {
+      "name": "app-arm64-v8a-release.apk",
+      "size": 29513001,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.12/app-arm64-v8a-release.apk",
+      "downloads": 0
+     },
+     {
+      "name": "app-armeabi-v7a-release.apk",
+      "size": 27569089,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.12/app-armeabi-v7a-release.apk",
+      "downloads": 0
+     },
+     {
+      "name": "app-universal-release.apk",
+      "size": 44203996,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.12/app-universal-release.apk",
+      "downloads": 1
+     },
+     {
+      "name": "SHA256SUMS.txt",
+      "size": 278,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.12/SHA256SUMS.txt",
+      "downloads": 1
+     }
+    ]
+   },
+   {
+    "tag": "v0.1.11",
+    "name": "Violet Chat v0.1.11",
+    "published_at": "2026-10-23T18:53:33Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "# Violet Chat v0.1.11 — «تحسينات الاستطلاعات والحالات»\n\n**فايلويت شات** — مراسلة مشفرة طرف-لطرف بهوية بنفسجية داكنة فاخرة،\nمع Firebase Authentication وCloud Firestore.\n\n## أولاً — ما الجديد في هذه الإصدارة؟\n\nثلاثة تحسينات طلبها المالك حرفياً («تعديل رسائل الاستطلاع، ردود على\nالحالات، حالات فيديو») — تُبنى فوق دفعة v0.1.10 مباشرة وبنفس معيار\nالخصوصية: **الخادم لا يرى المحتوى أبداً**.\n\n### 1) تعديل رسائل الاستطلاع\n- **كيف**: اضغط مطولاً على فقاعة استطلاع أرسلته أنت ← «تعديل» —\n  نفس ورقة الإنشاء تفتح معبأة بسؤالك وخياراتك؛ عدّل ما تريد واحفظ.\n- **شرطان صادقان**: التعديل متاح فقط قبل وصول أي أصوات (حتى لا\n  تنزاح معاني الخيارات تحت أصوات قائمة)، وفقط بعد استقرار الصف على\n  الخادم. بعدها يظهر «لا أصوات بعد — اضغط مطولاً للتعديل» في\n  تذييل فقاعتك، ويظهر وسم «معدّلة» بعد أي تعديل.\n- **الخصوصية**: التعديل يعيد تشفير السؤال والخيارات كاملة —\n  والخادم يرى فقاعات بايتات جديدة فقط. معرف الاستطلاع",
+    "assets": [
+     {
+      "name": "app-arm64-v8a-release.apk",
+      "size": 29151014,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.11/app-arm64-v8a-release.apk",
+      "downloads": 1
+     },
+     {
+      "name": "app-armeabi-v7a-release.apk",
+      "size": 27199202,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.11/app-armeabi-v7a-release.apk",
+      "downloads": 1
+     },
+     {
+      "name": "app-universal-release.apk",
+      "size": 43718593,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.11/app-universal-release.apk",
+      "downloads": 2
+     },
+     {
+      "name": "SHA256SUMS.txt",
+      "size": 278,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.11/SHA256SUMS.txt",
+      "downloads": 2
+     }
+    ]
+   },
+   {
+    "tag": "v0.1.10",
+    "name": "Violet Chat v0.1.10",
+    "published_at": "2026-10-23T17:45:03Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "# Violet Chat v0.1.10 — «استطلاعات وحالات»: دفعة الميزات التالية\n\n**فايلويت شات** — مراسلة مشفرة طرف-لطرف بهوية بنفسجية داكنة فاخرة،\nمع Firebase Authentication وCloud Firestore.\n\n## أولاً — ما الجديد في هذه الإصدارة؟\n\nدفعة الميزات التي طلبها المالك حرفياً («مرشحات جاهزة: استطلاعات\nرأي مشفرة، حالات/ستوري للأصدقاء») — نُفذتا كاملتين بنفس معيار\nالخصوصية الذي يبنى عليه التطبيق كله: **الخادم لا يرى المحتوى أبداً**.\n\n### 1) استطلاعات رأي مشفرة\n- **الإنشاء**: أي محادثة (ثنائية أو مجموعة) ← زر المرفقات ←\n  «استطلاع رأي» — سؤال + خياران حتى 12 خياراً، ونشر بضغطة.\n- **الخصوصية**: السؤال والخيارات يسيران داخل التشفير (`kind='poll'`)\n  — الخادم يخزن فقاعات بايتات لا يفكها. الأصوات كذلك: كل رصيص\n  رسالة مشفرة مستقلة (`kind='pollVote'`) مرتبطة بالاستطلاع عبر\n  مرجع مشفر دائم داخل الحمولة (`pollRef`) — والخادم لا يعرف\n  خيار أي مصوّت.\n- **التصويت**: اضغط أي خيار لتفويت — واضغط خياراً آخر لتغيير رأيك\n  ",
+    "assets": [
+     {
+      "name": "app-arm64-v8a-release.apk",
+      "size": 29138346,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.10/app-arm64-v8a-release.apk",
+      "downloads": 0
+     },
+     {
+      "name": "app-armeabi-v7a-release.apk",
+      "size": 27186726,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.10/app-armeabi-v7a-release.apk",
+      "downloads": 0
+     },
+     {
+      "name": "app-universal-release.apk",
+      "size": 43693669,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.10/app-universal-release.apk",
+      "downloads": 2
+     },
+     {
+      "name": "SHA256SUMS.txt",
+      "size": 278,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.10/SHA256SUMS.txt",
+      "downloads": 1
+     }
+    ]
+   },
+   {
+    "tag": "v0.1.9",
+    "name": "Violet Chat v0.1.9",
+    "published_at": "2026-10-23T01:25:56Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "# Violet Chat v0.1.9 — «اضف مميزات»: أربع ميزات جديدة بلمسة واحدة\n\n**فايلويت شات** — مراسلة مشفرة طرف-لطرف بهوية بنفسجية داكنة فاخرة،\nمع Firebase Authentication وCloud Firestore.\n\n## أولاً — ما الجديد في هذه الإصدارة؟\n\nبعد إصلاح جسر المصادقة في v0.1.8، هذه الإصدارة تحمل **أربع ميزات\nكاملة** طلبها المالك مباشرة («اضف مميزات للتطبيق»):\n\n### 1) إضافة صديق بالباركود (QR)\n- **أين رمزك؟** الملف الشخصي ← «رمز QR الخاص بي» — رمز بنفسجي أنيق\n  مع زر «مشاركة» لإرسال الحمولة نصياً لأي قناة.\n- **كيف تضيف صديقاً؟** جهازه يعرض رمزه، وأنت من «محادثة جديدة» تضغط\n  «إضافة صديق بمسح رمز QR» وتوجّه الكاميرا — المحادثة المشفرة تُفتح\n  فوراً بعد المسح.\n- **تسامح مدروس**: التحليل يقبل رموز القوارئ الخارجية (حالة مختلفة)،\n  الروابط، `@` والفراغات — والملاحظة الصادقة «هذا الرمز ليس رمز\n  إضافة Violet Chat» عند مسح رمز غريب، مع بقاء الكاميرا تعمل.\n- لا صلاحيات جديدة: الكاميرا مسموحة أصلاً لمكالمات الفيديو.\n\n### ",
+    "assets": [
+     {
+      "name": "app-arm64-v8a-release.apk",
+      "size": 29093830,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.9/app-arm64-v8a-release.apk",
+      "downloads": 2
+     },
+     {
+      "name": "app-armeabi-v7a-release.apk",
+      "size": 27137734,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.9/app-armeabi-v7a-release.apk",
+      "downloads": 2
+     },
+     {
+      "name": "app-universal-release.apk",
+      "size": 43600641,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.9/app-universal-release.apk",
+      "downloads": 1
+     },
+     {
+      "name": "SHA256SUMS.txt",
+      "size": 278,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.9/SHA256SUMS.txt",
+      "downloads": 2
+     }
+    ]
+   },
+   {
+    "tag": "v0.1.8",
+    "name": "Violet Chat v0.1.8",
+    "published_at": "2026-10-23T00:20:30Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "# Violet Chat v0.1.8 — «الصدق في الجسر»: كل حالة لها رسالتها الحقيقية\n\n**فايلويت شات** — مراسلة مشفرة طرف-لطرف بهوية بنفسجية داكنة فاخرة،\nمع Firebase Authentication وCloud Firestore.\n\n## أولاً — لماذا هذا الإصدار؟\n\nفجر 2026-10-23 اصطدم المالك برسالة «تم إنشاء الحساب — أكّد بريدك\nالإلكتروني ثم أعد المحاولة» على شاشة الدخول، بينما فحص قاعدة بيانات\nالمراسلة المباشر أثبت أن حسابه **مؤكّد منذ 2026-10-21**. التشخيص\nالصادق: جسر Google كان يفسّر استجابة الخادم «نجاح بلا جلسة» دائماً\nكحالة «حساب جديد انتظر تأكيد بريدك»، بينما هي مع حماية تعداد\nالبريد تعني **حالتين مختلفتين تماماً**:\n\n| الحالة | ماذا يعني فعلاً | رسالة v0.1.7 | رسالة v0.1.8 |\n|---|---|---|---|\n| حساب أُنشئ للتو | تأكيد البريد مطلوب حقاً | «أكد بريدك» ✓ صادقة | «أكد بريدك» (تبقى كما هي — صادقة هنا) |\n| بريد له حساب قائم بكلمة مرور مختلفة | التثبيت الجديد فقد المفتاح المشفر | «أكد بريدك» ✗ مضللة | «اضغط الدخول بحساب مراسلة قائم… وسي",
+    "assets": [
+     {
+      "name": "app-arm64-v8a-release.apk",
+      "size": 25463966,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.8/app-arm64-v8a-release.apk",
+      "downloads": 0
+     },
+     {
+      "name": "app-armeabi-v7a-release.apk",
+      "size": 23788790,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.8/app-armeabi-v7a-release.apk",
+      "downloads": 0
+     },
+     {
+      "name": "app-universal-release.apk",
+      "size": 38279560,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.8/app-universal-release.apk",
+      "downloads": 2
+     },
+     {
+      "name": "SHA256SUMS.txt",
+      "size": 278,
+      "url": "https://github.com/CTO-DRS/VioletChat/releases/download/v0.1.8/SHA256SUMS.txt",
+      "downloads": 1
+     }
+    ]
+   }
+  ],
+  "readme_excerpt": "# Violet Chat — فايلويت شات\n\n**تطبيق مراسلة Android بهوية بنفسجية، مشفّر طرف-لطرف** — مبني بـ\nFlutter + Firebase Authentication + Cloud Firestore + Supabase (نقل\nالمراسلة)، باسم مركزي واحد (`AppConfig.appName = \"Violet Chat\"` /\n`فايلويت شات`).\n\n> Violet Chat هو تحويل الهوية والتطوير القاعدي لتطبيق مراسلة مشفرة\n> قائم (DRS NEXORA سابقاً) — بلا حذف أي ميزة قائمة. منذ **v0.1.2**\n> هوية الحزمة هي `com.drs.violetchat` مطابقةً لتسجيل Firebase الرسمي\n> (مشروع `violetchat-cea68` — ووثّق أثر ذلك على التثبيت في\n> CHANGELOG v0.1.2). الإصدار الحالي: **v0.1.12** (versionCode 19) —\n> «الموقع وجهات الاتصال»: مشاركة موقع مشفرة (GPS/خريطة OSM)، بطاقات\n> جهات اتصال مشفرة تفتح المحادثة بلمسة، وتنسيق نص الرسائل — كلها\n> فوق دفعة v0.1.11 (تعديل الاستطلاعات + ردود الحالات + حالات الفيديو).\n\n---\n\n## الحالة الصادقة للميزات\n\n| الميزة | الحالة |\n|---|---|\n| هوية Violet Chat (اسم/شاشات/إشعارات) | VERIFIED (كود + مسار CI) |\n| حسابات Violet — Firebase Auth (إنشاء/دخول/خروج/استعادة) | IMPLEMENTED — التفعيل السحابي يتطلب خطوة Console (FIREBASE_SETUP.md) |\n| ملف المستخدم Firestore `users/{uid}` | IMPLEMENTED — قواعد `firestore.rules` مقصورة على المالك |\n| تدفق الحساب القائم (Supabase) كوضع احتياطي | VERIFIED (كشف تلقائي وقت التشغيل) |\n| هوية تشفير لكل جهاز (IK/SPK/OPK) | VERIFIED (اختبارات آلية) |\n| X3DH + Double Ratchet | VERIFIED (اختبارات آلية: FS، إعادة الإرسال، خارج الترتيب) |\n| التشفير الثنائي طرف-لطرف | VERIFIED (اختبارات) — NOT VERIFIED ميدانياً |\n| المجموعات + تدوير المفاتيح | IMPLEMENTED — NOT VERIFIED ميدانياً |\n| رسائل نصية + وسائط مشفرة | IMPLEMENTED — NOT VERIFIED ميدانياً |\n| استطلاعات رأي مشفرة (سؤال/خيارات/أصوات داخل التشفير) | IMPLEMENTED (v0.1.10) — NOT VERIFIED ميدانياً |\n| تعديل رسائل الاستطلاع (المؤلف، بلا أصوات بعد) | IMPLEMENTED (v0.1.11) — NOT VERIFIED ميدانياً |\n| حالات/ستوري مشفرة للأصدقاء (24 ساعة، نص+صورة، مشاهدون) | IMPLEMENTED (v0.1.10) — NOT VERIFIED ميدانياً |\n| حالات فيديو (حتى 60 ثانية، مشفرة كأي حالة) | IMPLEMENTED (v0.1.11) — NOT VERIFIED ميدانياً |\n| ردود على الحالات (رسالة مشفرة في محادثة المؤلف) | IMPLEMENTED (v0.1.11) — NOT VERIFIED ميدانياً |\n| مشاركة موقع مشفرة (GPS + خريطة OSM، إحداثيات داخل التشفير) | IMPLEMENTED (v0.1.12) — NOT VERIFIED ميدانياً |\n| بطاقات جهات اتصال مشفرة (لمسة تفتح المحادثة) | IMPLEMENTED (v0.1.12) — NOT VERIFIED ميدانياً |\n| تنسيق نص الرسائل (غامق/مائل/شطب/كود — محلي صرف) | IMPLEMENTED (v0.1.12) — NOT VERIFIED ميدانياً |\n| وسائط الرؤية الواحدة (صور/فيديو/صوت — العلم داخل التشفير، محو الكاش بعد المشاهدة، حظر التوجيه، خارج المعرض) | IMPLEMENTED (v0.1.13) — NOT VERIFIED ميدانياً |\n| البحث داخل المحادثة (قفز للنتائج + تطبيع عربي متسامح — محلي صرف فوق الكاش المفكوك) | IMPLEMENTED (v0.1.13) — NOT VERIFIED ميدانياً |\n| سرعات تشغيل الرسائل الصوتية (1×/1.5×/2×) | IMPLEMENTED (v0.1.13) — NOT VERIFIED ميدانياً |\n| مكالمات WebRTC ثنائية + جماعية (mesh ≤ 8) | IMPLEMENTED — NOT VERIFIED ميدانياً |\n| أوفلاين + مزامنة | IMPLEMENTED — NOT VERIFIED ميدانياً |\n| Realtime + مؤشر الكتابة + حضور «متصل الآن» | IMPLEMENTED — NOT VERIFIE"
+ },
+ "masar-al-lugha": {
+  "description": "Masar Al-Lugha (Language Path) — a fun open language learning app built with Flutter. Learn English & Urdu with smart FSRS flashcards, leveled lessons and gamification.",
+  "language": "Dart",
+  "topics": [],
+  "homepage": null,
+  "html_url": "https://github.com/CTO-DRS/masar-al-lugha",
+  "pushed_at": "2026-10-24T05:22:12Z",
+  "stars": 0,
+  "forks": 0,
+  "license": null,
+  "releases": [],
+  "readme_excerpt": "# masar_al_lugha\n\nA new Flutter project.\n\n## Getting Started\n\nThis project is a starting point for a Flutter application.\n\nA few resources to get you started if this is your first Flutter project:\n\n- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)\n- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)\n- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)\n\nFor help getting started with Flutter development, view the\n[online documentation](https://docs.flutter.dev/), which offers tutorials,\nsamples, guidance on mobile development, and a full API reference.\n"
+ },
+ "SecureNetVPN": {
+  "description": "SecureNet VPN — Enterprise-Grade Privacy Solution. WireGuard VPN + device security scanner + network optimizer. Kotlin + C++ (NDK) + Go (wireguard-go), MVVM + Clean Architecture.",
+  "language": "Kotlin",
+  "topics": [],
+  "homepage": null,
+  "html_url": "https://github.com/CTO-DRS/SecureNetVPN",
+  "pushed_at": "2026-10-24T05:17:58Z",
+  "stars": 0,
+  "forks": 0,
+  "license": null,
+  "releases": [
+   {
+    "tag": "v1.0.0",
+    "name": "SecureNet VPN v1.0.0 — Full Build",
+    "published_at": "2026-10-24T05:22:49Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## SecureNet VPN v1.0.0 — Enterprise-Grade Privacy Solution\n\n**Full production build** — this APK contains the real WireGuard-Go\ndata plane (`libwgcore.so`) compiled for `arm64-v8a`, `armeabi-v7a`\nand `x86_64`, plus the native C core (`libsecurenet.so`).\n\n### Features\n- WireGuard VPN (wireguard-go via JNI, foreground service, `vpn_channel` notifications)\n- Local device security scanner (anti-malware, permission risk scoring)\n- Network optimizer (DNS cache + MTU tuning)\n- One-tap activation with sequential permission rationale flow\n- Battery optimization mode, auto-reconnect on network changes\n- Material Design 3, glass-morphism server cards, Lottie animations\n- EncryptedSharedPreferences, WorkManager jobs, HPKP-style pinning\n\n### Install\n1. Download `SecureNetVPN-debug-v1.0.0.apk`\n2. Enable \"Install from unknown sources\"\n3. Install and open (Android 11 / API 30+)\n\n> Built automatically b",
+    "assets": [
+     {
+      "name": "SecureNetVPN-debug-v1.0.0.apk",
+      "size": 29976452,
+      "url": "https://github.com/CTO-DRS/SecureNetVPN/releases/download/v1.0.0/SecureNetVPN-debug-v1.0.0.apk",
+      "downloads": 0
+     }
+    ]
+   }
+  ],
+  "readme_excerpt": "# SecureNet VPN\n\n**Enterprise-grade privacy for Android** — WireGuard tunneling, on-device\nmalware auditing and network performance optimization in a single app.\n\n| | |\n|---|---|\n| Platform | Android 11+ (API 30), target SDK 35 |\n| Languages | Kotlin 2.0 + C11/C++17 (NDK) |\n| Architecture | MVVM + Clean Architecture (domain / data / presentation) |\n| Protocol | WireGuard® via the open-source **wireguard-go** userspace backend over JNI |\n| Min toolchain | Android Studio Koala+, JDK 17, AGP 8.5.2, Gradle 8.9 |\n\n---\n\n## 1. Feature map (spec -> implementation)\n\n| Requirement | Where it lives |\n|---|---|\n| WireGuard VPN service (open-source impl) | `service/SecureNetVpnService.kt`, `nativelib/WgNative.kt`, `go/libwg/` |\n| Local security scanner (anti-malware) | `security/` (`AppThreatAnalyzer`, `FileThreatScanner`, `RootDetector`, `AttestationChecker`) |\n| Network performance optimizer | `network/DnsCache(Manager).kt`, `network/MtuOptimizer.kt` |\n| One-click activation + permission flow | `ui/dashboard/DashboardFragment.kt`, `ui/permissions/PermissionManager.kt` |\n| Real-time status + animated UI | `StateFlow<ConnectionState>` + Lottie (`res/raw/*.json`) |\n| Battery optimization mode | `util/BatteryOptimizationHelper.kt`, sampling interval switch in the service |\n| Auto-reconnect on network change | `network/NetworkMonitor.kt` -> `SecureNetVpnService.startNetworkWatcher()` |\n| Foreground service, `vpn_channel` | `service/VpnNotificationManager.kt` (channel ID literally `vpn_channel`) |\n| EncryptedSharedPreferences | `data/local/SecurePrefs.kt` |\n| WorkManager (logs + usage stats) | `work/ConnectionLogWorker.kt`, `work/UsageStatsWorker.kt`, `work/WorkScheduler.kt` |\n| MVVM + Clean Architecture | `domain/` (use cases + repository interfaces), `data/` (implementations), `ui/` (ViewModels) |\n| Certificate pinning (HPKP-style) | `res/xml/network_security_config.xml` + dynamic OkHttp `CertificatePinner` (`data/remote/RemoteConfigApi.kt`) |\n| ProGuard with custom rules | `app/proguard-rules.pro` |\n| No hardcoded keys (remote config) | `data/repository/RemoteConfigRepositoryImpl.kt`; device key generated at runtime, stored encrypted |\n| User flow: Splash -> Onboarding -> Dashboard -> Activate -> Permissions -> Animation -> Connected | `SplashActivity`, `onboarding/`, `ui/dashboard/`, `MainActivity`, `ui/permissions/` |\n| Material Design 3 + dynamic color + gradients + glass-morphism | `res/values/themes.xml`, `DynamicColors` in `SecureNetApp`, `bg_gradient_main` (#1A2A6C -> #11998E), `Widget.SecureNet.GlassCard` |\n| Dark/Light theme follows system | `AppCompatDelegate` + `values-night/themes.xml` (Settings exposes system/light/dark) |\n\n---\n\n## 2. Quick start\n\n```bash\n# 1. Open the project in Android Studio (Koala or newer).\n#    Let it sync: Gradle 8.9 + AGP 8.5.2 + Kotlin 2.0.20 are preconfigured.\n\n# 2. Build the debug APK (signed with the included keystore):\n./gradlew assembleDebug\n#    -> app/build/outputs/apk/debug/app-debug.apk\n\n# 3. Run the unit tests:\n"
+ },
+ "cto-drs-platform": {
+  "description": "بوابة DRS Apps & More — منصة كتالوق تطبيقات ومشاريع CTO-DRS (Next.js + TypeScript، عربية RTL)",
+  "language": "TypeScript",
+  "topics": [],
+  "homepage": null,
+  "html_url": "https://github.com/CTO-DRS/cto-drs-platform",
+  "pushed_at": "2026-10-24T04:54:01Z",
+  "stars": 0,
+  "forks": 0,
+  "license": null,
+  "releases": [],
+  "readme_excerpt": "# DRS Apps & More — بوابة CTO-DRS\n\nمنصة كتالوق تطبيقات ومشاريع **CTO-DRS** — موقع عربي (RTL) يعرض التطبيقات قيد التطوير والمنشورة، مع بحث فوري، فلاتر فئة/حالة، بطاقات مستودعات GitHub حية، وواجهة برمجية عامة للكتالوج.\n\n**الفلسفة:** ملف الكتالوج `src/content/apps.json` هو مصدر الحقيقة الوحيد — لا أرقام تنزيل مختلقة، ولا روابط غير HTTPS، ولا معلومات غير مؤكدة.\n\n## المزايا\n\n- **رئيسية تعريفية**: هيرو تفاعلي، شريط إحصاءات، شبكة تطبيقات بتبويبات فئات، بطاقة GitHub.\n- **كتالوج ذكي** (`/apps`): بحث عربي مطبّع (يتجاهل التشكيل ويوحّد الألف/الهاء/الياء)، شرائح فئات وحالات، مزامنة الفلاتر مع الرابط (`?q=&cat=&status=`) لروابط عميقة قابلة للمشاركة.\n- **صفحة تفاصيل لكل تطبيق**: وصف، مميزات، متطلبات، روابط تنزيل مؤكدة فقط، وبطاقة مستودع GitHub بإحصاءات حية (نجوم، نسخ، لغة، آخر تطوير) تُجلب من GitHub API وتُخزّن ساعة كاملة.\n- **المستودعات الحية** (`/projects`): شبكة «المستودعات المفتوحة على GitHub» تعرض أحدث المستودعات العامة للحساب مرتبة بتاريخ آخر تطوير — بيانات حية تُحدّث كل ساعة مع بديل آمن عند تعذر الاتصال.\n- **نسخة إنجليزية** (`/en`): نظرة عامة LTR على الكتالوج والإحصاءات الحقيقية والمستودعات، مربوطة بقائمة اللغة في الهيدر وبـ `sitemap` و`alternates`.\n- **واجهة برمجية عامة**:\n  - `GET /api/apps` — الكتالوج كاملاً (JSON + CORS مفتوح)\n  - `GET /api/apps/{slug}` — بيانات تطبيق محدد\n  - `GET /api/stats` — إحصاءات مجمعة للكتالوج والمستودعات المربوطة\n- **SEO كامل**: Metadata لكل صفحة، JSON-LD (SoftwareApplication + Article + FAQPage + WebSite/SearchAction)، `sitemap.xml`، `robots.txt`، `feed.xml` (RSS)، صور Open Graph ديناميكية لكل تطبيق.\n- **تطبيق ويب متقدم (PWA)**: قابلة للتثبيت على الجهاز (أيقونات PNG + maskable)، Service Worker للعمل بلا اتصال مع صفحة `/offline`، شريحة تثبيت ذكية، وشريط تنبيه عند انقطاع الشبكة — مع اختصارات سريعة في الـ manifest.\n- **لوحة أوامر `Ctrl+K`**: بحث فوري شامل (تطبيقات + صفحات + مقالات المدونة) بلوحة أنيقة تعمل بلوحة المفاتيح بالكامل، وتُفتح من أي صفحة أو من زر البحث في الهيدر.\n- **نظام مفضلة محلي**: قلب على كل بطاقة تطبيق، شارة عداد في الهيدر، فلتر «المفضلة» في الكتالوج (`?fav=1`)، وقسم كامل في صفحة الحساب — محفوظ على جهاز المستخدم فقط دون أي خادم.\n- **«شوهد مؤخرًا»**: شريط تلقائي في الرئيسية يعرض آخر التطبيقات التي فتحها المستخدم (حد 8، محلي بالكامل).\n- **تفاعلات حية**: عدادات إحصاءات متحركة عند الظهور، شريط تقدم قراءة أعلى الصفحة، زر عودة للأعلى، إشعارات Toast، ومشاركة أصلية/نسخ رابط في صفحات التطبيقات — كلها تحترم `prefers-reduced-motion`.\n- **كتالوج بفرز وأوضاع عرض**: ترتيب حسب الأحدث/الاسم/الحالة، وتبديل شبكة/قائمة.\n- **أحدث الإصدارات** (`/projects`): تغذية بآخر إصدار منشور لكل مستودع مربوط مع تنظيف Markdown من الملاحظات.\n\n## التقنيات\n\n| الطبقة | التقنية |\n|---|---|\n| الإطار | Next.js 16 (App Router) + React 19 |\n| اللغة | TypeScript |\n| الأيقونات | lucide-react |\n| الخط | Cairo (عربي + لاتيني) |\n| البيانات | JSON ثابت — بلا قاعدة بيانات |\n\n## البنية\n\n```\nsrc/\n├── app/                  # الصفحات (App Router)\n│   ├── page.tsx          # الرئيسية (عربية RTL)\n│   ├── en/               # النسخة الإنجليزية (LTR)\n│   ├── apps/     "
+ },
+ "TikTokIntelligenceBot": {
+  "description": "TikTok Account Intelligence Telegram Bot - account scanning, analytics, tracking, bilingual AR/EN, PDF/HTML/Excel/JSON reports, Docker + Celery + Redis + PostgreSQL",
+  "language": "Python",
+  "topics": [],
+  "homepage": null,
+  "html_url": "https://github.com/CTO-DRS/TikTokIntelligenceBot",
+  "pushed_at": "2026-10-24T04:42:37Z",
+  "stars": 0,
+  "forks": 0,
+  "license": null,
+  "releases": [],
+  "readme_excerpt": "# 🤖 TikTok Intelligence Bot — بوت تيك توك للاستخبارات\n\n<p align=\"center\">\n  <b>بوت تيليجرام متكامل لتحليل وتتبع حسابات تيك توك</b><br>\n  <i>A complete Telegram bot for TikTok account intelligence, analytics & tracking</i>\n</p>\n\n---\n\n## ⚠️ إطار النزاهة: ما الذي يمكن الحصول عليه فعلاً؟ / Data Honesty First\n\nهذا البوت **لا يخترق** تيك توك ولا يصل إلى أي بيانات خاصة. يقرأ **البيانات العامة فقط**.\nقبل استخدام أي أداة مماثلة، افهم هذه المصفوفة:\n\n| الحقل / Field | الحالة | الشرح / Why |\n|---|---|---|\n| الاسم، المعرّف، النبذة، الصورة، التوثيق، خاص/عام، البلد (region) | ✅ متاح | بيانات الملف العام |\n| المتابعون، المتابَعون، الإعجابات، عدد الفيديوهات | ✅ متاح | عدّادات عامة |\n| آخر 30 فيديو (مشاهدات، إعجابات، تعليقات، مشاركات، الموسيقى، الهاشتاقات) | ✅ متاح | محتوى عام |\n| الإيميل/الهاتف **المكتوبة في النبذة** | ⚠️ إذا وُجدت | استخراج بنمط Regex من bio |\n| روابط انستغرام/يوتيوب/تويتر في النبذة | ⚠️ إذا وُجدت | parsing عام |\n| أفضل وقت نشر، معدل التفاعل، تحليل الهاشتاقات | ✅ محسوب | تحليل رياضي على بيانات عامة |\n| نمو المتابعين 30 يوم | ⚠️ تدريجي | يحتاج snapshots عبر الزمن |\n| نسبة الف مكذب/الجغرافيا/الأعمار/الجنس للجمهور | ⚠️ تقدير منخفض الثقة | تيك توك لا ينشرها إلا لصاحب الحساب |\n| **IP الإنشاء، GPS الإنشاء، إيميل الحساب، رقم الهاتف، Device ID، Session ID، كلمة المرور، سجل الاختراق، تاريخ التوثيق، تاريخ إنشاء الحساب بالساعة، سجل أسماء المستخدمين، الموقع الجغرافي للفيديو** | ❌ غير متاح | بيانات خاصة/سيرفرية — لا يوجد أي API عام يوفرها، ومحاولة الحصول عليها تُعد اختراقاً ومخالفة قانونية |\n\n> 🔎 عند عدم توفر حقل يعرضه البوت كـ **\"غير متوفر\"** مع سبب واضح — **لا يخترع بيانات أبداً**.\n> This bot never fabricates data: unavailable fields are explicitly marked as N/A with a reason.\n\n---\n\n## ✨ المزايا / Features\n\n- 📊 **فحص فوري** `/scan` — كل الحقول العامة + معدل التفاعل\n- 🔬 **فحص عميق** `/deepscan` — تحليل 30 فيديو + أفضل أوقات النشر + الهاشتاقات + الكلمات المفتاحية + تصنيف المحتوى + تحليل أمني\n- 📦 **فحص جماعي** `/bulk` — حتى 25 حساباً بالتوازي\n- ⚖️ **مقارنة** `/compare` — جدول فروقات بين حسابين\n- 🔔 **تتبع** `/track` — تنبيهات: تغيّر الاسم/النبذة/الصورة، توثيق، فيديو جديد، ±10% متابعين\n- 📄 **تقارير** `/report` — PDF (عربي RTL) + HTML + Excel (مع رسوم بيانية) + JSON\n- 🌐 **وحدة جغرافيا وأجهزة** — تحليل User-Agent / Headers / IP→Geo (geopy + reverse_geocoder + timezonefinder) بمنهجية صادقة\n- 🗂 **قوائم 3 مستويات** بأزرار داخلية + تبديل عربي/إنجليزي + 3 مستويات تفصيل (مبسط/متقدم/خبير)\n- 🛡 **أمان**: AES-256-GCM، 5 أدوار، Rate Limiting متعدد الطبقات (Redis)، سجل تدقيق، كشف محاولات الحقن، 2FA للمشرفين (TOTP)\n- ⚙️ **تشغيل**: Docker Compose + Nginx + Celery + Redis + PostgreSQL + Prometheus + Grafana + Sentry\n\n## 🧱 البنية / Architecture\n\n```\nTelegram ⇄ Nginx ⇄ python-telegram-bot (bot/main.py)\n                        │\n        ┌───────────────┼────────────────┐\n   services/        database/         reports/\n   tiktok_api       PostgreSQL/SQLite  PDF/HTML/Excel/JSON\n   geolocation      SQLAlchemy\n   analytics        repository.py\n   security  ─── Redis (cache + rate-limit"
+ },
+ "DRS-Smart-Keyboard": {
+  "description": "DRS Smart Keyboard — IME عربي أصلي بالكامل: ذكاء على الجهاز، خصوصية مثبتة، نظام امتدادات موقّع تشفيريًا. الإصدار الحالي v1.1.0",
+  "language": "Kotlin",
+  "topics": [],
+  "homepage": "https://cto-drs.github.io/DRS-Smart-Keyboard/",
+  "html_url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard",
+  "pushed_at": "2026-10-24T02:30:37Z",
+  "stars": 0,
+  "forks": 0,
+  "license": null,
+  "releases": [
+   {
+    "tag": "v1.4.2",
+    "name": "DRS Smart Keyboard V 1.4.2",
+    "published_at": "2026-10-22T10:39:39Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "<div align=\"center\">\n\n# DRS Smart Keyboard v1.4.2 — مطبخ الإيموجي والحزم المستلمة\n\n**Emoji Kitchen & Received Packages — Seventh Release**\n\n<img src=\"https://raw.githubusercontent.com/CTO-DRS/drs-sk-work/main/docs/images/hero.png\" width=\"100%\"/>\n\n</div>\n\n<div dir=\"rtl\">\n\n## نبذة عن المشروع\n\n**DRS Smart Keyboard** لوحة مفاتيح أندرويد، مبنية بـ Kotlin وJetpack Compose\nوMaterial 3، صُممت **عربية أولًا**: واجهة عربية كاملة بدعم RTL أصيل، تخطيطات\nعربية مدروسة، واقتراحات وتصحيح عربي — مع إنجليزية كخيار ثانٍ كامل. كل ما\nتكتبه يبقى على جهازك: لا حسابات، لا تتبع، لا شبكة إجبارية.\n\n## ما في هذا الإصدار\n\n- **النواة الكاملة**: تخطيطات عربية/إنجليزية وثماني لغات قواميس، شريط ذكي\n  قابل للتخصيص، لوحة مهام، لوحة حركات، إيموجي بحث، تصحيح تلقائي حقيقي،\n  ومدقق إملائي.\n- **الحافظة الذكية**: محرر نصوص بستة عشر خوارزمية، كاشف أسطر برمجية، أقسام\n  تقويمية وشارات فئات، ونافذة تعديل منبثقة فوق التطبيقات.\n- **ل",
+    "assets": [
+     {
+      "name": "DRS-Smart-Keyboard-v1.4.2.aab",
+      "size": 16823149,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.2/DRS-Smart-Keyboard-v1.4.2.aab",
+      "downloads": 0
+     },
+     {
+      "name": "DRS-Smart-Keyboard-v1.4.2.apk",
+      "size": 12187109,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.2/DRS-Smart-Keyboard-v1.4.2.apk",
+      "downloads": 2
+     },
+     {
+      "name": "pkg-amethyst-v1.0.0.flex",
+      "size": 2489,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.2/pkg-amethyst-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-arabian-v1.0.0.flex",
+      "size": 4593,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.2/pkg-arabian-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-aurora-v1.0.0.flex",
+      "size": 2482,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.2/pkg-aurora-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-carbon-v1.0.0.flex",
+      "size": 2478,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.2/pkg-carbon-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-forest-v1.0.0.flex",
+      "size": 4573,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.2/pkg-forest-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-ocean-v1.0.0.flex",
+      "size": 4565,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.2/pkg-ocean-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-rose-v1.0.0.flex",
+      "size": 2474,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.2/pkg-rose-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-sunset-v1.0.0.flex",
+      "size": 2499,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.2/pkg-sunset-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "SHA256SUMS.txt",
+      "size": 904,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.2/SHA256SUMS.txt",
+      "downloads": 2
+     }
+    ]
+   },
+   {
+    "tag": "v1.4.1",
+    "name": "DRS Smart Keyboard V 1.4.1",
+    "published_at": "2026-10-21T23:32:04Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "<div align=\"center\">\n\n# DRS Smart Keyboard v1.4.1 — الوجه الأمني\n\n**The Security Face — Sixth Release**\n\n<img src=\"https://raw.githubusercontent.com/CTO-DRS/drs-sk-work/main/docs/images/hero.png\" width=\"100%\"/>\n\n</div>\n\n<div dir=\"rtl\">\n\n## نبذة عن المشروع\n\n**DRS Smart Keyboard** لوحة مفاتيح أندرويد، مبنية بـ Kotlin وJetpack Compose\nوMaterial 3، صُممت **عربية أولًا**: واجهة عربية كاملة بدعم RTL أصيل، تخطيطات\nعربية مدروسة، واقتراحات وتصحيح عربي — مع إنجليزية كخيار ثانٍ كامل. كل ما\nتكتبه يبقى على جهازك: لا حسابات، لا تتبع، لا شبكة إجبارية.\n\n## ما في هذا الإصدار\n\n- **النواة الكاملة**: تخطيطات عربية/إنجليزية وثماني لغات قواميس، شريط ذكي\n  قابل للتخصيص، لوحة مهام، لوحة حركات، إيموجي بحث، تصحيح تلقائي حقيقي،\n  ومدقق إملائي.\n- **الحافظة الذكية**: محرر نصوص بستة عشر خوارزمية، كاشف أسطر برمجية، أقسام\n  تقويمية وشارات فئات، ونافذة تعديل منبثقة فوق التطبيقات.\n- **لوحة الأدوات النصية — 84 أداة**: تحو",
+    "assets": [
+     {
+      "name": "DRS-Smart-Keyboard-v1.4.1.aab",
+      "size": 16734214,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.1/DRS-Smart-Keyboard-v1.4.1.aab",
+      "downloads": 0
+     },
+     {
+      "name": "DRS-Smart-Keyboard-v1.4.1.apk",
+      "size": 12129119,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.1/DRS-Smart-Keyboard-v1.4.1.apk",
+      "downloads": 2
+     },
+     {
+      "name": "pkg-amethyst-v1.0.0.flex",
+      "size": 2489,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.1/pkg-amethyst-v1.0.0.flex",
+      "downloads": 3
+     },
+     {
+      "name": "pkg-arabian-v1.0.0.flex",
+      "size": 4593,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.1/pkg-arabian-v1.0.0.flex",
+      "downloads": 2
+     },
+     {
+      "name": "pkg-aurora-v1.0.0.flex",
+      "size": 2482,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.1/pkg-aurora-v1.0.0.flex",
+      "downloads": 2
+     },
+     {
+      "name": "pkg-carbon-v1.0.0.flex",
+      "size": 2478,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.1/pkg-carbon-v1.0.0.flex",
+      "downloads": 2
+     },
+     {
+      "name": "pkg-forest-v1.0.0.flex",
+      "size": 4573,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.1/pkg-forest-v1.0.0.flex",
+      "downloads": 2
+     },
+     {
+      "name": "pkg-ocean-v1.0.0.flex",
+      "size": 4565,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.1/pkg-ocean-v1.0.0.flex",
+      "downloads": 3
+     },
+     {
+      "name": "pkg-rose-v1.0.0.flex",
+      "size": 2474,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.1/pkg-rose-v1.0.0.flex",
+      "downloads": 2
+     },
+     {
+      "name": "pkg-sunset-v1.0.0.flex",
+      "size": 2499,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.1/pkg-sunset-v1.0.0.flex",
+      "downloads": 3
+     },
+     {
+      "name": "SHA256SUMS.txt",
+      "size": 904,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.1/SHA256SUMS.txt",
+      "downloads": 1
+     }
+    ]
+   },
+   {
+    "tag": "v1.4.0",
+    "name": "DRS Smart Keyboard V 1.4.0",
+    "published_at": "2026-10-21T21:21:29Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "<div align=\"center\">\n\n# DRS Smart Keyboard v1.4.0 — الخصوصية المثبتة\n\n**Proven Privacy — Fifth Release**\n\n<img src=\"https://raw.githubusercontent.com/CTO-DRS/drs-sk-work/main/docs/images/hero.png\" width=\"100%\"/>\n\n</div>\n\n<div dir=\"rtl\">\n\n## نبذة عن المشروع\n\n**DRS Smart Keyboard** لوحة مفاتيح أندرويد، مبنية بـ Kotlin وJetpack Compose\nوMaterial 3، صُممت **عربية أولًا**: واجهة عربية كاملة بدعم RTL أصيل، تخطيطات\nعربية مدروسة، واقتراحات وتصحيح عربي — مع إنجليزية كخيار ثانٍ كامل. كل ما\nتكتبه يبقى على جهازك: لا حسابات، لا تتبع، لا شبكة إجبارية.\n\n## ما في هذا الإصدار\n\n- **النواة الكاملة**: تخطيطات عربية/إنجليزية وثماني لغات قواميس، شريط ذكي\n  قابل للتخصيص، لوحة مهام، لوحة حركات، إيموجي بحث، تصحيح تلقائي حقيقي،\n  ومدقق إملائي.\n- **الحافظة الذكية**: محرر نصوص بستة عشر خوارزمية، كاشف أسطر برمجية، أقسام\n  تقويمية وشارات فئات، ونافذة تعديل منبثقة فوق التطبيقات.\n- **لوحة الأدوات النصية — 84 أداة**: تح",
+    "assets": [
+     {
+      "name": "DRS-Smart-Keyboard-v1.4.0.aab",
+      "size": 16727223,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.0/DRS-Smart-Keyboard-v1.4.0.aab",
+      "downloads": 0
+     },
+     {
+      "name": "DRS-Smart-Keyboard-v1.4.0.apk",
+      "size": 12126911,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.0/DRS-Smart-Keyboard-v1.4.0.apk",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-amethyst-v1.0.0.flex",
+      "size": 2489,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.0/pkg-amethyst-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-arabian-v1.0.0.flex",
+      "size": 4593,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.0/pkg-arabian-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-aurora-v1.0.0.flex",
+      "size": 2482,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.0/pkg-aurora-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-carbon-v1.0.0.flex",
+      "size": 2478,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.0/pkg-carbon-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-forest-v1.0.0.flex",
+      "size": 4573,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.0/pkg-forest-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-ocean-v1.0.0.flex",
+      "size": 4565,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.0/pkg-ocean-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-rose-v1.0.0.flex",
+      "size": 2474,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.0/pkg-rose-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-sunset-v1.0.0.flex",
+      "size": 2499,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.0/pkg-sunset-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "SHA256SUMS.txt",
+      "size": 904,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.4.0/SHA256SUMS.txt",
+      "downloads": 1
+     }
+    ]
+   },
+   {
+    "tag": "v1.3.0",
+    "name": "DRS Smart Keyboard V 1.3.0",
+    "published_at": "2026-10-21T19:14:54Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "<div align=\"center\">\n\n# DRS Smart Keyboard v1.3.0 — الذكاء على الجهاز\n\n**On-Device Intelligence — Fourth Release**\n\n<img src=\"https://raw.githubusercontent.com/CTO-DRS/drs-sk-work/main/docs/images/hero.png\" width=\"100%\"/>\n\n</div>\n\n<div dir=\"rtl\">\n\n## نبذة عن المشروع\n\n**DRS Smart Keyboard** لوحة مفاتيح أندرويد، مبنية بـ Kotlin وJetpack Compose\nوMaterial 3، صُممت **عربية أولًا**: واجهة عربية كاملة بدعم RTL أصيل، تخطيطات\nعربية مدروسة، واقتراحات وتصحيح عربي — مع إنجليزية كخيار ثانٍ كامل. كل ما\nتكتبه يبقى على جهازك: لا حسابات، لا تتبع، لا شبكة إجبارية.\n\n## ما في هذا الإصدار\n\n- **النواة الكاملة**: تخطيطات عربية/إنجليزية وثماني لغات قواميس، شريط ذكي\n  قابل للتخصيص، لوحة مهام، لوحة حركات، إيموجي بحث، تصحيح تلقائي حقيقي،\n  ومدقق إملائي.\n- **الحافظة الذكية**: محرر نصوص بستة عشر خوارزمية، كاشف أسطر برمجية، أقسام\n  تقويمية وشارات فئات، ونافذة تعديل منبثقة فوق التطبيقات.\n- **لوحة الأدوات النصية — 84 ",
+    "assets": [
+     {
+      "name": "DRS-Smart-Keyboard-v1.3.0.aab",
+      "size": 16723857,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.3.0/DRS-Smart-Keyboard-v1.3.0.aab",
+      "downloads": 0
+     },
+     {
+      "name": "DRS-Smart-Keyboard-v1.3.0.apk",
+      "size": 12125759,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.3.0/DRS-Smart-Keyboard-v1.3.0.apk",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-amethyst-v1.0.0.flex",
+      "size": 2489,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.3.0/pkg-amethyst-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-arabian-v1.0.0.flex",
+      "size": 4593,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.3.0/pkg-arabian-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-aurora-v1.0.0.flex",
+      "size": 2482,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.3.0/pkg-aurora-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-carbon-v1.0.0.flex",
+      "size": 2478,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.3.0/pkg-carbon-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-forest-v1.0.0.flex",
+      "size": 4573,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.3.0/pkg-forest-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-ocean-v1.0.0.flex",
+      "size": 4565,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.3.0/pkg-ocean-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-rose-v1.0.0.flex",
+      "size": 2474,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.3.0/pkg-rose-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-sunset-v1.0.0.flex",
+      "size": 2499,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.3.0/pkg-sunset-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "SHA256SUMS.txt",
+      "size": 904,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.3.0/SHA256SUMS.txt",
+      "downloads": 1
+     }
+    ]
+   },
+   {
+    "tag": "v1.2.0",
+    "name": "DRS Smart Keyboard 1.2.0 — أبجديات الآلة والحساب",
+    "published_at": "2026-10-19T02:59:10Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "<div align=\"center\">\n\n# DRS Smart Keyboard v1.2.0 — أبجديات الآلة والحساب\n\n**Machine Alphabets & Calculation — Third Release**\n\n<img src=\"https://raw.githubusercontent.com/CTO-DRS/drs-sk-work/main/docs/images/hero.png\" width=\"100%\"/>\n\n</div>\n\n<div dir=\"rtl\">\n\n## نبذة عن المشروع\n\n**DRS Smart Keyboard** لوحة مفاتيح أندرويد، مبنية بـ Kotlin وJetpack Compose\nوMaterial 3، صُممت **عربية أولًا**: واجهة عربية كاملة بدعم RTL أصيل، تخطيطات\nعربية مدروسة، واقتراحات وتصحيح عربي — مع إنجليزية كخيار ثانٍ كامل. كل ما\nتكتبه يبقى على جهازك: لا حسابات، لا تتبع، لا شبكة إجبارية.\n\n## ما في هذا الإصدار\n\n- **النواة الكاملة**: تخطيطات عربية/إنجليزية وثماني لغات قواميس، شريط ذكي\n  قابل للتخصيص، لوحة مهام، لوحة حركات، إيموجي بحث، تصحيح تلقائي حقيقي،\n  ومدقق إملائي.\n- **الحافظة الذكية**: محرر نصوص بستة عشر خوارزمية، كاشف أسطر برمجية، أقسام\n  تقويمية وشارات فئات، ونافذة تعديل منبثقة فوق التطبيقات.\n- **لوحة الأدوات ",
+    "assets": [
+     {
+      "name": "DRS-Smart-Keyboard-v1.2.0.aab",
+      "size": 16706847,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.2.0/DRS-Smart-Keyboard-v1.2.0.aab",
+      "downloads": 0
+     },
+     {
+      "name": "DRS-Smart-Keyboard-v1.2.0.apk",
+      "size": 12102291,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.2.0/DRS-Smart-Keyboard-v1.2.0.apk",
+      "downloads": 3
+     },
+     {
+      "name": "pkg-amethyst-v1.0.0.flex",
+      "size": 2489,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.2.0/pkg-amethyst-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-arabian-v1.0.0.flex",
+      "size": 4593,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.2.0/pkg-arabian-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-aurora-v1.0.0.flex",
+      "size": 2482,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.2.0/pkg-aurora-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-carbon-v1.0.0.flex",
+      "size": 2478,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.2.0/pkg-carbon-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-forest-v1.0.0.flex",
+      "size": 4573,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.2.0/pkg-forest-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-ocean-v1.0.0.flex",
+      "size": 4565,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.2.0/pkg-ocean-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-rose-v1.0.0.flex",
+      "size": 2474,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.2.0/pkg-rose-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "pkg-sunset-v1.0.0.flex",
+      "size": 2499,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.2.0/pkg-sunset-v1.0.0.flex",
+      "downloads": 1
+     },
+     {
+      "name": "SHA256SUMS.txt",
+      "size": 904,
+      "url": "https://github.com/CTO-DRS/DRS-Smart-Keyboard/releases/download/v1.2.0/SHA256SUMS.txt",
+      "downloads": 3
+     }
+    ]
+   }
+  ],
+  "readme_excerpt": "<div align=\"center\">\n\n<img src=\"docs/images/hero.png\" alt=\"DRS Smart Keyboard\" width=\"100%\"/>\n\n# DRS Smart Keyboard\n\n**لوحة مفاتيح أندرويد من تطوير DRS — عربية أولًا، خاصة بالكامل، وقابلة للتخصيص بعمق**\n\nA DRS-built keyboard for Android — Arabic-first, fully private, deeply customizable.\n\n[![Version](https://img.shields.io/badge/version-1.4.2-0E9488?style=flat-square)](https://github.com/CTO-DRS/drs-sk-work/releases/latest)\n[![Launch](https://img.shields.io/badge/%D8%A7%D9%84%D8%A5%D8%B7%D9%84%D8%A7%D9%82-%D8%A7%D9%84%D8%A3%D9%88%D9%84%20%D8%A7%D9%84%D8%B1%D8%B3%D9%85%D9%8A%20v1.0.0-2E7D32?style=flat-square)](https://github.com/CTO-DRS/drs-sk-work/releases)\n[![Android](https://img.shields.io/badge/Android-8.0%2B-3DDC84?style=flat-square&logo=android&logoColor=white)](https://android.com)\n[![Release](https://img.shields.io/github/v/release/CTO-DRS/drs-sk-work?style=flat-square&display_name=release)](https://github.com/CTO-DRS/drs-sk-work/releases/latest)\n[![Build Status](https://img.shields.io/github/actions/workflow/status/CTO-DRS/drs-sk-work/release.yml?style=flat-square&label=Release%20Build)](https://github.com/CTO-DRS/drs-sk-work/actions/workflows/release.yml)\n\n**[⬇️ تحميل أحدث إصدار | Download Latest Release](https://github.com/CTO-DRS/drs-sk-work/releases/latest)**\n\n</div>\n\n---\n\n<div dir=\"rtl\">\n\n## نبذة عن المشروع\n\n**DRS Smart Keyboard** هو الإصدار الأول الرسمي من لوحة مفاتيح أندرويد متكاملة من تطوير DRS، صُممت من الأساس لتكون **عربية أولًا** دون التنازل عن أي شيء لغير العربية: اتجاه RTL أصيل في كل شاشة، اقتراحات وتصحيح عربي، أشكال حروف محسوبة، وواجهة كاملة بالعربية والإنجليزية.\n\nالتطبيق مبني بتقنيات Android الحديثة (Kotlin + Jetpack Compose + Material 3)، ويعمل بموقع مستقل تمامًا: كل ما تكتبه وكل إعداداتك تبقى على جهازك، ولا تُرسل أي بيانات إلى أي جهة.\n\n## لماذا DRS Smart Keyboard؟\n\n- **عربية أولًا حقًا** — لا ترجمة لاحقة ولا واجهة معكوسة: تخطيطات عربية مدروسة، معاينة حية بالاتجاه الصحيح، وأرقام وتواريخ عربية.\n- **ثلاثة أنظمة استخدام منفصلة** — بدل شاشة إعدادات واحدة مربكة، يحصل كل مستخدم على نظام كامل بملفه الشخصي وألوانه وعملته.\n- **مركز حزم وتحديثات رسمي داخل التطبيق** — تنزيل السمات والحزم والتحديثات مباشرة، مع تحقق تشفيري SHA-256 لكل ملف.\n- **خصوصية مطلقة** — بلا حسابات، بلا تتبع، بلا إعلانات؛ والاتصال الوحيد الممكن هو فحص التحديثات عبر GitHub.\n\n## أبرز ما يميز المشروع\n\n| | |\n|---|---|\n| 🎛️ **مركز تحكم موحد** | حالة لوحة المفاتيح، النظام الحالي، السمة، الإضافات، التحديثات — في مكان واحد |\n| 🧑‍💻 **ثلاثة أنظمة مستخدمين** | عادي · تقني · متكامل، لكلٍّ إعداداته وتخطيطاته واختصاراته وملفه الشخصي |\n| 🎨 **تخصيص عميق للسمات** | محرر سمات بمعاينة حية، ألوان وخلفيات وأشكال، وتدرجات جاهزة |\n| 📦 **مركز حزم رسمي** | تصفح وتنزيل حزم السمات والتخطيطات والحزم اللغوية مع تحقق من السلامة |\n| 🔄 **مركز تحديثات مدمج** | فحص وتنزيل وتثبيت أحدث إصدار من داخل التطبيق |\n| 📋 **حافظة متكاملة** | سجل ذكي، تثبيت عناصر، فلاتر، وصور |\n| 🧠 **الحافظة الذكية الحتمية** | تصنيف سباعي للمحتوى المنسوخ (رابط/بريد/هاتف/رمز تحقق/مبلغ/رقم/نص) وتنويعات جاهزة بلاصقة واحد: تنظيف"
+ },
+ "NovaFiles": {
+  "description": "مدير ملفات أندرويد بواجهة iOS كوبرتينو — Kotlin + Jetpack Compose",
+  "language": "Kotlin",
+  "topics": [],
+  "homepage": null,
+  "html_url": "https://github.com/CTO-DRS/NovaFiles",
+  "pushed_at": "2026-10-24T04:55:26Z",
+  "stars": 0,
+  "forks": 0,
+  "license": null,
+  "releases": [
+   {
+    "tag": "v0.40.0",
+    "name": "NovaFiles v0.40.0",
+    "published_at": "2026-10-24T01:39:28Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "**Full Changelog**: https://github.com/CTO-DRS/NovaFiles/compare/v0.39.0...v0.40.0",
+    "assets": [
+     {
+      "name": "NovaFiles-v0.40.0-source.zip",
+      "size": 1317466,
+      "url": "https://github.com/CTO-DRS/NovaFiles/releases/download/v0.40.0/NovaFiles-v0.40.0-source.zip",
+      "downloads": 0
+     },
+     {
+      "name": "NovaFiles_v0.40.0_iOS_debug.apk",
+      "size": 32704903,
+      "url": "https://github.com/CTO-DRS/NovaFiles/releases/download/v0.40.0/NovaFiles_v0.40.0_iOS_debug.apk",
+      "downloads": 0
+     }
+    ]
+   },
+   {
+    "tag": "v0.39.0",
+    "name": "NovaFiles v0.39.0",
+    "published_at": "2026-10-24T00:47:42Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "**Full Changelog**: https://github.com/CTO-DRS/NovaFiles/compare/v0.38.0...v0.39.0",
+    "assets": [
+     {
+      "name": "NovaFiles_v0.39.0_iOS_debug.apk",
+      "size": 32613043,
+      "url": "https://github.com/CTO-DRS/NovaFiles/releases/download/v0.39.0/NovaFiles_v0.39.0_iOS_debug.apk",
+      "downloads": 0
+     }
+    ]
+   },
+   {
+    "tag": "v0.38.0",
+    "name": "NovaFiles v0.38.0",
+    "published_at": "2026-10-23T22:05:59Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "**Full Changelog**: https://github.com/CTO-DRS/NovaFiles/compare/v0.37.0...v0.38.0",
+    "assets": [
+     {
+      "name": "NovaFiles_v0.38.0_iOS_debug.apk",
+      "size": 32502735,
+      "url": "https://github.com/CTO-DRS/NovaFiles/releases/download/v0.38.0/NovaFiles_v0.38.0_iOS_debug.apk",
+      "downloads": 0
+     }
+    ]
+   },
+   {
+    "tag": "v0.37.0",
+    "name": "NovaFiles v0.37.0",
+    "published_at": "2026-10-23T20:38:56Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "**Full Changelog**: https://github.com/CTO-DRS/NovaFiles/compare/v0.29.0...v0.37.0",
+    "assets": [
+     {
+      "name": "NovaFiles_v0.37.0_iOS_debug.apk",
+      "size": 32412447,
+      "url": "https://github.com/CTO-DRS/NovaFiles/releases/download/v0.37.0/NovaFiles_v0.37.0_iOS_debug.apk",
+      "downloads": 0
+     }
+    ]
+   },
+   {
+    "tag": "v0.36.0",
+    "name": "NovaFiles v0.36.0",
+    "published_at": "2026-10-23T18:58:43Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "**Full Changelog**: https://github.com/CTO-DRS/NovaFiles/compare/v0.35.0...v0.36.0",
+    "assets": [
+     {
+      "name": "NovaFiles_v0.36.0_iOS_debug.apk",
+      "size": 31990867,
+      "url": "https://github.com/CTO-DRS/NovaFiles/releases/download/v0.36.0/NovaFiles_v0.36.0_iOS_debug.apk",
+      "downloads": 0
+     }
+    ]
+   }
+  ],
+  "readme_excerpt": "<div dir=\"rtl\">\n\n# 🌟 NovaFiles\n\n**مدير ملفات أندرويد مفتوح المصدر** — منافس عصري وطموح لـ MiXplorer، مبني من الصفر بـ **Kotlin + Jetpack Compose + Material 3**.\n\n<div dir=\"ltr\">\n\n`Kotlin 2.0` · `Jetpack Compose` · `Material You` · `minSdk 26` · `targetSdk 35`\n\n</div>\n\n---\n\n## لماذا NovaFiles؟\n\nMiXplorer تطبيق رائع لكنه مغلق المصدر وقديم الواجهة وقبل كل شيء **يتوقف تطويره**. NovaFiles يأخذ نفس قوة المفاهيم (خزنة مشفرة، سحابة موحدة، مشاركة متقدمة) ويعيد بناءها بواجهة Material 3 حديثة، بواجهة **عربية أولاً**، وبكود مفتوح يمكن لأي شخص تطويره.\n\n| الميزة | MiXplorer | NovaFiles |\n|--------|-----------|-----------|\n| الواجهة | تصميم قديم | **Material 3 ديناميكي (Material You)** |\n| المصدر | مغلق | **مفتوح 100%** |\n| العربية | دعم جزئي | **RTL أصلي + تبديل لغة فوري** |\n| الخزنة المشفرة | نعم | **نعم — AES-256-GCM + بصمة + PIN** |\n| البحث الذكي | بحث بسيط | **فهرسة FTS فورية + مرشحات نوع/حجم/تاريخ** |\n| مشاركة عبر WiFi | نعم | **نعم — خادما FTP وWebDAV مدمجان بلا اعتماديات خارجية + QR + سجل اتصال** |\n| الوصول لخوادم الشبكة | SMB/FTP/SFTP/WebDAV | **نعم — عميل FTP + SFTP + SMB2/SMB3 بواجهة موحدة + حماية TOFU** |\n| الأرشيفات | قراءة/إنشاء ZIP | **نعم — إنشاء ZIP/7z/TAR/TAR.GZ/BZ2/XZ بمستويات وكلمات مرور AES وتقسيم أحجام، وقراءة ZIP/7z/TAR/RAR/GZ/BZ2/XZ بحماية Slip** |\n| وضع الجهاز اللوحي | لوحتان | **نعم — لوحتان مستقلتان بنمط iPad مع إرسال مباشر بين اللوحتين** |\n| التطوير | متوقف تقريباً | **مجتمع نشط على GitHub** |\n\n## ✨ ما المُنفَّذ الآن (v0.40.0)\n\n## ⚡ ما الجديد في v0.40.0 — دليل المستخدم المدمج (التوثيق داخل التطبيق)\n\n### بند v1.0 «التوثيق» يتحقق محلياً (+24 اختباراً = 1,727)\n- **UserGuideEngine خالص**: عشرة فصول مرتبة حتماً فوق كل محركات التطبيق (التصفح، البحث والوسوم، الأرشيفات، الشبكات، السحابة والمزامنة، الخزنة، نبضة التخزين، الأتمتة، الأدوات، الإعدادات والنقل) مصنفة إلى سبع فئات — Kotlin خالص بلا اعتماديات أندرويد بنمط SecurityGuide v0.38\n- **بحث حتماً داخل الفصول**: تطبيع عربي (الهمزات، التاء المربوطة، الألف المقصورة، التشكيل والتطويل) + حالة إنجليزية غير حساسة، مطابقة بالمعرف أو كلمات البحث، والنتائج بترتيب العرض دائماً — وكل فصل مضمون الوصول بكل كلمة من كلمات بحثه باختبار شامل\n- **تتبّع تقدّم القراءة**: نقر الفصل يسجّله مقروءاً فوراً في DataStore بترميز CSV حتمي متسامح (نمط SecurityGuide) — نسبة الإنجاز والفصل التالي غير المقروء محسوبان في المحرك الخالص\n- **شاشة iOS كاملة**: حقل بحث حي، فصول مجمّعة بالفئات، شارات قراءة دائرية، وكبسولة فئة لكل فصل — تُفتح من صف «دليل المستخدم» الجديد في الإعدادات\n- **السلاسل**: +36 مفتاحاً ×10 لغات (1,026/1,026) مترجمة أصيلة بالعشر لغات كلها — محصوصة باختبار المستودع الحقيقي\n- **بيانات المتاجر**: changelogs/40.txt بالعشر لغات\n- **الاختبارات**: أرضية 1,703 — المحقق **1,727**\n\n## ⚡ ما الجديد في v0.39.0 — جاهزية الإطلاق (الترحيب + النقل بين الأجهزة + الامتثال)\n\n### آخر الأميال قبل v1.0 (+35 اختباراً = 1,703)\n- **OnboardingEngine خالص**: ترحيب المستخدم الجديد بأربع خطوات ثابتة الترتيب (الترحيب، إذن التخزين، الخزنة والأمان، الطبقة الذكية) — قرار عرض حتمي واحد (يُعرض ما لم تُتم الخطوات كلها فقط)، تقدّم CSV متسامح عبر "
+ },
+ "NexusLink": {
+  "description": "NexusLink — LAN device interconnection platform: Next.js PC server + Flutter Android agent (screen/camera/audio streaming, remote control, file transfer, security suite). منصة ربط الأجهزة عبر الشبكة المحلية",
+  "language": "TypeScript",
+  "topics": [],
+  "homepage": null,
+  "html_url": "https://github.com/CTO-DRS/NexusLink",
+  "pushed_at": "2026-10-23T21:54:46Z",
+  "stars": 1,
+  "forks": 0,
+  "license": null,
+  "releases": [
+   {
+    "tag": "v3.0.0",
+    "name": "NexusLink v3.0.0 — الثقل المؤسسي (§38–§40)",
+    "published_at": "2026-10-22T07:35:54Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "# NexusLink v3.0.0 — ملاحظات الإصدار / Release Notes\n\n> التاريخ: 2026-10-22 · إصدار M4 «الثقل المؤسسي» بعقد الترقيم المعتمد: «3.0 = M4» —\n> يجمع ثلاثة عقود مغلقة فوق 2.0.0 (§38 النشر المؤسسي · §39 أدلة شهادات الثقة ·\n> §40 وضع OEM «خصوصية افتراضية») — نوى M4 المحلية القابلة للتنفيذ مكتملة كلها —\n> فحوص M4 الحية: ‏85×2 مرتين متتاليتين (26 + 20 + 39) بلا انحدار على أساس 1080.\n> Date: 2026-10-22 · The M4 \"enterprise weight\" release under the adopted\n> numbering contract: «3.0 = M4» — bundles three closed contracts on top of\n> 2.0.0 (§38 enterprise deployment · §39 trust-certificate evidence · §40 OEM\n> privacy-by-default) — all locally-executable M4 cores complete —\n> live M4 checks 85×2 twice in a row (26 + 20 + 39), zero regression on the 1080 baseline.\n\n> **ملاحظة تعاقدية / Contract note:** الإصدار موحّد **3.0.0** حرفيًا في كل المنصات\n> (tauri.conf.json/Cargo.toml/pubspec/package.json) و",
+    "assets": [
+     {
+      "name": "app-release.aab",
+      "size": 67144532,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v3.0.0/app-release.aab",
+      "downloads": 0
+     },
+     {
+      "name": "latest.json",
+      "size": 1949,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v3.0.0/latest.json",
+      "downloads": 2
+     },
+     {
+      "name": "NexusLink-3.0.0-release.apk",
+      "size": 140472698,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v3.0.0/NexusLink-3.0.0-release.apk",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink-Release-Page.html",
+      "size": 52334,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v3.0.0/NexusLink-Release-Page.html",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink.app.tar.gz",
+      "size": 121058527,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v3.0.0/NexusLink.app.tar.gz",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink.app.tar.gz.sig",
+      "size": 428,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v3.0.0/NexusLink.app.tar.gz.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_3.0.0_aarch64.dmg",
+      "size": 118886640,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v3.0.0/NexusLink_3.0.0_aarch64.dmg",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_3.0.0_amd64.AppImage",
+      "size": 181770744,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v3.0.0/NexusLink_3.0.0_amd64.AppImage",
+      "downloads": 1
+     },
+     {
+      "name": "NexusLink_3.0.0_amd64.AppImage.sig",
+      "size": 440,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v3.0.0/NexusLink_3.0.0_amd64.AppImage.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_3.0.0_amd64.deb",
+      "size": 100869188,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v3.0.0/NexusLink_3.0.0_amd64.deb",
+      "downloads": 1
+     },
+     {
+      "name": "NexusLink_3.0.0_amd64.deb.sig",
+      "size": 432,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v3.0.0/NexusLink_3.0.0_amd64.deb.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_3.0.0_x64-portable.zip",
+      "size": 107993889,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v3.0.0/NexusLink_3.0.0_x64-portable.zip",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_3.0.0_x64-setup.exe",
+      "size": 47309521,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v3.0.0/NexusLink_3.0.0_x64-setup.exe",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_3.0.0_x64-setup.exe.sig",
+      "size": 440,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v3.0.0/NexusLink_3.0.0_x64-setup.exe.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_3.0.0_x64_en-US.msi",
+      "size": 88557986,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v3.0.0/NexusLink_3.0.0_x64_en-US.msi",
+      "downloads": 1
+     },
+     {
+      "name": "NexusLink_3.0.0_x64_en-US.msi.sig",
+      "size": 440,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v3.0.0/NexusLink_3.0.0_x64_en-US.msi.sig",
+      "downloads": 0
+     },
+     {
+      "name": "SHA256SUMS.txt",
+      "size": 1403,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v3.0.0/SHA256SUMS.txt",
+      "downloads": 4
+     }
+    ]
+   },
+   {
+    "tag": "v2.0.0-fix3",
+    "name": "NexusLink v2.0.0 — المنظومة المفتوحة والذكاء المحلي (§33–§37)",
+    "published_at": "2026-10-21T10:37:17Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "# NexusLink v2.0.0 (fix3) — ملاحظات الإصدار / Release Notes\n\n> التاريخ: 2026-10-21 · جولة إعادة بناء ثالثة لإصدار 2.0.0 — fix3: أفشلت جولة fix2 في خطوة\n> حارس ملاحظات الإصدار فقط (توثيق نمط §37.هـ.4 للبوابات): الحارس يشترط ملف ملاحظات\n> مطابقًا لاسم الوسم حرفيًا (docs/releases/<tag>.md) وكان المجهز مكتوبًا باسم v2.0.0.md\n> حصرًا — بلا أي تغيير على الميزات ولا على الملفات الخمسة — كل البناء الخماسي أخضر في\n> دورة fix2 (test ×3 · desktop ×3 · android · ios) والوسمان الفاشلان محفوظان ولا يُعادان\n> (v2.0.0 وv2.0.0-fix1 وv2.0.0-fix2).\n> Date: 2026-10-21 · Third build round of 2.0.0 — fix3: the fix2 round failed only at\n> the release-notes guard step: the guard requires a notes file matching the tag name\n> literally (docs/releases/<tag>.md) while the prepared notes were v2.0.0.md only —\n> no feature changes and no version-file changes — the full five-platform build was\n> green in fix2 (test ×3",
+    "assets": [
+     {
+      "name": "app-release.aab",
+      "size": 67144528,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix3/app-release.aab",
+      "downloads": 0
+     },
+     {
+      "name": "latest.json",
+      "size": 1964,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix3/latest.json",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink-2.0.0-release.apk",
+      "size": 140472694,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix3/NexusLink-2.0.0-release.apk",
+      "downloads": 1
+     },
+     {
+      "name": "NexusLink-Release-Page.html",
+      "size": 52334,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix3/NexusLink-Release-Page.html",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink.app.tar.gz",
+      "size": 120983852,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix3/NexusLink.app.tar.gz",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink.app.tar.gz.sig",
+      "size": 428,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix3/NexusLink.app.tar.gz.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_aarch64.dmg",
+      "size": 118802364,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix3/NexusLink_2.0.0_aarch64.dmg",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_amd64.AppImage",
+      "size": 181717496,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix3/NexusLink_2.0.0_amd64.AppImage",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_amd64.AppImage.sig",
+      "size": 440,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix3/NexusLink_2.0.0_amd64.AppImage.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_amd64.deb",
+      "size": 100815374,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix3/NexusLink_2.0.0_amd64.deb",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_amd64.deb.sig",
+      "size": 432,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix3/NexusLink_2.0.0_amd64.deb.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_x64-portable.zip",
+      "size": 107924788,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix3/NexusLink_2.0.0_x64-portable.zip",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_x64-setup.exe",
+      "size": 47297158,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix3/NexusLink_2.0.0_x64-setup.exe",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_x64-setup.exe.sig",
+      "size": 440,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix3/NexusLink_2.0.0_x64-setup.exe.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_x64_en-US.msi",
+      "size": 88487032,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix3/NexusLink_2.0.0_x64_en-US.msi",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_x64_en-US.msi.sig",
+      "size": 440,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix3/NexusLink_2.0.0_x64_en-US.msi.sig",
+      "downloads": 0
+     },
+     {
+      "name": "SHA256SUMS.txt",
+      "size": 1403,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix3/SHA256SUMS.txt",
+      "downloads": 1
+     }
+    ]
+   },
+   {
+    "tag": "v2.0.0-fix2",
+    "name": "v2.0.0-fix2",
+    "published_at": "2026-10-21T10:14:43Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "",
+    "assets": [
+     {
+      "name": "NexusLink-2.0.0-release.apk",
+      "size": 140472694,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix2/NexusLink-2.0.0-release.apk",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink.app.tar.gz",
+      "size": 120984546,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix2/NexusLink.app.tar.gz",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink.app.tar.gz.sig",
+      "size": 428,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix2/NexusLink.app.tar.gz.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_aarch64.dmg",
+      "size": 118802263,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix2/NexusLink_2.0.0_aarch64.dmg",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_amd64.AppImage",
+      "size": 181717496,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix2/NexusLink_2.0.0_amd64.AppImage",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_amd64.AppImage.sig",
+      "size": 440,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix2/NexusLink_2.0.0_amd64.AppImage.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_amd64.deb",
+      "size": 100815182,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix2/NexusLink_2.0.0_amd64.deb",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_amd64.deb.sig",
+      "size": 432,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix2/NexusLink_2.0.0_amd64.deb.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_x64-portable.zip",
+      "size": 107924621,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix2/NexusLink_2.0.0_x64-portable.zip",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_x64-setup.exe",
+      "size": 47299342,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix2/NexusLink_2.0.0_x64-setup.exe",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_x64-setup.exe.sig",
+      "size": 440,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix2/NexusLink_2.0.0_x64-setup.exe.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_x64_en-US.msi",
+      "size": 88491128,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix2/NexusLink_2.0.0_x64_en-US.msi",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_x64_en-US.msi.sig",
+      "size": 440,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix2/NexusLink_2.0.0_x64_en-US.msi.sig",
+      "downloads": 0
+     }
+    ]
+   },
+   {
+    "tag": "v2.0.0-fix1",
+    "name": "v2.0.0-fix1",
+    "published_at": "2026-10-21T09:56:21Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "",
+    "assets": [
+     {
+      "name": "NexusLink.app.tar.gz",
+      "size": 120983629,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix1/NexusLink.app.tar.gz",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink.app.tar.gz.sig",
+      "size": 428,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix1/NexusLink.app.tar.gz.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_aarch64.dmg",
+      "size": 118802223,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix1/NexusLink_2.0.0_aarch64.dmg",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_amd64.AppImage",
+      "size": 181717496,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix1/NexusLink_2.0.0_amd64.AppImage",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_amd64.AppImage.sig",
+      "size": 440,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix1/NexusLink_2.0.0_amd64.AppImage.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_amd64.deb",
+      "size": 100815108,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix1/NexusLink_2.0.0_amd64.deb",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_amd64.deb.sig",
+      "size": 432,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix1/NexusLink_2.0.0_amd64.deb.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_x64-portable.zip",
+      "size": 107924626,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix1/NexusLink_2.0.0_x64-portable.zip",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_x64-setup.exe",
+      "size": 47299224,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix1/NexusLink_2.0.0_x64-setup.exe",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_x64-setup.exe.sig",
+      "size": 440,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix1/NexusLink_2.0.0_x64-setup.exe.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_x64_en-US.msi",
+      "size": 88487032,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix1/NexusLink_2.0.0_x64_en-US.msi",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_2.0.0_x64_en-US.msi.sig",
+      "size": 440,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v2.0.0-fix1/NexusLink_2.0.0_x64_en-US.msi.sig",
+      "downloads": 0
+     }
+    ]
+   },
+   {
+    "tag": "v1.2.0-fix2",
+    "name": "v1.2.0-fix2",
+    "published_at": "2026-10-18T22:29:42Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "# NexusLink v1.2.0 (fix2) — ملاحظات الإصدار / Release Notes\n\n> التاريخ: 2026-10-19 · إعادة وسم ثانية لإصدار 1.2.0 — fix2: فشلت جولة fix1 (run 39168198853) بعد اجتياز test ×3 في بناء سطح المكتب ×3 (خطأ Rust واحد E0596 في `media.rs:1509` — `let mut g` لقفل SCREEN في G-37 تبديل الجودة الحي) وفي android (بوابة flutter analyze: استيراد `PhoneRemoteUiState` المعرّف في `phone_remote_service.dart` + 4 نداءات sendTouch عبر الـ notifier لا الحالة + إزالة استيراد مهجور في `phone_remote_providers.dart`) — بلا أي تغيير على الميزات — الوسوم الفاشلة محفوظة ولا تُعاد (v1.2.0 وv1.2.0-fix1).\n> Date: 2026-10-19 · Second re-tag of v1.2.0 — fix2: the fix1 round (run 39168198853) passed test ×3 then failed desktop builds ×3 (one Rust error E0596 in `media.rs:1509` — `let mut g` for the SCREEN lock in G-37 live quality switch) and android (flutter analyze gate: import for `PhoneRemoteUiState` defined in `phone",
+    "assets": [
+     {
+      "name": "app-release.aab",
+      "size": 67068708,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v1.2.0-fix2/app-release.aab",
+      "downloads": 0
+     },
+     {
+      "name": "latest.json",
+      "size": 1964,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v1.2.0-fix2/latest.json",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink-1.2.0-release.apk",
+      "size": 140317526,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v1.2.0-fix2/NexusLink-1.2.0-release.apk",
+      "downloads": 9
+     },
+     {
+      "name": "NexusLink-Release-Page.html",
+      "size": 53200,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v1.2.0-fix2/NexusLink-Release-Page.html",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink.app.tar.gz",
+      "size": 118391859,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v1.2.0-fix2/NexusLink.app.tar.gz",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink.app.tar.gz.sig",
+      "size": 428,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v1.2.0-fix2/NexusLink.app.tar.gz.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_1.2.0_aarch64.dmg",
+      "size": 116233753,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v1.2.0-fix2/NexusLink_1.2.0_aarch64.dmg",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_1.2.0_amd64.AppImage",
+      "size": 174922232,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v1.2.0-fix2/NexusLink_1.2.0_amd64.AppImage",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_1.2.0_amd64.AppImage.sig",
+      "size": 440,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v1.2.0-fix2/NexusLink_1.2.0_amd64.AppImage.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_1.2.0_amd64.deb",
+      "size": 98211882,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v1.2.0-fix2/NexusLink_1.2.0_amd64.deb",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_1.2.0_amd64.deb.sig",
+      "size": 432,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v1.2.0-fix2/NexusLink_1.2.0_amd64.deb.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_1.2.0_x64-portable.zip",
+      "size": 105291846,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v1.2.0-fix2/NexusLink_1.2.0_x64-portable.zip",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_1.2.0_x64-setup.exe",
+      "size": 46634380,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v1.2.0-fix2/NexusLink_1.2.0_x64-setup.exe",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_1.2.0_x64-setup.exe.sig",
+      "size": 440,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v1.2.0-fix2/NexusLink_1.2.0_x64-setup.exe.sig",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_1.2.0_x64_en-US.msi",
+      "size": 85894565,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v1.2.0-fix2/NexusLink_1.2.0_x64_en-US.msi",
+      "downloads": 0
+     },
+     {
+      "name": "NexusLink_1.2.0_x64_en-US.msi.sig",
+      "size": 440,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v1.2.0-fix2/NexusLink_1.2.0_x64_en-US.msi.sig",
+      "downloads": 0
+     },
+     {
+      "name": "SHA256SUMS.txt",
+      "size": 1403,
+      "url": "https://github.com/CTO-DRS/NexusLink/releases/download/v1.2.0-fix2/SHA256SUMS.txt",
+      "downloads": 1
+     }
+    ]
+   }
+  ],
+  "readme_excerpt": "# NexusLink — منصة ربط الأجهزة عبر الشبكة المحلية\n\nمنصة واحدة تربط هاتفك بجهاز الكمبيوتر — كل شيء محلي على شبكتك، بلا سحابة وبلا حسابات.\nهذا الملف يشرح التشغيل الكامل: **سطح المكتب (المركز) ← الهاتف (الوكيل) ← الاختبار المشترك**،\nمع خريطة المنافذ ونقاط التحقق السريعة لكل طبقة (FA-2 … FA-10).\n\n---\n\n## 0) التشغيل السريع الحقيقي — سطح المكتب = المركز، الهاتف = وكيل\n\n**الطريق الأساسي للمستخدم النهائي — صفر خطوات يدوية بعد التثبيت:**\n\n1. **على الكمبيوتر** (Windows 10/11 64-bit — macOS 12+ Apple Silicon — Linux x64):\n   حمّل المثبت من [صفحة الإصدارات](https://github.com/CTO-DRS/NexusLink/releases/latest)\n   وأثبّته وشغّل NexusLink — هذا كل شيء.\n\n   | المنصة | الحزمة | ملاحظة |\n   |---|---|---|\n   | Windows | `NexusLink_3.0.0_x64-setup.exe` | NSIS — يثبّت WebView2 تلقائيًا إن غاب؛ بديل MSI أو ZIP محمول |\n   | macOS | `NexusLink_3.0.0_aarch64.dmg` | اسحب التطبيق إلى Applications؛ غير موقّع: زر يمين ← Open أول مرة |\n   | Linux | `NexusLink_3.0.0_amd64.deb` أو `*.AppImage` | AppImage: `chmod +x` ثم شغّل — بلا تثبيت |\n   | Android | `NexusLink-3.0.0-release.apk` | الوكيل — «تثبيت من مصدر غير معروف» مرة واحدة |\n\n2. **المركز يعمل فور الإقلاع بلا أي إعداد**: الواجهة + الخادم المضمّن (:3000)\n   + جسور الإشعارات/الوسائط/التحكم (:3003/:3004/:3005/:3006/:3007/:3009)\n   + البوابة الموحدة (:81) + أيقونة شريط بحالات حية — كلها عمليات مُدارة من\n   التطبيق الأصلي (إغلاق النافذة = تصغير للشريط، لا موت للخدمات).\n\n3. **على الهاتف**: نفس شبكة Wi-Fi ← افتح تطبيق NexusLink ← تبويب **الاتصال** ←\n   امسح QR من واجهة التطبيق على الكمبيوتر (نافذة سطح المكتب، أو من المتصفح:\n   `http://localhost:3000/?app=1`) — أو إدخال يدوي: IP الكمبيوتر + منفذ 81.\n   راية «متصل» تعني أن كل القنوات الأربع (3003/3005/3006/3009) حية.\n\n> **ملاحظة**: الجذر `http://localhost:3000` هو **الموقع الرسمي للمنتج** (تعريف + تحميلات)\n> — واجهة التطبيق في المتصفح على `/?app=1` ونافذة سطح المكتب تفتح `/?desktop=1` تلقائيًا.\n\n4. **الاختبار المشترك الأول**: انسخ نصًا من الهاتف ← `Ctrl+V` على الكمبيوتر؛\n   حرّك مؤشر الكمبيوتر من شاشة Touchpad بالتطبيق؛ أرسل ملفًا بالسحب والإفلات.\n   قائمة التحقق الكاملة لكل ميزة: `docs/e2e-checklist.md`.\n\n**بلا تثبيت إطلاقًا؟** النسخة المحمولة `NexusLink_3.0.0_x64-portable.zip`\n(فك ← شغّل NexusLink.exe) أو AppImage على لينكس.\n\n> طريق المطوّر (تشغيل السيرفر بدون تطبيق سطح المكتب) في §2 أدناه —\n> مخصص للتطوير فقط؛ المستخدم النهائي لا يحتاج منه شيئًا.\n\n---\n\n## 1) المتطلبات (طريق المطوّر)\n\n| الأداة | الإصدار | الغرض |\n|--------|---------|-------|\n| Bun | 1.1+ | تشغيل السيرفر والويب |\n| Flutter SDK | 3.24.x (Dart 3.5) | تطبيق الهاتف |\n| Java JDK | 17 | بناء APK (يحتاج `jlink` — JDK كامل وليس JRE) |\n| Android SDK | platform 34 + build-tools 34 | بناء APK |\n| Caddy | أي حديث | بوابة 81 الموحّدة (اختياري للتطوير، ضروري للنمط الواقعي) |\n\n---\n\n## 2) السيرفر (الكمبيوتر)\n\n```bash\nbun install                 # تبعيات الوِب والسيرفر\nbun run db:generate         # عميل Prisma (بعد أي bun install جديد)\nbun run db:push             # إنشاء/تحديث قاعدة البيانات\nbun run dev                 # next dev "
+ },
+ "DRS-AI-Phone": {
+  "description": "DRS AI - a private AI assistant that runs entirely on your phone",
+  "language": "TypeScript",
+  "topics": [],
+  "homepage": null,
+  "html_url": "https://github.com/CTO-DRS/DRS-AI-Phone",
+  "pushed_at": "2026-10-23T00:05:59Z",
+  "stars": 0,
+  "forks": 0,
+  "license": "MIT",
+  "releases": [
+   {
+    "tag": "v1.41.1",
+    "name": "DRS AI v1.41.1",
+    "published_at": "2026-10-22T10:48:34Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## DRS AI v1.41.1\n\nملف APK موقّع بنفس شهادة الإصدار، يثبّت مباشرة فوق النسخ السابقة.\n\n### المتطلبات\n- أندرويد 7.0 أو أحدث\n- معالج 64 بت (ARM64) — جميع الهواتف الحديثة\n- مساحة تخزين فارغة لا تقل عن 400MB\n\n### التحقق من اكتمال التنزيل قبل التثبيت\n- الحجم الصحيح للملف: **82775672** بايت (≈ 78.9 ميجابايت)\n- SHA-256: `caf681cfc06e1d278b46715e942c5563a1dc00df63c7a0a748ccb374d073a670` (ملف بصمة جانبي مرفق باسم `DRS-AI-v1.41.1.apk.sha256`)\n\nإن ظهرت رسالة «لم يتم تثبيت التطبيق لأن الحزمة تبدو غير صالحة» فالسبب في الغالب أن التنزيل لم يكتمل أو تغيّر أثناء النقل، وليس خللًا في الملف المنشور: أعد التنزيل عبر شبكة مستقرة، وتأكد من تطابق الحجم ثم البصمة قبل التثبيت. أجهزة 32 بت غير مدعومة منذ v1.32.0 وسيرفضها المثبّت.\n\n### ما الجديد في v1.41.1\n- تحصين بدء التشغيل: إعادة إطلاق حتمية عبر AlarmManager بدل الإغلاق الصامت عند تبديل الاتجاه (RTL) لأول مرة.\n- تبني لغة الجهاز عند أول تشغيل لم يعد يعيد تشغيل ا",
+    "assets": [
+     {
+      "name": "DRS-AI-v1.41.1.apk",
+      "size": 82775672,
+      "url": "https://github.com/CTO-DRS/DRS-AI-Phone/releases/download/v1.41.1/DRS-AI-v1.41.1.apk",
+      "downloads": 1
+     },
+     {
+      "name": "DRS-AI-v1.41.1.apk.sha256",
+      "size": 65,
+      "url": "https://github.com/CTO-DRS/DRS-AI-Phone/releases/download/v1.41.1/DRS-AI-v1.41.1.apk.sha256",
+      "downloads": 0
+     }
+    ]
+   },
+   {
+    "tag": "v1.41.0",
+    "name": "DRS AI v1.41.0",
+    "published_at": "2026-10-10T10:20:42Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## DRS AI v1.41.0\n\nملف APK موقّع بنفس شهادة الإصدار، يثبّت مباشرة فوق النسخ السابقة.\n\n### المتطلبات\n- أندرويد 7.0 أو أحدث\n- معالج 64 بت (ARM64) — جميع الهواتف الحديثة\n- مساحة تخزين فارغة لا تقل عن 400MB\n\n### التحقق من اكتمال التنزيل قبل التثبيت\n- الحجم الصحيح للملف: **90439136** بايت (≈ 86.2 ميجابايت)\n- SHA-256: `e642392e17ea0cfca4bc64b06c9a22c53d22f14cbf09bd116ac72ff21ca0e6c7` (ملف بصمة جانبي مرفق باسم `DRS-AI-v1.41.0.apk.sha256`)\n\nإن ظهرت رسالة «لم يتم تثبيت التطبيق لأن الحزمة تبدو غير صالحة» فالسبب في الغالب أن التنزيل لم يكتمل أو تغيّر أثناء النقل، وليس خللًا في الملف المنشور: أعد التنزيل عبر شبكة مستقرة، وتأكد من تطابق الحجم ثم البصمة قبل التثبيت. أجهزة 32 بت غير مدعومة منذ v1.32.0 وسيرفضها المثبّت.\n\n### ما الجديد في v1.41.0\n- تحصين بدء التشغيل: إعادة إطلاق حتمية عبر AlarmManager بدل الإغلاق الصامت عند تبديل الاتجاه (RTL) لأول مرة.\n- تبني لغة الجهاز عند أول تشغيل لم يعد يعيد تشغيل ا",
+    "assets": [
+     {
+      "name": "DRS-AI-v1.41.0.apk",
+      "size": 90439136,
+      "url": "https://github.com/CTO-DRS/DRS-AI-Phone/releases/download/v1.41.0/DRS-AI-v1.41.0.apk",
+      "downloads": 0
+     },
+     {
+      "name": "DRS-AI-v1.41.0.apk.sha256",
+      "size": 65,
+      "url": "https://github.com/CTO-DRS/DRS-AI-Phone/releases/download/v1.41.0/DRS-AI-v1.41.0.apk.sha256",
+      "downloads": 0
+     }
+    ]
+   },
+   {
+    "tag": "v1.40.0",
+    "name": "DRS AI v1.40.0",
+    "published_at": "2026-10-09T12:47:21Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## DRS AI v1.40.0\n\nملف APK موقّع بنفس شهادة الإصدار، يثبّت مباشرة فوق النسخ السابقة.\n\n### الجديد في هذا الإصدار\n- **ودجة الشاشة الرئيسية تعرض حالة النموذج مباشرة**: اسم النموذج النشط يظهر في عنوان الودجة، وتحته حالته الحية (جاهز / جارٍ التحميل / جارٍ توليد الرد / جارٍ التنزيل بنسبة مئوية) — تُحدَّث لحظيًا من داخل التطبيق دون إزعاج النظام.\n- **نسخة احتياطية شاملة بملف واحد**: من الإعدادات > النسخ الاحتياطي والاستعادة — ملف JSON واحد يشمل المحادثات والرسائل والمساعدين وإعدادات التوليد والإعدادات العامة. الاستعادة إضافية آمنة: تعيد ما ينقص فقط ولا تكتب فوق بياناتك الحالية أبدًا.\n- **تنبيه التحديث داخل التطبيق**: عند توفر إصدار جديد يظهر تنبيه عند فتح التطبيق (مرة يوميًا كحد أقصى)، مع زر «لاحقًا» لإسكات إصدار بعينه، مع بقاء بانر التحديث في شاشة «حول».\n\n### المتطلبات\n- أندرويد 7.0 أو أحدث\n- معالج 64 بت (ARM64) — جميع الهواتف الحديثة\n- مساحة تخزين فارغة لا تقل عن 400MB\n\n### التحقق من اكتمال ال",
+    "assets": [
+     {
+      "name": "DRS-AI-v1.40.0.apk",
+      "size": 90436628,
+      "url": "https://github.com/CTO-DRS/DRS-AI-Phone/releases/download/v1.40.0/DRS-AI-v1.40.0.apk",
+      "downloads": 3
+     }
+    ]
+   },
+   {
+    "tag": "v1.39.0",
+    "name": "DRS AI v1.39.0",
+    "published_at": "2026-10-09T09:45:07Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## DRS AI v1.39.0\n\nملف APK موقّع بنفس شهادة الإصدار، يثبّت مباشرة فوق النسخ السابقة.\n\n### المتطلبات\n- أندرويد 7.0 أو أحدث\n- معالج 64 بت (ARM64) — جميع الهواتف الحديثة\n- مساحة تخزين فارغة لا تقل عن 400MB\n\n### التحقق من اكتمال التنزيل قبل التثبيت\n- الحجم الصحيح للملف: **90406783** بايت (≈ 86.2 ميجابايت)\n- SHA-256: `fc235d79a8cfa0580198822c74f575fa797514bef17ae4ef120cdc807e730142`\n\nإن ظهرت رسالة «لم يتم تثبيت التطبيق لأن الحزمة غير صالحة» فالسبب في الغالب أن التنزيل لم يكتمل أو تغيّر أثناء النقل، وليس خللًا في الملف: أعد التنزيل عبر شبكة مستقرة، وتأكد من حجم الملف قبل التثبيت. هذا الإصدار أصغر بنحو 25% بعد إزالة مكتبات المحاكي (x86_64) غير اللازمة للهواتف.\n\n\n**Full Changelog**: https://github.com/CTO-DRS/DRS-AI-Phone/compare/v1.38.0...v1.39.0",
+    "assets": [
+     {
+      "name": "DRS-AI-v1.39.0.apk",
+      "size": 90406783,
+      "url": "https://github.com/CTO-DRS/DRS-AI-Phone/releases/download/v1.39.0/DRS-AI-v1.39.0.apk",
+      "downloads": 2
+     }
+    ]
+   },
+   {
+    "tag": "v1.38.0",
+    "name": "DRS AI v1.38.0",
+    "published_at": "2026-10-09T08:17:25Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## DRS AI v1.38.0\n\nملف APK موقّع بنفس شهادة الإصدار، يثبّت مباشرة فوق النسخ السابقة.\n\n### المتطلبات\n- أندرويد 7.0 أو أحدث\n- معالج 64 بت (ARM64) — جميع الهواتف الحديثة\n- مساحة تخزين فارغة لا تقل عن 400MB\n\n### التحقق من اكتمال التنزيل قبل التثبيت\n- الحجم الصحيح للملف: **90393159** بايت (≈ 86.2 ميجابايت)\n- SHA-256: `765986a761c36beb48e53c2033053bd27cfe4b13f3af9c8d13449404fb727060`\n\nإن ظهرت رسالة «لم يتم تثبيت التطبيق لأن الحزمة غير صالحة» فالسبب في الغالب أن التنزيل لم يكتمل أو تغيّر أثناء النقل، وليس خللًا في الملف: أعد التنزيل عبر شبكة مستقرة، وتأكد من حجم الملف قبل التثبيت. هذا الإصدار أصغر بنحو 25% بعد إزالة مكتبات المحاكي (x86_64) غير اللازمة للهواتف.\n\n\n**Full Changelog**: https://github.com/CTO-DRS/DRS-AI-Phone/compare/v1.37.0...v1.38.0",
+    "assets": [
+     {
+      "name": "DRS-AI-v1.38.0.apk",
+      "size": 90393159,
+      "url": "https://github.com/CTO-DRS/DRS-AI-Phone/releases/download/v1.38.0/DRS-AI-v1.38.0.apk",
+      "downloads": 1
+     }
+    ]
+   }
+  ],
+  "readme_excerpt": "<div align=\"center\">\n\n<img src=\"src/assets/drs-ai-mark.png\" alt=\"DRS AI logo\" width=\"120\" />\n\n<img src=\"assets/images and logos/banner.png\" alt=\"DRS AI — Run AI models privately on your phone\" width=\"100%\" />\n\n# DRS AI\n\n**A private AI assistant that runs entirely on your phone.**\n\nChat with language models, give them a voice, and let them use tools — all on-device. No account, no cloud, no internet required.\n\n</div>\n\n---\n\n## Why DRS AI?\n\nMost AI apps are a thin window onto someone else's server — every message you type gets shipped off, logged, and analyzed somewhere you can't see. DRS AI flips that around: **the AI lives on your phone, and your conversations never leave it.**\n\n- **🔒 Private by default** — every prompt, response, and document stays on your device. Nothing is uploaded or stored on external servers.\n- **✈️ Works offline** — download a model once and it just works, with no connection and no account. On a plane, on a trail, anywhere.\n- **📱 Runs on hardware you already own** — real language models, voices, and tools, tuned to make the most of your phone's CPU, GPU, and NPU.\n- **🆓 Free and MIT-licensed** — no subscription, no \"pro\" tier to unlock the AI. The complete source code is available under the MIT license.\n\n> **Privacy note:** The only data that ever leaves your device is what you explicitly choose to share — opt-in benchmark sharing and feedback you submit through the app.\n\n## Contents\n\n- [Features](#features)\n- [How it works](#how-it-works)\n- [Using the app](#using-the-app)\n- [For developers](#for-developers)\n- [Contributing](#contributing)\n- [License](#license)\n\n## Features\n\n- **🧠 On-device chat** — run GGUF language models (Gemma, Qwen, Phi, Llama, and more) fully offline.\n- **🗣️ Text-to-speech** — give your assistant a voice with on-device neural TTS (Kokoro and other engines), no cloud calls.\n- **🎭 Assistants** — create personalized assistants with their own model, system prompt, and personality (Assistant and Roleplay types).\n- **🔎 Chat history search** — instantly filter your conversations by title or message content from the sidebar, with Arabic/RTL-aware layout.\n- **🗂️ Folders & tags** — organize chats into folders and tag them with keywords; one-tap filter chips live right under the search bar (long-press a chip to rename or delete a folder, or delete a tag everywhere).\n- **📊 Chat statistics** — see message/word counts per session or across all history, plus the most frequent topics you chat about.\n- **📄 PDF export** — export any chat as a print-ready PDF (alongside JSON and Markdown), with full right-to-left/Arabic typesetting powered by an embedded Amiri font.\n- **🛍️ Drshub** — discover and install community Assistants from the in-app marketplace (disabled by default in this build).\n- **🛠️ Talents & tools** — let capable Assistants call built-in tools (calculator, date/time, rich HTML rendering) inside a tool-use loop.\n- **📥 Hugging Face integration** — search and download GGUF models, including gated ones, directl"
+ },
+ "nexora-verify": {
+  "description": "DRS NEXORA - email verification pages (confirm signup / reset password)",
+  "language": "HTML",
+  "topics": [],
+  "homepage": null,
+  "html_url": "https://github.com/CTO-DRS/nexora-verify",
+  "pushed_at": "2026-10-22T02:46:54Z",
+  "stars": 0,
+  "forks": 0,
+  "license": null,
+  "releases": [
+   {
+    "tag": "v0.1.4",
+    "name": "DRS NEXORA v0.1.4 — شريط التنقل العائم المطابق للتصميم",
+    "published_at": "2026-10-22T02:39:12Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## DRS NEXORA v0.1.4 — شريط التنقل العائم المطابق للتصميم\n\nالإصدار الخامس تحت الترقيم الجديد (versionCode 6): تحسين بصري مركّز على الشريط السفلي ليطابق التصميم المرجعي بدقة، دون أي تغيير على التشفير أو الخادم.\n\n### الجديد في v0.1.4\n- **شريط تنقل عائم**: لم يعد ملء-العرض بحواف مربعة — صار لوحة عائمة بهوامش من الجانبين، حواف دائرية كبيرة، حدود خفيفة، وظل ناعم\n- **الزر المركزي المتوهج جزء من الشريط**: دائرة بنفسجية متدرجة (64px) تبرز فوق الحافة العلوية للشريط بأيقونة فقاعة محادثة مع «+» وتوهج مضاعف\n- **أيقونة الأصدقاء**: بنمط group-add المطابق للتصميم (شخصان مع إشارة إضافة)\n- تحسين حجم الأيقونات والتسميات (24px / 11px) ليتناسب مع الشريط الجديد\n\n### بلا تغيير على الأساس المشفر\n- X3DH + Double Ratchet كما هي — التثبيت فوق v0.1.0 حتى v0.1.3 مباشرة (versionCode 6)\n- الحزم بالتغليف المضغوط المقدّم في v0.1.3 (الأحجام الصغيرة نفسها تقريباً)\n\n### التحميل\n| الملف | الاستخدام |\n|---|---|\n| `app-unive",
+    "assets": [
+     {
+      "name": "app-arm64-v8a-release.apk",
+      "size": 22833982,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.4/app-arm64-v8a-release.apk",
+      "downloads": 1
+     },
+     {
+      "name": "app-armeabi-v7a-release.apk",
+      "size": 21150070,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.4/app-armeabi-v7a-release.apk",
+      "downloads": 1
+     },
+     {
+      "name": "app-universal-release.apk",
+      "size": 35540108,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.4/app-universal-release.apk",
+      "downloads": 1
+     },
+     {
+      "name": "SHA256SUMS.txt",
+      "size": 278,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.4/SHA256SUMS.txt",
+      "downloads": 1
+     }
+    ]
+   },
+   {
+    "tag": "v0.1.3",
+    "name": "DRS NEXORA v0.1.3 — حزم أخف وأوثق للتنزيل",
+    "published_at": "2026-10-22T01:14:08Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## DRS NEXORA v0.1.3 — حزم أخف وأوثق للتنزيل\n\nالإصدار الرابع تحت الترقيم الجديد (versionCode 5): لا تغيير على الواجهة ولا على التشفير — تركيزه الكامل على موثوقية التنزيل والتثبيت على الهواتف.\n\n### الجديد في v0.1.3\n- **حجم أصغر بنحو 35%**: تفعيل التغليف المضغوط القياسي للمكتبات الأصلية — تنزيل أسرع وأقل عرضة للتقطيع على شبكات الجوال\n- **الحزمة الشاملة أصبحت تحت 50MB**: تُنزَّل الآن مباشرة من مرآة خوادم التطبيق كملف واحد يعمل على جميع الهواتف (arm64 + ARMv7) دون اختيار معمارية\n- **توافق كامل مع أجهزة الصفحات 16KB**: المحاذاة ورؤوس ELF لكل المكتبات فُحصت بايتياً — لا حاجب تثبيت على أحدث هواتف 2025/2026\n\n### بلا تغيير على الأساس المشفر\n- X3DH + Double Ratchet كما هي — المفاتيح والجلسات القائمة تعمل بلا إعادة تثبيت\n- التثبيت فوق v0.1.0/v0.1.1/v0.1.2 مباشرة (versionCode 5)\n\n### التحميل\n| الملف | الاستخدام |\n|---|---|\n| `app-universal-release.apk` | **موصى بها** — تعمل على جميع الهواتف، الآن من",
+    "assets": [
+     {
+      "name": "app-arm64-v8a-release.apk",
+      "size": 22835762,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.3/app-arm64-v8a-release.apk",
+      "downloads": 1
+     },
+     {
+      "name": "app-armeabi-v7a-release.apk",
+      "size": 21154406,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.3/app-armeabi-v7a-release.apk",
+      "downloads": 1
+     },
+     {
+      "name": "app-universal-release.apk",
+      "size": 35546204,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.3/app-universal-release.apk",
+      "downloads": 1
+     },
+     {
+      "name": "SHA256SUMS.txt",
+      "size": 278,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.3/SHA256SUMS.txt",
+      "downloads": 2
+     }
+    ]
+   },
+   {
+    "tag": "v0.1.2",
+    "name": "DRS NEXORA v0.1.2 — الواجهة النيونية وقاعدة التنقل الجديدة",
+    "published_at": "2026-10-22T00:35:40Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## DRS NEXORA v0.1.2 — إعادة التصوير «النيون البنفسجي»\n\nالإصدار الثالث تحت الترقيم الجديد (versionCode 4): واجهة جديدة كاملة بتصميم «Nebula» الداكن بنفسجي نيوني، قاعدة تنقل سفلية بأربعة أقسام، ولوحة رئيسية ببانر ترحيب — على نفس محرك التشفير طرف-لطرف دون أي تغيير عليه.\n\n### الجديد في v0.1.2\n- **الشاشة الرئيسية الجديدة**: بانر ترحيب «مرحباً بك مجدداً» مع درع NEXORA المتوهج، شريط بحث أنيق، صف صور رمزية لجهات الاتصال مع نقطة الحالة الخضراء الحية، وفلاتر (الكل / محادثات / المجموعات)\n- **قاعدة تنقل سفلية**: الرئيسية • المحادثات • زر الإنشاء المركزي العائم • الأصدقاء • المزيد\n- **تبويب الأصدقاء**: كل جهات اتصالك مع حالة الاتصال الفعلية (الخادم يفرض قواعد الخصوصية)، وأزرار محادثة/اتصال صوتي/فيديو مباشرة، وبطاقات سريعة (محادثة جديدة، المجموعات، دعوة صديق)\n- **تبويب المزيد**: مركز واحد للملف الشخصي، الرسائل المحفوظة، الأمان، الإعدادات، ولوحة الإدارة (للأدمن)\n- **بطاقات المحادثات**: لوحات زجاجية بح",
+    "assets": [
+     {
+      "name": "app-arm64-v8a-release.apk",
+      "size": 40477934,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.2/app-arm64-v8a-release.apk",
+      "downloads": 2
+     },
+     {
+      "name": "app-armeabi-v7a-release.apk",
+      "size": 33769178,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.2/app-armeabi-v7a-release.apk",
+      "downloads": 1
+     },
+     {
+      "name": "app-universal-release.apk",
+      "size": 65800216,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.2/app-universal-release.apk",
+      "downloads": 3
+     },
+     {
+      "name": "SHA256SUMS.txt",
+      "size": 278,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.2/SHA256SUMS.txt",
+      "downloads": 1
+     }
+    ]
+   },
+   {
+    "tag": "v0.1.1",
+    "name": "DRS NEXORA v0.1.1 — لوحة الإدارة وعلامة التوثيق",
+    "published_at": "2026-10-21T20:34:10Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## DRS NEXORA v0.1.1 — لوحة الإدارة وعلامة التوثيق\n\nإصدار تجريبي ثانٍ تحت الترقيم الجديد (versionCode 3)، يبني على أساس v0.1.0 ويضيف نظام إشراف منصّي كاملًا محميًا على مستوى قاعدة البيانات.\n\n### الجديد في v0.1.1\n- **لوحة الإدارة**: شاشة داخل التطبيق (تظهر في الإعدادات للأدمن فقط) لعرض كل المستخدمين مع حالة كل حساب\n- **الحظر الفعلي**: حظر أي مستخدم ليوم / 7 أيام / 30 يوماً / سنة — يمنع الدخول فوراً عبر GoTrue ويلغي جلساته القائمة، مع رفع الحظر متى شئت\n- **علامة التوثيق ✔**: شارة زرقاء بجانب اسم الحسابات الموثقة — تظهر في قائمة المحادثات وشريط المحادثة العلوي والملف الشخصي\n- **شارة «أدمن»**: تمييز حسابات الإدارة\n- **ترقية/إنزال الأدمن**: منح أو سحب صلاحية الإدارة لأي حساب\n- **حماية من الترقية الذاتية**: أعمدة الدور والتوثيق محجوبة عن التحديث المباشر عبر الـ API (سحب صلاحيات على مستوى الأعمدة) — التغيير فقط عبر دوال RPC محمية تتحقق من هوية الأدمن\n\n### حزمة v0.1.0 (مازالت الأساس)\n- **الرسائل",
+    "assets": [
+     {
+      "name": "app-arm64-v8a-release.apk",
+      "size": 40411090,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.1/app-arm64-v8a-release.apk",
+      "downloads": 3
+     },
+     {
+      "name": "app-armeabi-v7a-release.apk",
+      "size": 33702330,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.1/app-armeabi-v7a-release.apk",
+      "downloads": 3
+     },
+     {
+      "name": "app-universal-release.apk",
+      "size": 65667836,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.1/app-universal-release.apk",
+      "downloads": 4
+     },
+     {
+      "name": "SHA256SUMS.txt",
+      "size": 278,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.1/SHA256SUMS.txt",
+      "downloads": 2
+     }
+    ]
+   },
+   {
+    "tag": "v0.1.0",
+    "name": "DRS NEXORA v0.1.0 — النسخة التجريبية الأولى",
+    "published_at": "2026-10-21T00:07:27Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## DRS NEXORA v0.1.0 — النسخة التجريبية الأولى\n\nأول إصدار رسمي تحت الترقيم الجديد **v0.1.0** (versionCode 1) بعد تصفير خط الإصدارات، مبني وموقّع آلياً في سير عمل موثّق.\n\n### حزمة الميزات\n- **الرسائل المؤقتة (TTL)**: مدة بقاء قابلة للاختيار — 24 ساعة / 7 أيام / 90 يوماً — مع حذف تلقائي من الخادم والأجهزة\n- **الرسائل المحفوظة ⭐**: قائمة نجوم كاملة (جدول `message_stars` مع سياسات RLS)\n- **السحب للرد**: إيماءة سحب RTL على أي رسالة للرد السريع\n- **تصدير المحادثة**: حفظ المحادثة كملف `.txt` نصي\n- **معرض الوسائط**: شبكة معاينة لكل صور وفيديوهات المحادثة\n\n### التحميل\n| الملف | الاستخدام |\n|---|---|\n| `app-universal-release.apk` | **موصى بها** — تعمل على جميع الهواتف (arm64 + ARMv7) |\n| `app-arm64-v8a-release.apk` | الهواتف الحديثة 64-بت — أصغر حجماً |\n| `app-armeabi-v7a-release.apk` | الهواتف الأقدم (معالج 32-بت) |\n\nصفحة التحميل: https://cto-drs.github.io/nexora-verify/ — تتعرف آلياً على نسخة أن",
+    "assets": [
+     {
+      "name": "app-arm64-v8a-release.apk",
+      "size": 40410410,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.0/app-arm64-v8a-release.apk",
+      "downloads": 4
+     },
+     {
+      "name": "app-armeabi-v7a-release.apk",
+      "size": 33685266,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.0/app-armeabi-v7a-release.apk",
+      "downloads": 2
+     },
+     {
+      "name": "app-universal-release.apk",
+      "size": 65650772,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.0/app-universal-release.apk",
+      "downloads": 4
+     },
+     {
+      "name": "SHA256SUMS.txt",
+      "size": 278,
+      "url": "https://github.com/CTO-DRS/nexora-verify/releases/download/v0.1.0/SHA256SUMS.txt",
+      "downloads": 1
+     }
+    ]
+   }
+  ],
+  "readme_excerpt": "# DRS NEXORA — Verification Site\n\nصفحات التحقق الرسمية لتطبيق **DRS NEXORA** (تأكيد التسجيل / تعيين كلمة المرور).\nمستضافة عبر GitHub Pages على هذا المستودع.\n\n**الرابط المباشر:** `https://cto-drs.github.io/nexora-verify/`\n\n| الصفحة | الوظيفة |\n|---|---|\n| `index.html` | صفحة الهبوط + توجيه تلقائي حسب نوع عملية التحقق |\n| `confirm.html` | تأكيد التسجيل (type=signup) وتأكيد تغيير البريد (type=email_change) |\n| `reset.html` | تعيين/إعادة تعيين كلمة المرور (type=recovery) وأول كلمة مرور للدعوات (type=invite) |\n\n- **المصدر الحقيقي للملفات** داخل مستودع التطبيق: `drs-nexora/verification-site/` — أي تعديل يتم هناك ثم يُنشر بالسكربت `scripts/deploy-verify-site.sh` من مستودع التطبيق.\n- الصفحات تستخدم مفتاح Supabase **publishable** فقط (عام بطبيعته، مثل مفاتيح Firebase العامة).\n- لا تُخزَّن أي جلسات على هذا النطاق (`persistSession: false`).\n- تُضاف هذه الروابط إلى قائمة **Redirect URLs** في لوحة Supabase — التفاصيل الكاملة في مستودع التطبيق: `docs/EMAIL_SETUP.md`.\n"
+ },
+ "DRS-AI-Web": {
+  "description": "DRS AI — Enterprise AI Operating System with 40+ microservices. Self-hosted, 100% offline, multilingual (Arabic/English/French/German). Includes mobile (React Native), desktop (Electron), and Kubernetes Helm chart.",
+  "language": "TypeScript",
+  "topics": [
+   "ai",
+   "ai-operating-system",
+   "arabic",
+   "draggable-workflows",
+   "electron",
+   "enterprise",
+   "federated-learning",
+   "gpu",
+   "helm-chart",
+   "kubernetes",
+   "llm",
+   "microservices",
+   "multi-region",
+   "offline-first",
+   "ollama",
+   "rag",
+   "react-native",
+   "security",
+   "self-hosted",
+   "typescript"
+  ],
+  "homepage": "https://cto-drs.github.io/DRS-AI-Web/",
+  "html_url": "https://github.com/CTO-DRS/DRS-AI-Web",
+  "pushed_at": "2026-10-21T09:56:32Z",
+  "stars": 1,
+  "forks": 1,
+  "license": "MIT",
+  "releases": [],
+  "readme_excerpt": "<p align=\"center\">\n  <img src=\"assets/banners/banner.svg\" alt=\"DRS AI Banner\" width=\"100%\" />\n</p>\n\n<h1 align=\"center\">DRS AI</h1>\n\n<p align=\"center\">\n  <strong>Enterprise AI Operating System</strong>\n  <br/>\n  <sub>40+ microservices · Self-hosted · 100% offline · Multi-region</sub>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/CTO-DRS/DRS-AI-Web/releases\"><img alt=\"Version\" src=\"https://img.shields.io/badge/version-1.0.0-6366f1?style=flat-square\"></a>\n  <a href=\"LICENSE\"><img alt=\"License: MIT\" src=\"https://img.shields.io/badge/license-MIT-22c55e?style=flat-square\"></a>\n  <a href=\"https://github.com/CTO-DRS/DRS-AI-Web/actions/workflows/ci.yml\"><img alt=\"CI\" src=\"https://img.shields.io/github/actions/workflow/status/CTO-DRS/DRS-AI-Web/ci.yml?branch=main&style=flat-square&label=CI\"></a>\n  <a href=\"https://github.com/CTO-DRS/DRS-AI-Web/actions/workflows/docker.yml\"><img alt=\"Docker\" src=\"https://img.shields.io/github/actions/workflow/status/CTO-DRS/DRS-AI-Web/docker.yml?branch=main&style=flat-square&label=Docker\"></a>\n  <a href=\"https://github.com/CTO-DRS/DRS-AI-Web/actions/workflows/codeql.yml\"><img alt=\"CodeQL\" src=\"https://img.shields.io/github/actions/workflow/status/CTO-DRS/DRS-AI-Web/codeql.yml?branch=main&style=flat-square&label=CodeQL\"></a>\n  <img alt=\"Node.js\" src=\"https://img.shields.io/badge/Node.js-%E2%89%A518-339933?style=flat-square&logo=node.js&logoColor=white\">\n  <img alt=\"TypeScript\" src=\"https://img.shields.io/badge/TypeScript-5.x-3178c6?style=flat-square&logo=typescript&logoColor=white\">\n  <img alt=\"Docker\" src=\"https://img.shields.io/badge/Docker-Ready-2496ed?style=flat-square&logo=docker&logoColor=white\">\n  <img alt=\"Kubernetes\" src=\"https://img.shields.io/badge/Kubernetes-Helm%20Chart-326ce5?style=flat-square&logo=kubernetes&logoColor=white\">\n  <img alt=\"Ollama\" src=\"https://img.shields.io/badge/Ollama-Integrated-fd7e14?style=flat-square\">\n  <img alt=\"Services\" src=\"https://img.shields.io/badge/services-40+-8b5cf6?style=flat-square\">\n  <img alt=\"API endpoints\" src=\"https://img.shields.io/badge/API%20endpoints-400+-10b981?style=flat-square\">\n  <img alt=\"Languages\" src=\"https://img.shields.io/badge/UI%20languages-ar%20%7C%20en%20%7C%20fr%20%7C%20de-f59e0b?style=flat-square\">\n</p>\n\n<p align=\"center\">\n  <a href=\"#-quick-start\">🚀 Quick Start</a> ·\n  <a href=\"#-architecture\">🏗️ Architecture</a> ·\n  <a href=\"docs/\">📚 Docs</a> ·\n  <a href=\"CONTRIBUTING.md\">🤝 Contributing</a> ·\n  <a href=\"SECURITY.md\">🔒 Security</a> ·\n  <a href=\"CHANGELOG.md\">🔄 Changelog</a>\n</p>\n\n---\n\n## 📖 Overview\n\nDRS AI is a comprehensive, **locally-hosted AI Operating System** that runs entirely offline. Built on a microservices architecture with **40+ integrated services**, it provides a complete enterprise AI solution without requiring internet connectivity or cloud dependencies.\n\n### 🎯 Why DRS AI?\n\n- 🏠 **100% On-Premise** — No cloud dependencies, no data leaves your network\n- 🔒 **Privacy-First** — GDPR / CCPA / Saudi NDMO compliant by design\n- 🧠 **Mult"
+ },
+ "SuperBiz": {
+  "description": "📱 SuperBiz V 1.0.0 — First Official Release — نظام إدارة الأعمال المتكامل (أندرويد، يعمل دون اتصال 100%) · 1444 اختباراً ✓",
+  "language": "Kotlin",
+  "topics": [
+   "android",
+   "arabic",
+   "business-management",
+   "inventory",
+   "invoice",
+   "jetpack-compose",
+   "kotlin",
+   "offline-first",
+   "pos",
+   "zatca"
+  ],
+  "homepage": null,
+  "html_url": "https://github.com/CTO-DRS/SuperBiz",
+  "pushed_at": "2026-10-21T12:52:50Z",
+  "stars": 0,
+  "forks": 0,
+  "license": null,
+  "releases": [
+   {
+    "tag": "v3.5.2",
+    "name": "SuperBiz V 3.5.2 — the manual line finally speaks (free-text item description)",
+    "published_at": "2026-10-20T20:17:22Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "# SuperBiz V 3.5.2 — «السطر اليدوي يُسمَع أخيراً» (Owner bug fix)\n\n**versionCode 23 · branch `fix/invoice-free-line-v352` from main `dafb8c4` · 2026-10-21**\n\n## EN — What shipped\n\nOwner-reported bug, fixed end-to-end with documented RED-first evidence:\n\n- **The bug:** a new invoice line with qty=22 × price=600 (subtotal 13,200.00 shown) was rejected on Save with *\"Add at least one item with a description and a quantity above zero\"* — while tax/total showed 0.00. Root cause: the line description could only ever be set by picking a saved product (tapping the line title opens the product picker) — **there was no free-text description input anywhere in the editor**, yet the save filter, the preview filter and the UI gate all required `desc.isNotBlank()`. A manual line was unnameable and unsavable; the message demanded something the UI had no way to enter.\n- **The fix (V 3.5.2):**\n  - Free-te",
+    "assets": [
+     {
+      "name": "SuperBiz-v3.5.2-debug.apk",
+      "size": 26755399,
+      "url": "https://github.com/CTO-DRS/SuperBiz/releases/download/v3.5.2/SuperBiz-v3.5.2-debug.apk",
+      "downloads": 1
+     }
+    ]
+   },
+   {
+    "tag": "v3.5.1",
+    "name": "SuperBiz V 3.5.1 — Phase-0 delta: both rulings executed, biometric lockout closed",
+    "published_at": "2026-10-20T15:55:20Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "# SuperBiz V 3.5.1 — Phase-0 Delta: Both Rulings Executed, Biometric Lockout Closed (E0.2 / E0.4-b)\n\nThe honest reconciliation wave. The parallel Phase-0/1/2 sessions (PRs #2/#3/#4, merged) completed E0.4's data-layer RBAC parity, published `docs/RBAC_MATRIX.md`, and landed Phases 1 and 2-wave-1 — but **executed neither of the two §13-ه owner rulings**, and the biometric unlock path still bypassed an active `LockoutPolicy` lock. A second session, working from a stale base without knowledge of those merges, had independently rebuilt E0.4 (PR #5 — closed unmerged; cross-validation note: both passes identified the same four unenforced matrix rows). This release lands **only the genuine delta** from current main: `roadmap/p0-delta-v351` → PR #6 → merge commit on `main`.\n\n## What was done\n\n- **[E0.2 — Ruling 2, Option A] Webhook unsigned-fallback is fail-closed.** `WebhookStore.secretConfigur",
+    "assets": [
+     {
+      "name": "SuperBiz-v3.5.1-debug.apk",
+      "size": 26755399,
+      "url": "https://github.com/CTO-DRS/SuperBiz/releases/download/v3.5.1/SuperBiz-v3.5.1-debug.apk",
+      "downloads": 0
+     }
+    ]
+   },
+   {
+    "tag": "v3.5.0",
+    "name": "SuperBiz V 3.5.0 — branches multiply without ghosts (E2.1: multi-branch data core, transfer engine, no-ghost invariant)",
+    "published_at": "2026-10-20T12:38:11Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "# SuperBiz V 3.5.0 — \"Branches multiply without ghosts: every unit accounted on every transfer path\" (E2.1)\n\n**versionCode:** 21 · **Merge:** `482b970` (PR #4) · **Base:** main `c9e24f4` (V 3.4.0)\n\nRoadmap Phase 2 first wave (Merchant Depth). The epic's own V3.5–V3.6 split governs this release: **the data core ships in V3.5** — branch/warehouse entities, the transfer engine with explicit in-transit state, and the conservation invariant — while the surfaces (stocktake sessions UI, transfer screens, transfer-plane reconciliation with POS) ride V3.6.\n\n## What shipped\n\n- **Schema 19** — four append-only tables with the exact Room-generated DDL: `branches` (unique name), `branch_stock` (composite-PK per-branch transfer-plane ledger), `stock_transfers` (IN_TRANSIT / RECEIVED / CANCELED), `stock_transfer_lines` (qty vs receivedQty = the recorded variance). Idempotent seed (`INSERT OR IGNORE`): ",
+    "assets": [
+     {
+      "name": "SuperBiz-v3.5.0-debug.apk",
+      "size": 26722631,
+      "url": "https://github.com/CTO-DRS/SuperBiz/releases/download/v3.5.0/SuperBiz-v3.5.0-debug.apk",
+      "downloads": 0
+     }
+    ]
+   },
+   {
+    "tag": "v3.4.0",
+    "name": "SuperBiz V 3.4.0 — performance as a contract (E1.1-E1.5: CI pipelines, budget gate, named conflict policy, telemetry)",
+    "published_at": "2026-10-20T12:05:24Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "# SuperBiz V 3.4.0 — \"Performance is a contract, not a hope\" (E1.1–E1.5)\n\n**versionCode:** 20 · **Merge:** `c9e24f4` (PR #3) · **Base:** main `ed37115` (V 3.3.0)\n\nRoadmap Phase 1 (Performance & Reliability Foundations) — everything executable without hardware, verified; everything device-bound honestly marked.\n\n## What shipped\n\n- **[E1.1] Performance budget gate — the 5th quality gate** (`tools/check_perf_budgets.py`): cold start p50 < 2.0s, search p95 < 200ms @ 10k items, sync p95 < 2.0s, checkout p50 ≤ 30s. Self-tested falsifiable (catches a regression, fails closed on corrupt files), honest `NOT-VERIFIED-ON-DEVICE` mode until the E0.3 device matrix lands — enforced in CI the moment a results file is attached. Macrobenchmark harness authored under `docs/perf-harness/` with a documented activation gate — **unbuilt code never enters the build graph**.\n- **[E1.2] CI/CD**: `ci.yml` (every ",
+    "assets": [
+     {
+      "name": "SuperBiz-v3.4.0-debug.apk",
+      "size": 26722631,
+      "url": "https://github.com/CTO-DRS/SuperBiz/releases/download/v3.4.0/SuperBiz-v3.4.0-debug.apk",
+      "downloads": 0
+     }
+    ]
+   },
+   {
+    "tag": "v3.3.0",
+    "name": "SuperBiz V 3.3.0 — the data layer guards itself (E0.4: 19 write points matrix-locked)",
+    "published_at": "2026-10-20T11:32:06Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## SuperBiz V 3.3.0 — «طبقة البيانات تحرس نفسها: كل خلية محروسة بالاسم، وارتداد الرمز يُدوَّن» (E0.4)\n\n**التاريخ:** 2026-10-20 · **versionCode:** 19 · **الفرع:** `review/independent-premerge-2026-10`\n\nموجة أولى من تنفيذ خارطة الطريق (E0.4 — «إكمال توازي RBAC للعامل عبر بقية المستودعات») بعد أن صار main = `d555c39` حرفياً حامل سلسلة R1–R11 الموثقة. المصفوفة النقية كانت محكومة منذ v13 (68 خلية بالاسم في `RbacMatrixTest`) وطبقة البيانات كانت محروسة جزئياً (BackupRepo/BackupRestoreRepo/WebhookStore/StatementPrefs منذ RVW-12 وما قبله) — هذه الموجة تُكمل الحرس عند **حد المستودع** لنقاط الكتابة في بقية المستودعات، انعكاساً لبوابات قائمة لا سياسة جديدة، وبنفس العمليات السبعة عشر حصراً (عقد «الافتراض مغلق»: لا Op جديد).\n\n### ما أُنجز\n- **حرس طبقة البيانات على 9 مستودعات (19 نقطة كتابة):** فاتورة بيع/شراء/إلغاء (POS_SELL/INVENTORY_MANAGE/INVOICE_CANCEL) · صنف قائم/أرشفة/حذف/حركة يدوية (PARTY_PRODU",
+    "assets": [
+     {
+      "name": "app-release.aab",
+      "size": 9970052,
+      "url": "https://github.com/CTO-DRS/SuperBiz/releases/download/v3.3.0/app-release.aab",
+      "downloads": 0
+     },
+     {
+      "name": "app-release.apk",
+      "size": 6247871,
+      "url": "https://github.com/CTO-DRS/SuperBiz/releases/download/v3.3.0/app-release.apk",
+      "downloads": 0
+     },
+     {
+      "name": "SuperBiz-v3.3.0-debug.apk",
+      "size": 26718476,
+      "url": "https://github.com/CTO-DRS/SuperBiz/releases/download/v3.3.0/SuperBiz-v3.3.0-debug.apk",
+      "downloads": 0
+     }
+    ]
+   }
+  ],
+  "readme_excerpt": "# SuperBiz\n\n**Version: V 3.2.1**\n**موجة التدقيق الهندسي 2026-10 — تسع علات مؤكدة مغلقة باختبارات انحدار**\n\n![SuperBiz](assets/banner.png)\n\n![Version](https://img.shields.io/badge/الإصدار-V%203.2.1-8B5CF6?style=flat-square&labelColor=0B1026)\n![Tests](https://img.shields.io/badge/الاختبارات-1716%20خضراء-34D399?style=flat-square&labelColor=0B1026)\n![Platform](https://img.shields.io/badge/Android-7.0%2B%20(minSdk%2024)-3B82F6?style=flat-square&labelColor=0B1026)\n![Kotlin](https://img.shields.io/badge/Kotlin-2.0.21-8B5CF6?style=flat-square&labelColor=0B1026)\n![Compose](https://img.shields.io/badge/Jetpack%20Compose-Material%203-22D3EE?style=flat-square&labelColor=0B1026)\n![Offline](https://img.shields.io/badge/يعمل-دون%20اتصال-FBBF24?style=flat-square&labelColor=0B1026)\n![CI](https://github.com/CTO-DRS/SuperBiz/actions/workflows/ci.yml/badge.svg)\n![Release](https://github.com/CTO-DRS/SuperBiz/actions/workflows/release.yml/badge.svg)\n![Latest](https://img.shields.io/github/v/release/CTO-DRS/SuperBiz?style=flat-square&labelColor=0B1026)\n\n---\n\n> ⬇️ **تحميل جاهز للتثبيت:** حزمة **APK موقّعة** (وأيضًا AAB للمتجر) متاحة مباشرةً من [إصدار V 3.2.0](https://github.com/CTO-DRS/SuperBiz/releases/tag/v3.2.0) — تُبنى وتُوقّع وتُرفق آليًا مع كل وسم `v*` عبر GitHub Actions.\n\n## وصف المشروع\n\nSuperBiz هو تطبيق أندرويد أصلي (Native) لإدارة الأعمال الصغيرة والمتوسطة، يجمع في تطبيق واحد: نقطة البيع، الفواتير، المخزون، الذمم، الأقساط، الشيكات، المصروفات، التقارير، كشوف الحساب، الطباعة الحرارية والـPDF، والويدجت — وكل ذلك يعمل **دون اتصال بالإنترنت 100%**.\n\n- **المنصة:** Android Native\n- **اللغة:** Kotlin + Jetpack Compose (Material 3)\n- **الواجهة:** العربية أولًا (RTL أصيل) مع خمس لغات مشحونة بتغطية 100% (2427 نصًا × 5: الإنجليزية والأوردية والتركية والإندونيسية — مثبتة آلياً ببوابة CI وفق `docs/LANGUAGE_PLAN.md`)\n- **العملات:** متعددة — فواتير ومصروفات بعملات أجنبية تُختَم بسعرها التاريخي، وتقارير موحّدة بعملة الأساس، وصفر Double في أي مسار مالي (موجة R17 + مخطط v15)\n- **قاعدة البيانات:** Room (مخطط v16 — المال مخزَّن Long قروش، هوية/ساعة للمزامنة + sync_log)\n- **الاختبارات:** 1716 اختبار وحدة أخضر في 146 ملف اختبار\n- **الحجم:** 190 ملف Kotlin (~67 ألف سطر) · 29 شاشة Compose · 17 مستودع بيانات · 57 ملف محركات ومنطق نق Pure\n\n## الهدف من التطبيق\n\nتمكين صاحب العمل الصغير من إدارة متجره بالكامل من هاتفه دون خادم، دون اشتراك سحابي، ودون اتصال إنترنت إجباريًا: بيع وتحصيل ومحاسبة قيد مزدوج وفوترة متوافقة مع متطلبات الفوترة الإلكترونية (ZATCA) وتقارير تدعم القرار — مع بقاء كل البيانات **على جهاز المستخدم فقط**.\n\n## المميزات (كما وُجدت فعليًا في هذا الإصدار)\n\n| المجال | التفاصيل |\n|---|---|\n| **نقطة البيع (POS)** | سلة ذكية، بيع حر، باركود (توليد + مسح ZXing)، خصومات سلة/سطر، كوبونات خصم، استبدال نقاط ولاء، طرق دفع متعددة، إيصال حراري |\n| **الفواتير** | بيع/آجل/مرتجع، ترقيم تسلسلي من قاعدة البيانات داخل المعاملة، إلغاء آمن يعكس أثره، PDF متعدد الصفحات، حقول ضريبية على مستوى السطر (قياسية/صفرية/معفاة + نسبة صريحة) |\n| **المخزون** | حركات مخزنية ذرّية داخل معاملة Room، تنبيه مخزون "
+ },
+ "drs-nexus": {
+  "description": "DRS Nexus — native Android offline developer toolkit: 11 real tools, bilingual AR/EN, RTL, Compose + Room",
+  "language": "Kotlin",
+  "topics": [],
+  "homepage": null,
+  "html_url": "https://github.com/CTO-DRS/drs-nexus",
+  "pushed_at": "2026-10-20T01:04:13Z",
+  "stars": 0,
+  "forks": 0,
+  "license": "MIT",
+  "releases": [
+   {
+    "tag": "v5.4.0",
+    "name": "DRS Nexus v5.4.0",
+    "published_at": "2026-10-20T01:04:42Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "# DRS Nexus v5.4.0\n\nThree new features in this round — all offline, all native:\n\n## Usage insights (new screen)\n- Entry point: the chart icon in the History top bar.\n- Real aggregates computed from the Room history through a new pure `UsageStats` engine in `core-common`: total runs, distinct tools used, a rolling last-7-days vs previous-7-days comparison with an up/down/flat trend line, and a deterministic top-5 most-used tools list with progress bars and localized names.\n\n## Biometric app lock\n- New Security section in Settings. When enabled, the app asks for fingerprint or device credential (PIN/pattern/password) on every foreground entry, powered by `androidx.biometric`.\n- Pure decision logic lives in `AppLockPolicy` (unit-tested): the lock only engages when a device screen lock exists, so it can never brick the app.\n- Privacy hardening: an opaque cover hides all content during the co",
+    "assets": [
+     {
+      "name": "DRS-Nexus-v5.4.0-debug.apk",
+      "size": 19791538,
+      "url": "https://github.com/CTO-DRS/drs-nexus/releases/download/v5.4.0/DRS-Nexus-v5.4.0-debug.apk",
+      "downloads": 2
+     },
+     {
+      "name": "DRS-Nexus-v5.4.0-release-signed.apk",
+      "size": 2405527,
+      "url": "https://github.com/CTO-DRS/drs-nexus/releases/download/v5.4.0/DRS-Nexus-v5.4.0-release-signed.apk",
+      "downloads": 1
+     }
+    ]
+   },
+   {
+    "tag": "v5.3.0",
+    "name": "DRS Nexus v5.3.0",
+    "published_at": "2026-10-19T19:47:55Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## الجولة الجديدة — v5.3.0\n\n### عرض شبكي للأدوات\n- زر تبديل في شاشة الأدوات بين القائمة والشبكة (عمودان)، الاختيار **محفوظ في DataStore** ويُدرج في النسخ الاحتياطي.\n- بطاقات شبكية مدمجة (أيقونة + اسم) تفرز حسب بحثك كالقائمة تماماً.\n\n### اختصارات لوحة مفاتيح حقيقية\n- **`/`** أو **`Ctrl+F`**: تركيز حقل البحث فوراً (حتى أثناء التصفح).\n- **`Esc`**: مسح البحث والعودة للتصفح.\n- تلميح ظاهر تحت حقل البحث يشرح الاختصارات.\n\n### تصدير نتائج CSV\n- زر **«تصدير CSV»** في شاشة السجل: يكتب كل عمليات الأدوات عبر SAF (بلا أذونات) إلى ملف تختاره.\n- ترميز **RFC 4180** كامل (اقتباس/تهريب) + **BOM UTF-8** ليظهر العربية سليمة في Excel.\n- أعمدة: `tool_id`, `executed_at_utc`, `input`, `output` — مع Toast للتأكيد أو الخطأ.\n\n### إصلاحات\n- خرائط أيقونات ناقصة لأدوات v5.2 (محلّل الروابط/المولّد العشوائي/حاسبة العمر) كانت تظهر بأيقونة افتراضية.\n\n### الجودة\n- 156 اختبار وحدة ناجح (+8 لمرمّز CSV)، بناء debug + release ",
+    "assets": [
+     {
+      "name": "DRS-Nexus-v5.3.0-debug.apk",
+      "size": 18565522,
+      "url": "https://github.com/CTO-DRS/drs-nexus/releases/download/v5.3.0/DRS-Nexus-v5.3.0-debug.apk",
+      "downloads": 3
+     },
+     {
+      "name": "DRS-Nexus-v5.3.0-release-signed.apk",
+      "size": 1753317,
+      "url": "https://github.com/CTO-DRS/drs-nexus/releases/download/v5.3.0/DRS-Nexus-v5.3.0-release-signed.apk",
+      "downloads": 4
+     }
+    ]
+   },
+   {
+    "tag": "v5.2.0",
+    "name": "DRS Nexus v5.2.0",
+    "published_at": "2026-10-19T02:20:10Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## الجولة الجديدة — v5.2.0\n\n### أدوات جديدة (23 أداة إجمالاً)\n- **حاسبة العمر** — عمر تقويمي دقيق (سنوات/أشهر/أيام) + الإجماليات + عدّاد عيد الميلاد القادم + يوم الميلاد، مع معالجة صحيحة لسنوات 29 فبراير (الذكرى المقصوصة).\n- **محلّل الروابط** — تفكيك كامل: المخطط، المضيف، المنفذ (افتراضي/صريح)، مقاطع المسار، معاملات الاستعلام مع فك الترميز، المرسّاة، معلومات المستخدم، وإعادة بناء الرابط الموحّد.\n- **المولّد العشوائي** — أرقام في نطاق (مع وضع القيم الفريدة)، نرد، وقلب عملة — قابل لإعادة الإنتاج بالبذرة.\n\n### تحسينات\n- **إصلاح**: محلّل أسماء موحّد يغطي كل الأدوات — لم تعد مفاتيح خام مثل tool_currency_name تظهر في السجل/المفضلة/الرئيسية.\n- **الرئيسية**: تثبيت الأدوات المفضلة أعلى الصفحة بدل القائمة الثابتة (مع fallback تلقائي).\n- **البحث**: صار شاملاً لكل الأدوات الـ 23 بالعربية والإنجليزية.\n\n### الجودة\n- 148 اختبار وحدة ناجح (31 جديدًا)، بناء debug + release موقّع (versionCode 7).",
+    "assets": [
+     {
+      "name": "DRS-Nexus-v5.2.0-debug.apk",
+      "size": 18529882,
+      "url": "https://github.com/CTO-DRS/drs-nexus/releases/download/v5.2.0/DRS-Nexus-v5.2.0-debug.apk",
+      "downloads": 1
+     },
+     {
+      "name": "DRS-Nexus-v5.2.0-release-signed.apk",
+      "size": 1734061,
+      "url": "https://github.com/CTO-DRS/drs-nexus/releases/download/v5.2.0/DRS-Nexus-v5.2.0-release-signed.apk",
+      "downloads": 1
+     }
+    ]
+   },
+   {
+    "tag": "v5.1.0",
+    "name": "DRS Nexus v5.1.0 — Share as Image, Scheduled Dark Mode, Full Backup",
+    "published_at": "2026-10-19T00:59:30Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## What's new\n\n### 1) Share tool results as images\n- Every result row now has an **Image** action that renders a branded 1080px PNG card (Mint accent, StaticLayout text so Arabic/RTL wrap correctly) and opens the Android share sheet via FileProvider — no storage permission.\n- Wired into all 18 result screens (JSON, Base64, Hash, Regex, URL, JWT, Base, Color, Percentage, Loan, BMI, Date-diff, Timestamp, Units, UUID, Password, Lorem, Text, Currency). BMI and Date-diff gained copy/share actions for the first time.\n\n### 2) Scheduled dark theme\n- New **Scheduled (auto)** theme mode: pick a daily HH:mm window; overnight windows (21:00 → 07:00) are supported.\n- Live-validated inputs, recomputed every minute while the app is open, stored in DataStore.\n- Pure `ThemeSchedule` engine in core-common, 9 JVM tests.\n\n### 3) Full backup & restore\n- **Back up**: settings + favorites + history in one vers",
+    "assets": [
+     {
+      "name": "DRS-Nexus-v5.1.0-debug.apk",
+      "size": 18478262,
+      "url": "https://github.com/CTO-DRS/drs-nexus/releases/download/v5.1.0/DRS-Nexus-v5.1.0-debug.apk",
+      "downloads": 2
+     },
+     {
+      "name": "DRS-Nexus-v5.1.0-release-signed.apk",
+      "size": 1698825,
+      "url": "https://github.com/CTO-DRS/drs-nexus/releases/download/v5.1.0/DRS-Nexus-v5.1.0-release-signed.apk",
+      "downloads": 2
+     },
+     {
+      "name": "DRS-Nexus-v5.1.0-source.zip",
+      "size": 171244,
+      "url": "https://github.com/CTO-DRS/drs-nexus/releases/download/v5.1.0/DRS-Nexus-v5.1.0-source.zip",
+      "downloads": 2
+     }
+    ]
+   },
+   {
+    "tag": "v5.0.0",
+    "name": "DRS Nexus v5.0.0 — Offline Currency, History Export, Home-Screen Widget",
+    "published_at": "2026-10-18T22:40:33Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## Three major features on top of v4.0.0\n\n**Offline Currency Converter (tool #20)**\n- 22 currencies with a built-in static reference table (rates date 2026-10-01, clearly labeled indicative)\n- Cross-rate conversion through USD, swap button, live rate line, full currency table view\n- Zero network calls — stays true to the fully-offline promise\n\n**History Export (JSON via SAF)**\n- Settings → Data → Export history: serializes every tool run + favorite into a versioned JSON document\n- Saved anywhere the user picks through the system file picker — no storage permission\n- UTC ISO timestamps, app version stamp, run/favorite counts\n\n**Home-Screen AppWidget**\n- Real AppWidgetProvider: total runs, favorites count and most-recent tool, read live from Room\n- Dark iOS-style card, tap opens the app, refreshes on app resume + 30-min schedule\n\n**Quality**\n- 98 unit tests passing (10 new currency tests)\n",
+    "assets": [
+     {
+      "name": "DRS-Nexus-v5.0.0-debug.apk",
+      "size": 18420642,
+      "url": "https://github.com/CTO-DRS/drs-nexus/releases/download/v5.0.0/DRS-Nexus-v5.0.0-debug.apk",
+      "downloads": 2
+     },
+     {
+      "name": "DRS-Nexus-v5.0.0-release-signed.apk",
+      "size": 1674013,
+      "url": "https://github.com/CTO-DRS/drs-nexus/releases/download/v5.0.0/DRS-Nexus-v5.0.0-release-signed.apk",
+      "downloads": 3
+     },
+     {
+      "name": "DRS-Nexus-v5.0.0-source.zip",
+      "size": 152347,
+      "url": "https://github.com/CTO-DRS/drs-nexus/releases/download/v5.0.0/DRS-Nexus-v5.0.0-source.zip",
+      "downloads": 0
+     }
+    ]
+   }
+  ],
+  "readme_excerpt": "# DRS Nexus\n\n**DRS Nexus** is a native Android toolkit that brings twenty real, fully-offline developer utilities into one polished, bilingual (Arabic/English) app.\n\nEvery tool runs 100% on-device. No accounts, no tracking, no network calls for tool execution — the only permissions requested are `INTERNET` and `ACCESS_NETWORK_STATE`.\n\n## Tools (all real implementations)\n\n| Tool | What it does |\n|------|--------------|\n| JSON Formatter | Format / minify / validate with line-column error positions and stats |\n| Base64 | Encode/decode with URL-safe and padding options |\n| Hash Calculator | SHA-256, SHA-1, SHA-512, MD5 via the platform security provider |\n| Regex Tester | Live pattern testing with match positions, flags and replacement preview |\n| URL Encode/Decode | Percent-encoding for URLs and query strings |\n| Timestamp Converter | Unix epoch ↔ human date across timezones |\n| Unit Converter | Length, weight, temperature, data size |\n| UUID Generator | Bulk RFC 4122 v4 identifiers with formatting options |\n| Password Generator | SecureRandom passwords with entropy analysis |\n| Lorem Ipsum | Paragraphs / sentences / words |\n| Text Utilities | Case conversion, statistics, reverse, trim, normalization |\n| JWT Decoder | Decode tokens, inspect claims, expiry status |\n| Base Converter | Binary / octal / decimal / hex and any base 2–36 |\n| Color Converter | HEX ↔ RGB ↔ HSL with live preview and text-contrast advice |\n| QR Generator | ZXing-powered QR codes, PNG export via SAF |\n| Percentage Calculator | Percent of value, share of total, percent change |\n| Loan Calculator | Monthly payment (EMI), total interest, payment count |\n| BMI Calculator | Body mass index with WHO categories and healthy range |\n| Date Difference | Days/weekdays between dates, date arithmetic |\n| Currency Converter | Offline conversions for 22 currencies (built-in static rate table) |\n\n## Architecture\n\n- **Kotlin 2.0.21** + **Jetpack Compose** (Material 3), Navigation Compose, single activity\n- **Multi-module Gradle**: `:core-common` (pure-Kotlin tool engines + unit tests), `:core-data` (Room + DataStore), `:app` (UI)\n- **Room database**: real usage history + favorites, persisted locally\n- **Home-screen AppWidget**: live runs/favorites stats straight from Room\n- **History export**: full JSON export of usage data via SAF (no storage permission)\n- **DataStore**: theme, language, onboarding and haptics settings\n- **Manual DI** via an `AppContainer` — no framework magic\n- Full **RTL support** with a complete Arabic and English string catalog\n- iOS-inspired design system built on Material 3\n\n## Build\n\n```bash\n./gradlew assembleDebug          # debug APK\n./gradlew testDebugUnitTest      # unit tests (core-common engines)\n./gradlew assembleRelease        # signed release APK (needs keystore)\n```\n\nRequirements: JDK 17, Android SDK 35.\n\n## Project layout\n\n```\ncore-common/   # pure Kotlin tool engines + 98 unit tests\ncore-data/     # Room entities/DAOs, DataStore settings repository\napp/     "
+ },
+ "drs-chat": {
+  "description": "drs chat — offline-first encrypted messenger (Phase 1)",
+  "language": "Kotlin",
+  "topics": [],
+  "homepage": null,
+  "html_url": "https://github.com/CTO-DRS/drs-chat",
+  "pushed_at": "2026-10-18T03:12:29Z",
+  "stars": 0,
+  "forks": 0,
+  "license": null,
+  "releases": [],
+  "readme_excerpt": null
+ },
+ "drs-os-platform": {
+  "description": "DRS OS - privacy-first, Arabic-first (RTL), zero-AI Android platform project (alpha). Zero android permissions, no network, no AI/ML, no WebView.",
+  "language": "Kotlin",
+  "topics": [],
+  "homepage": null,
+  "html_url": "https://github.com/CTO-DRS/drs-os-platform",
+  "pushed_at": "2026-10-17T11:20:57Z",
+  "stars": 0,
+  "forks": 0,
+  "license": "Apache-2.0",
+  "releases": [
+   {
+    "tag": "v0.3.1-phase3-alpha",
+    "name": "DRS OS 0.3.1-phase3 (alpha) — three zero-permission RTL apps",
+    "published_at": "2026-10-17T11:20:59Z",
+    "prerelease": true,
+    "draft": false,
+    "body": "# DRS OS 0.3.1-phase3 (ألفا)\n\n**الحالة: BUILD VERIFIED — RUNTIME NOT VERIFIED** — توقيع تصحيح، للتقييم فقط.\n\nثلاثة تطبيقات أندرويد أصلية صفرية الصلاحيات، عربية أولًا (RTL افتراضي)،\nبدون شبكة، بدون ذكاء اصطناعي، بدون سحابة، بدون WebView:\n\n| التطبيق | اسم الحزمة | النطاق في ألفا |\n|---|---|---|\n| إعدادات DRS | `os.drs.settings` | معلومات النسخة والجهاز والسياسات (قراءة فقط) |\n| أتمتة DRS | `os.drs.automation` | محرك قواعد حتمي محلي + سجل تدقيق + 15 اختبار وحدة ناجح؛ الإجراءات تُسجَّل كطلبات ولا تُنفَّذ بعد |\n| مركز أمان DRS | `os.drs.security` | حالة المنصة المقروءة بلا صلاحيات، بلا أحكام مُخترعة |\n\n## ما أُصلح في 0.3.1 مقارنة بـ 0.3.0 (من لقطات شاشة المستخدم)\n\n1. الحقل الأول في شاشة إنشاء/تعديل القاعدة كان مبتورًا أسفل الترويسة وبلا\n   تسمية → أصبح حقلًا مُسمّى داخل تمرير سليم مع مراعاة الحواف ولوحة المفاتيح.\n2. الزر التركوازي العملاق في الشاشة الرئيسية → زر بارتفاع ثابت 52dp.\n3. انكسار م",
+    "assets": [
+     {
+      "name": "drs-os-0.3.1-phase3-alpha-installation-package.zip",
+      "size": 24478286,
+      "url": "https://github.com/CTO-DRS/drs-os-platform/releases/download/v0.3.1-phase3-alpha/drs-os-0.3.1-phase3-alpha-installation-package.zip",
+      "downloads": 2
+     }
+    ]
+   }
+  ],
+  "readme_excerpt": "# DRS OS — Original, Security-First Mobile Operating System on AOSP\n\n> **Status: Phase 3–6 (re-executed) — three standalone alpha applications\n> delivered as installable APKs + packaging & distribution tooling, on top\n> of the Phase 1–2 platform scaffolding.**\n> This repository does **not** contain a bootable operating system, a Linux\n> kernel, or a SystemUI implementation. The three alpha apps are ordinary\n> (zero-permission) Android applications that demonstrate the UI/logic\n> layers ahead of platform integration; every component beyond them is\n> either upstream AOSP capability DRS OS plans to reuse or a documented\n> plan that has not been implemented. See [docs/phase-plan.md](docs/phase-plan.md).\n> Distribution artifacts: **BUILD VERIFIED — RUNTIME NOT VERIFIED**\n> (debug-signed, evaluation only).\n\n## What is DRS OS?\n\nDRS OS is an original mobile operating system built on the official\n[Android Open Source Project (AOSP)](https://source.android.com). It is a\nreal platform-engineering project — not a launcher, not a themed Android\napplication, not a WebView shell, and not a visual prototype.\n\nThe product direction is a premium, modern, **Arabic-first (RTL-native),\nsecurity-and-privacy-first** mobile OS, initially targeting the x86-64\nCuttlefish virtual device, with physical-device support deferred to a later\nphase.\n\n## Non-negotiable project principles\n\n| Principle | Commitment |\n|---|---|\n| Base platform | Official AOSP, baseline branch `android-latest-release` (verified in Phase 0; see ADR-0001) |\n| Initial target | x86-64 Cuttlefish virtual device; no phone flashing in early phases |\n| AI policy | **Zero AI/ML/generative/cloud-AI components** — deterministic logic, configurable rules, and local automation only (ADR-0004) |\n| Budget | Zero. No paid services, no billing activation, no trial-credit dependence |\n| System UI | Native Android platform components only — **no WebView/HTML/CSS/JS** for system functionality |\n| Security | SELinux enforcing, application sandboxing, least privilege, verified boot where supported |\n| Privacy | Data stays on device; no telemetry; transparent permission controls |\n| Branding | Original DRS OS identity; AOSP attribution preserved; third-party brands removed from user-facing surfaces |\n\n## Alpha applications (Phase 3–6, re-executed 2026-10-17)\n\nThree zero-permission Kotlin/Compose applications, Arabic-first RTL:\n\n| App | Package | Scope (honest alpha) |\n|---|---|---|\n| إعدادات DRS (DRSSettings) | `os.drs.settings` | read-only information surfaces: version, device info, policies |\n| أتمتة DRS (DRSAutomation) | `os.drs.automation` | deterministic local rule engine + audit log; 15 unit tests; actions are RECORDED, not executed (platform integration pending) |\n| مركز أمان DRS (DRSSecurityCenter) | `os.drs.security` | permission-free platform state display; no invented verdicts |\n\nBinding constraints verified automatically per build: **zero\n`android.permission.*`, no network code, no AI/ML, no WebView** — the\nonly"
+ },
+ "drs-os": {
+  "description": "DRS OS - privacy-first, Arabic-first Android-based OS engineering project (AOSP-derived; phases 1-4)",
+  "language": "Kotlin",
+  "topics": [],
+  "homepage": null,
+  "html_url": "https://github.com/CTO-DRS/drs-os",
+  "pushed_at": "2026-10-17T02:57:59Z",
+  "stars": 0,
+  "forks": 0,
+  "license": "Apache-2.0",
+  "releases": [],
+  "readme_excerpt": "# DRS OS — Original, Security-First Mobile Operating System on AOSP\n\n> **Status: Phase 1 project scaffolding (documentation, decision records, and\n> static validation tooling only).**\n> This repository does **not** contain a bootable operating system, a Linux\n> kernel, a SystemUI implementation, privileged applications, or any build\n> artifacts. Every component listed here is either upstream AOSP capability\n> that DRS OS plans to reuse, or a documented plan that has not been\n> implemented. See [docs/phase-plan.md](docs/phase-plan.md).\n\n## What is DRS OS?\n\nDRS OS is an original mobile operating system built on the official\n[Android Open Source Project (AOSP)](https://source.android.com). It is a\nreal platform-engineering project — not a launcher, not a themed Android\napplication, not a WebView shell, and not a visual prototype.\n\nThe product direction is a premium, modern, **Arabic-first (RTL-native),\nsecurity-and-privacy-first** mobile OS, initially targeting the x86-64\nCuttlefish virtual device, with physical-device support deferred to a later\nphase.\n\n## Non-negotiable project principles\n\n| Principle | Commitment |\n|---|---|\n| Base platform | Official AOSP, baseline branch `android-latest-release` (verified in Phase 0; see ADR-0001) |\n| Initial target | x86-64 Cuttlefish virtual device; no phone flashing in early phases |\n| AI policy | **Zero AI/ML/generative/cloud-AI components** — deterministic logic, configurable rules, and local automation only (ADR-0004) |\n| Budget | Zero. No paid services, no billing activation, no trial-credit dependence |\n| System UI | Native Android platform components only — **no WebView/HTML/CSS/JS** for system functionality |\n| Security | SELinux enforcing, application sandboxing, least privilege, verified boot where supported |\n| Privacy | Data stays on device; no telemetry; transparent permission controls |\n| Branding | Original DRS OS identity; AOSP attribution preserved; third-party brands removed from user-facing surfaces |\n\n## Repository layout\n\n```\ndrs-os/\n├── docs/\n│   ├── architecture/    System architecture, boundaries, integration map\n│   ├── security/        Threat model, control ledger, checklists, test plan\n│   ├── compatibility/   App compatibility strategy and test matrix\n│   ├── ui/              Native system interface specs (12 surfaces)\n│   ├── automation/      Deterministic rule-engine specification (no AI)\n│   ├── build/           Prerequisites, readiness, sync & provenance policy\n│   ├── decisions/       Architecture Decision Records (ADRs)\n│   └── phase-plan.md    Phase status ledger\n├── manifests/           Production local-manifests (empty by policy) +\n│                        non-executable templates/ (placeholder isolation)\n├── device/drs/          Future Cuttlefish-derived device layer (empty scaffold)\n├── vendor/drs/          DRS-owned vendor configuration (empty scaffold)\n├── packages/apps/       Future DRS system apps (empty scaffold)\n├── overlays/            Runtime resource overlays (R"
+ },
+ "arabi-lang": {
+  "description": "لغة عربي — لغة برمجة عربية بالكامل مثل بايثون: متغيرات، دوال، حلقات، قوائم وقواميس ومفسر تفاعلي | Arabi: a fully Arabic programming language built in Python",
+  "language": "Python",
+  "topics": [
+   "arabi",
+   "arabic",
+   "educational",
+   "interpreter",
+   "lexer",
+   "parser",
+   "programming-language",
+   "python"
+  ],
+  "homepage": null,
+  "html_url": "https://github.com/CTO-DRS/arabi-lang",
+  "pushed_at": "2026-10-01T05:56:20Z",
+  "stars": 1,
+  "forks": 0,
+  "license": "MIT",
+  "releases": [
+   {
+    "tag": "v1.37.0",
+    "name": "v1.37.0 — المدقق الساكن v1: عقود الدوال قبل التشغيل",
+    "published_at": "2026-10-01T05:56:21Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## المنسق الحتمي v2 — بند ثالث من خارطة الطريق الجديدة (أفق التمكين)\n\n**الجديد:**\n- **النمط القياسي المعتمد (ق٢٧):** مخرجات `--نسق` هي النمط الوحيد — خمس قواعد محسومة: نهايات أسطر موحدة، تبويب→مسافات بإزاحة ٤×العمق، ضغط الفراغات المتتالية، قص الطرفية، وحفظ المسافات الداخلية كما كتبها الكاتب (عقد 1.33)\n- **فارق صفر مثبت:** نسق المحفوظ يعيد المحفوظ نفسه على الأمثلة كلها (٤٦ ملفًا) — سبعة منها قُنّنت في هذا الإصدار بمخرجات متطابقة قبل/بعد\n- **حتمية مُختبرة:** نسق(نسق(س)) = نسق(س) على الأمثلة والمدخلات الشاذة (تبويبات/فراغات متتالية/بلا نهاية سطر/تتمات/نصوص متعددة الأسطر)\n- **حارس إلزامي في CI:** خطوة تنسّق `examples/*.عربي` ثم `git diff --exit-code` — أي التزميت خارج النمط يُسقط البوابة\n- شبكة الأمان القائمة باقية: الأصل السليم لا يخرج منسقًا مكسورًا — الناتج يُعاد تحليله قبل التسليم\n\n**الأرقام:** 8 اختبارات جديدة (حتمية الأمثلة · فارق الصفر · المدخلات الشاذة · محاكاة الحارس · فحص الـworkfl",
+    "assets": [
+     {
+      "name": "arabi-lang-1.37.0.zip",
+      "size": 542359,
+      "url": "https://github.com/CTO-DRS/arabi-lang/releases/download/v1.37.0/arabi-lang-1.37.0.zip",
+      "downloads": 0
+     }
+    ]
+   },
+   {
+    "tag": "v1.36.0",
+    "name": "v1.36.0 — المدقق الساكن v1: عقود الدوال قبل التشغيل",
+    "published_at": "2026-10-01T05:38:50Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## المدقق الساكن v1 — بند ثانٍ من خارطة الطريق الجديدة (أفق التمكين)\n\n**الجديد:**\n- **`--تحقق-ساكن ملفات…`:** فحص عقود الدوال الموثقة (توصيفات 1.26) **من المصدر وحده قبل التشغيل** — ورمز خروج 1 عند أي مخالفة: عقد خطوط الاستمرارية مباشرة\n- **حل أسماء الأنواع ساكنًا:** خطأ إملاء في توصيف دالة لم تُستدعَ يُكتشف قبل التشغيل بدل أن ينفجر عند أول استدعاء — والأصناف تُجمع استباقيًا فالترتيب لا يهم (مرآة ق١٣)\n- **مسار «أعد» بالأدلة الساكنة:** الحرفيات والحساب الحرفي واستدعاءات التحويل والنص المنسق والثلاثي المحسوم — وما لا يُحسم يُتخطى صامتًا ويُعدّ (لا تخمين — حد موثق)\n- **السقوط الضمني المضمون:** دالة تعلن إرجاعًا بلا أي «أعد» مخالفة ساكنة (المرآة الثابتة لق١٥)\n- **دُمج في CI فعليًا:** خطوة الفحص على المثال الرسمي `examples/46_التوصيف_الساكن.عربي` (٦ دوال موثقة تغطي القوائم والنص والتحويل والصنف كنوع وعدم)\n- **دلالة واحدة في المسارين:** اختبار مرآة يثبت أن ما يرفضه الساكن يرفضه فاحص 1.26 وقت ا",
+    "assets": [
+     {
+      "name": "arabi-lang-1.36.0.zip",
+      "size": 536171,
+      "url": "https://github.com/CTO-DRS/arabi-lang/releases/download/v1.36.0/arabi-lang-1.36.0.zip",
+      "downloads": 0
+     }
+    ]
+   },
+   {
+    "tag": "v1.35.0",
+    "name": "v1.35.0 — المنقّح التفاعلي: بند أول من أفق التمكين",
+    "published_at": "2026-10-01T05:07:43Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## المنقّح التفاعلي — بند أول من خارطة الطريق الجديدة (أفق التمكين)\n\n**الجديد:**\n- **جلسة تنقيح عربية كاملة:** `python3 arabi.py --نقح برنامج.عربي` — توقف على أول جملة ثم `توقف عند 5` و`توقف عند دالة احسب` (موثقة مقابل أسطر الشجرة) و`متابعة/خطوة/تالية/من_الدالة` و`اطبع تعبير` في بيئة الإطار الموقوف و`متغيرات/عالمي/أين/مصدر` و`إنهاء` — بأسطر مصدر تُعرض حول الموقف بعلامة\n- **مهايئ بروتوكول DAP للمحررات:** `--منقح-بروتوكول` — البروتوكول الذي تنقّح به المحررات القائمة على خوادم اللغة: launch/setBreakpoints (verified مقابل أسطر الشجرة)/stackTrace (إطار ٠ = الجملة الحالية، والصاعد بسطر استدعائه)/scopes/variables/continue/next/stepIn/stepOut/disconnect مع أحداث initialized/stopped بأسبابها/output/terminated/exited — ومخرجات البرنامج تُحوَّل أحداث output فلا تلوث القناة\n- **التصميم مؤسس بمسبار حي (٩/٩):** خطاف وحيد `debug_hook` على `execute()` يرى كل جمل الممسح الشجري بكلفة صفرية على التشغيل الع",
+    "assets": [
+     {
+      "name": "arabi-lang-1.35.0.zip",
+      "size": 518300,
+      "url": "https://github.com/CTO-DRS/arabi-lang/releases/download/v1.35.0/arabi-lang-1.35.0.zip",
+      "downloads": 0
+     }
+    ]
+   },
+   {
+    "tag": "v1.34.1",
+    "name": "v1.34.1 — إصلاح عاجل: توحيد الاختبارات على unittest",
+    "published_at": "2026-10-01T01:34:14Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## سلسلة التوريد — بصمات المحتوى من الناشر حتى التثبيت (ق٢١–ق٢٣)\n\n**الجديد:**\n- **ق٢١ بصمة الناشر:** النشر يحسب sha256 للأرشيف ويرسله بترويسة `X-Arabi-Fingerprint` — الخادم يرفض 400 عند الخلاف ويخزن البصمة الموثقة من الناشر (لا مولدة من الخادم)\n- **ق٢٢ التحقق وقت التثبيت:** الفهرس يعلن حقل `البصمة` — العميل يرفض أي تنزيل لا يطابقه **فشلًا مغلقًا** قبل أي فك أو تثبيت (رسالة عربية تذكر المعلن والفعلي)، والمحتوى الشبكي بلا إعلان يحذّر صادقًا، والمقارنات زمن-ثابت\n- **ق٢٣ القفل والفحص:** القفل يسجل `بصمة_الشجرة` لكل حزمة مثبتة (هاش شامل للملفات مرتبة، مستثنيًا `__بايت__`) — و`حزمة فحص` يعيد الحساب ويكشف أي عبث بعد التثبيت برمز خروج 1\n- توافق كامل: فهارس وأقفال البروتوكول الأقدم تعمل بلا إنذارات كاذبة\n\n**الأرقام:** 28 اختبارًا جديدًا (`tests/test_supply_chain.py`) — المجموعة 1351/1351 على 3.12 (مرتين) · الأمثلة 90/90 بالوضعين · دخان CLI حي كامل (نشر→تثبيت موثق→فحص→عبث→كشف→تشغيل) · الأداء مطابق",
+    "assets": [
+     {
+      "name": "arabi-lang-1.34.1.zip",
+      "size": 493779,
+      "url": "https://github.com/CTO-DRS/arabi-lang/releases/download/v1.34.1/arabi-lang-1.34.1.zip",
+      "downloads": 5
+     }
+    ]
+   },
+   {
+    "tag": "v1.34.0",
+    "name": "v1.34.0 — المرحلة 12: الإغلاق النهائي",
+    "published_at": "2026-10-01T00:54:20Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "## سلسلة التوريد — بصمات المحتوى من الناشر حتى التثبيت (ق٢١–ق٢٣)\n\n**الجديد:**\n- **ق٢١ بصمة الناشر:** النشر يحسب sha256 للأرشيف ويرسله بترويسة `X-Arabi-Fingerprint` — الخادم يرفض 400 عند الخلاف ويخزن البصمة الموثقة من الناشر (لا مولدة من الخادم)\n- **ق٢٢ التحقق وقت التثبيت:** الفهرس يعلن حقل `البصمة` — العميل يرفض أي تنزيل لا يطابقه **فشلًا مغلقًا** قبل أي فك أو تثبيت (رسالة عربية تذكر المعلن والفعلي)، والمحتوى الشبكي بلا إعلان يحذّر صادقًا، والمقارنات زمن-ثابت\n- **ق٢٣ القفل والفحص:** القفل يسجل `بصمة_الشجرة` لكل حزمة مثبتة (هاش شامل للملفات مرتبة، مستثنيًا `__بايت__`) — و`حزمة فحص` يعيد الحساب ويكشف أي عبث بعد التثبيت برمز خروج 1\n- توافق كامل: فهارس وأقفال البروتوكول الأقدم تعمل بلا إنذارات كاذبة\n\n**الأرقام:** 28 اختبارًا جديدًا (`tests/test_supply_chain.py`) — المجموعة 1351/1351 على 3.12 (مرتين) · الأمثلة 90/90 بالوضعين · دخان CLI حي كامل (نشر→تثبيت موثق→فحص→عبث→كشف→تشغيل) · الأداء مطابق",
+    "assets": [
+     {
+      "name": "arabi-lang-1.34.0.zip",
+      "size": 492964,
+      "url": "https://github.com/CTO-DRS/arabi-lang/releases/download/v1.34.0/arabi-lang-1.34.0.zip",
+      "downloads": 0
+     }
+    ]
+   }
+  ],
+  "readme_excerpt": "<div dir=\"rtl\">\n\n# عربي — لغة برمجة عربية بالكامل\n\n<p align=\"center\">\n  <img src=\"https://img.shields.io/badge/الإصدار-1.36.0-blue\" alt=\"الإصدار\">\n  <img src=\"https://img.shields.io/badge/الترخيص-MIT-green\" alt=\"الترخيص\">\n  <img src=\"https://img.shields.io/badge/Python-3.8%2B-orange\" alt=\"Python\">\n</p>\n\n**عربي** لغة برمجة كاملة صُممت لتكتب بها الكود بالعربية من أوله لآخره: متغيرات، شروط، بدّل/حالة، حلقات، دوال، سلاسل منسقة، قوائم، قواميس، معالجة أخطاء، برمجة كائنية، ووحدات قابلة للاستيراد — كل ذلك بكلمات مفتاحية عربية ورسائل خطأ عربية واضحة تخبرك بالضبط أين المشكلة وما الحل.\n\nومنذ الإصدار 1.5 أصبحت اللغة متكاملة الأركان: **تعداد**، **خصائص محسوبة**، **تحميل عوامل** على الكائنات، **أخطاء مخصصة** ترث `استثناء`، **تعبير ثلاثي**، وأربع وحدات قياسية جديدة (عشوائية، نظام، تنظيم، شبكة) ووحدة **تحويل** حصرية تُفقط الأرقام إلى كلمات عربية.\n\nوفي الإصدار 1.6 اكتمل **النظام البيئي**: إطار اختبارات داخل اللغة (وحدة `اختبارات`)، خوادم ويب حقيقية (وحدة `خادم`)، مدير حزم (`--ثبت` / `--حزم`) مع مجلد `مكتبات/`، منسق كود (`--نسق`)، فاحص مشكلات (`--افحص`)، مولد توثيق (`--وثق`)، ومفسر تفاعلي بسجل أوامر وإكمال تلقائي.\n\nوفي الإصدار 1.7 اكتملت ميزات اللغة المتقدمة: **المولدات** بكلمة `أنتج` (قيم تباعًا بكفاءة ذاكرة)، **المزخرفات** بعلامة `@` (مثل بايثون تمامًا)، و**الوراثة المتعددة** بترتيب حل طرق C3، مع ثلاث وحدات قياسية جديدة: `قاعدة` (SQLite كاملة)، `ترميز` (Base64 والبصمات)، و`جداول` (ملفات CSV).\n\nوفي الإصدار 1.8 جاء **التزامن والتجريد**: **الواجهات** بكلمة `واجهة` (عقد مجرد تلتزم به الأصناف مع تحقق عند الإنشاء)، **المعاملات المتغيرة** `...الاسم` و**التفكيك** `...قائمة` في الاستدعاءات والقوائم، ووحدة `خيوط` للتنفيذ المتوازي بذاكرة مشتركة (شغّل/قفل/طابور).\n\nوفي الإصدار 1.9 جاءت **التعبيرية**: **مطابقة الأنماط** بكلمة `طابق` (أنماط حرفية وبدائل بأو والتقاط قيم وحرّاس `إن شرط` وتفكيك قوائم بـ`...البقية` وقواميس ومسارات قيم للتعدادات)، **السلاسل الخام** `خ\"...\"` بلا معالجة هروب (مثالية للتعبيرات النمطية)، ووحدة `تواريخ` الكاملة (إنشاء وتنسيق وتحليل وفروق وأيام أسبوع بالعربية).\n\nوفي الإصدار 1.10 جاءت **بيئة المطوّر**: **بروتوكول التكرار المخصص** — أي صنف يعرّف `تالٍ` (مع `أول` الاختيارية) يعمل مباشرة مع `لكل` و`في` والنشر `...`، ووحدة `إحصاء` للتحليل الوصفي (معدل/وسيط/منوال/تباين/انحراف/مدى)، و**خادم اللغة (LSP)** الكامل (`--لغة`) الذي يوفر التشخيص اللحظي والإكمال الذكي والتلميحات ورموز المستند والانتقال للتعريف داخل أي محرر يدعم LSP.\n\nوفي الإصدار 1.11 جاء **الأداء والتعبيرية**: **فهم القوائم والقواميس** — بناء متتاليات في سطر واحد بصيغة `[تعبير لكل س في متتالية إن شرط]` مع التفكيك وعبارات متتالية — و**الكود الوسيط (Bytecode)** الذي يترجم شجرة البرنامج إلى صيغة مخزنة في `__بايت__/*.بيت` ويحمّلها في التشغيلات التالية متجاوزًا التحليل اللفظي والنحوي (تسريع ٥ أضعاف فأكثر للبرامج الكبيرة)، تلقائيًا للبرنامج الرئيسي وكل وحداته المستوردة.\n\nوفي الإصدار 1.12 اكتمل **النظام البيئي ببندته الأخيرة**: **سجل الحزم** — مدير حزم كامل بأمر `حزمة` (تثبيت/إزالة/قائمة/بحث/تحديث) بفهرس مركزي قابَل للاستبدال، ونسخ دلالية بقيود `^` و`~` و`>=`، وتبعيات تُحل تلقائيًا بكشف الدورات، وملف قفل `قفل"
+ },
+ "Lumina-Studio": {
+  "description": "Lumina Studio - cinematic 4K video editor for Android (Kotlin + Jetpack Compose). 100% real implementations: MediaCodec/GL export pipeline, pixel-level analysis, PCM audio graph, procedural SFX synthesis. Build verified: assembleDebug OK, 32/32 unit tests pass.",
+  "language": "Kotlin",
+  "topics": [],
+  "homepage": null,
+  "html_url": "https://github.com/CTO-DRS/Lumina-Studio",
+  "pushed_at": "2026-09-23T11:21:28Z",
+  "stars": 0,
+  "forks": 0,
+  "license": "MIT",
+  "releases": [
+   {
+    "tag": "v1.1.0",
+    "name": "Lumina Studio v1.1.0 — Full Project Reorganization",
+    "published_at": "2026-09-23T11:21:29Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "Complete project reorganization (commit d126df5) — verified by a full real build.\n\n## What changed\n- `engine/` split into 5 domain packages: `analysis`, `audio`, `color`, `export`, `media`\n- `ui/` root decluttered: `viewmodels/` (Studio & Gallery VMs), `editor/` (StudioScreen + StudioPreferences)\n- Unit tests mirrored under `engine/analysis` and `engine/color`\n- `docs/ARCHITECTURE.md`: layers, engine contracts, data flow, threading, testing strategy\n- README rewritten (badges, architecture tree, engine table, build matrix)\n- Added: LICENSE (MIT), `.editorconfig`, GitHub Actions CI, organized `.gitignore` + ProGuard rules\n\n## Verification (real build after reorganization)\n- `:app:assembleDebug` → SUCCESS (≈23 MB debug APK)\n- `:app:testDebugUnitTest` → 32/32 passed, 0 failed, 0 skipped\n\n## Assets\n- `lumina-studio-v1.1.0-source.zip` — full source snapshot (git archive of main @ d126df5)\n- `",
+    "assets": [
+     {
+      "name": "lumina-studio-v1.1.0-source.zip",
+      "size": 2045127,
+      "url": "https://github.com/CTO-DRS/Lumina-Studio/releases/download/v1.1.0/lumina-studio-v1.1.0-source.zip",
+      "downloads": 0
+     },
+     {
+      "name": "LuminaStudio-v1.1.0-debug.apk",
+      "size": 23099425,
+      "url": "https://github.com/CTO-DRS/Lumina-Studio/releases/download/v1.1.0/LuminaStudio-v1.1.0-debug.apk",
+      "downloads": 0
+     }
+    ]
+   },
+   {
+    "tag": "v1.0.0",
+    "name": "Lumina Studio v1.0.0 - First Verified Build",
+    "published_at": "2026-09-23T09:58:34Z",
+    "prerelease": false,
+    "draft": false,
+    "body": "First release built and verified in a clean environment (JDK 21 + Gradle 9.3.1 + AGP 9.1.1 + Android SDK 36.1).\n\n## What is verified\n- `:app:assembleDebug` succeeds -> `app-debug.apk` (~22 MB, debug-signed)\n- 32/32 unit tests pass (pure-JVM algorithm tests + Robolectric NATIVE-graphics tests over real bitmaps, Room DB and WAV files)\n\n## What is real in this build\n- MediaCodec -> GL ColorMatrix -> MediaCodec -> MediaMuxer export pipeline with real progress\n- Real pixel analysis (luma histogram, percentiles, Gray-World AWB, Laplacian sharpness, Sobel edges, zebra mask)\n- Real PCM audio decode, RMS envelope and adaptive-threshold beat detection\n- 7 procedurally synthesized WAV sound effects with real playback\n- Starts with zero projects - no fake seeding\n\n## Install\nThis is a **debug** build: enable install-from-unknown-sources on the device, then install the APK below. Release signing with",
+    "assets": [
+     {
+      "name": "LuminaStudio-v1.0-debug.apk",
+      "size": 23066480,
+      "url": "https://github.com/CTO-DRS/Lumina-Studio/releases/download/v1.0.0/LuminaStudio-v1.0-debug.apk",
+      "downloads": 6
+     }
+    ]
+   }
+  ],
+  "readme_excerpt": "# Lumina Studio\n\n[![Android CI](https://github.com/CTO-DRS/Lumina-Studio/actions/workflows/android-ci.yml/badge.svg)](https://github.com/CTO-DRS/Lumina-Studio/actions/workflows/android-ci.yml)\n[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)\n![Min API](https://img.shields.io/badge/minSdk-24-green)\n![Kotlin](https://img.shields.io/badge/Kotlin-2.2.10-purple)\n\n**Cinematic 4K video editor for Android** — Kotlin + Jetpack Compose, built on a single\nprinciple: *every pipeline is real*. No simulated progress bars, no seeded demo data, no\nplaceholder algorithms. What the UI reports is what the hardware and the algorithms\nactually measured.\n\n## Highlights\n\n- **Frame-accurate editing** — SMPTE timecode math, ripple-delete with real split semantics\n- **GPU color grading** — one shared 4×5 color matrix drives both the live preview and the exported file\n- **Real signal analysis** — pixel histograms, Gray-World AWB, Laplacian sharpness, onset (beat) detection from decoded PCM\n- **Honest empty states** — the app starts with zero projects; everything on screen comes from real media on the device\n- **Procedural sound design** — 7 sound effects synthesized into real WAV files, no bundled binary assets\n\n## Real engines (what actually runs)\n\n| Engine | Package | What it really does |\n| --- | --- | --- |\n| `CinematicVideoExporter` | `engine.export` | MediaCodec decode → OpenGL ES ColorMatrix grade (same matrix as the live preview) → MediaCodec encode → MediaMuxer MP4; original audio passed through sample-by-sample; progress derived from real encoded frame counts |\n| `ShareExporter` | `engine.export` | Real file share sheet for exported media |\n| `MediaAnalysisEngine` | `engine.analysis` | Rec.601 luma histogram, percentiles, Gray-World AWB channel means, Laplacian-variance sharpness, Sobel edge mask, ≥95-IRE overexposure mask |\n| `SmartComputationalEngine` | `engine.analysis` | Analysis-driven smart tools: AWB correction, smart auto-tone, beat-aligned splitting — all computed from real pixels/PCM |\n| `FrameAccurateTimecodeEngine` | `engine.analysis` | SMPTE timecode conversion, quantize-to-frame, ripple-delete split math |\n| `AudioGraphEngine` | `engine.audio` | MediaExtractor + MediaCodec PCM decode, RMS envelope, adaptive-threshold onset detection, real WAV file writer |\n| `SfxSynthesizer` | `engine.audio` | 7 sound effects synthesized algorithmically into real WAV files, previewed through MediaPlayer |\n| `PreviewAudioController` | `engine.audio` | Real video-audio playback: seek, playback speed, volume, master mute |\n| `ColorMatrixEngine` | `engine.color` | Shared 4×5 color pipeline (brightness/contrast/saturation/temperature/tint/vibrance) |\n| `ImageProcessingEngine` | `engine.color` | Real bitmap processing (rotate, crop, enhance) for captured frames |\n| `VisualEffectsEngine` | `engine.color` | Compose DrawScope effects driven by real per-frame pixel masks |\n| `RealMediaManager` | `engine.media` | Real metadata extraction, save-to-g"
+ },
+ "chat.drs.bot": {
+  "description": null,
+  "language": "TypeScript",
+  "topics": [],
+  "homepage": null,
+  "html_url": "https://github.com/CTO-DRS/chat.drs.bot",
+  "pushed_at": "2026-09-22T03:37:35Z",
+  "stars": 0,
+  "forks": 0,
+  "license": "NOASSERTION",
+  "releases": [],
+  "readme_excerpt": "<div align=\"center\">\n\n# 🤖 chat.drs.bot\n\n**منصة دردشة ذكاء اصطناعي متكاملة — DRS AI Chat Platform**\n\nبُنيت بـ Next.js و AI SDK مع مزوّد Z.AI المخصص وقاعدة بيانات SQLite\n\n</div>\n\n---\n\n## 🇸🇦 نظرة عامة\n\n**chat.drs.bot** هو تطبيق دردشة ذكاء اصطناعي متكامل (Full-stack) يدعم البث الفوري للردود، إنشاء المحتوى التفاعلي (Artifacts)، ومصادقة المستخدمين. المشروع مُكيَّف خصيصاً ليعمل مع مزوّد Z.AI المدمج وقاعدة بيانات SQLite محلية، مما يجعله خفيفاً وسهل النشر على أي خادم بدون الاعتماد على خدمات خارجية مدفوعة.\n\n### المميزات\n\n- 💬 **دردشة بالبث الفوري** — ردود لحظية متدفقة مع دعم استئناف المحادثات المقطوعة\n- 📄 **المحتوى التفاعلي (Artifacts)** — إنشاء مستندات نصية، محرر كود Python، جداول بيانات، وصور مولدة بالذكاء الاصطناعي\n- 🔐 **مصادقة مرنة** — دخول كضيف أو بالبريد الإلكتروني وكلمة المرور (Auth.js + bcrypt)\n- 🗄️ **تخزين محلي** — حفظ كامل للمحادثات والرسائل والتصويتات في SQLite عبر Drizzle ORM\n- 🧠 **مزوّد Z.AI المخصص** — تنفيذ `LanguageModelV4` متوافق مع OpenAI يدعم البث واستدعاء الأدوات والرؤية (تحليل الصور)\n- 🗳️ **تصويت الرسائل** — تقييم ردود المساعد لتحسين جودة المحادثات\n- 📎 **مرفقات ذكية** — رفع الصور (لنماذج الرؤية) ومستندات PDF و DOCX و TXT و Markdown مع استخراج النص تلقائياً ليقرأه أي نموذج، ودعم كامل لأسماء الملفات العربية\n- ⚡ **اقتراحات ذكية** — أزرار اقتراحات جاهزة لبدء محادثات جديدة\n- 🌐 **عربي RTL كامل** — واجهة ثنائية اللغة (عربي/إنجليزي) مع دعم الاتجاه من اليمين لليسار وخط IBM Plex Sans Arabic\n- 🌙 **وضع ليلي تلقائي** — قائمة مظهر بخيارات فاتح/داكن/حسب النظام، مع تتبع فوري لتفضيلات نظام التشغيل دون إعادة تحميل\n- 🎙️ **إدخال صوتي** — إملاء صوتي مباشر داخل مربع الكتابة (Web Speech API) بالعربية والإنجليزية\n- ⌨️ **اختصارات لوحة المفاتيح** — `Ctrl+K` بحث، `Ctrl+Shift+O` محادثة جديدة، `Ctrl+B` الشريط الجانبي، `Ctrl+/` قائمة الاختصارات\n- 📊 **إحصائيات استخدام** — صفحة شخصية تعرض المحادثات والرسائل ونشاط آخر 7 أيام\n- 📱 **تطبيق ويب تقدمي (PWA)** — قابل للتثبيت على الجوال مع أيقونات وبيانات manifest كاملة\n- 📤 **تصدير المحادثات** — تنزيل أي محادثة بصيغة Markdown أو JSON\n- 🩺 **فحص صحة** — نقطة نهاية `/api/health` عامة + HEALTHCHECK مدمج في Docker\n- 🐳 **جاهز للنشر** — صورة Docker مدمجة مع دعم وحدة تخزين لقاعدة البيانات\n\n### التقنيات المستخدمة\n\n| الطبقة | التقنية |\n|--------|---------|\n| الواجهة | Next.js App Router · React 19 · Tailwind CSS · shadcn/ui · Radix UI |\n| الذكاء الاصطناعي | AI SDK 7 · مزوّد Z.AI مخصص (`lib/ai/zai-provider.ts`) |\n| قاعدة البيانات | SQLite (better-sqlite3) · Drizzle ORM |\n| المصادقة | Auth.js (NextAuth v5) |\n| الاختبارات | Playwright |\n\n### البدء السريع\n\n**المتطلبات:** Node.js 20+ · pnpm أو bun\n\n```bash\n# 1) استنساخ المشروع\ngit clone https://github.com/CTO-DRS/chat.drs.bot.git\ncd chat.drs.bot\n\n# 2) تثبيت الحزم\npnpm install          # أو: bun install\n\n# 3) إعداد متغيرات البيئة\ncp .env.example .env.local\n# ثم عيّن قيمة AUTH_SECRET و DATABASE_PATH\n\n# 4) إنشاء جداول قاعدة البيانات\npnpm db:push\n\n# 5) تشغيل خادم التطوير\npnpm dev\n```\n\nسيعمل التطبيق على [localhost:3000](http://localhost:3000) 🎉\n\n### متغيرات البيئة\n\n| المتغير | مطلوب | الوصف |\n|--"
+ },
+ "Ultimate-AI-Suite": {
+  "description": "⚡ صندوق الأدوات الذكي الشامل — مساعد AI + 16 أداة احترافية في مكان واحد، مجاناً وبدون تثبيت | All-in-one AI toolbox: assistant + 16 pro tools. Free, private, zero install.",
+  "language": "JavaScript",
+  "topics": [
+   "ai",
+   "ai-tools",
+   "arabic",
+   "chatbot",
+   "color-palette",
+   "currency-converter",
+   "image-generation",
+   "json-formatter",
+   "no-api-key",
+   "offline-first",
+   "password-generator",
+   "qr-code",
+   "rtl",
+   "toolbox",
+   "unit-converter",
+   "vanilla-javascript"
+  ],
+  "homepage": "https://cto-drs.github.io/Ultimate-AI-Suite/",
+  "html_url": "https://github.com/CTO-DRS/Ultimate-AI-Suite",
+  "pushed_at": "2026-09-21T05:34:20Z",
+  "stars": 0,
+  "forks": 0,
+  "license": "MIT",
+  "releases": [],
+  "readme_excerpt": "<div align=\"center\">\n\n<img src=\"assets/img/logo.png\" width=\"110\" alt=\"Ultimate AI Suite Logo\">\n\n# ⚡ Ultimate AI Suite\n\n**صندوق الأدوات الذكي الشامل — كل ما تحتاجه في مكان واحد، مجاناً وبدون تثبيت**\n\n**The All-in-One Smart Toolbox — Everything you need in one place. Free. Private. No install.**\n\n[![License: MIT](https://img.shields.io/badge/License-MIT-8b5cf6.svg?style=flat-square)](LICENSE)\n[![Version](https://img.shields.io/badge/version-2.1.0-06b6d4.svg?style=flat-square)]()\n[![Tools](https://img.shields.io/badge/tools-22-8b5cf6.svg?style=flat-square)]()\n[![PWA](https://img.shields.io/badge/PWA-offline_ready-34d399.svg?style=flat-square)]()\n[![Pure JavaScript](https://img.shields.io/badge/vanilla-JavaScript-f7df1e.svg?style=flat-square)]()\n[![No Build](https://img.shields.io/badge/build-none-success.svg?style=flat-square)]()\n[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)]()\n\n**[🚀 العرض المباشر | Live Demo](https://cto-drs.github.io/Ultimate-AI-Suite/)** · [التثبيت](#-التثبيت--installation) · [الأدوات](#-الأدوات--tools) · [المساهمة](#-المساهمة--contributing)\n\n<img src=\"assets/img/banner.png\" width=\"100%\" alt=\"Ultimate AI Suite Banner\">\n\n</div>\n\n---\n\n## 🌟 لماذا هذه الأداة؟ | Why?\n\n> **بالعربية:**\n> أداة واحدة تجمع أقوى الأدوات التي يحتاجها أي شخص يومياً — مساعد ذكاء اصطناعي، مولد صور، محولات، أدوات أمان وأكثر — كل ذلك **داخل متصفحك مباشرة**. لا حسابات، لا اشتراكات، لا تتبع، ولا حتى سيرفر. ملفاتك لا تغادر جهازك أبداً.\n\n> **In English:**\n> One tool that brings together the most wanted daily utilities — AI assistant, image generator, converters, security tools and more — all running **directly in your browser**. No accounts, no subscriptions, no tracking, not even a server. Your files never leave your device.\n\n## ✨ المميزات | Highlights\n\n- 🤖 **ذكاء اصطناعي مجاني بدون مفتاح API** — محادثة + توليد صور عبر Pollinations.ai\n- 🧠 **محادثة احترافية** — تنسيق Markdown، نسخ أي رد، إعادة توليد، تصدير نصي، وحفظ تلقائي للجلسة\n- ⌨️ **لوحة أوامر فورية (Ctrl+K)** — ابحث عن أي أداة وانتقل إليها دون لمس الفأرة\n- ⭐ **مفضلة وسجل استخدام** — ثبّت أدواتك المفضلة ووصولها بضغطة، مع آخر 5 أدوات استخدمتها\n- 🎨 **ألوان تمييز قابلة للتخصيص** — 4 هويات لونية (بنفسجي، سماوي، زمردي، كهرماني) تُلوّن التطبيق كاملاً فوراً\n- 🕐 **ساعة حية + شاشة إقلاع أنيقة** — في الشريط العلوي، مع انتقال ناعم عند الفتح\n- 🔒 **خصوصية مطلقة** — كل المعالجة تحدث محلياً في متصفحك (ضغط الصور، التشفير، البصمات، الملاحظات…)\n- 🌍 **ثنائية اللغة** — عربي RTL كامل / إنجليزي، بزر واحد أو اختصار Alt+L\n- 🌗 **ثيم داكن وفاتح** — مع حفظ تفضيلاتك واختصار Alt+T\n- 📴 **يعمل دون اتصال (PWA)** — ثبّته كتطبيق وواصل العمل حتى بدون إنترنت\n- ⚡ **بدون تثبيت أو بناء** — افتح الملف واشتغل فوراً\n- 📱 **متجاوب تماماً** — يعمل على الجوال والحاسوب\n- 🎨 **تصميم مستقبلي فاخر** — خلفية Aurora متحركة، بطاقات زجاجية تتوهج تفاعلياً، معايير عالمية\n- 🧭 **تنقل ذكي** — روابط مباشرة لكل أداة (`#/chat`, `#/qr`…) + شريط تقدم القراءة وزر عودة للأعلى\n\n## 🧰 الأدوات | Tools (22)\n\n| | الأداة Tool | الوصف Description"
+ }
+}
