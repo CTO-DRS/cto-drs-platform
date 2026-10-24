@@ -2,11 +2,11 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { Search, X, SlidersHorizontal, FolderOpen, Github, ArrowUpDown, Heart, LayoutGrid, Rows3, Star } from "lucide-react";
+import { Search, X, SlidersHorizontal, FolderOpen, Github, ArrowUpDown, Heart, LayoutGrid, Rows3, Star, Download, Sparkles } from "lucide-react";
 import type { AppEntry } from "@/lib/catalog";
 import { categoryLabel, filterByCategory, filterByStatus, searchApps, statusLabels, validHttpUrl } from "@/lib/catalog";
 import type { CatalogStatsMap } from "@/lib/github";
-import { compactNumber } from "@/lib/github";
+import { compactNumber, isFreshRelease } from "@/lib/github";
 import { useFavorites } from "@/lib/favorites";
 import { FavoriteButton } from "@/components/favorite-button";
 
@@ -187,7 +187,14 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
               <div className="app-icon">{app.name.en.slice(0, 1)}</div>
               <div className="app-card-body">
                 <div className="app-title-row">
-                  <h3>{app.name.ar}</h3>
+                  <h3>
+                    {app.name.ar}
+                    {statsMap?.[app.slug] && isFreshRelease(statsMap[app.slug].releasedAt) && (
+                      <span className="tag new-badge" title="أحدث إصدار نُشر خلال الأسابيع الثلاثة الماضية">
+                        <Sparkles size={11} aria-hidden /> جديد
+                      </span>
+                    )}
+                  </h3>
                   <span className={`status ${app.status}`}>{statusLabels[app.status]}</span>
                 </div>
                 <p>{app.summary.ar}</p>
@@ -196,6 +203,11 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
                   {statsMap?.[app.slug] && (
                     <span className="mini-live" title="عدد النجوم الحي من GitHub">
                       <Star size={12} aria-hidden /> {compactNumber(statsMap[app.slug].stars)}
+                    </span>
+                  )}
+                  {statsMap?.[app.slug] && statsMap[app.slug].downloads > 0 && (
+                    <span className="mini-live hot" title="إجمالي التنزيلات من إصدارات GitHub الرسمية">
+                      <Download size={12} aria-hidden /> {compactNumber(statsMap[app.slug].downloads)}
                     </span>
                   )}
                   {validHttpUrl(app.repository) && (

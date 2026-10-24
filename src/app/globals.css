@@ -955,3 +955,105 @@ body:has(.mobile-tabbar):has(.install-chip) .toast-host{bottom:170px}
 .tint-link{background:linear-gradient(135deg,#06b6d4,#0e7490)}
 .tint-ai{background:linear-gradient(135deg,#8b5cf6,#db2777)}
 .tag.verified{color:#34d399;border:1px solid rgba(52,211,153,.4);background:rgba(52,211,153,.08);display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600}
+
+/* ============================================================
+   نسخة التطوير والتحسين الشامل — مميزات ومظهر 2026
+   ============================================================ */
+
+/* --- شريط تمرير مخصص أنيق --- */
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:#060c18}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#2b3f63,#1c2c49);border-radius:8px;border:2px solid #060c18}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#3d557f,#25375c)}
+*{scrollbar-width:thin;scrollbar-color:#2b3f63 #060c18}
+
+/* --- حلقة تركيز واضحة للوصولية (لوحة المفاتيح فقط) --- */
+:focus-visible{outline:2px solid var(--cyan);outline-offset:2px;border-radius:8px}
+
+/* --- ظهور متدرج عند التمرير (Reveal) --- */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1);will-change:opacity,transform}
+.reveal.revealed{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* --- شريط تقدم القراءة --- */
+.rp-track{position:fixed;top:0;right:0;left:0;height:3px;z-index:60;background:transparent;pointer-events:none}
+.rp-fill{height:100%;transform-origin:right center;transform:scaleX(0);background:linear-gradient(90deg,var(--cyan),var(--purple));box-shadow:0 0 10px #36d8ff66}
+
+/* --- شارة «جديد» الخضراء النابضة --- */
+.tag.new-badge{display:inline-flex;align-items:center;gap:4px;background:linear-gradient(120deg,#0f4436,#14584a);color:#5cf0c2;border-color:#1d7a63;font-weight:800;vertical-align:middle;margin-inline-start:7px;position:relative}
+.tag.new-badge::after{content:"";position:absolute;inset:-2px;border-radius:inherit;border:1px solid #43e0b055;animation:newpulse 2.2s ease-out infinite}
+@keyframes newpulse{0%{opacity:.9;transform:scale(.95)}70%{opacity:0;transform:scale(1.25)}100%{opacity:0}}
+.store-card-title h3{display:flex;align-items:center;flex-wrap:wrap}
+.detail-hero .tag.new-badge{margin:0 0 6px;display:inline-flex;align-self:flex-start}
+.detail-title{display:flex;flex-direction:column}
+.fresh-dot{position:absolute;top:6px;left:6px;width:11px;height:11px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px #43e0b033,0 0 12px var(--green);animation:freshblink 2s ease-in-out infinite}
+.app-icon.large{position:relative}
+@keyframes freshblink{0%,100%{opacity:1}50%{opacity:.45}}
+
+/* --- شارات العدّادات على البطاقات --- */
+.tag.dl-count{background:#0d2a3d;color:#7fd8ff;border-color:#1d4a63}
+.tag.ver{background:#1a2438;color:#aebfe0;border-color:#2c3f5f;font-weight:700;letter-spacing:.4px}
+.tag.gh-stat-hot,.gh-stat.hot{background:#0d2a3d;color:#7fd8ff;border-color:#1d4a63;font-weight:800}
+
+/* --- لمعة وتوهج بطاقات المتجر --- */
+.store-card{position:relative;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s}
+.store-card::before{content:"";position:absolute;top:0;right:-80%;width:55%;height:100%;background:linear-gradient(105deg,transparent,#ffffff08 45%,#ffffff14 50%,#ffffff08 55%,transparent);transform:skewX(-14deg);transition:right .7s ease;pointer-events:none}
+.store-card:hover::before{right:130%}
+.store-card:hover{transform:translateY(-4px);border-color:#496a9b;box-shadow:0 14px 34px #0006,0 0 0 1px #36d8ff14}
+.store-icon{transition:transform .25s,box-shadow .25s;position:relative}
+.store-card:hover .store-icon{transform:scale(1.07) rotate(-3deg);box-shadow:0 6px 22px #7446f455}
+
+/* --- مودال التحميل + QR --- */
+.dl-overlay{position:fixed;inset:0;background:#020610cc;backdrop-filter:blur(6px);z-index:50}
+.dl-content{position:fixed;top:50%;right:50%;transform:translate(50%,-50%);width:min(560px,calc(100vw - 34px));max-height:min(86vh,720px);overflow:auto;background:linear-gradient(150deg,#0d1a30,#081121);border:1px solid #2b4770;border-radius:20px;padding:22px;z-index:51;box-shadow:0 30px 90px #000c,0 0 0 1px #ffffff08}
+.dl-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.dl-title{display:flex;align-items:center;gap:9px;font-size:17px;font-weight:800;color:#fff;margin:0}
+.dl-title svg{color:var(--cyan)}
+.dl-close{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;border:1px solid #2b4770;background:#0c1930;color:#c9d6ec;cursor:pointer}
+.dl-close:hover{background:#142544;color:#fff}
+.dl-version{color:#8edbff;font-size:12px;margin:8px 0 0;direction:ltr;text-align:right}
+.dl-body{display:grid;grid-template-columns:168px 1fr;gap:18px;margin-top:16px;align-items:start}
+.dl-qr-side{display:flex;flex-direction:column;align-items:center;gap:9px}
+.dl-qr-frame{padding:10px;border-radius:16px;background:#0b1626;border:1px solid #2b4770;box-shadow:0 10px 28px #0007;display:grid;place-items:center}
+.dl-qr-frame svg{display:block;border-radius:6px}
+.dl-qr-hint{display:flex;align-items:center;gap:6px;color:#9fb2cd;font-size:10.5px;text-align:center;margin:0;max-width:160px}
+.dl-links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.dl-link-row{display:flex;align-items:stretch;gap:8px}
+.dl-link{flex:1;display:flex;align-items:center;gap:9px;padding:12px 14px;border:1px solid #2b4770;border-radius:12px;background:#0c1930;color:#eaf2ff;font-size:12.5px;font-weight:700;transition:border-color .18s,background .18s}
+.dl-link:hover{border-color:#4a7ab5;background:#12233f;color:#fff}
+.dl-link svg{color:var(--cyan);flex-shrink:0}
+.dl-copy{display:grid;place-items:center;width:42px;border-radius:12px;border:1px solid #2b4770;background:#0c1930;color:#9fb2cd;cursor:pointer;transition:color .18s,border-color .18s}
+.dl-copy:hover{color:#5cf0c2;border-color:#1d7a63}
+.dl-note{display:flex;align-items:flex-start;gap:7px;color:#8fa3bf;font-size:11px;margin-top:4px}
+.dl-note svg{color:var(--green);flex-shrink:0;margin-top:2px}
+@media(max-width:560px){.dl-body{grid-template-columns:1fr;justify-items:center}.dl-links{width:100%}.dl-qr-side{order:-1}}
+
+/* --- بطاقة GitHub: مجموعة الروابط + إحصاء التحميلات --- */
+.gh-repo-links{display:flex;align-items:center;gap:7px}
+.gh-repo-btn.rss{padding:8px 9px}
+.gh-repo-btn.rss:hover{color:#f7a94b;border-color:#8a5a1f}
+
+/* --- Timeline سجل التحديثات --- */
+.cl-timeline{list-style:none;margin:6px 0 0;padding:0 14px 0 0;position:relative}
+.cl-timeline::before{content:"";position:absolute;top:8px;bottom:8px;right:5px;width:2px;background:linear-gradient(180deg,#43e0b0,#36d8ff33);border-radius:2px}
+.cl-item{position:relative;padding:0 22px 20px 0}
+.cl-item:last-child{padding-bottom:4px}
+.cl-dot{position:absolute;top:5px;right:0;width:12px;height:12px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px #43e0b026,0 0 10px #43e0b066}
+.cl-item:first-child .cl-dot{background:var(--cyan);box-shadow:0 0 0 3px #36d8ff26,0 0 12px #36d8ff88}
+.cl-head{display:flex;align-items:center;gap:9px;margin-bottom:7px;flex-wrap:wrap}
+.cl-head b{font-size:14px;color:#fff}
+.cl-item ul{margin:0}
+
+/* --- أشرطة التحميلات في لوحة المؤشرات --- */
+.lang-track.dl>span{background:linear-gradient(90deg,#287fd8,#36d8ff);box-shadow:0 0 12px #36d8ff44}
+.dl-bars .lang-name{min-width:110px}
+@media(max-width:640px){.dl-bars .lang-name{min-width:84px;font-size:10px}}
+
+/* --- حالة الضغط النشطة للأزرار --- */
+.button:active,.btn-grad:active,.btn-dark:active,.store-download:active{transform:scale(.97)}
+
+/* --- توهج حي لأيقونات البطاقات بالتفاصيل --- */
+.detail-hero .app-icon.large{background:linear-gradient(140deg,#693ff1,#147ec1);box-shadow:0 12px 34px #5b3ad64d,inset 0 1px #ffffff38}
+
+/* --- شارة التنزيلات المصغرة في بطاقات الكتالوق --- */
+.mini-live.hot{color:#7fd8ff;font-weight:800}

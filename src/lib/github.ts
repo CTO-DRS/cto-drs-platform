@@ -93,8 +93,67 @@ export function openSourceCount(list: { repository: string | null }[]): number {
 
 /* ===== شارات حية لبطاقات الكتالوق ===== */
 
-export type CardLive = { stars: number; pushedAt: string | null };
+export type CardLive = {
+  stars: number;
+  pushedAt: string | null;
+  /** إجمالي تنزيلات أصول الإصدارات المنشورة (من GitHub Releases) — 0 إن لا إصدارات */
+  downloads: number;
+  /** وسم أحدث إصدار منشور */
+  latestTag: string | null;
+  /** تاريخ نشر أحدث إصدار — يُستخدم لشارة «جديد» */
+  releasedAt: string | null;
+};
 export type CatalogStatsMap = Record<string, CardLive>;
+
+/** ملخص إصدارات مستودع: إجمالي التنزيلات + أحدث وسم + تاريخه.
+ *  يعيد قيمًا صفرية عند أي فشل دون كسر الصفحة. */
+export async function fetchRepoReleaseSummary(ref: RepoRef): Promise<{
+  downloads: number;
+  latestTag: string | null;
+  releasedAt: string | null;
+}> {
+  try {
+    const headers: Record<string, string> = {
+      Accept: "application/vnd.github+json",
+      "User-Agent": "cto-drs-platform",
+    };
+    const token = process.env.GITHUB_TOKEN;
+    if (token) headers.Authorization = `Bearer ${token}`;
+    const res = await fetch(
+      `https://api.github.com/repos/${ref.owner}/${ref.repo}/releases?per_page=100`,
+      { headers, next: { revalidate: 3600 } },
+    );
+    if (!res.ok) return { downloads: 0, latestTag: null, releasedAt: null };
+    const data = (await res.json()) as Record<string, unknown>[];
+    if (!Array.isArray(data)) return { downloads: 0, latestTag: null, releasedAt: null };
+    let downloads = 0;
+    for (const rel of data) {
+      const assets = Array.isArray(rel.assets) ? rel.assets : [];
+      for (const asset of assets) {
+        const count = (asset as Record<string, unknown>).download_count;
+        if (typeof count === "number") downloads += count;
+      }
+    }
+    const latest = data.find(
+      rel => typeof rel.tag_name === "string" && rel.draft !== true,
+    );
+    return {
+      downloads,
+      latestTag: latest && typeof latest.tag_name === "string" ? latest.tag_name : null,
+      releasedAt: latest && typeof latest.published_at === "string" ? latest.published_at : null,
+    };
+  } catch {
+    return { downloads: 0, latestTag: null, releasedAt: null };
+  }
+}
+
+/** هل وُلّد الإصدار خلال المدى القريب؟ (شارة «جديد» — 21 يومًا) */
+export function isFreshRelease(iso: string | null | undefined, days = 21): boolean {
+  if (!iso) return false;
+  const t = Date.parse(iso);
+  if (Number.isNaN(t)) return false;
+  return Date.now() - t < days * 24 * 60 * 60 * 1000;
+}
 
 /** إحصاءات مصغرة لكل تطبيق مربوط بمستودع — تجلب بالتوازي مع تخزين ساعة.
  *  التطبيق الفاشل (تقييد API مثلًا) يُحذف من الخريطة بصمت فتختفي شارته دون كسر الصفحة. */
@@ -108,8 +167,21 @@ export async function fetchCatalogRepoStats(
 
   const settled = await Promise.allSettled(
     items.map(async ({ slug, ref }) => {
-      const stats = await fetchRepoStats(ref);
-      return stats ? ([slug, { stars: stats.stars, pushedAt: stats.pushedAt }] as const) : null;
+      const [stats, release] = await Promise.all([
+        fetchRepoStats(ref),
+        fetchRepoReleaseSummary(ref),
+      ]);
+      if (!stats && !release.latestTag) return null;
+      return [
+        slug,
+        {
+          stars: stats?.stars ?? 0,
+          pushedAt: stats?.pushedAt ?? null,
+          downloads: release.downloads,
+          latestTag: release.latestTag,
+          releasedAt: release.releasedAt,
+        },
+      ] as const;
     })
   );
 

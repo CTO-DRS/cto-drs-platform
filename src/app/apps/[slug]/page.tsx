@@ -1,12 +1,13 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Github, Star, GitFork, CircleDot, Code2, History, Scale, BadgeCheck } from "lucide-react";
+import { ArrowLeft, ArrowRight, Github, Star, GitFork, CircleDot, Code2, History, Scale, BadgeCheck, Rss, Download } from "lucide-react";
 import { apps, appName, appSummary, appDescription, validHttpUrl, categoryLabel, relatedApps, statusLabels } from "@/lib/catalog";
-import { parseGithubRepo, fetchRepoStats, compactNumber, formatDateAr } from "@/lib/github";
+import { parseGithubRepo, fetchRepoStats, fetchRepoReleaseSummary, compactNumber, formatDateAr, isFreshRelease } from "@/lib/github";
 import { ViewTracker } from "@/components/view-tracker";
 import { ShareButton } from "@/components/share-button";
 import { FavoriteButton } from "@/components/favorite-button";
 import { BackButton } from "@/components/back-button";
+import { DownloadModal } from "@/components/download-modal";
 import type { Metadata } from "next";
 
 export function generateStaticParams() { return apps.map(app => ({ slug: app.slug })); }
@@ -30,7 +31,10 @@ export default async function AppDetailPage({ params }: { params: Promise<{ slug
   const prevApp = appIndex > 0 ? apps[appIndex - 1] : null;
   const nextApp = appIndex >= 0 && appIndex < apps.length - 1 ? apps[appIndex + 1] : null;
   const repoRef = parseGithubRepo(app.repository);
-  const repoStats = repoRef ? await fetchRepoStats(repoRef) : null;
+  const [repoStats, releaseSummary] = repoRef
+    ? await Promise.all([fetchRepoStats(repoRef), fetchRepoReleaseSummary(repoRef)])
+    : [null, null];
+  const freshRelease = isFreshRelease(releaseSummary?.releasedAt) || isFreshRelease(app.releaseDate);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -64,14 +68,16 @@ export default async function AppDetailPage({ params }: { params: Promise<{ slug
       <div className="breadcrumbs"><Link href="/">الرئيسية</Link> / <Link href="/apps">التطبيقات</Link> / <span aria-current="page">{appName(app)}</span></div>
       <BackButton fallback="/apps" label="عودة للتطبيقات" />
     </div>
-    <section className="detail-hero">
-      <div className="app-icon large">{app.name.en.slice(0,1)}</div>
+      <section className="detail-hero">
+      <div className="app-icon large">{app.name.en.slice(0,1)}{freshRelease && <span className="fresh-dot" aria-hidden />}</div>
       <div className="detail-title">
         <span className={`status ${app.status}`}>{statusLabels[app.status]}</span>
+        {freshRelease && <span className="tag new-badge"><BadgeCheck size={12} aria-hidden /> إصدار جديد</span>}
         <h1>{appName(app)}</h1>
         <p>{appSummary(app)}</p>
         <div className="meta-row"><span className="cat-tag"><b>الفئة:</b> {categoryLabel(app.category)}</span><span>المنصات: {app.platforms.join("، ")}</span><span>الإصدار: {app.version || "لم يحدد بعد"}</span><span>تاريخ الإصدار: {app.releaseDate || "لم يحدد بعد"}</span>{app.verified && <span className="tag verified" title="بيانات موثقة من مستودع GitHub الرسمي"><BadgeCheck size={13} aria-hidden /> بيانات موثقة من GitHub</span>}</div>
         <div className="detail-actions">
+          {links.length > 0 && <DownloadModal appName={appName(app)} links={links} version={app.version || releaseSummary?.latestTag || null} />}
           <ShareButton title={appName(app)} />
           <FavoriteButton slug={app.slug} name={appName(app)} variant="detail" />
         </div>
@@ -87,12 +93,19 @@ export default async function AppDetailPage({ params }: { params: Promise<{ slug
               <b>مفتوح المصدر على GitHub</b>
               <span dir="ltr">{repoRef.owner}/{repoRef.repo}</span>
             </div>
-            <a className="gh-repo-btn" href={repoRef.url} target="_blank" rel="noreferrer">زيارة المستودع <span aria-hidden>↗</span></a>
+            <div className="gh-repo-links">
+              <a className="gh-repo-btn rss" href={`${repoRef.url}/releases.atom`} target="_blank" rel="noreferrer" title="تابع الإصدارات عبر RSS" aria-label="تابع إصدارات هذا التطبيق عبر RSS">
+                <Rss size={14} aria-hidden />
+              </a>
+              <a className="gh-repo-btn" href={repoRef.url} target="_blank" rel="noreferrer">زيارة المستودع <span aria-hidden>↗</span></a>
+            </div>
           </div>
           {repoStats ? (
             <>
               <div className="gh-repo-stats">
-                <span className="gh-stat"><Star size={14} aria-hidden /> {compactNumber(repoStats.stars)} نجمة</span>
+                {releaseSummary && releaseSummary.downloads > 0 && <span className="gh-stat hot"><Download size={14} aria-hidden /> {compactNumber(releaseSummary.downloads)} تحميل</span>}
+                {releaseSummary?.latestTag && <span className="gh-stat" dir="ltr">{releaseSummary.latestTag}</span>}
+                <span className="gh-stat"><Star size={14} aria-hidden /> {compactNumber(repoStats?.stars ?? 0)} نجمة</span>
                 <span className="gh-stat"><GitFork size={14} aria-hidden /> {compactNumber(repoStats.forks)} نسخة</span>
                 <span className="gh-stat"><CircleDot size={14} aria-hidden /> {compactNumber(repoStats.openIssues)} قضية مفتوحة</span>
                 {repoStats.language && <span className="gh-stat"><Code2 size={14} aria-hidden /> {repoStats.language}</span>}
@@ -111,7 +124,7 @@ export default async function AppDetailPage({ params }: { params: Promise<{ slug
       {app.privacyPolicy && validHttpUrl(app.privacyPolicy) && <a className="text-link" href={app.privacyPolicy} target="_blank" rel="noreferrer">سياسة الخصوصية</a>}
       <Link className="button secondary full report-link" href={`/support?app=${encodeURIComponent(app.name.ar)}`}>بلاغ عن مشكلة في هذا التطبيق</Link>
     </aside></div>
-    <section className="panel changelog"><h2>سجل التحديثات</h2>{app.changelog.length ? app.changelog.map((item,i)=><div key={i}><b>{item.version}</b><span className="muted"> · {item.date}</span><ul>{item.notes.map((n,j)=><li key={j}>{n.ar}</li>)}</ul></div>) : <p className="muted">لا يوجد سجل تحديثات منشور بعد.</p>}</section>
+    <section className="panel changelog"><h2>سجل التحديثات</h2>{app.changelog.length ? <ol className="cl-timeline">{app.changelog.map((item,i)=><li className="cl-item" key={i}><span className="cl-dot" aria-hidden /><div className="cl-head"><b dir="ltr">{item.version}</b><span className="muted">{item.date}</span>{i === 0 && <span className="tag verified">الأحدث</span>}</div><ul>{item.notes.map((n,j)=><li key={j}>{n.ar}</li>)}</ul></li>)}</ol> : <p className="muted">لا يوجد سجل تحديثات منشور بعد.</p>}</section>
     {(prevApp || nextApp) && (
       <nav className="pn-nav" aria-label="التنقل بين تطبيقات الكتالوق">
         {prevApp ? (

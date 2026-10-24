@@ -10,6 +10,7 @@ import { HeroPhones } from "@/components/hero-phones";
 import { HomeAppsSection } from "@/components/home-apps-section";
 import { AnimatedCounter } from "@/components/animated-counter";
 import { RecentlyViewed } from "@/components/recently-viewed";
+import { Reveal } from "@/components/reveal";
 
 const STAT_ICONS: Record<string, React.ComponentType<{ size?: number }>> = {
   shield: Shield,
@@ -98,6 +99,7 @@ export default async function HomePage() {
       </section>
 
       {/* ===== Stats ===== */}
+      <Reveal>
       <section className="container" aria-label="أرقام المنصة">
         <div className="stats-bar">
           {site.stats.map(s => {
@@ -114,17 +116,21 @@ export default async function HomePage() {
           })}
         </div>
       </section>
+      </Reveal>
 
       {/* ===== Apps ===== */}
+      <Reveal>
       <section className="container" id="apps">
         <HomeAppsSection apps={apps} statsMap={statsMap} />
       </section>
+      </Reveal>
 
       {/* ===== شوهد مؤخرًا ===== */}
       <RecentlyViewed />
 
       {/* ===== من المدونة ===== */}
       {latestPosts(3).length > 0 && (
+        <Reveal>
         <section className="container" aria-labelledby="home-blog-title">
           <div className="home-blog-head">
             <h2 id="home-blog-title">من المدونة</h2>
@@ -140,6 +146,7 @@ export default async function HomePage() {
             ))}
           </div>
         </section>
+        </Reveal>
       )}
 
       {/* ===== CTA band ===== */}
