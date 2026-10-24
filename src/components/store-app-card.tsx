@@ -3,7 +3,7 @@ import { Download, Link2, BookOpen, Wallet, MessagesSquare, Clapperboard, Keyboa
 import type { AppEntry } from "@/lib/catalog";
 import { appSummary, categoryLabel, firstDownload, platformLabel, validHttpUrl } from "@/lib/catalog";
 import type { CardLive } from "@/lib/github";
-import { compactNumber, formatDateAr } from "@/lib/github";
+import { compactNumber, formatDateAr, isFreshRelease } from "@/lib/github";
 import { FavoriteButton } from "@/components/favorite-button";
 
 const ICONS: Record<string, React.ComponentType<{ size?: number }>> = {
@@ -35,7 +35,14 @@ export function AppStoreCard({ app, live }: { app: AppEntry; live?: CardLive }) 
           {isLetter ? <b>{app.icon.replace("letter-", "")}</b> : IconComp ? <IconComp size={24} /> : <Layers size={24} />}
         </span>
         <div className="store-card-title">
-          <h3>{app.name.ar}</h3>
+          <h3>
+            {app.name.ar}
+            {isFreshRelease(live?.releasedAt) && (
+              <span className="tag new-badge" title="أحدث إصدار نُشر خلال الأسابيع الثلاثة الماضية">
+                <Sparkles size={11} aria-hidden /> جديد
+              </span>
+            )}
+          </h3>
           <span>{categoryLabel(app.category)}</span>
         </div>
       </div>
@@ -58,6 +65,16 @@ export function AppStoreCard({ app, live }: { app: AppEntry; live?: CardLive }) 
         {live && (
           <span className="tag live" title={live.pushedAt ? `آخر تطوير: ${formatDateAr(live.pushedAt)}` : "إحصاءات حية من GitHub"}>
             <Star size={12} aria-hidden /> {compactNumber(live.stars)}
+          </span>
+        )}
+        {live && live.downloads > 0 && (
+          <span className="tag dl-count" title="إجمالي التنزيلات من إصدارات GitHub الرسمية">
+            <Download size={12} aria-hidden /> {compactNumber(live.downloads)} تحميل
+          </span>
+        )}
+        {live?.latestTag && (
+          <span className="tag ver" dir="ltr" title="أحدث إصدار منشور على GitHub">
+            {live.latestTag}
           </span>
         )}
       </div>
