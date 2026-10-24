@@ -947,3 +947,11 @@ body:has(.mobile-tabbar):has(.install-chip) .toast-host{bottom:170px}
 /* --- انتقالات العرض بين الصفحات (تدرّج رشيق في المتصفحات الداعمة) --- */
 @view-transition{navigation:auto}
 @media(prefers-reduced-motion:reduce){@view-transition{navigation:none}}
+
+/* ===== tints + verified badge for the real-app catalog (11 apps) ===== */
+.tint-violet{background:linear-gradient(135deg,#a78bfa,#6d28d9)}
+.tint-shield{background:linear-gradient(135deg,#10b981,#047857)}
+.tint-folder{background:linear-gradient(135deg,#f59e0b,#b45309)}
+.tint-link{background:linear-gradient(135deg,#06b6d4,#0e7490)}
+.tint-ai{background:linear-gradient(135deg,#8b5cf6,#db2777)}
+.tag.verified{color:#34d399;border:1px solid rgba(52,211,153,.4);background:rgba(52,211,153,.08);display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600}

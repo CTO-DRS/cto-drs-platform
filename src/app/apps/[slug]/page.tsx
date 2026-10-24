@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Github, Star, GitFork, CircleDot, Code2, History, Scale } from "lucide-react";
+import { ArrowLeft, ArrowRight, Github, Star, GitFork, CircleDot, Code2, History, Scale, BadgeCheck } from "lucide-react";
 import { apps, appName, appSummary, appDescription, validHttpUrl, categoryLabel, relatedApps, statusLabels } from "@/lib/catalog";
 import { parseGithubRepo, fetchRepoStats, compactNumber, formatDateAr } from "@/lib/github";
 import { ViewTracker } from "@/components/view-tracker";
@@ -70,7 +70,7 @@ export default async function AppDetailPage({ params }: { params: Promise<{ slug
         <span className={`status ${app.status}`}>{statusLabels[app.status]}</span>
         <h1>{appName(app)}</h1>
         <p>{appSummary(app)}</p>
-        <div className="meta-row"><span className="cat-tag"><b>الفئة:</b> {categoryLabel(app.category)}</span><span>المنصات: {app.platforms.join("، ")}</span><span>الإصدار: {app.version || "لم يحدد بعد"}</span><span>تاريخ الإصدار: {app.releaseDate || "لم يحدد بعد"}</span></div>
+        <div className="meta-row"><span className="cat-tag"><b>الفئة:</b> {categoryLabel(app.category)}</span><span>المنصات: {app.platforms.join("، ")}</span><span>الإصدار: {app.version || "لم يحدد بعد"}</span><span>تاريخ الإصدار: {app.releaseDate || "لم يحدد بعد"}</span>{app.verified && <span className="tag verified" title="بيانات موثقة من مستودع GitHub الرسمي"><BadgeCheck size={13} aria-hidden /> بيانات موثقة من GitHub</span>}</div>
         <div className="detail-actions">
           <ShareButton title={appName(app)} />
           <FavoriteButton slug={app.slug} name={appName(app)} variant="detail" />
