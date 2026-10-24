@@ -30,6 +30,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://cto-drs.com"),
   applicationName: "DRS Apps & More",
   keywords: ["DRS", "تطبيقات", "أندرويد", "متجر تطبيقات", "CTO-DRS"],
+  icons: {
+    icon: [{ url: "/icon-192.png", type: "image/png", sizes: "192x192" }],
+    apple: [{ url: "/icon-192.png", sizes: "192x192" }],
+    shortcut: ["/icon-192.png"],
+  },
   openGraph: {
     title: "DRS | منصة التطبيقات",
     description: "جميع التطبيقات في مكان واحد",
@@ -45,8 +50,8 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  /* يُنفّذ قبل أول رسم: يستعيد المظهر ولون التمييز من التخزين المحلي بلا وميض */
-  const themeBoot = `(function(){try{var t=localStorage.getItem("drs-theme");var a=localStorage.getItem("drs-accent");var d=document.documentElement;if(t==="light")d.dataset.theme="light";if(a&&/^(violet|cyan|emerald|amber)$/.test(a))d.dataset.accent=a;}catch(e){}})();`;
+  /* يُنفّذ قبل أول رسم: يستعيد المظهر (داكن/فاتح/تلقائي حسب النظام) ولون التمييز بلا وميض */
+  const themeBoot = `(function(){try{var t=localStorage.getItem("drs-theme");var a=localStorage.getItem("drs-accent");var d=document.documentElement;var sysLight=window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches;if(t==="light"||(t==="auto"&&sysLight))d.dataset.theme="light";if(a&&/^(violet|cyan|emerald|amber)$/.test(a))d.dataset.accent=a;}catch(e){}})();`;
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
       <body className={`${plexArabic.variable} ${cairo.variable}`}>

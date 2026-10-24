@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Moon, Sun, Palette, Check } from "lucide-react";
+import { Moon, Sun, Monitor, Palette, Check } from "lucide-react";
 
 const ACCENTS = [
   { id: "violet", color: "#7c5cff", label: "بنفسجي" },
@@ -10,9 +10,15 @@ const ACCENTS = [
   { id: "amber", color: "#d97706", label: "ذهبي" },
 ] as const;
 
-type Theme = "dark" | "light";
+type Theme = "dark" | "light" | "auto";
 
-/** مبدّل المظهر (داكن/فاتح) + لون التمييز — يُطبّق فورًا ويُحفظ محليًا بلا وميض */
+const THEME_META: Record<Theme, { next: Theme; icon: React.ReactNode; label: string; title: string }> = {
+  dark: { next: "light", icon: <Sun size={16} aria-hidden />, label: "التبديل إلى المظهر الفاتح", title: "المظهر الفاتح" },
+  light: { next: "auto", icon: <Monitor size={16} aria-hidden />, label: "التبديل إلى المظهر التلقائي (حسب النظام)", title: "تلقائي حسب النظام" },
+  auto: { next: "dark", icon: <Moon size={16} aria-hidden />, label: "التبديل إلى المظهر الداكن", title: "المظهر الداكن" },
+};
+
+/** مبدّل المظهر (داكن/فاتح/تلقائي حسب النظام) + لون التمييز — يُطبّق فورًا ويُحفظ محليًا بلا وميض */
 export function ThemeSwitcher() {
   const [theme, setTheme] = useState<Theme>("dark");
   const [accent, setAccent] = useState<string>("violet");
@@ -22,9 +28,25 @@ export function ThemeSwitcher() {
   /* القراءة الأولية بعد التركيب — سكربت الـ boot في body طبّق القيم مسبقًا */
   useEffect(() => {
     const root = document.documentElement;
-    setTheme(root.dataset.theme === "light" ? "light" : "dark");
+    let saved: string | null = null;
+    try { saved = localStorage.getItem("drs-theme"); } catch {}
+    setTheme(saved === "light" || saved === "auto" ? (saved as Theme) : "dark");
     setAccent(ACCENTS.some(a => a.id === root.dataset.accent) ? (root.dataset.accent as string) : "violet");
   }, []);
+
+  /* في الوضع التلقائي: تتبّع تغيّر تفضيل النظام حيًّا */
+  useEffect(() => {
+    if (theme !== "auto" || typeof window.matchMedia !== "function") return;
+    const mql = window.matchMedia("(prefers-color-scheme: light)");
+    const onChange = () => {
+      document.documentElement.dataset.theme = mql.matches ? "light" : "dark";
+      const root = document.documentElement;
+      root.classList.add("theme-anim");
+      window.setTimeout(() => root.classList.remove("theme-anim"), 420);
+    };
+    mql.addEventListener("change", onChange);
+    return () => mql.removeEventListener("change", onChange);
+  }, [theme]);
 
   /* إغلاق قائمة الألوان بالنقر خارجها أو بـ Escape */
   useEffect(() => {
@@ -47,7 +69,8 @@ export function ThemeSwitcher() {
   function applyTheme(next: Theme) {
     setTheme(next);
     try { localStorage.setItem("drs-theme", next); } catch {}
-    document.documentElement.dataset.theme = next;
+    const systemLight = typeof window.matchMedia === "function" && window.matchMedia("(prefers-color-scheme: light)").matches;
+    document.documentElement.dataset.theme = next === "auto" ? (systemLight ? "light" : "dark") : next;
     animate();
   }
 
@@ -64,11 +87,11 @@ export function ThemeSwitcher() {
       <button
         type="button"
         className="theme-btn"
-        onClick={() => applyTheme(theme === "dark" ? "light" : "dark")}
-        aria-label={theme === "dark" ? "التبديل إلى المظهر الفاتح" : "التبديل إلى المظهر الداكن"}
-        title={theme === "dark" ? "المظهر الفاتح" : "المظهر الداكن"}
+        onClick={() => applyTheme(THEME_META[theme].next)}
+        aria-label={THEME_META[theme].label}
+        title={THEME_META[theme].title}
       >
-        {theme === "dark" ? <Sun size={16} aria-hidden /> : <Moon size={16} aria-hidden />}
+        {THEME_META[theme].icon}
       </button>
       <button
         type="button"
