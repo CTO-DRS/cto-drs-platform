@@ -4,9 +4,10 @@ import { useMemo, useState } from "react";
 import { LayoutGrid, SlidersHorizontal } from "lucide-react";
 import type { AppEntry } from "@/lib/catalog";
 import { categoryLabel } from "@/lib/catalog";
+import type { CatalogStatsMap } from "@/lib/github";
 import { AppStoreCard } from "@/components/store-app-card";
 
-export function HomeAppsSection({ apps }: { apps: AppEntry[] }) {
+export function HomeAppsSection({ apps, statsMap }: { apps: AppEntry[]; statsMap?: CatalogStatsMap }) {
   const [activeCat, setActiveCat] = useState("all");
 
   const categories = useMemo(() => {
@@ -59,7 +60,7 @@ export function HomeAppsSection({ apps }: { apps: AppEntry[] }) {
 
       <div className="store-grid">
         {visible.map(app => (
-          <AppStoreCard key={app.slug} app={app} />
+          <AppStoreCard key={app.slug} app={app} live={statsMap?.[app.slug]} />
         ))}
       </div>
 

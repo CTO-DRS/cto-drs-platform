@@ -6,6 +6,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { CommandPalette } from "@/components/command-palette";
 import { GlobalChrome } from "@/components/global-chrome";
 import { PwaLayer } from "@/components/pwa-layer";
+import { AnnouncementBar } from "@/components/announcement-bar";
+import { activeAnnouncements } from "@/lib/catalog";
 
 const plexArabic = IBM_Plex_Sans_Arabic({
   variable: "--font-app",
@@ -47,6 +49,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className={`${plexArabic.variable} ${cairo.variable}`}>
         <a href="#main-content" className="skip-link">تخطي إلى المحتوى الرئيسي</a>
         <SiteHeader />
+        <AnnouncementBar items={activeAnnouncements()} />
         <div id="main-content">{children}</div>
         <SiteFooter />
         <CommandPalette />

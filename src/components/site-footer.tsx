@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Github, Youtube, Send, Heart } from "lucide-react";
 import { site } from "@/lib/catalog";
 import { BrandLogo } from "@/components/brand-logo";
@@ -40,6 +41,15 @@ export function SiteFooter() {
         <p className="footer-tagline">
           <Heart size={13} aria-hidden /> نصنع نحو مستقبل رقمي أفضل
         </p>
+        <nav className="footer-links" aria-label="روابط سريعة">
+          <Link href="/projects">المشاريع</Link>
+          <span aria-hidden>·</span>
+          <Link href="/stats">لوحة المؤشرات</Link>
+          <span aria-hidden>·</span>
+          <Link href="/docs">الوثائق</Link>
+          <span aria-hidden>·</span>
+          <Link href="/en">English</Link>
+        </nav>
       </div>
     </footer>
   );

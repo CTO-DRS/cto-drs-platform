@@ -17,5 +17,13 @@
     { "id": "youtube", "url": "" },
     { "id": "x", "url": "" },
     { "id": "telegram", "url": "" }
+  ],
+  "announcements": [
+    {
+      "id": "catalog-real-apps",
+      "active": true,
+      "text": "كتالوج التطبيقات أصبح يعرض المشاريع الحقيقية الستة المربوطة بمستودعات GitHub — تابع التطوير والإصدارات لحظة بلحظة.",
+      "href": "/projects"
+    }
   ]
 }

@@ -11,14 +11,21 @@ export type AppEntry = {
   privacyPolicy: string | null; changelog: { version: string; date: string; notes: Localized[] }[];
   verified: boolean;
 };
+export type Announcement = { id: string; text: string; href?: string; active: boolean };
 export type SiteConfig = {
   brand: { name: string; tagline: string };
   stats: { icon: string; value: string; label: string }[];
   cto: { name: string; role: string; bio: string; email: string };
   social: { id: string; url: string }[];
+  announcements?: Announcement[];
 };
 export const apps = rawApps as AppEntry[];
 export const site = rawSiteConfig as SiteConfig;
+
+/** الإعلانات النشطة فقط — يعرضها الشريط أعلى الصفحات حتى يغلقها المستخدم */
+export function activeAnnouncements(): Announcement[] {
+  return (site.announcements ?? []).filter(a => a.active && a.text.trim());
+}
 export function appName(app: AppEntry, lang: "ar" | "en" = "ar") { return app.name[lang] || app.name.en; }
 export function appSummary(app: AppEntry, lang: "ar" | "en" = "ar") { return app.summary[lang] || app.summary.en; }
 export function appDescription(app: AppEntry, lang: "ar" | "en" = "ar") { return app.description[lang] || app.description.en; }
