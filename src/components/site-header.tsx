@@ -59,7 +59,7 @@ export function SiteHeader() {
 
         <div className="nav-end">
           <div className="lang-wrap">
-            <button type="button" className="lang-pill" onClick={() => setLangOpen(v => !v)} aria-expanded={langOpen} aria-haspopup="listbox">
+            <button type="button" className="lang-pill" onClick={() => setLangOpen(v => !v)} aria-expanded={langOpen} aria-haspopup="listbox" title="English version: /en">
               <Globe size={14} aria-hidden /> AR <ChevronDown size={13} aria-hidden />
             </button>
             {langOpen && (
@@ -67,8 +67,8 @@ export function SiteHeader() {
                 <button type="button" className="lang-opt active" role="option" aria-selected="true" onClick={() => setLangOpen(false)}>
                   العربية (AR) <Check size={14} aria-hidden />
                 </button>
-                <button type="button" className="lang-opt" role="option" aria-selected="false" disabled title="قريباً">
-                  English (EN) <small>قريباً</small>
+                <button type="button" className="lang-opt" role="option" aria-selected="false" onClick={() => { setLangOpen(false); router.push("/en"); }} title="English">
+                  English (EN) <small>جديد</small>
                 </button>
               </div>
             )}

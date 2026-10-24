@@ -1,10 +1,15 @@
 import Link from "next/link";
-import { FolderOpen } from "lucide-react";
+import { FolderOpen, Github, Star, GitFork, CircleDot, ExternalLink, Code2 } from "lucide-react";
 import { apps, appName, appSummary, categoryLabel, catalogStats, statusLabels } from "@/lib/catalog";
+import { compactNumber, fetchOrgRepos, formatDateAr } from "@/lib/github";
 
 export const metadata = { title: "المشاريع", description: "تابع مشاريع CTO-DRS وحالتها وفئاتها التقنية." };
 
-export default function ProjectsPage() {
+const GITHUB_OWNER = process.env.GITHUB_OWNER || "CTO-DRS";
+
+export default async function ProjectsPage() {
+  const repos = await fetchOrgRepos(GITHUB_OWNER, 12);
+
   return (
     <main className="container page">
       <div className="page-intro">
@@ -35,6 +40,54 @@ export default function ProjectsPage() {
           </article>
         ))}
       </div>
+
+      {/* ===== المستودعات الحية من GitHub ===== */}
+      <section className="repos-section top-margin" aria-labelledby="repos-heading">
+        <div className="section-head">
+          <h2 id="repos-heading">
+            <Github size={20} aria-hidden className="head-icon" /> المستودعات المفتوحة على GitHub
+          </h2>
+          <p>أحدث المستودعات العامة لحساب <b dir="ltr">{GITHUB_OWNER}</b> مرتبة بتاريخ آخر تطوير — بيانات حية تُحدَّث كل ساعة.</p>
+        </div>
+
+        {repos.length > 0 ? (
+          <>
+            <div className="repo-grid">
+              {repos.map(repo => (
+                <article className="repo-card" key={repo.name}>
+                  <div className="repo-card-head">
+                    <span className="repo-avatar"><Github size={16} aria-hidden /></span>
+                    <a className="repo-name" href={repo.url} target="_blank" rel="noreferrer" dir="ltr">{repo.name}</a>
+                    <a className="repo-open" href={repo.url} target="_blank" rel="noreferrer" aria-label={`فتح ${repo.name} على GitHub`}>
+                      <ExternalLink size={13} aria-hidden />
+                    </a>
+                  </div>
+                  {repo.description && <p className="repo-desc" dir="auto">{repo.description}</p>}
+                  <div className="repo-meta">
+                    {repo.language && (
+                      <span className="gh-stat"><Code2 size={12} aria-hidden /> {repo.language}</span>
+                    )}
+                    <span className="gh-stat"><Star size={12} aria-hidden /> {compactNumber(repo.stars)}</span>
+                    <span className="gh-stat"><GitFork size={12} aria-hidden /> {compactNumber(repo.forks)}</span>
+                    <span className="gh-stat"><CircleDot size={12} aria-hidden /> {formatDateAr(repo.pushedAt)}</span>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <div className="repos-more">
+              <a className="gh-btn" href={`https://github.com/${GITHUB_OWNER}?tab=repositories`} target="_blank" rel="noreferrer">
+                عرض جميع المستودعات على GitHub <span aria-hidden>↗</span>
+              </a>
+            </div>
+          </>
+        ) : (
+          <div className="notice">
+            <b>تعذر جلب المستودعات الآن.</b> يمكنك دائمًا تصفحها مباشرة على{" "}
+            <a href={`https://github.com/${GITHUB_OWNER}`} target="_blank" rel="noreferrer">github.com/{GITHUB_OWNER}</a>.
+          </div>
+        )}
+      </section>
+
       <div className="notice top-margin">
         <b>للمطورين:</b> يُدار هذا الكتالوج من ملف <code>content/apps.json</code> داخل مستودع GitHub، وكل تعديل يمر بمراجعة عبر طلبات السحب.
       </div>

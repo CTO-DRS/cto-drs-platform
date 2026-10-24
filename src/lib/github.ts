@@ -90,3 +90,54 @@ export function formatDateAr(iso: string | null): string {
 export function openSourceCount(list: { repository: string | null }[]): number {
   return list.filter(a => parseGithubRepo(a.repository)).length;
 }
+
+/* ===== مستودعات الحساب (على مستوى المالك) ===== */
+
+export type OrgRepo = {
+  name: string;
+  url: string;
+  description: string | null;
+  language: string | null;
+  stars: number;
+  forks: number;
+  pushedAt: string | null;
+  homepage: string | null;
+  isArchived: boolean;
+};
+
+/** جلب المستودعات العامة لحساب GitHub مرتبة بالتطوير الأحدث، مع تخزين مؤقت لمدة ساعة.
+ *  نفس سياسة الأمان: GITHUB_TOKEN اختياري، وأي فشل يعيد [] دون تعطيل الصفحة. */
+export async function fetchOrgRepos(owner: string, limit = 12): Promise<OrgRepo[]> {
+  try {
+    const headers: Record<string, string> = {
+      Accept: "application/vnd.github+json",
+      "User-Agent": "cto-drs-platform",
+    };
+    const token = process.env.GITHUB_TOKEN;
+    if (token) headers.Authorization = `Bearer ${token}`;
+    const res = await fetch(
+      `https://api.github.com/users/${encodeURIComponent(owner)}/repos?sort=pushed&per_page=100&type=owner`,
+      { headers, next: { revalidate: 3600 } },
+    );
+    if (!res.ok) return [];
+    const data = (await res.json()) as Record<string, unknown>[];
+    if (!Array.isArray(data)) return [];
+    return data
+      .filter(r => r.archived !== true)
+      .slice(0, limit)
+      .map(r => ({
+        name: typeof r.name === "string" ? r.name : "",
+        url: typeof r.html_url === "string" ? r.html_url : `https://github.com/${owner}`,
+        description: typeof r.description === "string" ? r.description : null,
+        language: typeof r.language === "string" ? r.language : null,
+        stars: typeof r.stargazers_count === "number" ? r.stargazers_count : 0,
+        forks: typeof r.forks_count === "number" ? r.forks_count : 0,
+        pushedAt: typeof r.pushed_at === "string" ? r.pushed_at : null,
+        homepage: typeof r.homepage === "string" && r.homepage ? r.homepage : null,
+        isArchived: r.archived === true,
+      }))
+      .filter(r => r.name);
+  } catch {
+    return [];
+  }
+}
