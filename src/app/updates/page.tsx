@@ -4,6 +4,7 @@ import { Sparkles, Download, Tag, Rss, Activity, Clock, Flame, ArrowLeft } from 
 import { apps, appName, firstDownload } from "@/lib/catalog";
 import { parseGithubRepo, fetchCatalogRepoStats, fetchRecentReleasesFeed, formatDateAr, isFreshRelease } from "@/lib/github";
 import { UpdateChecker, type CheckerApp } from "@/components/update-checker";
+import { ReleaseAlerts } from "@/components/release-alerts";
 import { BackButton } from "@/components/back-button";
 import { AppGlyph } from "@/components/app-glyph";
 
@@ -148,6 +149,8 @@ export default async function UpdatesPage() {
               )}
             </div>
           </section>
+
+          <ReleaseAlerts apps={checkerApps} />
 
           <UpdateChecker apps={checkerApps} />
 

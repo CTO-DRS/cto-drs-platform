@@ -1,26 +1,41 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { UserRound, Github, Mail, ShieldCheck, Sparkles } from "lucide-react";
-import { site } from "@/lib/catalog";
+import { apps, site, appName } from "@/lib/catalog";
+import { fetchCatalogRepoStats } from "@/lib/github";
 import { FavoritesSection } from "@/components/favorites-section";
+import { ReleaseAlerts, type ReleaseWatchApp } from "@/components/release-alerts";
+import { NotifyLog } from "@/components/notify-log";
 import { BackButton } from "@/components/back-button";
 
 export const metadata: Metadata = {
   title: "الحساب",
-  description: "بوابة حسابات منصة DRS — مفضلتك وتطبيقاتك ومزامنتك قيد الإعداد.",
+  description: "بوابة حسابات منصة DRS — مفضلتك وإشعارات الإصدارات وسجل التنبيهات، كلها محفوظة على جهازك.",
 };
 
-export default function AccountPage() {
+export default async function AccountPage() {
   const { cto } = site;
+
+  /* بيانات الإصدارات الحية لكل التطبيقات — مصدر مراقبة الإشعارات (تُحدّث كل ساعة) */
+  const statsMap = await fetchCatalogRepoStats(apps);
+  const watchApps: ReleaseWatchApp[] = apps.map(a => ({
+    slug: a.slug,
+    name: appName(a),
+    latestTag: statsMap[a.slug]?.latestTag ?? null,
+    releasedAt: statsMap[a.slug]?.releasedAt ?? null,
+  }));
+
   return (
     <main className="container page narrow">
       <BackButton fallback="/" label="رجوع" />
       <div className="page-intro">
         <div className="eyebrow">مساحتك الخاصة</div>
         <h1>حسابي</h1>
-        <p>بوابة موحدة لمتابعة تطبيقاتك ومزامنة إعداداتك عبر أجهزتك.</p>
+        <p>بوابة موحدة لمتابعة تطبيقاتك المفضلة وإشعارات إصداراتها — بلا تسجيل، وكل بياناتك على جهازك فقط.</p>
       </div>
       <FavoritesSection />
+      <ReleaseAlerts apps={watchApps} />
+      <NotifyLog />
       <section className="panel account-card">
         <span className="account-avatar"><UserRound size={30} aria-hidden /></span>
         <h2>بوابة الحسابات قيد الإعداد</h2>

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Github, Star, GitFork, CircleDot, Code2, History, Scale, BadgeCheck, Rss, Download } from "lucide-react";
+import { ArrowLeft, ArrowRight, Github, Star, GitFork, CircleDot, Code2, History, Scale, BadgeCheck, Rss, Download, GitCompareArrows } from "lucide-react";
 import { apps, appName, appSummary, appDescription, validHttpUrl, categoryLabel, relatedApps, statusLabels } from "@/lib/catalog";
 import { parseGithubRepo, fetchRepoStats, fetchRepoReleaseSummary, fetchLatestReleases, compactNumber, formatDateAr, isFreshRelease } from "@/lib/github";
 import { ViewTracker } from "@/components/view-tracker";
@@ -83,6 +83,9 @@ export default async function AppDetailPage({ params }: { params: Promise<{ slug
         <div className="meta-row"><span className="cat-tag"><b>الفئة:</b> {categoryLabel(app.category)}</span><span>المنصات: {app.platforms.join("، ")}</span><span>الإصدار: {app.version || "لم يحدد بعد"}</span><span>تاريخ الإصدار: {app.releaseDate || "لم يحدد بعد"}</span>{app.verified && <span className="tag verified" title="بيانات موثقة من مستودع GitHub الرسمي"><BadgeCheck size={13} aria-hidden /> بيانات موثقة من GitHub</span>}</div>
         <div className="detail-actions">
           {links.length > 0 && <DownloadModal appName={appName(app)} links={links} version={app.version || releaseSummary?.latestTag || null} />}
+          <Link className="button secondary" href={`/compare?a=${app.slug}`} title="ضع هذا التطبيق جنبًا إلى جنب مع تطبيق آخر">
+            <GitCompareArrows size={15} aria-hidden /> قارن مع تطبيق آخر
+          </Link>
           <ShareButton title={appName(app)} />
           <FavoriteButton slug={app.slug} name={appName(app)} variant="detail" />
         </div>

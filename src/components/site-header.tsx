@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
   Home, LayoutGrid, Newspaper, Headphones, UserRound, Search, Globe, ChevronDown, Menu, X, Check, Heart,
-  MoreHorizontal, FolderGit2, BarChart3, FileText, Palette, Sparkles,
+  MoreHorizontal, FolderGit2, BarChart3, FileText, Palette, Sparkles, Info, GitCompareArrows,
 } from "lucide-react";
 import { BrandLogo } from "@/components/brand-logo";
 import { openCommandPalette } from "@/components/command-palette";
@@ -22,9 +22,11 @@ const NAV = [
 
 const MORE_LINKS = [
   { href: "/updates", label: "ما الجديد", icon: Sparkles, hint: "أحدث الإصدارات الحية + فاحص تحديثات" },
+  { href: "/compare", label: "قارن التطبيقات", icon: GitCompareArrows, hint: "مقارنة حتى 3 تطبيقات جنبًا إلى جنب" },
   { href: "/projects", label: "المشاريع المفتوحة", icon: FolderGit2, hint: "مستودعات GitHub حية" },
   { href: "/stats", label: "لوحة المؤشرات", icon: BarChart3, hint: "أرقام المنصة مباشرة" },
   { href: "/docs", label: "الوثائق", icon: FileText, hint: "دليل الاستخدام والتطوير" },
+  { href: "/about", label: "عن المنصة", icon: Info, hint: "من نحن ورسالتنا وقيمنا" },
 ];
 
 export function SiteHeader() {

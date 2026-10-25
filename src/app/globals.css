@@ -1385,3 +1385,136 @@ html.theme-anim,html.theme-anim *,html.theme-anim *::before,html.theme-anim *::a
 [data-theme="light"] .faq-item p{color:#3b4c6b}
 [data-theme="light"] .faq-section{background:#ffffff}
 [data-theme="light"] .feed-card{background:linear-gradient(165deg,rgba(255,255,255,.96),rgba(244,247,255,.9))}
+
+/* ===== عن المنصة / مقارنة التطبيقات / إشعارات الإصدارات (Task 22–27) ===== */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* رابط التبديل بين العربية والإنجليزية في صفحات about/compare */
+.about-langrow{margin-top:14px!important}
+.lang-cross{display:inline-flex;align-items:center;gap:6px;color:#91bfff;font-size:12.5px;font-weight:700;border:1px solid #2a4263;background:var(--s2);border-radius:999px;padding:7px 15px}
+.lang-cross:hover{border-color:var(--cyan);color:#a9eaff;transform:translateY(-1px)}
+
+/* صفحة عن المنصة */
+.about-lead{max-width:780px;color:#b5c4d9;font-size:14.5px;line-height:2.05;margin-bottom:12px}
+.about-section{margin-top:34px}
+.offer-list{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:16px}
+.offer-card{padding:20px;border:1px solid #203754;border-radius:16px;background:linear-gradient(140deg,#0d1b30,#081222);transition:transform .18s,border-color .18s}
+.offer-card:hover{border-color:#496a9b;transform:translateY(-2px)}
+.offer-ico{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:rgb(var(--a1-rgb)/.14);color:var(--cyan);margin-bottom:11px}
+.offer-card b{display:block;font-size:14px;margin-bottom:6px}
+.offer-card p{margin:0;color:#a9b8cf;font-size:12px;line-height:1.9}
+.value-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:16px}
+.value-card{padding:19px;border:1px solid #203754;border-radius:16px;background:linear-gradient(140deg,#0d1b30,#081222)}
+.value-card svg{color:var(--cyan)}
+.value-card b{display:block;margin:9px 0 5px;font-size:13.5px}
+.value-card p{margin:0;color:#a9b8cf;font-size:11.5px;line-height:1.85}
+.about-person{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.about-person-body{flex:1;min-width:260px}
+.about-person-body h2{margin:2px 0 10px}
+.about-person-body p{color:#b2c1d7;font-size:13px;line-height:2;margin:0 0 14px}
+.about-cta{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.about-start h2{display:flex;align-items:center;gap:8px}
+.about-links-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+.about-link-card{display:flex;flex-direction:column;gap:4px;padding:16px;border:1px solid #203754;border-radius:14px;background:var(--s1);transition:transform .18s,border-color .18s}
+.about-link-card:hover{border-color:var(--cyan);transform:translateY(-2px)}
+.about-link-card svg{color:var(--cyan);margin-bottom:5px}
+.about-link-card b{font-size:13px}
+.about-link-card span{color:var(--muted);font-size:11.5px}
+.about-more{margin:14px 0 0!important;color:var(--muted);font-size:12.5px}
+.about-more a{color:#8edbff}
+
+/* جدول المقارنة */
+.cmp-wrap{margin-top:4px}
+.cmp-desc{color:var(--muted);font-size:13px;margin:0 0 14px;max-width:720px}
+.cmp-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:17px;background:var(--panel);scrollbar-width:thin;position:relative}
+.cmp-table{width:100%;border-collapse:separate;border-spacing:0;min-width:680px}
+.cmp-table th,.cmp-table td{padding:13px 15px;text-align:start;vertical-align:top;border-bottom:1px solid #1a2b47;font-size:13px}
+.cmp-table thead th{background:#0b1830;border-bottom:1px solid #24395c;vertical-align:middle}
+.cmp-table tbody tr:last-child td,.cmp-table tbody tr:last-child th{border-bottom:0}
+.cmp-rowlabel{color:var(--muted);font-size:12px;font-weight:700;white-space:nowrap;width:1%;min-width:96px}
+.cmp-apphead{display:flex;align-items:center;gap:10px;min-width:225px}
+.app-icon.cmp-mini{width:46px;height:46px;flex-basis:46px;font-size:20px;border-radius:13px}
+.cmp-apphead-body{flex:1;min-width:0}
+.cmp-select{width:100%;max-width:225px;background:var(--s2);border:1px solid #2a4263;color:var(--text);font:inherit;font-size:12.5px;border-radius:11px;padding:9px 12px;outline:none;cursor:pointer}
+.cmp-select:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #36d8ff22}
+.cmp-apphead-name{display:flex;align-items:center;gap:8px;margin-top:7px;font-size:13px}
+.cmp-remove{background:none;border:1px solid #2a4263;color:var(--muted);width:26px;height:26px;border-radius:8px;display:grid;place-items:center;cursor:pointer;flex-shrink:0}
+.cmp-remove:hover{color:#ff8f8f;border-color:#ff8f8f}
+.cmp-th-empty{background:#0a1526}
+.cmp-dash{color:#4b608a}
+td.cmp-win{box-shadow:inset 0 0 0 1px rgb(var(--a1-rgb)/.5);border-radius:10px;background:rgb(var(--a1-rgb)/.10)}
+.cmp-live{display:flex;flex-direction:column;gap:5px;align-items:flex-start}
+.cmp-live b{font-size:14px}
+.cmp-best{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;color:rgb(var(--a1-rgb));background:rgb(var(--a1-rgb)/.14);border-radius:999px;padding:3px 9px}
+.cmp-stars{display:inline-flex;align-items:center;gap:6px;color:#c9d6ea}
+.cmp-stars svg{color:#f5c542}
+.cmp-summary{margin:0;color:#aab9cf;font-size:12px;line-height:1.85;max-width:240px}
+.cmp-actions{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.cmp-actions .button{margin-top:0}
+.cmp-add{display:inline-flex;align-items:center;gap:7px;background:var(--s3);border:1px dashed #3a5580;color:#9fc3ff;border-radius:12px;padding:10px 17px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;margin-top:13px}
+.cmp-add:hover{border-color:var(--cyan);color:#a9eaff;transform:translateY(-1px)}
+.cmp-hint{text-align:center;color:var(--muted);font-size:13px;padding:26px 15px!important}
+@media(max-width:760px){.value-grid{grid-template-columns:repeat(2,1fr)}.offer-list{grid-template-columns:1fr 1fr}.about-links-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.value-grid,.offer-list,.about-links-grid{grid-template-columns:1fr}}
+
+/* لوحة إشعارات الإصدارات + سجلها */
+.notify-note{color:#b2c1d7;font-size:12.5px;line-height:1.95;margin:2px 0 12px}
+.notify-note svg{vertical-align:-2px;margin-inline-end:4px}
+.notify-note.ok{color:#8fe6c8}
+.notify-note.blocked{color:#f2c98a}
+.notify-note b{color:#fff}
+.notify-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.notify-foot{margin:12px 0 0!important;color:var(--muted);font-size:11.5px}
+.notify-foot a{color:#8edbff}
+.notify-foot svg{vertical-align:-2px;margin-inline-end:3px}
+.nl-head{display:flex;align-items:center;gap:14px}
+.account-avatar.bell{background:linear-gradient(135deg,#36bdf8,#8858ff)}
+.nl-unread{margin-inline-start:auto;background:rgb(var(--a1-rgb)/.2);color:#cdbcff;border:1px solid rgb(var(--a1-rgb)/.45);border-radius:999px;padding:4px 12px;font-size:11px;font-weight:700;white-space:nowrap}
+.nl-empty{text-align:center;padding:22px 14px;border:1px dashed #405372;border-radius:13px;background:var(--s1);margin-top:14px}
+.nl-empty b{font-size:13.5px}
+.nl-empty p{margin:6px 0 0;color:#a9b8cf;font-size:12px;line-height:1.95;max-width:480px;margin-inline:auto}
+.nl-list{list-style:none;margin:15px 0 0;padding:0;display:grid;gap:9px}
+.nl-item{display:flex;gap:11px;align-items:flex-start;padding:12px 14px;border:1px solid #203754;border-radius:13px;background:var(--s1)}
+.nl-dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);margin-top:8px;flex-shrink:0;box-shadow:0 0 10px var(--cyan)}
+.nl-item.read .nl-dot{background:#3a4d70;box-shadow:none}
+.nl-body{flex:1;min-width:0}
+.nl-body b{font-size:12.5px;display:block;color:#e8f0ff}
+.nl-time{color:var(--muted);font-size:11px;margin-top:3px;display:block}
+.nl-link{color:#8edbff;font-size:11.5px;font-weight:700;white-space:nowrap;margin-top:6px}
+.nl-actions{display:flex;gap:14px;align-items:center;margin-top:13px;flex-wrap:wrap}
+.nl-readbtn{display:inline-flex;align-items:center;gap:6px;background:none;border:0;color:#91bfff;font:inherit;font-size:12px;font-weight:700;cursor:pointer;padding:4px 2px}
+.nl-readbtn:hover{color:#a9eaff}
+.nl-clear{display:inline-flex;align-items:center;gap:6px;background:none;border:0;color:#ff8f8f;font:inherit;font-size:12px;cursor:pointer;padding:4px 2px;margin-inline-start:auto}
+.nl-clear:hover{color:#ffb3b3}
+
+/* ثيم فاتح للصفحات الجديدة */
+[data-theme="light"] .lang-cross{border-color:#c9d6ee;background:#fff;color:#3b6fd4}
+[data-theme="light"] .about-lead{color:#3d4f70}
+[data-theme="light"] .offer-card,[data-theme="light"] .value-card{border-color:#d8e1f3;background:linear-gradient(140deg,#ffffff,#f6f9ff)}
+[data-theme="light"] .offer-card p,[data-theme="light"] .value-card p{color:#5a6b8c}
+[data-theme="light"] .offer-ico{background:rgb(var(--a1-rgb)/.12)}
+[data-theme="light"] .about-link-card{border-color:#d8e1f3;background:#f6f9ff}
+[data-theme="light"] .about-person-body p{color:#41547a}
+[data-theme="light"] .cmp-scroll{background:#ffffff}
+[data-theme="light"] .cmp-table th,[data-theme="light"] .cmp-table td{border-color:#e3eaf8}
+[data-theme="light"] .cmp-table thead th{background:#f2f6ff;border-color:#d8e1f3}
+[data-theme="light"] .cmp-th-empty{background:#f7faff}
+[data-theme="light"] .cmp-select{border-color:#c9d6ee;background:#f7faff}
+[data-theme="light"] .cmp-dash{color:#9db0d2}
+[data-theme="light"] td.cmp-win{background:rgb(var(--a1-rgb)/.08)}
+[data-theme="light"] .cmp-summary{color:#5a6b8c}
+[data-theme="light"] .cmp-stars{color:#3d4f70}
+[data-theme="light"] .cmp-add{border-color:#b9c8e6;color:#3b6fd4;background:#f2f6ff}
+[data-theme="light"] .notify-note{color:#41547a}
+[data-theme="light"] .notify-note.ok{color:#0b7a5c}
+[data-theme="light"] .notify-note.blocked{color:#92580a}
+[data-theme="light"] .notify-note b{color:#101a30}
+[data-theme="light"] .nl-item{background:#f5f8ff;border-color:#dfe7f6}
+[data-theme="light"] .nl-empty{background:#f5f8ff;border-color:#c9d6ee}
+[data-theme="light"] .nl-empty p{color:#5a6b8c}
+[data-theme="light"] .nl-body b{color:#101a30}
+[data-theme="light"] .nl-unread{color:#5b3fd4}
+[data-theme="light"] .nl-item.read .nl-dot{background:#b6c5e2}
+
+/* اتجاه LTR للنسخ الإنجليزية داخل الجدول والصفحات */
+html[dir="ltr"] .cmp-table th,html[dir="ltr"] .cmp-table td{text-align:left}

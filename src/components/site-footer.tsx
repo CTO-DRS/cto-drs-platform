@@ -28,12 +28,14 @@ const SOCIAL_LABELS: Record<string, string> = {
 const EXPLORE_LINKS = [
   { href: "/apps", label: "تصفح التطبيقات" },
   { href: "/updates", label: "ما الجديد (الإصدارات الحية)" },
+  { href: "/compare", label: "مقارنة التطبيقات" },
   { href: "/projects", label: "المشاريع المفتوحة" },
   { href: "/stats", label: "لوحة المؤشرات" },
   { href: "/blog", label: "المدونة" },
 ];
 
 const PLATFORM_LINKS = [
+  { href: "/about", label: "عن المنصة" },
   { href: "/support", label: "الدعم الفني" },
   { href: "/docs", label: "الوثائق" },
   { href: "/account", label: "حسابي والمفضلة" },
