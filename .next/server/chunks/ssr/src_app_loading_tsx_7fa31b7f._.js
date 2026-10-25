@@ -1,0 +1,3 @@
+module.exports=[2747,a=>{"use strict";var b=a.i(7997);function c(){return(0,b.jsxs)("main",{className:"container page",children:[(0,b.jsx)("div",{className:"sk sk-eyebrow"}),(0,b.jsx)("div",{className:"sk sk-title"}),(0,b.jsx)("div",{className:"sk sk-line"}),(0,b.jsx)("div",{className:"sk-grid","aria-hidden":!0,children:Array.from({length:6}).map((a,c)=>(0,b.jsx)("div",{className:"sk sk-card"},c))})]})}a.s(["default",()=>c])}];
+
+//# sourceMappingURL=src_app_loading_tsx_7fa31b7f._.js.map

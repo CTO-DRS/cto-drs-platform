@@ -1,11 +1,1 @@
-{
-  "version": 4,
-  "routes": {},
-  "dynamicRoutes": {},
-  "notFoundRoutes": [],
-  "preview": {
-    "previewModeId": "7d90517556d1c94e08ed69c6ef1c80ee",
-    "previewModeSigningKey": "d54e501c07ad92e0f72f67050bd95586ff7871079a6cdb9eb3d8d0da24d90332",
-    "previewModeEncryptionKey": "52eaaed623f16e7cb38483eb1c0aa565cd70543249e1ea4110315b1131d73ae6"
-  }
-}
+{"version":4,"routes":{"/apps/masar-al-lugha":{},"/apps/drs-nexus":{},"/apps/drs-chat":{},"/apps/lumina-studio":{},"/apps/drs-keyboard":{},"/apps/superbiz":{},"/apps/violet-chat":{},"/apps/securenet-vpn":{},"/apps/novafiles":{},"/apps/nexuslink":{},"/apps/drs-ai":{}},"dynamicRoutes":{"/apps/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/apps/[slug]","routeRegex":"^\\/apps\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"7d90517556d1c94e08ed69c6ef1c80ee","previewModeSigningKey":"d54e501c07ad92e0f72f67050bd95586ff7871079a6cdb9eb3d8d0da24d90332","previewModeEncryptionKey":"52eaaed623f16e7cb38483eb1c0aa565cd70543249e1ea4110315b1131d73ae6"}}

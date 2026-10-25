@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///home/z/my-project/src/components/en-document.tsx"],"sourcesContent":["\"use client\";\n\nimport { useLayoutEffect } from \"react\";\n\n/** يضبط <html> على (en, ltr) أثناء تواجد المستخدم في النسخة الإنجليزية،\n *  ويخفي واجهة الهيدر/الفوتر العربية عبر كلاس، ويعيد كل شيء عند المغادرة.\n *  يستخدم useLayoutEffect ليعمل قبل الرسم فلا يظهر وميض للواجهة العربية. */\nexport function EnDocument() {\n  useLayoutEffect(() => {\n    const html = document.documentElement;\n    const prevLang = html.lang;\n    const prevDir = html.dir;\n    html.lang = \"en\";\n    html.dir = \"ltr\";\n    html.classList.add(\"en-doc\");\n    return () => {\n      html.lang = prevLang;\n      html.dir = prevDir;\n      html.classList.remove(\"en-doc\");\n    };\n  }, []);\n  return null;\n}\n"],"names":[],"mappings":";;;;AAEA;;AAFA;;AAOO,SAAS;;IACd,IAAA,gLAAe;sCAAC;YACd,MAAM,OAAO,SAAS,eAAe;YACrC,MAAM,WAAW,KAAK,IAAI;YAC1B,MAAM,UAAU,KAAK,GAAG;YACxB,KAAK,IAAI,GAAG;YACZ,KAAK,GAAG,GAAG;YACX,KAAK,SAAS,CAAC,GAAG,CAAC;YACnB;8CAAO;oBACL,KAAK,IAAI,GAAG;oBACZ,KAAK,GAAG,GAAG;oBACX,KAAK,SAAS,CAAC,MAAM,CAAC;gBACxB;;QACF;qCAAG,EAAE;IACL,OAAO;AACT;GAfgB;KAAA"}}]
+}

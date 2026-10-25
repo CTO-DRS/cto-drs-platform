@@ -1,0 +1,3 @@
+module.exports=[14456,a=>{"use strict";var b=a.i(87924),c=a.i(72131);function d({appIcon:a,letter:d,className:e,imgClassName:f}){let[g,h]=(0,c.useState)(!1);return a&&!g?(0,b.jsx)("img",{src:a,alt:"","aria-hidden":!0,loading:"lazy",decoding:"async",draggable:!1,onError:()=>h(!0),className:`app-glyph-img ${f??""}`}):(0,b.jsx)("b",{"aria-hidden":!0,children:d})}a.s(["AppGlyph",()=>d])},13814,a=>{"use strict";var b=a.i(72131);function c(){return(0,b.useLayoutEffect)(()=>{let a=document.documentElement,b=a.lang,c=a.dir;return a.lang="en",a.dir="ltr",a.classList.add("en-doc"),()=>{a.lang=b,a.dir=c,a.classList.remove("en-doc")}},[]),null}a.s(["EnDocument",()=>c])}];
+
+//# sourceMappingURL=src_components_c6acfcf9._.js.map

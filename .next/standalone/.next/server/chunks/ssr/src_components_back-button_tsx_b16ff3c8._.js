@@ -1,0 +1,3 @@
+module.exports=[61423,a=>{"use strict";var b=a.i(87924),c=a.i(50944);let d=(0,a.i(70106).default)("arrow-right",[["path",{d:"M5 12h14",key:"1ays0h"}],["path",{d:"m12 5 7 7-7 7",key:"xquz4c"}]]);function e({fallback:a="/",label:e="رجوع"}){let f=(0,c.useRouter)();return(0,b.jsxs)("button",{type:"button",className:"back-chip",onClick:()=>{f.push(a)},children:[(0,b.jsx)(d,{size:15,"aria-hidden":!0})," ",e]})}a.s(["BackButton",()=>e],61423)}];
+
+//# sourceMappingURL=src_components_back-button_tsx_b16ff3c8._.js.map
