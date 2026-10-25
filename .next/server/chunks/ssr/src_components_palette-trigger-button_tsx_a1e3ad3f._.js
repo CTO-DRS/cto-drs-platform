@@ -1,0 +1,3 @@
+module.exports=[43244,a=>{"use strict";var b=a.i(87924),c=a.i(87532),d=a.i(93354);function e({label:a="بحث سريع"}){return(0,b.jsxs)("button",{type:"button",className:"button secondary",onClick:d.openCommandPalette,"aria-keyshortcuts":"Control+K",title:"فتح البحث السريع",children:[(0,b.jsx)(c.Search,{size:15,"aria-hidden":!0})," ",a," ",(0,b.jsx)("kbd",{className:"nav-kbd","aria-hidden":!0,children:"Ctrl K"})]})}a.s(["PaletteTriggerButton",()=>e])}];
+
+//# sourceMappingURL=src_components_palette-trigger-button_tsx_a1e3ad3f._.js.map

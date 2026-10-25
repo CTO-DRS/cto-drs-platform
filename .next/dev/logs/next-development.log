@@ -1,2 +1,141 @@
 [00:00:00.921] Server  LOG     ✓ Ready in 725ms
 [00:00:03.931] Server  LOG     ○ Compiling / ...
+[00:03:31.447] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+        <SegmentViewNode type="page" pagePath="page.tsx">
+          <SegmentTrieNode>
+          <HomePage>
+            <main>
+              <script>
+              <section>
+              <Reveal>
+              <Reveal>
+                <div ref={{current:null}} className={"reveal  "} style={undefined}>
+                  <section className="container" id="apps">
+                    <HomeAppsSection apps={[...]} statsMap={{...}}>
+                      <div className="store-section">
+                        <div>
+                        <div>
+                        <div className="store-grid">
+                          <AppStoreCard app={{slug:"masa...", ...}} live={{stars:0, ...}}>
+                            <article className="store-card">
+                              <FavoriteButton>
+                              <div>
+                              <p>
+                              <div className="store-tags">
+                                <span>
+                                <span>
+                                <span>
+                                <a>
+                                <span
+                                  className="tag live"
++                                 title="آخر تطوير: 25 أكتوبر 2026"
+-                                 title="آخر تطوير: 24 أكتوبر 2026"
+                                >
+                                ...
+                              ...
+                          <AppStoreCard>
+                          <AppStoreCard>
+                          <AppStoreCard>
+                          <AppStoreCard>
+                          <AppStoreCard>
+                          <AppStoreCard app={{slug:"viol...", ...}} live={{stars:0, ...}}>
+                            <article className="store-card">
+                              <FavoriteButton>
+                              <div>
+                              <p>
+                              <div className="store-tags">
+                                <span>
+                                <span>
+                                <span>
+                                <a>
+                                <span
+                                  className="tag live"
++                                 title="آخر تطوير: 25 أكتوبر 2026"
+-                                 title="آخر تطوير: 24 أكتوبر 2026"
+                                >
+                                ...
+                              ...
+                          <AppStoreCard app={{slug:"secu...", ...}} live={{stars:0, ...}}>
+                            <article className="store-card">
+                              <FavoriteButton>
+                              <div>
+                              <p>
+                              <div className="store-tags">
+                                <span>
+                                <span>
+                                <span>
+                                <a>
+                                <span
+                                  className="tag live"
++                                 title="آخر تطوير: 25 أكتوبر 2026"
+-                                 title="آخر تطوير: 24 أكتوبر 2026"
+                                >
+                                ...
+                              ...
+                          <AppStoreCard>
+                          <AppStoreCard app={{slug:"nexu...", ...}} live={{stars:1, ...}}>
+                            <article className="store-card">
+                              <FavoriteButton>
+                              <div>
+                              <p>
+                              <div className="store-tags">
+                                <span>
+                                <span>
+                                <span>
+                                <span>
+                                <span>
+                                <a>
+                                <span
+                                  className="tag live"
++                                 title="آخر تطوير: 24 أكتوبر 2026"
+-                                 title="آخر تطوير: 23 أكتوبر 2026"
+                                >
+                                ...
+                              ...
+                          ...
+              ...
+        ...
+      ...
+
+[00:03:31.561] Server  WARN    ⚠ Cross origin request detected from preview-chat-5f299c7c-eb29-41b4-9370-57fc6b152f23.space-z.ai to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+[00:03:44.641] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:14:25.122] Server  LOG     ✓ Compiled in 8ms
+[00:14:25.157] Server  LOG     ✓ Compiled in 5ms
+[00:17:39.181] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:18:31.536] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:18:38.311] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:18:50.893] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:19:45.677] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:19:57.687] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:19:59.898] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:13.631] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:15.628] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:17.580] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:18.945] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:20.885] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:22.785] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:39.817] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:22:17.319] Server  LOG     ✓ Compiled in 119ms
+[00:22:24.210] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:22:26.276] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:22:28.196] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:22:30.137] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:22:41.814] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:22:44.824] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:23:04.442] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:25:24.921] Server  LOG       Reload env: .env.local
