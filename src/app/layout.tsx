@@ -31,8 +31,12 @@ export const metadata: Metadata = {
   applicationName: "DRS Apps & More",
   keywords: ["DRS", "تطبيقات", "أندرويد", "متجر تطبيقات", "CTO-DRS"],
   icons: {
-    icon: [{ url: "/icon-192.png", type: "image/png", sizes: "192x192" }],
-    apple: [{ url: "/icon-192.png", sizes: "192x192" }],
+    icon: [
+      { url: "/favicon-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
     shortcut: ["/icon-192.png"],
   },
   openGraph: {
