@@ -77,3 +77,17 @@ Stage Summary:
 - الإنتاج: https://cto-drs-store.vercel.app — /en/apps /en/updates /en/support /en/stats /en/projects /en/account كلها حية
 - ملفات جديدة: en/{apps,updates,support,stats,projects,account}/page.tsx, components/en-page-shell.tsx, lib/compare-image.ts
 - معدلة: 6 مكوّنات عميل أصبحت ثنائية اللغة (catalog-explorer, update-checker, release-alerts, support-form, notify-log, favorites-section) + compare-client (زر الصورة) + en-document + github.ts + notifications.ts + toast.ts (إصلاح) + globals.css + sitemap + account/updates + en/page + en/about
+Task ID: 31
+Agent: main (Z.ai)
+Task: «نفذ» — تحقق نهائي شامل من حالة Tasks 28-30 بعد استعادة السياق
+
+Work Log:
+- فحص القرص: كل ملفات 28-30 موجودة (en/* الست صفحات، compare-image.ts، en-page-shell.tsx، release-alerts.tsx، notify-log.tsx) — كانت منفذة في الجلسة السابقة قبل نفاد السياق
+- git status نظيف؛ HEAD = 4922bb5 (لقطات تحقق) فوق 0aa175f و aeff35b (التنفيذ الفعلي) — 10 commits أمام origin/main
+- tsc --noEmit: صفر أخطاء src/
+- تدقيق الإنتاج الحي: /en/updates تحوي "release notes" ✅، /compare تحوي "مشاركة كصورة" ✅، /en/apps dir="ltr" ✅، sitemap يدرج 8 مسارات /en ✅
+- بحث عن GITHUB_TOKEN في .env* وgit config وcredentials: غير موجود → الدفع ما يزال مؤجلًا
+
+Stage Summary:
+- Tasks 22-30 كلها منفذة ومؤكدة حية على https://cto-drs-store.vercel.app
+- البند المعلق الوحيد: git push (10 commits) — فور توفر GITHUB_TOKEN
