@@ -86,6 +86,16 @@ export function formatDateAr(iso: string | null): string {
   }
 }
 
+/** تاريخ مقروء بحسب اللغة (ar/en) من ISO — تُستخدم في النسخ الإنجليزية */
+export function formatDateLocalized(iso: string | null, lang: "ar" | "en" = "ar"): string {
+  if (!iso) return "—";
+  try {
+    return new Intl.DateTimeFormat(lang, { year: "numeric", month: "long", day: "numeric" }).format(new Date(iso));
+  } catch {
+    return "—";
+  }
+}
+
 /** عدد التطبيقات المربوطة بمستودعات حقيقية في الكتالوج */
 export function openSourceCount(list: { repository: string | null }[]): number {
   return list.filter(a => parseGithubRepo(a.repository)).length;

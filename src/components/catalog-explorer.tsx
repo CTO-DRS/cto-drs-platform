@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Search, X, SlidersHorizontal, FolderOpen, Github, ArrowUpDown, Heart, LayoutGrid, Rows3, Star, Download, Sparkles, Dices, History } from "lucide-react";
 import type { AppEntry } from "@/lib/catalog";
-import { categoryLabel, filterByCategory, filterByStatus, searchApps, statusLabels, validHttpUrl } from "@/lib/catalog";
+import { categoryLabel, categoryLabelEn, filterByCategory, filterByStatus, searchApps, statusLabels, validHttpUrl } from "@/lib/catalog";
 import type { CatalogStatsMap } from "@/lib/github";
 import { compactNumber, isFreshRelease } from "@/lib/github";
 import { useFavorites } from "@/lib/favorites";
@@ -20,6 +20,7 @@ type Props = {
   initialSort?: string;
   initialFavOnly?: boolean;
   statsMap?: CatalogStatsMap;
+  lang?: "ar" | "en";
 };
 
 const STATUSES: AppEntry["status"][] = ["released", "in-development", "archived"];
@@ -38,15 +39,113 @@ function writeRecent(list: string[]) {
   try { localStorage.setItem(RECENT_KEY, JSON.stringify(list.slice(0, 5))); } catch {}
 }
 
-const SORTS = [
-  { id: "default", label: "الافتراضي" },
-  { id: "newest", label: "الأحدث إصدارًا" },
-  { id: "downloads", label: "الأكثر تحميلًا" },
-  { id: "name", label: "الاسم (أ – ي)" },
-  { id: "status", label: "المتاح أولًا" },
-] as const;
+const SORTS = {
+  ar: [
+    { id: "default", label: "الافتراضي" },
+    { id: "newest", label: "الأحدث إصدارًا" },
+    { id: "downloads", label: "الأكثر تحميلًا" },
+    { id: "name", label: "الاسم (أ – ي)" },
+    { id: "status", label: "المتاح أولًا" },
+  ],
+  en: [
+    { id: "default", label: "Default" },
+    { id: "newest", label: "Newest release" },
+    { id: "downloads", label: "Most downloaded" },
+    { id: "name", label: "Name (A – Z)" },
+    { id: "status", label: "Available first" },
+  ],
+} as const;
 
-export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "all", initialStatus = "all", initialSort = "default", initialFavOnly = false, statsMap }: Props) {
+const L = {
+  ar: {
+    searchPh: "ابحث بالاسم أو الوصف أو الفئة…",
+    searchAria: "البحث في التطبيقات",
+    clearAria: "مسح البحث",
+    searchHintPre: "اضغط ",
+    searchHintPost: " للبحث الشامل",
+    recentLabel: "آخر عمليات البحث:",
+    recentAria: "آخر عمليات البحث",
+    recentClear: "مسح سجل البحث",
+    catAria: "تصفية حسب الفئة",
+    catLabel: "الفئة:",
+    all: "الكل",
+    statusAria: "تصفية حسب الحالة",
+    statusLabel: "الحالة:",
+    favTitle: "عرض تطبيقاتك المفضلة المحفوظة على جهازك",
+    fav: "المفضلة",
+    showingPre: "عرض ",
+    showingMid: " من أصل ",
+    showingPost: " مشروع",
+    sortAria: "ترتيب النتائج",
+    viewAria: "طريقة العرض",
+    viewGrid: "عرض شبكي",
+    viewList: "عرض قائمة",
+    lucky: "اكتشف",
+    luckyTitle: "خذني إلى تطبيق عشوائي من الكتالوق",
+    luckyAria: "اكتشف تطبيقًا عشوائيًا",
+    reset: "إعادة الضبط",
+    fresh: "جديد",
+    freshTitle: "أحدث إصدار نُشر خلال الأسابيع الثلاثة الماضية",
+    starsTitle: "عدد النجوم الحي من GitHub",
+    dlTitle: "إجمالي التنزيلات من إصدارات GitHub الرسمية",
+    ghTitle: "الكود المصدري على GitHub",
+    details: "عرض التفاصيل",
+    emptyFav: "قائمة المفضلة فارغة",
+    emptyNo: "لا توجد نتائج مطابقة",
+    emptyFavP: "اضغط أيقونة القلب ♥ على أي بطاقة تطبيق لتجمعها هنا.",
+    emptyNoP: "جرّب كلمات بحث مختلفة أو أعد ضبط عوامل التصفية.",
+    resetFilters: "إعادة ضبط التصفية",
+  },
+  en: {
+    searchPh: "Search by name, description or category…",
+    searchAria: "Search the apps",
+    clearAria: "Clear search",
+    searchHintPre: "Press ",
+    searchHintPost: " for global search",
+    recentLabel: "Recent searches:",
+    recentAria: "Recent searches",
+    recentClear: "Clear search history",
+    catAria: "Filter by category",
+    catLabel: "Category:",
+    all: "All",
+    statusAria: "Filter by status",
+    statusLabel: "Status:",
+    favTitle: "Show your favorites saved on this device",
+    fav: "Favorites",
+    showingPre: "Showing ",
+    showingMid: " of ",
+    showingPost: " projects",
+    sortAria: "Sort results",
+    viewAria: "View mode",
+    viewGrid: "Grid view",
+    viewList: "List view",
+    lucky: "Discover",
+    luckyTitle: "Take me to a random app from the catalog",
+    luckyAria: "Discover a random app",
+    reset: "Reset",
+    fresh: "New",
+    freshTitle: "Latest release published within the last three weeks",
+    starsTitle: "Live GitHub star count",
+    dlTitle: "Total downloads from official GitHub releases",
+    ghTitle: "Source code on GitHub",
+    details: "View details",
+    emptyFav: "Your favorites list is empty",
+    emptyNo: "No matching results",
+    emptyFavP: "Tap the heart ♥ icon on any app card to collect it here.",
+    emptyNoP: "Try different keywords or reset the filters.",
+    resetFilters: "Reset filters",
+  },
+};
+
+const STATUS_EN: Record<AppEntry["status"], string> = {
+  released: "Available",
+  "in-development": "In development",
+  archived: "Archived",
+};
+
+export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "all", initialStatus = "all", initialSort = "default", initialFavOnly = false, statsMap, lang = "ar" }: Props) {
+  const t = L[lang];
+  const sorts = SORTS[lang];
   const router = useRouter();
   const [query, setQuery] = useState(initialQuery);
   const [category, setCategory] = useState(initialCategory);
@@ -78,8 +177,8 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
   const categories = useMemo(() => {
     const map = new Map<string, number>();
     for (const app of apps) map.set(app.category, (map.get(app.category) || 0) + 1);
-    return Array.from(map.entries()).map(([id, count]) => ({ id, label: categoryLabel(id), count }));
-  }, [apps]);
+    return Array.from(map.entries()).map(([id, count]) => ({ id, label: lang === "en" ? categoryLabelEn(id) : categoryLabel(id), count }));
+  }, [apps, lang]);
 
   const results = useMemo(() => {
     let list = filterByStatus(filterByCategory(searchApps(apps, query), category), status);
@@ -93,7 +192,7 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
         sorted.sort((a, b) => (statsMap?.[b.slug]?.downloads ?? 0) - (statsMap?.[a.slug]?.downloads ?? 0));
         break;
       case "name":
-        sorted.sort((a, b) => a.name.ar.localeCompare(b.name.ar, "ar"));
+        sorted.sort((a, b) => a.name[lang].localeCompare(b.name[lang], lang));
         break;
       case "status":
         sorted.sort((a, b) => {
@@ -113,7 +212,8 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
     setStatus("all");
     setSort("default");
     setFavOnly(false);
-    window.history.replaceState(null, "", "/apps");
+    const base = lang === "en" ? "/en/apps" : "/apps";
+    window.history.replaceState(null, "", base);
   }
 
   /* اكتشاف عشوائي: قفزة مباشرة إلى صفحة تطبيق عشوائي من الكتالوق */
@@ -135,8 +235,9 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
     if (s && s !== "all") params.set("status", s);
     if (so && so !== "default") params.set("sort", so);
     if (f) params.set("fav", "1");
+    const base = lang === "en" ? "/en/apps" : "/apps";
     const qs = params.toString();
-    window.history.replaceState(null, "", qs ? `/apps?${qs}` : "/apps");
+    window.history.replaceState(null, "", qs ? `${base}?${qs}` : base);
   }
 
   return (
@@ -148,20 +249,20 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
           value={query}
           onChange={e => { setQuery(e.target.value); update({ query: e.target.value }); }}
           onKeyDown={e => { if (e.key === "Enter") saveRecent(query); }}
-          placeholder="ابحث بالاسم أو الوصف أو الفئة…"
-          aria-label="البحث في التطبيقات"
+          placeholder={t.searchPh}
+          aria-label={t.searchAria}
         />
         {query && (
-          <button type="button" className="clear-btn" onClick={() => { setQuery(""); update({ query: "" }); }} aria-label="مسح البحث">
+          <button type="button" className="clear-btn" onClick={() => { setQuery(""); update({ query: "" }); }} aria-label={t.clearAria}>
             <X size={15} />
           </button>
         )}
-        <span className="search-hint" aria-hidden>اضغط <kbd className="nav-kbd">Ctrl K</kbd> للبحث الشامل</span>
+        <span className="search-hint" aria-hidden>{t.searchHintPre}<kbd className="nav-kbd">Ctrl K</kbd>{t.searchHintPost}</span>
       </div>
 
       {query === "" && recent.length > 0 && (
-        <div className="recent-searches" role="group" aria-label="آخر عمليات البحث">
-          <span className="rs-label"><History size={13} aria-hidden /> آخر عمليات البحث:</span>
+        <div className="recent-searches" role="group" aria-label={t.recentAria}>
+          <span className="rs-label"><History size={13} aria-hidden /> {t.recentLabel}</span>
           {recent.map(item => (
             <button
               type="button"
@@ -172,16 +273,16 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
               {item}
             </button>
           ))}
-          <button type="button" className="rs-clear" onClick={clearRecent} aria-label="مسح سجل البحث" title="مسح سجل البحث">
+          <button type="button" className="rs-clear" onClick={clearRecent} aria-label={t.recentClear} title={t.recentClear}>
             <X size={12} aria-hidden />
           </button>
         </div>
       )}
 
       <div className="filters-row">
-        <div className="chips" role="group" aria-label="تصفية حسب الفئة">
-          <span className="chips-label"><SlidersHorizontal size={14} aria-hidden /> الفئة:</span>
-          <button type="button" className={`chip ${category === "all" ? "active" : ""}`} onClick={() => { setCategory("all"); update({ category: "all" }); }}>الكل</button>
+        <div className="chips" role="group" aria-label={t.catAria}>
+          <span className="chips-label"><SlidersHorizontal size={14} aria-hidden /> {t.catLabel}</span>
+          <button type="button" className={`chip ${category === "all" ? "active" : ""}`} onClick={() => { setCategory("all"); update({ category: "all" }); }}>{t.all}</button>
           {categories.map(cat => (
             <button
               type="button"
@@ -194,9 +295,9 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
           ))}
         </div>
 
-        <div className="chips" role="group" aria-label="تصفية حسب الحالة">
-          <span className="chips-label">الحالة:</span>
-          <button type="button" className={`chip ${status === "all" ? "active" : ""}`} onClick={() => { setStatus("all"); update({ status: "all" }); }}>الكل</button>
+        <div className="chips" role="group" aria-label={t.statusAria}>
+          <span className="chips-label">{t.statusLabel}</span>
+          <button type="button" className={`chip ${status === "all" ? "active" : ""}`} onClick={() => { setStatus("all"); update({ status: "all" }); }}>{t.all}</button>
           {STATUSES.map(s => (
             <button
               type="button"
@@ -204,7 +305,7 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
               className={`chip ${status === s ? "active" : ""}`}
               onClick={() => { const next = status === s ? "all" : s; setStatus(next); update({ status: next }); }}
             >
-              {statusLabels[s]}
+              {lang === "en" ? STATUS_EN[s] : statusLabels[s]}
             </button>
           ))}
           {ready && (
@@ -213,39 +314,39 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
               className={`chip fav-chip ${favOnly ? "active" : ""}`}
               aria-pressed={favOnly}
               onClick={() => { const next = !favOnly; setFavOnly(next); update({ favOnly: next }); }}
-              title="عرض تطبيقاتك المفضلة المحفوظة على جهازك"
+              title={t.favTitle}
             >
-              <Heart size={12} aria-hidden className={favOnly ? "filled" : ""} /> المفضلة <small>{favorites.length}</small>
+              <Heart size={12} aria-hidden className={favOnly ? "filled" : ""} /> {t.fav} <small>{favorites.length}</small>
             </button>
           )}
         </div>
       </div>
 
       <div className="results-meta">
-        <span aria-live="polite">عرض <b>{results.length}</b> من أصل {apps.length} مشروع</span>
+        <span aria-live="polite">{t.showingPre}<b>{results.length}</b>{t.showingMid}{apps.length}{t.showingPost}</span>
         <div className="results-controls">
           <label className="sort-wrap">
             <ArrowUpDown size={13} aria-hidden />
             <select
               value={sort}
               onChange={e => { setSort(e.target.value); update({ sort: e.target.value }); }}
-              aria-label="ترتيب النتائج"
+              aria-label={t.sortAria}
             >
-              {SORTS.map(s => <option key={s.id} value={s.id}>{s.label}</option>)}
+              {sorts.map(s => <option key={s.id} value={s.id}>{s.label}</option>)}
             </select>
           </label>
-          <div className="view-toggle" role="group" aria-label="طريقة العرض">
-            <button type="button" className={view === "grid" ? "active" : ""} onClick={() => setView("grid")} aria-pressed={view === "grid"} title="عرض شبكي">
+          <div className="view-toggle" role="group" aria-label={t.viewAria}>
+            <button type="button" className={view === "grid" ? "active" : ""} onClick={() => setView("grid")} aria-pressed={view === "grid"} title={t.viewGrid}>
               <LayoutGrid size={14} aria-hidden />
             </button>
-            <button type="button" className={view === "list" ? "active" : ""} onClick={() => setView("list")} aria-pressed={view === "list"} title="عرض قائمة">
+            <button type="button" className={view === "list" ? "active" : ""} onClick={() => setView("list")} aria-pressed={view === "list"} title={t.viewList}>
               <Rows3 size={14} aria-hidden />
             </button>
           </div>
-          <button type="button" className="lucky-btn" onClick={luckyApp} title="خذني إلى تطبيق عشوائي من الكتالوق" aria-label="اكتشف تطبيقًا عشوائيًا">
-            <Dices size={14} aria-hidden /> اكتشف
+          <button type="button" className="lucky-btn" onClick={luckyApp} title={t.luckyTitle} aria-label={t.luckyAria}>
+            <Dices size={14} aria-hidden /> {t.lucky}
           </button>
-          {hasFilters && <button type="button" className="text-link" onClick={reset}>إعادة الضبط <X size={14} aria-hidden /></button>}
+          {hasFilters && <button type="button" className="text-link" onClick={reset}>{t.reset} <X size={14} aria-hidden /></button>}
         </div>
       </div>
 
@@ -253,39 +354,39 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
         <div className={`app-grid ${view === "list" ? "as-list" : ""}`}>
           {results.map(app => (
             <article className="app-card" key={app.slug}>
-              <FavoriteButton slug={app.slug} name={app.name.ar} />
+              <FavoriteButton slug={app.slug} name={app.name[lang]} />
               <div className="app-icon"><AppGlyph appIcon={app.appIcon} letter={app.name.en.slice(0, 1)} /></div>
               <div className="app-card-body">
                 <div className="app-title-row">
                   <h3>
-                    {app.name.ar}
+                    {app.name[lang]}
                     {statsMap?.[app.slug] && isFreshRelease(statsMap[app.slug].releasedAt) && (
-                      <span className="tag new-badge" title="أحدث إصدار نُشر خلال الأسابيع الثلاثة الماضية">
-                        <Sparkles size={11} aria-hidden /> جديد
+                      <span className="tag new-badge" title={t.freshTitle}>
+                        <Sparkles size={11} aria-hidden /> {t.fresh}
                       </span>
                     )}
                   </h3>
-                  <span className={`status ${app.status}`}>{statusLabels[app.status]}</span>
+                  <span className={`status ${app.status}`}>{lang === "en" ? STATUS_EN[app.status] : statusLabels[app.status]}</span>
                 </div>
-                <p>{app.summary.ar}</p>
+                <p>{app.summary[lang] || app.summary.en}</p>
                 <div className="app-card-bottom">
-                  <span className="cat-tag"><FolderOpen size={13} aria-hidden /> {categoryLabel(app.category)}</span>
+                  <span className="cat-tag"><FolderOpen size={13} aria-hidden /> {lang === "en" ? categoryLabelEn(app.category) : categoryLabel(app.category)}</span>
                   {statsMap?.[app.slug] && (
-                    <span className="mini-live" title="عدد النجوم الحي من GitHub">
+                    <span className="mini-live" title={t.starsTitle}>
                       <Star size={12} aria-hidden /> {compactNumber(statsMap[app.slug].stars)}
                     </span>
                   )}
                   {statsMap?.[app.slug] && statsMap[app.slug].downloads > 0 && (
-                    <span className="mini-live hot" title="إجمالي التنزيلات من إصدارات GitHub الرسمية">
+                    <span className="mini-live hot" title={t.dlTitle}>
                       <Download size={12} aria-hidden /> {compactNumber(statsMap[app.slug].downloads)}
                     </span>
                   )}
                   {validHttpUrl(app.repository) && (
-                    <a className="mini-gh" href={app.repository!} target="_blank" rel="noreferrer" title="الكود المصدري على GitHub">
+                    <a className="mini-gh" href={app.repository!} target="_blank" rel="noreferrer" title={t.ghTitle}>
                       <Github size={13} aria-hidden /> GitHub
                     </a>
                   )}
-                  <Link href={`/apps/${app.slug}`}>عرض التفاصيل ←</Link>
+                  <Link href={`/apps/${app.slug}`}>{t.details} {lang === "en" ? "→" : "←"}</Link>
                 </div>
               </div>
             </article>
@@ -294,13 +395,11 @@ export function CatalogExplorer({ apps, initialQuery = "", initialCategory = "al
       ) : (
         <div className="empty-state">
           {favOnly ? <Heart size={34} aria-hidden /> : <Search size={34} aria-hidden />}
-          <b>{favOnly ? "قائمة المفضلة فارغة" : "لا توجد نتائج مطابقة"}</b>
+          <b>{favOnly ? t.emptyFav : t.emptyNo}</b>
           <p>
-            {favOnly
-              ? "اضغط أيقونة القلب ♥ على أي بطاقة تطبيق لتجمعها هنا."
-              : "جرّب كلمات بحث مختلفة أو أعد ضبط عوامل التصفية."}
+            {favOnly ? t.emptyFavP : t.emptyNoP}
           </p>
-          {hasFilters && <button type="button" className="button primary" onClick={reset}>إعادة ضبط التصفية</button>}
+          {hasFilters && <button type="button" className="button primary" onClick={reset}>{t.resetFilters}</button>}
         </div>
       )}
     </div>

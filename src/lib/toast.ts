@@ -15,12 +15,12 @@ export function toast(message: string, kind: ToastKind = "info") {
 
 /* ===== مضيف الإشعارات (يُركب مرة واحدة في التخطيط) ===== */
 
-let listeners: ((items: ToastItem[]) => void) | null = null;
+let listeners: (() => void) | null = null;
 let items: ToastItem[] = [];
 const timers = new Map<number, ReturnType<typeof setTimeout>>();
 
 function emit() {
-  listeners?.(items);
+  listeners?.();
 }
 
 function push(detail: { id: number; message: string; kind: ToastKind }) {
@@ -39,12 +39,18 @@ function dismiss(id: number) {
 }
 
 function subscribe(callback: () => void): () => void {
-  const handler = () => callback();
+  const notify = () => callback();
+  /* المستمع يستقبل الحدث ويدفع العنصر إلى المخزن (وهو بدوره ينبّه عبر emit) */
+  const handler = (event: Event) => {
+    const detail = (event as CustomEvent<{ id: number; message: string; kind: ToastKind }>).detail;
+    if (detail && typeof detail.id === "number" && typeof detail.message === "string") push(detail);
+    else notify();
+  };
   window.addEventListener(TOAST_EVENT, handler);
-  listeners = handler;
+  listeners = notify;
   return () => {
     window.removeEventListener(TOAST_EVENT, handler);
-    if (listeners === handler) listeners = null;
+    if (listeners === notify) listeners = null;
   };
 }
 

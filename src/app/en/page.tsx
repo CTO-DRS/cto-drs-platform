@@ -71,10 +71,10 @@ export default async function EnglishPage() {
           ))}
         </ul>
         <div className="en-actions">
-          <Link className="btn-grad" href="/apps">
+          <Link className="btn-grad" href="/en/apps">
             Browse the catalog <ArrowRight size={17} aria-hidden />
           </Link>
-          <Link className="btn-dark" href="/support">Get support</Link>
+          <Link className="btn-dark" href="/en/support">Get support</Link>
         </div>
       </section>
 
@@ -101,7 +101,7 @@ export default async function EnglishPage() {
       {/* ===== Catalog ===== */}
       <div className="en-section-title">
         <h2>The catalog</h2>
-        <Link href="/apps">Full catalog with search &amp; filters →</Link>
+        <Link href="/en/apps">Full catalog with search &amp; filters →</Link>
       </div>
       <div className="en-app-list">
         {apps.map(app => (

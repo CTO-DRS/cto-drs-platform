@@ -3,8 +3,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Download, ExternalLink, Github, Plus, Sparkles, X } from "lucide-react";
+import { Download, ExternalLink, Github, Plus, Share2, Sparkles, X } from "lucide-react";
 import { apps, categoryLabel, categoryLabelEn, platformLabel, firstDownload, validHttpUrl, type AppEntry } from "@/lib/catalog";
+import { buildCompareImage, shareOrDownloadImage, type CompareImageEntry } from "@/lib/compare-image";
+import { toast } from "@/lib/toast";
 import { AppGlyph } from "@/components/app-glyph";
 import { FavoriteButton } from "@/components/favorite-button";
 
@@ -52,6 +54,13 @@ const LABELS = {
     page: "صفحة التطبيق",
     dlUnit: "تحميل",
     starUnit: "نجمة",
+    share: "مشاركة كصورة",
+    shareBusy: "جارٍ توليد الصورة…",
+    sharedToast: "أُرسلت صورة المقارنة إلى نافذة المشاركة",
+    savedToast: "حُفظت صورة المقارنة في تنزيلاتك",
+    failToast: "تعذر توليد الصورة — جرّب متصفحًا حديثًا",
+    shareTitle: "مقارنة تطبيقات DRS",
+    shareText: "مقارنة جنبًا إلى جنب من متجر DRS",
     locale: "ar" as const,
   },
   en: {
@@ -81,6 +90,13 @@ const LABELS = {
     page: "App page",
     dlUnit: "downloads",
     starUnit: "stars",
+    share: "Share as image",
+    shareBusy: "Rendering image…",
+    sharedToast: "The comparison image was sent to the share sheet",
+    savedToast: "The comparison image was saved to your downloads",
+    failToast: "Couldn't render the image — try a modern browser",
+    shareTitle: "DRS apps comparison",
+    shareText: "Side-by-side comparison from the DRS store",
     locale: "en" as const,
   },
 };
@@ -119,6 +135,7 @@ export function CompareClient({
   const router = useRouter();
   const [slots, setSlots] = useState<[Slot, Slot, Slot]>(initial);
   const [third, setThird] = useState(Boolean(initial[2]));
+  const [shareBusy, setShareBusy] = useState(false);
   const firstRun = useRef(true);
 
   /* مزامنة الرابط مع الأعمدة المختارة (روابط قابلة للمشاركة) */
@@ -262,6 +279,44 @@ export function CompareClient({
     },
   ];
 
+  /** مشاركة المقارنة كصورة: توليد PNG من الجدول الحالي ثم Web Share (أو تنزيل) */
+  async function shareAsImage() {
+    if (!filled.length || shareBusy) return;
+    setShareBusy(true);
+    try {
+      const entries: CompareImageEntry[] = filled.map(a => {
+        const lv = live[a.slug];
+        const dl = lv?.downloads ?? 0;
+        const st = lv?.stars ?? 0;
+        return {
+          name: lang === "ar" ? a.name.ar : a.name.en,
+          iconPath: typeof a.appIcon === "string" ? a.appIcon : null,
+          letter: a.name.en.slice(0, 1),
+          status: lang === "ar"
+            ? { released: "متاح", "in-development": "قيد التطوير", archived: "مؤرشف" }[a.status]
+            : STATUS_EN[a.status],
+          category: lang === "ar" ? categoryLabel(a.category) : categoryLabelEn(a.category),
+          latest: lv ? (lv.latestTag ?? t.noReleases) : t.noRepo,
+          latestDate: fmtDate(lv?.releasedAt ?? null, t.locale),
+          downloads: dl > 0 ? `${fmtCompact(dl)} ${t.dlUnit}` : "—",
+          stars: `${fmtCompact(st)} ${t.starUnit}`,
+        };
+      });
+      const blob = await buildCompareImage(entries, {
+        lang,
+        url: typeof window !== "undefined" ? window.location.href : "cto-drs-store.vercel.app",
+      });
+      const result = await shareOrDownloadImage(blob, `drs-compare-${Date.now()}.png`, t.shareTitle, t.shareText);
+      if (result === "shared") toast(t.sharedToast, "success");
+      else if (result === "downloaded") toast(t.savedToast, "success");
+      else toast(t.failToast, "error");
+    } catch {
+      toast(t.failToast, "error");
+    } finally {
+      setShareBusy(false);
+    }
+  }
+
   return (
     <div className="cmp-wrap">
       <p className="cmp-desc">{t.desc}</p>
@@ -342,6 +397,12 @@ export function CompareClient({
       {!third && (
         <button type="button" className="cmp-add" onClick={() => setThird(true)}>
           <Plus size={14} aria-hidden /> {t.addThird}
+        </button>
+      )}
+
+      {filled.length > 0 && (
+        <button type="button" className="cmp-add cmp-share" onClick={shareAsImage} disabled={shareBusy}>
+          <Share2 size={14} aria-hidden /> {shareBusy ? t.shareBusy : t.share}
         </button>
       )}
     </div>

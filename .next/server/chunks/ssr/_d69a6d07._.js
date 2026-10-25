@@ -1,3 +1,0 @@
-module.exports=[69520,a=>{"use strict";let b=(0,a.i(70106).default)("refresh-cw",[["path",{d:"M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8",key:"v9h5vc"}],["path",{d:"M21 3v5h-5",key:"1q7to0"}],["path",{d:"M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16",key:"3uifl3"}],["path",{d:"M8 16H3v5",key:"1cv678"}]]);a.s(["RefreshCw",()=>b],69520)},2051,a=>{"use strict";var b=a.i(87924),c=a.i(69520);function d(){return(0,b.jsxs)("button",{type:"button",className:"btn-grad sm",onClick:()=>window.location.reload(),children:[(0,b.jsx)(c.RefreshCw,{size:15,"aria-hidden":!0})," إعادة المحاولة"]})}a.s(["ReloadButton",()=>d])}];
-
-//# sourceMappingURL=_d69a6d07._.js.map

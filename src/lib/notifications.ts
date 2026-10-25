@@ -7,6 +7,8 @@ export type NotifyEntry = {
   slug: string;
   name: string;
   tag: string;
+  /** مقتطف ملاحظات الإصدار المرافق للتنبيه (اختياري — للسجلات الأقدم قد يغيب) */
+  notes?: string;
   time: string; // ISO
   read: boolean;
 };
@@ -64,12 +66,13 @@ export function getNotifyLog(): NotifyEntry[] {
       slug: e.slug as string,
       name: e.name as string,
       tag: e.tag as string,
+      notes: typeof e.notes === "string" && e.notes.trim() ? e.notes : undefined,
       time: e.time as string,
       read: e.read === true,
     }));
 }
 
-export function addNotifyEntry(entry: { slug: string; name: string; tag: string }): NotifyEntry | null {
+export function addNotifyEntry(entry: { slug: string; name: string; tag: string; notes?: string }): NotifyEntry | null {
   const full: NotifyEntry = {
     id: `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
     time: new Date().toISOString(),
