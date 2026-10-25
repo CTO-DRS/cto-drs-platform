@@ -34,17 +34,22 @@ export default async function UpdatesPage() {
   const topRepo = Array.from(perRepo.entries()).sort((a, b) => b[1] - a[1])[0];
   const topApp = topRepo ? apps.find(a => parseGithubRepo(a.repository)?.repo === topRepo[0]) ?? null : null;
 
-  /* خيارات فاحص التحديثات: كل التطبيقات مرتبة بأحدث إصدار */
+  /* خيارات فاحص التحديثات: كل التطبيقات مرتبة بأحدث إصدار + ملاحظات أحدث إصدار من الفيد للإشعارات */
   const checkerApps: CheckerApp[] = apps
     .map(a => {
       const st = statsMap[a.slug];
       const dl = firstDownload(a);
+      const ref = parseGithubRepo(a.repository);
+      const latestNotes = st?.latestTag
+        ? feed.find(r => ref?.repo === r.repo && r.tag === st.latestTag)?.notes ?? null
+        : null;
       return {
         slug: a.slug,
         name: appName(a),
         latestTag: st?.latestTag ?? null,
         releasedAt: st?.releasedAt ?? null,
         apkUrl: dl && dl.kind === "apk" ? dl.url : null,
+        notes: latestNotes,
       };
     })
     .sort((a, b) => (b.releasedAt ?? "").localeCompare(a.releasedAt ?? ""));

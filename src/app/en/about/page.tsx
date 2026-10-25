@@ -208,16 +208,16 @@ export default function EnglishAboutPage() {
           <h2 id="en-about-start"><Sparkles size={17} aria-hidden /> Start here</h2>
           <p>Ready to explore? These are the fastest paths in:</p>
           <div className="about-links-grid">
-            <Link className="about-link-card" href="/apps">
+            <Link className="about-link-card" href="/en/apps">
               <Smartphone size={18} aria-hidden /><b>Browse the catalog</b><span>Search and filter {catalogStats.total} apps</span>
             </Link>
             <Link className="about-link-card" href="/en/compare">
               <GitCompareArrows size={18} aria-hidden /><b>Compare apps</b><span>Put up to 3 apps side by side</span>
             </Link>
-            <Link className="about-link-card" href="/updates">
+            <Link className="about-link-card" href="/en/updates">
               <RefreshCw size={18} aria-hidden /><b>What’s new</b><span>Live releases straight from GitHub</span>
             </Link>
-            <Link className="about-link-card" href="/account">
+            <Link className="about-link-card" href="/en/account">
               <Bell size={18} aria-hidden /><b>Favorites &amp; notifications</b><span>Watch for new releases on your device</span>
             </Link>
           </div>

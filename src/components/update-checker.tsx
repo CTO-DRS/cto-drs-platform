@@ -10,6 +10,8 @@ export type CheckerApp = {
   latestTag: string | null;
   releasedAt: string | null;
   apkUrl: string | null;
+  /** ملاحظات أحدث إصدار — تمرَّر لتنبيهات الإصدارات، لا يستخدمها الفاحص نفسه */
+  notes?: string | null;
 };
 
 type Verdict =
@@ -19,9 +21,71 @@ type Verdict =
   | { kind: "unknown"; }
   | { kind: "invalid"; };
 
+const T = {
+  ar: {
+    title: "فاحص التحديثات",
+    desc: "اختر التطبيق واكتب رقم الإصدار المثبّت عندك (تجده في «حول التطبيق») لنخبرك إن كان تحديث متاحًا.",
+    app: "التطبيق",
+    appAria: "اختر التطبيق",
+    latestSuffix: "أحدث إصدار",
+    installed: "نسختك المثبّتة",
+    installedAria: "رقم الإصدار المثبت لديك",
+    ph: "مثال: 4.7.0",
+    check: "فحص الآن",
+    updTitle: "تحديث متاح!",
+    updBodyPre: "نسختك ",
+    updBodyMid: " أقدم من أحدث إصدار ",
+    updDl: "تحميل ",
+    updDlPost: " مباشرة",
+    updPage: "صفحة التطبيق",
+    latTitle: "أنت على أحدث إصدار",
+    latBodyPre: "نسختك ",
+    latBodyMid: " مطابقة لأحدث إصدار منشور ",
+    latBodyPost: ". لا حاجة لأي إجراء.",
+    newTitle: "نسختك أحدث من المنشور",
+    newBodyPre: "يبدو أنك تستخدم نسخة معاينة (",
+    newBodyMid: ") أحدث من آخر إصدار مستقر ",
+    unkTitle: "لا يوجد إصدار منشور بعد",
+    unkBody: "لم يُنشر أي إصدار رسمي لهذا التطبيق على GitHub حتى الآن، لذا لا يمكن المقارنة.",
+    invTitle: "رقم إصدار غير مفهوم",
+    invBodyPre: "اكتب الرقم بصيغة رقمية مثل ",
+    invBodyMid: " أو ",
+  },
+  en: {
+    title: "Update checker",
+    desc: "Pick an app and type your installed version (find it in “About the app”) to know whether an update is available.",
+    app: "App",
+    appAria: "Choose the app",
+    latestSuffix: "latest release",
+    installed: "Your installed version",
+    installedAria: "Your installed version number",
+    ph: "e.g. 4.7.0",
+    check: "Check now",
+    updTitle: "Update available!",
+    updBodyPre: "Your version ",
+    updBodyMid: " is older than the latest release ",
+    updDl: "Download ",
+    updDlPost: " directly",
+    updPage: "App page",
+    latTitle: "You're on the latest release",
+    latBodyPre: "Your version ",
+    latBodyMid: " matches the latest published release ",
+    latBodyPost: ". No action needed.",
+    newTitle: "Your version is newer than published",
+    newBodyPre: "Looks like you're running a preview version (",
+    newBodyMid: ") newer than the latest stable release ",
+    unkTitle: "No published release yet",
+    unkBody: "No official release has been published for this app on GitHub so far, so there is nothing to compare against.",
+    invTitle: "Unrecognized version number",
+    invBodyPre: "Type the number in numeric form like ",
+    invBodyMid: " or ",
+  },
+} as const;
+
 /** فاحص التحديثات: يقارن نسخة المستخدم بأحدث إصدار حي من GitHub.
  *  المقارنة دلالية مبسطة (v4.8.0) — البيانات كلها حقيقية من إصدارات المستودعات. */
-export function UpdateChecker({ apps }: { apps: CheckerApp[] }) {
+export function UpdateChecker({ apps, lang = "ar" }: { apps: CheckerApp[]; lang?: "ar" | "en" }) {
+  const t = T[lang];
   const [slug, setSlug] = useState(apps[0]?.slug ?? "");
   const [installed, setInstalled] = useState("");
   const [submitted, setSubmitted] = useState("");
@@ -63,24 +127,24 @@ export function UpdateChecker({ apps }: { apps: CheckerApp[] }) {
 
   return (
     <section className="panel update-checker" aria-labelledby="uc-title">
-      <h2 id="uc-title"><SearchCheck size={18} aria-hidden /> فاحص التحديثات</h2>
+      <h2 id="uc-title"><SearchCheck size={18} aria-hidden /> {t.title}</h2>
       <p className="uc-desc">
-        اختر التطبيق واكتب رقم الإصدار المثبّت عندك (تجده في «حول التطبيق») لنخبرك إن كان تحديث متاحًا.
+        {t.desc}
       </p>
 
       <div className="uc-form">
         <label className="uc-field">
-          <span>التطبيق</span>
-          <select value={slug} onChange={e => { setSlug(e.target.value); setSubmitted(""); }} aria-label="اختر التطبيق">
+          <span>{t.app}</span>
+          <select value={slug} onChange={e => { setSlug(e.target.value); setSubmitted(""); }} aria-label={t.appAria}>
             {apps.map(a => (
               <option key={a.slug} value={a.slug}>
-                {a.name}{a.latestTag ? ` — أحدث إصدار ${a.latestTag}` : ""}
+                {a.name}{a.latestTag ? ` — ${t.latestSuffix} ${a.latestTag}` : ""}
               </option>
             ))}
           </select>
         </label>
         <label className="uc-field">
-          <span>نسختك المثبّتة</span>
+          <span>{t.installed}</span>
           <input
             type="text"
             inputMode="text"
@@ -88,9 +152,9 @@ export function UpdateChecker({ apps }: { apps: CheckerApp[] }) {
             value={installed}
             onChange={e => { setInstalled(e.target.value); setSubmitted(""); }}
             onKeyDown={e => { if (e.key === "Enter") setSubmitted(installed); }}
-            placeholder="مثال: 4.7.0"
+            placeholder={t.ph}
             maxLength={24}
-            aria-label="رقم الإصدار المثبت لديك"
+            aria-label={t.installedAria}
           />
         </label>
         <button
@@ -99,7 +163,7 @@ export function UpdateChecker({ apps }: { apps: CheckerApp[] }) {
           onClick={() => setSubmitted(installed)}
           disabled={!installed.trim()}
         >
-          <SearchCheck size={15} aria-hidden /> فحص الآن
+          <SearchCheck size={15} aria-hidden /> {t.check}
         </button>
       </div>
 
@@ -109,14 +173,14 @@ export function UpdateChecker({ apps }: { apps: CheckerApp[] }) {
             <>
               <span className="uc-ico"><ArrowUpCircle size={26} aria-hidden /></span>
               <div className="uc-body">
-                <b>تحديث متاح!</b>
-                <p>نسختك <code dir="ltr">{submitted}</code> أقدم من أحدث إصدار <code dir="ltr">{selected.latestTag}</code>.</p>
+                <b>{t.updTitle}</b>
+                <p>{t.updBodyPre}<code dir="ltr">{submitted}</code>{t.updBodyMid}<code dir="ltr">{selected.latestTag}</code>.</p>
                 {selected.apkUrl ? (
                   <a className="button primary sm" href={selected.apkUrl} target="_blank" rel="noreferrer">
-                    <Download size={14} aria-hidden /> تحميل {selected.latestTag} مباشرة
+                    <Download size={14} aria-hidden /> {t.updDl}{selected.latestTag}{t.updDlPost}
                   </a>
                 ) : (
-                  <Link className="button primary sm" href={`/apps/${selected.slug}`}>صفحة التطبيق</Link>
+                  <Link className="button primary sm" href={`/apps/${selected.slug}`}>{t.updPage}</Link>
                 )}
               </div>
             </>
@@ -125,8 +189,8 @@ export function UpdateChecker({ apps }: { apps: CheckerApp[] }) {
             <>
               <span className="uc-ico ok"><CheckCircle2 size={26} aria-hidden /></span>
               <div className="uc-body">
-                <b>أنت على أحدث إصدار</b>
-                <p>نسختك <code dir="ltr">{submitted}</code> مطابقة لأحدث إصدار منشور <code dir="ltr">{selected.latestTag}</code>. لا حاجة لأي إجراء.</p>
+                <b>{t.latTitle}</b>
+                <p>{t.latBodyPre}<code dir="ltr">{submitted}</code>{t.latBodyMid}<code dir="ltr">{selected.latestTag}</code>{t.latBodyPost}</p>
               </div>
             </>
           )}
@@ -134,8 +198,8 @@ export function UpdateChecker({ apps }: { apps: CheckerApp[] }) {
             <>
               <span className="uc-ico info"><Sparkles size={26} aria-hidden /></span>
               <div className="uc-body">
-                <b>نسختك أحدث من المنشور</b>
-                <p>يبدو أنك تستخدم نسخة معاينة (<code dir="ltr">{submitted}</code>) أحدث من آخر إصدار مستقر <code dir="ltr">{selected.latestTag}</code>.</p>
+                <b>{t.newTitle}</b>
+                <p>{t.newBodyPre}<code dir="ltr">{submitted}</code>{t.newBodyMid}<code dir="ltr">{selected.latestTag}</code>.</p>
               </div>
             </>
           )}
@@ -143,8 +207,8 @@ export function UpdateChecker({ apps }: { apps: CheckerApp[] }) {
             <>
               <span className="uc-ico info"><HelpCircle size={26} aria-hidden /></span>
               <div className="uc-body">
-                <b>لا يوجد إصدار منشور بعد</b>
-                <p>لم يُنشر أي إصدار رسمي لهذا التطبيق على GitHub حتى الآن، لذا لا يمكن المقارنة.</p>
+                <b>{t.unkTitle}</b>
+                <p>{t.unkBody}</p>
               </div>
             </>
           )}
@@ -152,8 +216,8 @@ export function UpdateChecker({ apps }: { apps: CheckerApp[] }) {
             <>
               <span className="uc-ico info"><HelpCircle size={26} aria-hidden /></span>
               <div className="uc-body">
-                <b>رقم إصدار غير مفهوم</b>
-                <p>اكتب الرقم بصيغة رقمية مثل <code dir="ltr">1.2.0</code> أو <code dir="ltr">v4.8</code>.</p>
+                <b>{t.invTitle}</b>
+                <p>{t.invBodyPre}<code dir="ltr">1.2.0</code>{t.invBodyMid}<code dir="ltr">v4.8</code>.</p>
               </div>
             </>
           )}
